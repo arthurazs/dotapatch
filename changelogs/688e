@@ -1,0 +1,30 @@
+* Dragon Lance strength reduced from 14 to 13
+* Infused Raindrop cooldown increased from 4 to 6
+* Illusions attack damage reduction against buildings increased from 25% to 30%
+* Diffusal Blade cooldown increased from 2 to 4
+* Outworld Devourer base armor reduced by 1.5
+* Shadow Poison initial damage reduced from 50 to 26/34/42/50
+* Flamebreak cooldown increased from 14 to 17
+* Drow base damage reduced by 4
+* Torrent damage reduced from 120/180/240/300 to 75/150/225/300
+* Echo Stomp channel time increased from 1.2 to 1.3
+* Oracle base damage reduced by 6
+* Morphling intelligence gain reduced from 1.5 to 1.1
+* Starstorm Scepter cooldown increased from 8 to 9
+* Time Dilation now only freezes abilities that are on cooldown, rather than also affecting abilities cast afterwards
+* Time Dilation slow per frozen ability increased from 8% to 10%
+* Tempest Double gold and XP bounty increased from 140 to 160
+* Juggernaut base damage reduced by 2
+* Counter Helix damage reduced from 90/120/150/180 to 75/110/145/180
+* Repel cast point improved from 0.5 to 0.35
+* Repel duration reduced from 6/8/10/12 to 4/6/8/10
+* Relocate delay increased from 2.5/2.25/2 to 2.7/2.35/2
+* Inner Vitality bonus regeneration threshhold reduced from 40% to 35%
+* Stifling Dagger cast range reduced from 1200 to 825/950/1075/1200
+* Smokescreen slow reduced from 25% to 19/21/23/25%
+* Track manacost increased from 50 to 65
+* Mana Leak manacost increased from 75 to 150
+* Illuminate radius increased from 350 to 375
+* Blinding Light knockback distance increased from 400 to 525
+* Sand King movement speed reduced by 5
+* Timbersaw base strength reduced by 1	
