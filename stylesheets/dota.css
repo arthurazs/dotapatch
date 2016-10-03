@@ -1,0 +1,233 @@
+body
+{
+	background-color: #000000;
+	background-position: center top;
+}
+
+#Container
+{
+	background-image: url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_02.jpg');
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+
+div.Block
+{
+	width: 100%;
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+
+div.Inner
+{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.Body
+{
+	width: 720px;
+	margin-left: 120px;
+}
+
+a {
+	font-family: 'Radiance', Verdana;
+	-webkit-text-stroke: 0.2px;
+	font-size: 15px;
+}
+
+a.ChangeDetailsTrigger {
+	color: #E4C0B5;
+}
+
+a.ChangeDetailsTrigger:before {
+	content: "\00a0 ";
+}
+
+a.ChangeDetailsTrigger:hover {
+	color: #ffffff;
+}
+
+.ChangeDetailsPopup {
+	background: none repeat scroll 0 0 #221B1B;
+	font-family: 'Radiance', Verdana;
+	-webkit-text-stroke: 0.2px;
+	border: 1px solid #423A2F;
+	box-shadow: 2px 2px 2px #000000, 2px 2px 2px #000000, -2px -2px 2px #000000;
+	display: none;
+	margin: 5px;
+	margin-left: -60px;
+	padding: 8px;
+	padding-left: 15px;
+	padding-right: 15px;
+	position: absolute;
+	z-index: 100;
+	width: 775px;
+	color: #B1A9A4;
+}
+
+.ChangeDetailsEToggle {
+	margin: 4px 0px 0px 20px;
+	font-family: 'Radiance', Verdana;
+	border: none;
+	color: #E4C0B5;
+	padding: 0;
+	background-color: transparent;
+	font-weight: normal;
+	font-size: 16px;
+}
+
+.ChangeDetailsExtended
+{
+	border: 1px solid #292314;
+	background: none repeat scroll 0 0 #110B0B;
+	font-family: 'Radiance', Verdana;
+	margin: 5px;
+	padding: 8px;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
+h1
+{
+	color: #e3e3e3;
+	text-shadow: 0px 0px 15px #C12C9A;
+	text-transform: uppercase;
+	font-family: 'Radiance-SemiBold';
+	letter-spacing: 8px;
+	font-size: 48px;
+}
+
+h2
+{
+	font-family: 'Radiance-SemiBold', Verdana;
+	-webkit-text-stroke: 0.2px;
+	margin: 0px;
+	color: #E4D0BF;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	text-shadow: 0px 0px 16px rgba(236, 12, 137, 0.8);
+	letter-spacing: 4px;
+	font-size: 24px;
+	font-style: normal;
+	text-align: center;
+}
+
+h3
+{
+	display: block;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+
+h3 b
+{
+	color: #BFB8B1;
+	display: block;
+	font-family: 'Radiance-SemiBold', Verdana;
+	text-shadow: 0px 0px 8px rgba(236, 12, 137, 0.6);
+	letter-spacing: 1px;
+	font-size: 22px;
+}
+
+ul
+{
+	margin: 0px;
+	color: #948E90;
+	font-size: 16px;
+	line-height: 26px;
+	font-family: 'Radiance', Verdana;
+	-webkit-text-stroke: 0.2px;
+	padding: 0px;
+}
+
+li
+{
+	font-family: 'Radiance', Verdana;
+	-webkit-text-stroke: 0.2px;
+	margin-left: 18px;
+}
+
+b
+{
+	color: #ADA7A9;
+	display: block;
+	font-family: 'Radiance-SemiBold', Verdana;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	letter-spacing: 0.5px;
+}
+
+.ChangeNoteImage
+{
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+#Header, #Header .Inner
+{
+	background-image: url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_02.jpg');
+	background-position: center top;
+	height: 783px;
+}
+
+#Header h1
+{
+	margin: 0;
+	padding-top: 652px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#General, #General .Inner
+{
+	background-image: url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_03.jpg'), url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_05.jpg'), url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_04.jpg');
+	background-position: center top, center bottom, center top;
+	background-repeat: no-repeat, no-repeat, repeat-y;
+	min-height: 410px;
+}
+
+#General div.Body
+{
+	padding-top: 20px;
+	padding-bottom: 100px;
+}
+
+#Heroes, #Heroes .Inner
+{
+	background-image: url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_06.jpg'), url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_08.jpg'), url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_07.jpg');
+	background-position: center top, center bottom, center top;
+	background-repeat: no-repeat, no-repeat, repeat-y;
+	/* min-height: 1458px; */
+}
+
+#Heroes h2
+{
+	margin-bottom: 30px;
+}
+
+#Items, #Items .Inner
+{
+	background-image: url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_09.jpg'), url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_11.jpg'), url('https://cdn.steamstatic.com/apps/dota2/images/684/bg_10.jpg');
+	background-position: center top, center bottom, center top;
+	background-repeat: no-repeat, no-repeat, repeat-y;
+	/* min-height: 1671px; */
+}
+
+#Items h2
+{
+	margin-bottom: 20px;
+}
+
+#Items div.Body
+{
+	padding-top: 100px;
+	padding-bottom: 350px;
+}
+
+.page-header
+{
+    text-align: center;
+}
