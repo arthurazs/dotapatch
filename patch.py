@@ -104,12 +104,11 @@ for line in lines:
 
 base = hero.copy()
 base.update(ability)
-base.update(item)
 
 #Generate .html
 with open(simpleChangelogName + '.html', 'w') as text:
     model = Html(changelogName)
-    model.addHero(0)
+    model.addHero(base)
     model.close()
     print(model.getContent(), file=text)
 '''
@@ -120,7 +119,7 @@ for key, value in sorted(base.items()):
         print ('* ' + v)
     #print ('---')
 '''
-status = len(lines) - sum(len(changes) for changes in base.values())
+status = len(lines) - sum(len(changes) for changes in base.values()) - sum(len(changes) for changes in item.values())
 if (status == 0):
     print ('Conversion went smoothly.')
 elif (status < 0):
