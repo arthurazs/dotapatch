@@ -1,4 +1,6 @@
-import requests, ast
+#!/usr/bin/env python3
+#coding: utf-8
+import requests, ast, os.path
 
 item_link = "http://www.dota2.com/jsfeed/heropediadata?feeds=itemdata"
 try:
