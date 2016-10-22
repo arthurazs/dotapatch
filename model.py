@@ -5,7 +5,7 @@ class Html (object):
         self._content = r'''<!DOCTYPE html>
 <html>
     <head>
-        <title>dota2patches ''' + self._title + r''' by @arthurazs</title>
+        <title>dota2patches {0} by @arthurazs</title>
 
         <link rel="shortcut icon" href="favicon.ico" />
 
@@ -31,30 +31,46 @@ class Html (object):
         <a class="HiddenAnchor" name="GameplayHeader"> </a>
         <div class="Container" id="Header">
             <div class="Inner" style="text-align:center">
-                <h1>Gameplay Update ''' + self._title + r'''</h1>
+                <h1>Gameplay Update {0}</h1>
                 <h3><a href="index.html">Previous changelogs</a></h3>
             </div>
         </div>
-'''
+'''.format(self._title)
+
+    def _addContent(self, text):
+        self._content = self._content + text
 
     def addHero(self, dictionary):
-        self._content = self._content + r'''
-        <div class="Container RepeatY BGStyle''' + str(int(self._bgStyle)) + r'''" id="Heroes">
+        self._addContent(r'''
+        <div class="Container RepeatY BGStyle{}" id="Heroes">
              <div class="Inner">
-                <h3>Heroes</h3>'''
+                <h3>Heroes</h3>'''.format(str(int(self._bgStyle))))
 
-        self._content = self._content + r'''
+        #Sorting hero updates
+        for key, values in sorted(dictionary.items()):
+            self._addContent(r'''
+
+                    [[{}]]
+                    <ul>'''.format(key))
+            for value in values:
+                self._addContent(r'''
+                        <li>{}</li>'''.format(value))
+            self._addContent(r'''
+                    </ul>
+''')
+
+        self._addContent(r'''
             </div>
-        </div>'''
+        </div>''')
         self._bgStyle = not self._bgStyle
 
     def close(self):
-        self._content = self._content + r'''
+        self._addContent(r'''
         <div class="Container" id="Footer">
             <div class="Inner"></div>
         </div>
     </body>
-</html>'''
+</html>''')
 
     def getContent(self):
         return self._content
