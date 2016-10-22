@@ -80,7 +80,7 @@ def get_ability_hero(name):
 
 #Organize changelog
 item = defaultdict(list)
-base = defaultdict(list)
+hero = defaultdict(list)
 ability = defaultdict(list)
 for line in lines:
     names = line.split(' ')[:3]
@@ -92,24 +92,25 @@ for line in lines:
     names = line.split(' ')[:3]
     found_hero = get_hero_name(names)
     if found_hero:
-         base[found_hero].append(line)
+         hero[found_hero].append(line)
     else:
         found_item = get_item_name(names)
         if found_item:
             item[found_item].append(line)
 
-hero = base.copy()
-hero.update(ability) #TODO change var name
+base = hero.copy()
+base.update(ability)
+base.update(item)
 
 '''
 #Sorting hero updates
-for key, value in sorted(hero.items()):
+for key, value in sorted(base.items()):
     #print (key + ': ')
     for v in value:
         print ('* ' + v)
     #print ('---')
 '''
-status = len(lines) - sum(len(changes) for changes in hero.values())
+status = len(lines) - sum(len(changes) for changes in base.values())
 if (status == 0):
     print ('Conversion went smoothly.')
 elif (status < 0):
