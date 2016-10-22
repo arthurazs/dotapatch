@@ -1,25 +1,50 @@
 #!/usr/bin/env python3
 #coding: utf-8
 import requests, ast, os.path
+from collections import defaultdict
 
-item_link = "http://www.dota2.com/jsfeed/heropediadata?feeds=itemdata"
-try:
-    item_code = requests.get(item_link)
-except requests.exceptions.RequestException as e:  #FIXME try: if can, save and use it; if cant, use the saved one and print "not up to date"
-    print (e)
-    sys.exit(1)
-item_data = item_code.text.replace('{"itemdata":', '').replace('}}', '}').replace(':false', ':False').replace(':null', ':None').replace(':true', ':True')
-item_dictionary = ast.literal_eval(item_data)
+#CONSTANTS
+DATA = 'data/'
+ITEM_DATA = 'itemdata'
+HERO_DATA = 'herodata'
+ABILITY_DATA = 'abilitydata'
 
-hero_link = "http://www.dota2.com/jsfeed/heropediadata?feeds=herodata"
-hero_code = requests.get(hero_link)
-hero_data = hero_code.text.replace('{"herodata":', '').replace('}}', '}').replace(':false', ':False').replace(':null', ':None').replace(':true', ':True')
-hero_dictionary = ast.literal_eval(hero_data)
+#Initialization Functions
+def loadFile(name):
+    link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
+    code = requests.get(link)
+    data = code.text.replace('{"' + name + '":', '').replace('}}', '}').replace(':false', ':False').replace(':null', ':None').replace(':true', ':True')
+    dictionary = ast.literal_eval(data)
+    return dictionary
 
-ability_link = "http://www.dota2.com/jsfeed/heropediadata?feeds=abilitydata"
-ability_code = requests.get(ability_link)
-ability_data = ability_code.text.replace('{"abilitydata":', '').replace('}}', '}').replace(':false', ':False').replace(':null', ':None').replace(':true', ':True')
-ability_dictionary = ast.literal_eval(ability_data)
+def openFile(name):
+    with open(DATA + name, 'r') as text:
+        data = text.read()
+        dictionary = ast.literal_eval(data)
+        return dictionary
+
+def saveFile(name, content):
+    with open(DATA + name, 'w') as text:
+        print(content, file=text)
+
+#Data Initialization
+if(not os.path.isfile(DATA + ITEM_DATA)):
+    item_dictionary = loadFile(ITEM_DATA)
+    saveFile(ITEM_DATA, item_dictionary)
+else:
+    item_dictionary = openFile(ITEM_DATA)
+
+if(not os.path.isfile(DATA + HERO_DATA)):
+    hero_dictionary = loadFile(HERO_DATA)
+    saveFile(HERO_DATA, hero_dictionary)
+else:
+    hero_dictionary = openFile(HERO_DATA)
+
+if(not os.path.isfile(DATA + ABILITY_DATA)):
+    ability_dictionary = loadFile(ABILITY_DATA)
+    saveFile(ABILITY_DATA, ability_dictionary)
+else:
+    ability_dictionary = openFile(ABILITY_DATA)
 
 #changelog = str(input('File name: ')) #TODO use input
 changelog = '688e'
