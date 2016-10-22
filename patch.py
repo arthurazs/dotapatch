@@ -109,6 +109,7 @@ base.update(item)
 #Generate .html
 with open(simpleChangelogName + '.html', 'w') as text:
     model = Html(changelogName)
+    model.addHero(0)
     model.close()
     print(model.getContent(), file=text)
 '''

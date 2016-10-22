@@ -3,23 +3,22 @@
 class Html (object):
     def __init__(self, title):
         self._title = title
-        
-    def getContent(self):
-            content = r'''<!DOCTYPE html>
+        self._bgStyle = False
+        self._content = r'''<!DOCTYPE html>
 <html>
     <head>
-	    <title>dota2patches ''' + self._title + r''' by @arthurazs</title>
+        <title>dota2patches ''' + self._title + r''' by @arthurazs</title>
 
         <link rel="shortcut icon" href="favicon.ico" />
 
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
 
-	    <link href="css/global.css" rel="stylesheet" type="text/css" >
+        <link href="css/global.css" rel="stylesheet" type="text/css" >
         <link href="css/global_english.css" rel="stylesheet" type="text/css" >
         <link href="css/changelog.css" rel="stylesheet" type="text/css" >
 
-	    <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
         <script type="text/javascript">$J = jQuery;</script>
         <script>
             $( function () {
@@ -117,48 +116,39 @@ class Html (object):
     </head>
 
     <body>
-
-	    <div class="Container" id="KeyArt">
-		    <div class="Inner">
-                <a href="http://www.dota2.com/"><img src="http://cdn.dota2.com/apps/dota2/images/springcleaning2016/logo.png" /></a>
-		    </div>
-	    </div>
-
-	    <a class="HiddenAnchor" name="GameplayHeader"> </a>
-	    <div class="Container" id="Header">
-		    <div class="Inner" style="text-align:center">
-			    <h1>Gameplay Update 6.88f</h1>
-			    <h3><a href="index.html">Previous changelogs</a></h3>
-		    </div>
-	    </div>
-
-        <div class="Container RepeatY BGStyle1">
+        <div class="Container" id="KeyArt">
             <div class="Inner">
-                <h3>General</h3>
-					    <ul>
-						    <li class="highlight">Each team now has a Scan ability, available on the minimap UI.
-							    <div class="ChangeDetailsExtended">
-								    <p>Scans a targeted 900 AoE for 8 seconds. Indicates whether there are enemy heroes in that area during the 8 seconds.</p>
-								    <p>Starts on cooldown and has a global team-wide cooldown of 4.5 minutes</p>
-								    <p>Note: Does not consider units inside the Roshan Pit, but does consider Smoked units. Does not show how many heroes there are, just if there are any enemies. Enemies do not know when your team casts it.</p>
-							    </div>
-						    </li>
-					    </ul>
-					    <ul>
-						    <li>Mana per int reduced from 13 to 12</li>
-						    <li>Intelligence now increases your spell damage by 1% per 16 Intelligence points. 
-							    <span class="ChangeDetailsPopup">
-								    For example, 100 intelligence gives roughly 6% bonus. Same rules for what is affected as Aether Lens's Spell Amplification.
-							    </span>
-						    </li>
-					    </ul>
+                <a href="http://www.dota2.com/"><img src="http://cdn.dota2.com/apps/dota2/images/springcleaning2016/logo.png" /></a>
             </div>
         </div>
 
+        <a class="HiddenAnchor" name="GameplayHeader"> </a>
+        <div class="Container" id="Header">
+            <div class="Inner" style="text-align:center">
+                <h1>Gameplay Update ''' + self._title + r'''</h1>
+                <h3><a href="index.html">Previous changelogs</a></h3>
+            </div>
+        </div>
+'''
+
+    def addHero(self, dictionary):
+        self._content = self._content + r'''
+        <div class="Container RepeatY BGStyle''' + str(int(self._bgStyle)) + r'''" id="Heroes">
+             <div class="Inner">
+                <h3>Heroes</h3>'''
+
+        self._content = self._content + r'''
+            </div>
+        </div>'''
+        self._bgStyle = not self._bgStyle
+
+    def close(self):
+        self._content = self._content + r'''
         <div class="Container" id="Footer">
             <div class="Inner"></div>
         </div>
-
     </body>
 </html>'''
-            return content
+
+    def getContent(self):
+        return self._content
