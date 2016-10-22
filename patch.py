@@ -46,14 +46,17 @@ if(not os.path.isfile(DATA + ABILITY_DATA)):
 else:
     ability_dictionary = openFile(ABILITY_DATA)
 
+#Open changelog
 #changelog = str(input('File name: ')) #TODO use input
 changelog = '688e'
 file = open('changelogs/'+changelog, 'r')
 
+#Read changelog
 lines = []
 for line in file:
     lines.append(line.replace('* ', '').rstrip())
-    
+
+#Default Function
 def get_name(name, dictionary):
     for key, value in dictionary.items():
         length = len(value['dname'].split(' '))
@@ -61,6 +64,7 @@ def get_name(name, dictionary):
             return (key, value)
     return (None, None)
 
+#Name Functions
 def get_item_name(name):
     return get_name(name, item_dictionary)[0]
 
@@ -73,25 +77,26 @@ def get_ability_hero(name):
         return '_'.join(key.replace(value['dname'].lower().replace(' ', '_'), '').split('_')[:-1]) #TODO improve
     else:
         return None
-    
-item = {}
-base = {}
-ability = {}
+
+#Organize changelog
+item = defaultdict(list)
+base = defaultdict(list)
+ability = defaultdict(list)
 for line in lines:
     names = line.split(' ')[:3]
     found_ability = get_ability_hero(names)
     if found_ability:
-        ability[found_ability] = line
-    
+        ability[found_ability].append(line)
+
 for line in lines:
     names = line.split(' ')[:3]
     found_hero = get_hero_name(names)
     if found_hero:
-         base[found_hero] = line
+         base[found_hero].append(line)
     else:
         found_item = get_item_name(names)
         if found_item:
-            item[found_item] = line
+            item[found_item].append(line)
 
 hero = base.copy()
 hero.update(ability) #TODO put dic in order
