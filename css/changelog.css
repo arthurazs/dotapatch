@@ -199,18 +199,18 @@ a, a:visited, a:active
     line-height: 48px;
 }
 
-div.Container.BGStyle1
+div.Container.BGStyle0
 {
     border-top: 2px solid #232323;
 }
 
-div.Container.BGStyle1, div.Container.BGStyle1 .Inner
+div.Container.BGStyle0, div.Container.BGStyle0 .Inner
 {
     background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/featured.jpg' );
     background-color: #151618;
 }
 
-.BGStyle1 .Inner
+.BGStyle0 .Inner
 {
     padding-top: 80px;
     padding-bottom: 40px;
@@ -257,7 +257,7 @@ h3, #Items b:nth-of-type(1), #Items b:nth-of-type(2)
 }
 
 
-div.Container.BGStyle2, div.Container.BGStyle2 .Inner
+div.Container.BGStyle1, div.Container.BGStyle1 .Inner
 {
     background-position: center 0px, center 0px;
     background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/list_top.jpg' ), url( 'http://cdn.dota2.com/apps/dota2/images/687/list.jpg' );
@@ -265,7 +265,7 @@ div.Container.BGStyle2, div.Container.BGStyle2 .Inner
     background-repeat: no-repeat, repeat-y;
 }
 
-.BGStyle2 .Inner
+.BGStyle1 .Inner
 {
     padding-top: 80px;
     padding-bottom: 40px;
