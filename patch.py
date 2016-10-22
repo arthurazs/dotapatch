@@ -99,16 +99,25 @@ for line in lines:
             item[found_item].append(line)
 
 hero = base.copy()
-hero.update(ability) #TODO put dic in order
+hero.update(ability) #TODO change var name
 
-#import re
-#from collections import Counter
-#c = Counter()
-#c.copy(w.lower() for w in re.findall('[a-zA-Z]+', hero))
-#print (c)
-#print (item)
-#print (hero)
-#print (ability)
-#print (hero_dictionary.items())
-#print (get_skill_hero(['Arcane', '']))
+'''
+#Sorting hero updates
+for key, value in sorted(hero.items()):
+    #print (key + ': ')
+    for v in value:
+        print ('* ' + v)
+    #print ('---')
+'''
+status = len(lines) - sum(len(changes) for changes in hero.values())
+if (status == 0):
+    print ('Conversion went smoothly.')
+elif (status < 0):
+    print ('CRITICAL ERROR! Contact me at @arthurazs')
+else:
+    if (status == 1):
+        print ('1 line requires manual input.')
+    else:
+        print (str(status) + ' lines require manual input.')
+#TODO Implement a secondary list to show which lines require manual input
 file.close()
