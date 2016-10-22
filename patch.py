@@ -2,6 +2,7 @@
 #coding: utf-8
 import requests, ast, os.path
 from collections import defaultdict
+from model import Html
 
 #CONSTANTS
 DATA = 'data/'
@@ -102,6 +103,10 @@ base = hero.copy()
 base.update(ability)
 base.update(item)
 
+#Generate .html
+with open(changelog + '.html', 'w') as text:
+    model = Html(changelog)
+    print(model.getContent(), file=text)
 '''
 #Sorting hero updates
 for key, value in sorted(base.items()):
