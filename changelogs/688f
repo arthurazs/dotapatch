@@ -1,3 +1,5 @@
+6.88f:
+--
 * Purifying Flames manacost increased from 50/60/70/80 to 80/85/90/95
 * Torrent cooldown increased from 10 to 16/14/12/10
 * Ghostship Rum damage reduction changed from 50% to 40/45/50%
@@ -23,4 +25,4 @@
 * Nyx's Scepter Burrow cast time increased from 1 to 1.5
 * Flamebreak knockback no longer interrupts channeling spells (behaves like blinding light)
 * Flamebreak burn duration increased from 3/4/5/6 to 4/5/6/7 (total damage increased)
-* Fixed Return working on Centaur Illusions
+* Fixed Return working on Centaur Illusions	

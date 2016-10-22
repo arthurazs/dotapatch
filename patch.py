@@ -49,13 +49,16 @@ else:
 
 #Open changelog
 #changelog = str(input('File name: ')) #TODO use input
-changelog = '688e'
-file = open('changelogs/'+changelog, 'r')
+changelogFile = '688e'
+file = open('changelogs/'+changelogFile, 'r')
 
 #Read changelog
 lines = []
 for line in file:
     lines.append(line.replace('* ', '').rstrip())
+changelogName = lines[0][:-1]
+simpleChangelogName = changelogName.replace('.', '')
+lines = lines[2:]
 
 #Default Function
 def get_name(name, dictionary):
@@ -104,8 +107,9 @@ base.update(ability)
 base.update(item)
 
 #Generate .html
-with open(changelog + '.html', 'w') as text:
-    model = Html(changelog)
+with open(simpleChangelogName + '.html', 'w') as text:
+    model = Html(changelogName)
+    model.close()
     print(model.getContent(), file=text)
 '''
 #Sorting hero updates
