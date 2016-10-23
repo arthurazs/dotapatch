@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 #coding: utf-8
-import requests, ast, os.path
+import requests, ast, os.path, argparse
 from collections import defaultdict
 from model import Html
 
+parser = argparse.ArgumentParser(description="This software formats a Dota2' changelog text into HTML.")
+parser.add_argument('--file', '-f', action='store', help="changelog to be formated", required = True, dest = 'file')
+parser.add_argument('--version', '-v', action='version', version='%(prog)s: 0.0v')
+args = parser.parse_args()
+
 #CONSTANTS
 DATA = 'data/'
+CHANGELOG = 'changelogs/'
 ITEM_DATA = 'itemdata'
 HERO_DATA = 'herodata'
 ABILITY_DATA = 'abilitydata'
@@ -28,6 +34,13 @@ def saveFile(name, content):
     with open(DATA + name, 'w') as text:
         print(content, file=text)
 
+#Check folders
+if not os.path.exists(DATA):
+    os.makedirs(DATA)
+
+if not os.path.exists(CHANGELOG):
+    os.makedirs(CHANGELOG)
+
 #Data Initialization
 if(not os.path.isfile(DATA + ITEM_DATA)):
     item_dictionary = loadFile(ITEM_DATA)
@@ -48,17 +61,16 @@ else:
     ability_dictionary = openFile(ABILITY_DATA)
 
 #Open changelog
-#changelog = str(input('File name: ')) #TODO use input
-changelogFile = '688e'
-with open('changelogs/'+changelogFile, 'r') as changelog:
+if os.path.isfile(CHANGELOG+args.file):
+    with open(CHANGELOG+args.file, 'r') as changelog:
 
-    #Read changelog
-    lines = []
-    for line in changelog:
-        lines.append(line.replace('* ', '').rstrip())
-    changelogName = lines[0][:-1]
-    simpleChangelogName = changelogName.replace('.', '')
-    lines = lines[2:]
+        #Read changelog
+        lines = []
+        for line in changelog:
+            lines.append(line.replace('* ', '').rstrip())
+        changelogName = lines[0][:-1]
+        simpleChangelogName = changelogName.replace('.', '')
+        lines = lines[2:]
 
     #Handle name bugs
     def checkDname(name):
@@ -146,3 +158,11 @@ with open('changelogs/'+changelogFile, 'r') as changelog:
                 print('* ' + line)
             print('\nSome of these lines might be hero/item updates and you should manually place them at the proper location.')
     #TODO Implement a secondary list to show which lines require manual input
+
+else:
+    print ('''ERROR!
+'{0}' not found.
+Make sure {0} is inside the 'changelogs' folder.
+Also check if the filename you typed is correct.
+
+Contact me at @arthurazs if this error persists.'''.format(args.file))
