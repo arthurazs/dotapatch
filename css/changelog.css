@@ -79,7 +79,7 @@ div.Container.RepeatY, div.Container.RepeatY .Inner
 
 #KeyArt, #KeyArt .Inner
 {
-    background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/keyart.jpg?2' );
+    background-image: url( 'images/keyart.jpg' );
     background-color: #6785E7;
     height: 676px;
 }
@@ -201,7 +201,7 @@ div.Container.BGStyle0
 
 div.Container.BGStyle0, div.Container.BGStyle0 .Inner
 {
-    background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/featured.jpg' );
+    background-image: url( 'images/featured.jpg' );
     background-color: #151618;
 }
 
@@ -243,7 +243,7 @@ h3
 div.Container.BGStyle1, div.Container.BGStyle1 .Inner
 {
     background-position: center 0px, center 0px;
-    background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/list_top.jpg' ), url( 'http://cdn.dota2.com/apps/dota2/images/687/list.jpg' );
+    background-image: url( 'images/list_top.jpg' ), url( 'images/list.jpg' );
     background-color: #0D0E0F;
     background-repeat: no-repeat, repeat-y;
 }
@@ -277,7 +277,7 @@ ul
 
 #Footer, #Footer .Inner
 {
-    background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/footer.jpg' );
+    background-image: url( 'images/footer.jpg' );
     background-color: #000000;
 }
 
