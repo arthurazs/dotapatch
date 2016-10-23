@@ -87,6 +87,8 @@ if os.path.isfile(CHANGELOG+args.file):
     def checkHurl(name):
         if (name.split()[0].lower() == 'io'):
             return 'wisp'
+        if (name.split()[0].lower() == 'underlord'):
+            return 'abyssal_underlord'
         return name
 
     #Default Function
