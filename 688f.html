@@ -1,310 +1,167 @@
 <!DOCTYPE html>
-<!-- CHECK:
-https://www.dota2.com/687
-https://cdn.steamstatic.com/apps/dota2/images/684/bg_02.jpg
-https://cdn.steamstatic.com/apps/dota2/images/gameplay_updates/685_header.jpg
--->
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Dota 2 Patches by @arthurazs</title>
-    
-    <link rel="shortcut icon" href="/favicon.ico" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=9" />
-	<link href="https://www.dota2.com/public/css/global.css?v=b3631968" rel="stylesheet" type="text/css" >
-<link href="https://www.dota2.com/public/css/global_english.css?v=vBcKMZIqhOJW" rel="stylesheet" type="text/css" >
-<link href="https://www.dota2.com/public/css/publicheader.css?v=bu5q7Y6UKUgK" rel="stylesheet" type="text/css" >
-    <link rel="stylesheet" type="text/css" href="stylesheets/dota.css">
+<html>
+    <head>
+        <title>dota2patches 6.88f by @arthurazs</title>
 
-    <script type="text/javascript" src="https://cdn.steamstatic.com/apps/dota2/javascript/static/jquery-1.7.1.min.js?v=3631968"></script>
-    <script type="text/javascript">$J = jQuery;</script><script type="text/javascript" src="https://www.dota2.com/public/shared/javascript/shared_global.js?v=tVoURzwqxPuO&amp;l=english"></script>
-    <script type="text/javascript">
+        <link rel="shortcut icon" href="favicon.ico" />
 
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-33822635-2']);
-		_gaq.push(['_setSampleRate', '1']);		_gaq.push(['_setDomainName', 'dota2.com']);
-		_gaq.push(['_trackPageview']);
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
 
-		(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
+        <link href="css/global.css" rel="stylesheet" type="text/css" >
+        <link href="css/global_english.css" rel="stylesheet" type="text/css" >
+        <link href="css/changelog.css" rel="stylesheet" type="text/css" >
 
-	</script>
-	
+        <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript">$J = jQuery;</script>
+        <script src="javascript/fetch_heropediadata.js"></script>
+    </head>
 
-	<script>
-$( function () {
-	var URL = ( location.protocol == 'https:' ) ? 'https://www.dota2.com/' : 'http://www.dota2.com/';
-	URL = URL + 'jsfeed/heropediadata?feeds=herodata,itemdata';
-	$.ajax(
-		{
-			type:'GET',
-			cache:true,
-			url: URL,
-			dataType:'jsonp',
-			success: function( data )
-			{
-				g_HeroData = data['herodata'];
-				g_ItemData = data['itemdata'];
-				formatHeroAndItemNotes();
-			}
-		}
-	);
-} );
-var g_HeroData = false;
-var g_ItemData = false;
-function formatHeroAndItemNotes()
-{
-	$.each( ['items','heroes'], function( i, type ) {
-		var containers = ['#Items','#Heroes'];
-		for ( i = 0; i < containers.length; i++ )
-		{
-			container = containers[i];
-			var strContents = $(container).html();
-			if ( strContents )
-			{
-				var foundTags = strContents.match( /\[\[\w+\]\]/g );
-				if ( foundTags )
-				{
-					for ( x = 0; x < foundTags.length; x++ )
-					{
-						tag = foundTags[x];
-						tag = tag.substring( 2, tag.length-2 );
-						bUnfound = false;
-						if ( g_ItemData[tag] )
-						{
-							path = 'items/'+tag+'_lg.png';
-							name = g_ItemData[tag].dname;
-							hw = 'width="48" height="36"';
-						}
-						else if ( g_HeroData[tag] )
-						{
-							path = 'heroes/'+tag+'_sb.png';
-							name = g_HeroData[tag].dname;
-							hw = '';
-						}
-						else
-						{
-							bUnfound = true;
-						}
-						if ( !bUnfound )
-						{
-							var strHTML = '<div class="ChangeNoteImage"><img src="http://cdn.dota2.com/apps/dota2/images/'+path+'" '+hw+' /></div>';
-							strHTML += '<b>' + name + '</b>';
-							strContents = strContents.replace( foundTags[x], strHTML );
-						}
-					}
-					$(container).html( strContents );
-				}
-			}
-		}
-	});
-
-    var eCount = 0;
-    $( '.ChangeDetailsExtended' ).each( function() {
-        var $extended = $( this );
-        $extended.attr( 'id', 'extended'+eCount );
-        $extended.before( '<input type="button" class="ChangeDetailsEToggle" id="eToggle'+eCount+'" onclick="$(\'#extended'+eCount+'\').show();$(this).hide();" value="+ Show Details" />' );
-        $extended.html( '<input type="button" class="ChangeDetailsEToggle" onclick="$(\'#extended'+eCount+'\').hide();$(\'#eToggle'+eCount+'\').show();" style="margin-top: -3px; margin-left: 11px;" value="- Hide Details" /><br /><br />' + $extended.html() );
-        eCount++;
-	} );
-    $( '.ChangeDetailsPopup' ).each( function() {
-    	var $popup = $( this );
-        var $link = $popup.prev( 'a' );
-        $link.hover( function() {
-            $popup.show();
-        }, function() {
-            $popup.hide();
-        });
-        $link.click( function() {
-            // Suppress the click event
-            return false;
-        });
-    } );
-}
-
-	</script>
-
-  </head>
-  <body>
-    <section class="page-header">
-      <h1>Dota 2 Patches</h1>
-      <h2>Dota 2: Changelog formatted as it should.</h2>
-      <a href="index.html">Previous changelogs</a>
-      <br>
-      <br>
-    </section>
-    
-    <div id="Container">
-	    <div class="Block" id="Header">
-	        <div class="Inner">
-		        <h1>Gameplay Update 6.88f</h1>
-    	    </div>
-        </div>
-	    <div class="Block" id="General">
-	        <div class="Inner">
-	            <div class="Body">
-				    <h2>GENERAL</h2>
-				    <br>
-			        <ul>
-					    <li>Only hero changes</li>
-			        </ul>
-			        <br>
-                </div>
+    <body>
+        <div class="Container" id="KeyArt">
+            <div class="Inner">
+                <a href="http://www.dota2.com/"><img src="http://cdn.dota2.com/apps/dota2/images/springcleaning2016/logo.png" /></a>
             </div>
         </div>
 
-        
-        <div class="Block" id="Heroes">
-            <div class="Inner">
-                <div class="Body">
-        		
-		     		<h2>HEROES</h2>
-			        
-			        [[arc_warden]]
-			        <ul>
-					    <li>Spark Wraith no longer dispels (still slows)</li>
-					    <li>Movement speed reduced by 10</li>
-			        </ul>
-			        <br>
-			        
-			        [[batrider]]
-			        <ul>
-					    <li>Flamebreak knockback no longer interrupts channeling spells (behaves like blinding light)</li>
-					    <li>Flamebreak burn duration increased from 3/4/5/6 to 4/5/6/7 (total damage increased)</li>
-			        </ul>
-			        <br>
-			        
-			        [[bounty_hunter]]
-			        <ul>
-					    <li>Track movement speed bonus reduced from 20% to 16/18/20%</li>
-			        </ul>
-			        <br>
-			        
-			        [[centaur]]
-			        <ul>
-					    <li>Fixed Return working on Centaur Illusions</li>
-			        </ul>
-			        <br>
-			        
-			        [[drow_ranger]]
-			        <ul>
-					    <li>Strength gain reduced from 1.9 to 1.6</li>
-			        </ul>
-			        <br>
-			        
-				    [[faceless_void]]
-				    <ul>
-						<li>Base armor reduced by 1</li>
-					</ul>
-				    <br>
-			        
-			        [[juggernaut]]
-			        <ul>
-					    <li>Healing Ward manacost increased from 120/125/130/135 to 140</li>
-			        </ul>
-			        <br>
-			        
-			        [[kunkka]]
-			        <ul>
-					    <li>Torrent cooldown increased from 10 to 16/14/12/10</li>
-					    <li>Ghostship Rum damage reduction changed from 50% to 40/45/50%</li>
-			        </ul>
-			        <br>
-			        
-			        [[mirana]]
-			        <ul>
-					    <li>Starfall Scepter cooldown increased from 9 to 10</li>
-			        </ul>
-			        <br>
-			        
-			        [[morphling]]
-			        <ul>
-					    <li>Morph Replicate cast time increased from 0.25 to 0.35</li>
-					    <li>Base damage reduced by 4</li>
-			        </ul>
-			        <br>
-			        
-			        [[nyx_assassin]]
-			        <ul>
-					    <li>Scepter Burrow cast time increased from 1 to 1.5</li>
-			        </ul>
-			        <br>
-			        
-			        [[omniknight]]
-			        <ul>
-					    <li>Purification cast range reduced from 700 to 575</li>
-					    <li>Purification cast point reduced from 0.25 to 0.2</li>
-					    <li>Purification cooldown reduced from 10 to 9</li>
-					    <li>Repel duration rescaled from 4/6/8/10 to 5/6/7/8</li>
-					    <li>Repel cooldown reduced from 14 to 20/18/16/14</li>
-			        </ul>
-			        <br>
-			        
-			        [[oracle]]
-			        <ul>
-					    <li>Purifying Flames manacost increased from 50/60/70/80 to 80/85/90/95</li>
-			        </ul>
-			        <br>
-
-				    [[obsidian_destroyer]]
-			        <ul>
-					    <li>Base damage reduced by 6</li>
-			        </ul>
-			        <br>
-			        
-			        [[phantom_assassin]]
-			        <ul>
-					    <li>Stifling Dagger cast range reduced from 825/950/1075/1200 to 525/750/975/1200</li>
-			        </ul>
-			        <br>
-			        
-			        [[riki]]
-			        <ul>
-					    <li>Smoke Screen slow reduced from 19/21/23/25% to 13/17/21/25%</li>
-			        </ul>
-			        <br>
-			        
-			        [[shadow_demon]]
-			        <ul>
-					    <li>Shadow Poison manacost increased from 40 to 55</li>
-			        </ul>
-			        <br>
-			        
-			        [[abyssal_underlord]]
-			        <ul>
-					    <li>Atrophy Aura attack damage reduction changed from 18/26/34/42% to 10/20/30/40%</li>
-			        </ul>
-			        <br>
-
-
-                </div>
+        <a class="HiddenAnchor" name="GameplayHeader"> </a>
+        <div class="Container" id="Header">
+            <div class="Inner" style="text-align:center">
+                <h1>Gameplay Update 6.88f</h1>
+                <h3><a href="index.html">Previous changelogs</a></h3>
             </div>
         </div>
-        
-        <div class="Block" id="Items">
+
+        <div class="Container RepeatY BGStyle0">
             <div class="Inner">
-                <div class="Body">
-    		
-			 		<h2>ITEMS</h2>
+                <h3>General</h3>
 
-					
-			        <ul>
-					    <li>No changes</li>
-			        </ul>
-			        <br>
+                    <ul>
+                    <li>Fixed Return working on Centaur Illusions</li>
+                    </ul>
+
+            </div>
+        </div>
+        <div class="Container RepeatY BGStyle1" id="Items">
+            <div class="Inner">
+                <h3>Item changes</h3>
+            </div>
+        </div>
+        <div class="Container RepeatY BGStyle0" id="Heroes">
+             <div class="Inner">
+                <h3>Heroes</h3>
+
+                    [[arc_warden]]
+                    <ul>
+                        <li>Spark Wraith no longer dispels (still slows)</li>
+                    </ul>
 
 
-					
-			    </div>
-		    </div>
-	    </div>
-        
-    </div>
+                    [[batrider]]
+                    <ul>
+                        <li>Flamebreak knockback no longer interrupts channeling spells (behaves like blinding light)</li>
+                        <li>Flamebreak burn duration increased from 3/4/5/6 to 4/5/6/7 (total damage increased)</li>
+                    </ul>
 
-  
-  </body>
+
+                    [[bounty_hunter]]
+                    <ul>
+                        <li>Track movement speed bonus reduced from 20% to 16/18/20%</li>
+                    </ul>
+
+
+                    [[drow_ranger]]
+                    <ul>
+                        <li>Drow Ranger strength gain reduced from 1.9 to 1.6</li>
+                    </ul>
+
+
+                    [[faceless_void]]
+                    <ul>
+                        <li>Faceless Void base armor reduced by 1</li>
+                    </ul>
+
+
+                    [[juggernaut]]
+                    <ul>
+                        <li>Healing Ward manacost increased from 120/125/130/135 to 140</li>
+                    </ul>
+
+
+                    [[kunkka]]
+                    <ul>
+                        <li>Torrent cooldown increased from 10 to 16/14/12/10</li>
+                        <li>Ghostship Rum damage reduction changed from 50% to 40/45/50%</li>
+                    </ul>
+
+
+                    [[mirana]]
+                    <ul>
+                        <li>Starfall Scepter cooldown increased from 9 to 10</li>
+                    </ul>
+
+
+                    [[morphling]]
+                    <ul>
+                        <li>Morph Replicate cast time increased from 0.25 to 0.35</li>
+                    </ul>
+
+
+                    [[nyx_assassin]]
+                    <ul>
+                        <li>Nyx's Scepter Burrow cast time increased from 1 to 1.5</li>
+                    </ul>
+
+
+                    [[obsidian_destroyer]]
+                    <ul>
+                        <li>Outworld Devourer base damage reduced by 6</li>
+                    </ul>
+
+
+                    [[omniknight]]
+                    <ul>
+                        <li>Purification cast range reduced from 700 to 575</li>
+                        <li>Purification cast point reduced from 0.25 to 0.2</li>
+                        <li>Purification cooldown reduced from 10 to 9</li>
+                        <li>Repel duration rescaled from 4/6/8/10 to 5/6/7/8</li>
+                        <li>Repel cooldown reduced from 14 to 20/18/16/14</li>
+                    </ul>
+
+
+                    [[oracle]]
+                    <ul>
+                        <li>Purifying Flames manacost increased from 50/60/70/80 to 80/85/90/95</li>
+                    </ul>
+
+
+                    [[phantom_assassin]]
+                    <ul>
+                        <li>Stifling Dagger cast range reduced from 825/950/1075/1200 to 525/750/975/1200</li>
+                    </ul>
+
+
+                    [[riki]]
+                    <ul>
+                        <li>Smoke Screen slow reduced from 19/21/23/25% to 13/17/21/25%</li>
+                    </ul>
+
+
+                    [[shadow_demon]]
+                    <ul>
+                        <li>Shadow Poison manacost increased from 40 to 55</li>
+                    </ul>
+
+
+                    [[underlord]]
+                    <ul>
+                        <li>Atrophy Aura attack damage reduction changed from 18/26/34/42% to 10/20/30/40%</li>
+                    </ul>
+
+            </div>
+        </div>
+        <div class="Container" id="Footer">
+            <div class="Inner"></div>
+        </div>
+    </body>
 </html>
