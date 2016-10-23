@@ -55,6 +55,7 @@ if os.path.isfile(CHANGELOG+args.file):
                 item[found_item].append(line)
                 lines.remove(line)
 
+    #Merge ability into hero
     for key, value in ability.items():
         if(key in hero):
             hero[key].extend(ability[key])
@@ -70,6 +71,7 @@ if os.path.isfile(CHANGELOG+args.file):
         model.close()
         print(model.getContent(), file=text)
 
+    #Feedback
     currentLineCount = sum(len(changes) for changes in hero.values()) + sum(len(changes) for changes in item.values())
     status = initialLineCount - currentLineCount
     if (status == 0):
@@ -87,9 +89,9 @@ if os.path.isfile(CHANGELOG+args.file):
             for line in lines:
                 print('* ' + line)
             print('\nSome of these lines might be hero/item updates and you should manually place them at the proper location.')
-    #TODO Implement a secondary list to show which lines require manual input
 
 else:
+    #ERROR
     print ('''ERROR!
 '{0}' not found.
 Make sure {0} is inside the 'changelogs' folder.
