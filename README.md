@@ -79,9 +79,10 @@ There are 2 important folders as well:
     ```
 4. `$ cd dota2patches/`
 5. run `$ python3 patch.py -f <filename>`. Replace `<filename>` with the name of the file you saved at the **3rd step**. Example:
-```
-$ python3 patch.py -f 688f
-```
+
+    ```
+    $ python3 patch.py -f 688f
+    ```
 6. You will get some feedback after the code finishes running. You can check the generated file under `dota2patches/<filename>`. Bear in mind `<filename>` should be the name you used at the **5th step**.
 
 ## Built with
@@ -94,7 +95,8 @@ dota2patches uses the following libraries:
 - [argparse](https://docs.python.org/3.4/library/argparse.html)
     - Enables the use of arguments. Try `$ python3 patch.py -h`
 - [defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
-    - defaultdict(list) permits each line of the changelog to be stored inside a list (inside a dictionary). Each hero `dictionary.keys()` stores a list with his changes `dictionary.values()` (which returns a list).
+    - defaultdict(list) permits each line of the changelog to be stored inside a list (inside a dictionary).
+    - Each hero > `dictionary.keys()` stores a list with his changes > `dictionary.values()` (which returns a list).
 
 ## Authors
 - [**Arthur Zopellaro**](https://github.com/arthurazs)
@@ -105,7 +107,7 @@ dota2patches uses the following libraries:
 - [ ] Ensure alphabetical order (See [#1](/../../issues/1))
 
 ## Contributing
-I need your help improving [patch.py](patch.py). Please open [new issues](https://github.com/arthurazs/dota2patches/issues/new) if you have any feedback, questions or ideias. Also, feel free to open `pull requests` if you can think of any improvements in the code.
+I need your help improving [patch.py](patch.py). Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open `pull requests` if you can think of any improvements in the code.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
