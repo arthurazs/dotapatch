@@ -28,7 +28,7 @@ class Html (object):
     <body>
         <div class="Container" id="KeyArt">
             <div class="Inner">
-                <a href="http://www.dota2.com/"><img src="http://cdn.dota2.com/apps/dota2/images/springcleaning2016/logo.png" /></a>
+                <a href="http://www.dota2.com/"><img src="css/images/logo.png" /></a>
             </div>
         </div>
 
