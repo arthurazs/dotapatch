@@ -92,12 +92,17 @@ if os.path.isfile(CHANGELOG+args.file):
             return 'abyssal_underlord'
         return name
 
+    def checkItem(name):
+        if (name.lower() == 'diffusal_blade_2'):
+            return 'diffusal_blade'
+        return name
+
     #Default Function
     def get_name(name, dictionary):
         for key, value in dictionary.items():
             length = len(value['dname'].split(' '))
             if (checkDname(' '.join(name[:length])) == value['dname']):
-                return (key, value)
+                return (checkItem(key), value)
         return (None, None)
 
     #Name Functions
