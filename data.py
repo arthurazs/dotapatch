@@ -87,10 +87,13 @@ class HeropediaData (object):
 
     #Handle name bugs
     def _checkDname(self, name):
+        name[0] = name[0].lower().replace('\'s', '')
         if (name[0].lower() == 'drow'):
             return 'drow ranger'
-        if (name[0].lower() == 'nyx\'s'):
+        if (name[0].lower() == 'nyx'):
             return 'nyx assassin'
+        if (name[0].lower() == 'centaur'):
+            return 'centaur warrunner'
         elif (name[0].lower() == 'smokescreen'):
             return 'smoke screen'
         elif (name[0].lower() == 'starfall'):
@@ -136,13 +139,12 @@ class HeropediaData (object):
         for key, value in dictionary.items():
             length = len(value['dname'].split(' '))
             ability_hero = self._checkAbility(name)
-            if ability_hero is None:
-                if (self._checkDname(name[:length]) == value['dname'].lower()):
+            if (ability_hero and 'hurl' in value):
+                if value['hurl'].lower() == ability_hero and self._checkDname(name[:length]) == value['dname'].lower():
                     return (self._checkItem(key), value)
             else:
-                if ('hurl' in value):
-                    if value['hurl'].lower() == ability_hero and self._checkDname(name[:length]) == value['dname'].lower():
-                        return (self._checkItem(key), value)
+                if (self._checkDname(name[:length]) == value['dname'].lower()):
+                    return (self._checkItem(key), value)
         return (None, None)
 
     #Name Functions
