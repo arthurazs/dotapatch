@@ -40,9 +40,9 @@ if os.path.isfile(CHANGELOG+args.file):
     def getName(value):
         names = value.split(' ')
         if names[0].lower() == 'fixed':
-            name = names[1:4]
+            name = names[1:]
         else:
-            name = names[:3]
+            name = names[:]
         return name
 
     for line in lines[:]:
