@@ -60,11 +60,26 @@ changelogName = lines[0][:-1]
 simpleChangelogName = changelogName.replace('.', '')
 lines = lines[2:]
 
+#Handle name bugs
+def checkDname(name):
+    if (name.split()[0].lower() == 'drow'):
+        return 'Drow Ranger'
+    elif (name.split()[0].lower() == 'smokescreen'):
+        return 'Smoke Screen'
+    if (name.split()[0].lower() == 'io'):
+        return 'wisp'
+    return name
+
+def checkHurl(name):
+    if (name.split()[0].lower() == 'io'):
+        return 'wisp'
+    return name
+
 #Default Function
 def get_name(name, dictionary):
     for key, value in dictionary.items():
         length = len(value['dname'].split(' '))
-        if (' '.join(name[:length]) in value['dname']):
+        if (checkDname(' '.join(name[:length])) == value['dname']):
             return (key, value)
     return (None, None)
 
@@ -78,7 +93,7 @@ def get_hero_name(name):
 def get_ability_hero(name):
     key, value = get_name(name, ability_dictionary)
     if key:
-        return '_'.join(key.replace(value['dname'].lower().replace(' ', '_'), '').split('_')[:-1]) #TODO improve
+        return checkHurl(value['hurl'].lower())
     else:
         return None
 
@@ -111,14 +126,7 @@ with open(simpleChangelogName + '.html', 'w') as text:
     model.addHero(base)
     model.close()
     print(model.getContent(), file=text)
-'''
-#Sorting hero updates
-for key, value in sorted(base.items()):
-    #print (key + ': ')
-    for v in value:
-        print ('* ' + v)
-    #print ('---')
-'''
+
 status = len(lines) - sum(len(changes) for changes in base.values()) - sum(len(changes) for changes in item.values())
 if (status == 0):
     print ('Conversion went smoothly.')
