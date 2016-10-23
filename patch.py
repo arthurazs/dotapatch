@@ -71,6 +71,7 @@ if os.path.isfile(CHANGELOG+args.file):
         changelogName = lines[0][:-1]
         simpleChangelogName = changelogName.replace('.', '')
         lines = lines[2:]
+        initialLineCount = len(lines)
 
     #Handle name bugs
     def checkDname(name):
@@ -136,7 +137,11 @@ if os.path.isfile(CHANGELOG+args.file):
                 item[found_item].append(line)
                 lines.remove(line)
 
-    hero.update(ability)
+    for key, value in ability.items():
+        if(key in hero):
+            hero[key].extend(ability[key])
+        else:
+            hero[key] = ability[key]
 
     #Generate .html
     with open(simpleChangelogName + '.html', 'w') as text:
@@ -147,7 +152,8 @@ if os.path.isfile(CHANGELOG+args.file):
         model.close()
         print(model.getContent(), file=text)
 
-    status = len(lines)
+    currentLineCount = sum(len(changes) for changes in hero.values()) + sum(len(changes) for changes in item.values())
+    status = initialLineCount - currentLineCount
     if (status == 0):
         print('SUCCESS!\nConversion went smoothly.')
     elif (status < 0):
