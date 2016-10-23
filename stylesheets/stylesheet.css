@@ -14,7 +14,7 @@ a {
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
-
+    
 .btn {
   display: inline-block;
   margin-bottom: 1rem;
@@ -243,3 +243,7 @@ a {
 @media screen and (max-width: 42em) {
   .site-footer {
     font-size: 0.9rem; } }
+
+.main-content>ul>li:first-child{
+    font-weight: bold;
+}​
