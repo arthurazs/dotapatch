@@ -48,7 +48,7 @@ class Html (object):
         self._addContent(r'''
         <div class="Container RepeatY BGStyle{}">
             <div class="Inner">
-                <h3>General</h3>'''.format(str(int(self._bgStyle))))
+                <h3>General</h3>'''.format(int(self._bgStyle)))
 
         self._addContent(r'''
 
@@ -68,12 +68,9 @@ class Html (object):
     #Add ITEMS Contents
     def addItems(self, dictionary):
         self._addContent(r'''
-        <div class="Container RepeatY BGStyle0" id="Items">
+        <div class="Container RepeatY BGStyle{}" id="Items">
             <div class="Inner">
-                <b>ITEM CHANGES</b>
-
-                    <br>
-                    <br>'''.format(str(int(self._bgStyle))))
+                <h3>Item changes</h3>'''.format(int(self._bgStyle)))
 
         for key, values in sorted(dictionary.items()):
             self._addContent(r'''
@@ -97,7 +94,7 @@ class Html (object):
         self._addContent(r'''
         <div class="Container RepeatY BGStyle{}" id="Heroes">
              <div class="Inner">
-                <h3>Heroes</h3>'''.format(str(int(self._bgStyle))))
+                <h3>Heroes</h3>'''.format(int(self._bgStyle)))
 
         for key, values in sorted(dictionary.items()):
             self._addContent(r'''
