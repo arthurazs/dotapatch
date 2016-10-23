@@ -36,21 +36,30 @@ if os.path.isfile(CHANGELOG+args.file):
     item = defaultdict(list)
     hero = defaultdict(list)
     ability = defaultdict(list)
+
+    def getName(value):
+        names = value.split(' ')
+        if names[0].lower() == 'fixed':
+            name = names[1:4]
+        else:
+            name = names[:3]
+        return name
+
     for line in lines[:]:
-        names = line.split(' ')[:3]
-        found_ability = data.get_ability_hero(names)
+        name = getName(line)
+        found_ability = data.get_ability_hero(name)
         if found_ability:
             ability[found_ability].append(line)
             lines.remove(line)
 
     for line in lines[:]:
-        names = line.split(' ')[:3]
-        found_hero = data.get_hero_name(names)
+        name = getName(line)
+        found_hero = data.get_hero_name(name)
         if found_hero:
             hero[found_hero].append(line)
             lines.remove(line)
         else:
-            found_item = data.get_item_name(names)
+            found_item = data.get_item_name(name)
             if found_item:
                 item[found_item].append(line)
                 lines.remove(line)
