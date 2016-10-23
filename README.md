@@ -102,10 +102,6 @@ dota2patches uses the following libraries:
 - [**Arthur Zopellaro**](https://github.com/arthurazs)
     - *Creator*
 
-## Task list
-- [x] Fix name bug (like using io instead of wisp)
-- [ ] Ensure alphabetical order (See [#1](/../../issues/1))
-
 ## Contributing
 I need your help improving [patch.py](patch.py). Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open `pull requests` if you can think of any improvements in the code.
 
