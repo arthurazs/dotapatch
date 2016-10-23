@@ -50,16 +50,6 @@ class HeropediaData (object):
         else:
             self._ability_dictionary = self._openFile(self.ABILITY_DATA)
 
-    def getDictionary(self, name):
-        if name == 'ability':
-            return self._ability_dictionary
-        elif name == 'hero':
-            return self._hero_dictionary
-        elif name == 'item':
-            return self._item_dictionary
-        else:
-            return None
-
     @staticmethod
     def sort(dictionary):
         name = dictionary[0]
@@ -97,21 +87,27 @@ class HeropediaData (object):
 
     #Handle name bugs
     def _checkDname(self, name):
-        if (name.split()[0].lower() == 'drow'):
-            return 'Drow Ranger'
-        if (name.split()[0].lower() == 'nyx\'s'):
-            return 'Nyx Assassin'
-        elif (name.split()[0].lower() == 'smokescreen'):
-            return 'Smoke Screen'
-        elif (name.split()[0].lower() == 'starfall'):
-            return 'Starstorm'
-        return name
+        if (name[0].lower() == 'drow'):
+            return 'drow ranger'
+        if (name[0].lower() == 'nyx\'s'):
+            return 'nyx assassin'
+        elif (name[0].lower() == 'smokescreen'):
+            return 'smoke screen'
+        elif (name[0].lower() == 'starfall'):
+            return 'starstorm'
+        return ' '.join(name).lower()
 
     def _checkHurl(self, name):
         if (name.split()[0].lower() == 'io'):
             return 'wisp'
         if (name.split()[0].lower() == 'underlord'):
             return 'abyssal_underlord'
+        if (name.split()[0].lower() == 'centaur_warrunner'):
+            return 'centaur'
+        if (name.split()[0].lower() == 'queen_of_pain'):
+            return 'queenofpain'
+        if (name.split()[0].lower() == 'anti-mage'):
+            return 'antimage'
         return name
 
     def _checkItem(self, name):
@@ -119,12 +115,34 @@ class HeropediaData (object):
             return 'diffusal_blade'
         return name
 
+    def _checkAbility(self, text):
+        name = ' '.join(text).lower()
+        if 'return' in name:
+            if 'centaur' in name:
+                return 'centaur_warrunner'
+            elif 'kunkka' in name:
+                return 'kunkka'
+        elif 'blink strike' in name:
+            return 'riki'
+        elif 'blink' in name:
+            if 'anti-mage' in name:
+                return 'anti-mage'
+            elif 'queen of pain' in name:
+                return 'queen_of_pain'
+        return None
+
     #Default Function
     def _get_name(self, name, dictionary):
         for key, value in dictionary.items():
             length = len(value['dname'].split(' '))
-            if (self._checkDname(' '.join(name[:length])) == value['dname']):
-                return (self._checkItem(key), value)
+            ability_hero = self._checkAbility(name)
+            if ability_hero is None:
+                if (self._checkDname(name[:length]) == value['dname'].lower()):
+                    return (self._checkItem(key), value)
+            else:
+                if ('hurl' in value):
+                    if value['hurl'].lower() == ability_hero and self._checkDname(name[:length]) == value['dname'].lower():
+                        return (self._checkItem(key), value)
         return (None, None)
 
     #Name Functions
