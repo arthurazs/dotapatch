@@ -1,4 +1,4 @@
-import ast, os.path
+import requests, ast, os.path
 class HeropediaData (object):
 
     #CONSTANTS
@@ -22,7 +22,7 @@ class HeropediaData (object):
             return dictionary
 
     def _saveFile(self, name, content):
-        with open(DATA + name, 'w') as text:
+        with open(self.DATA + name, 'w') as text:
             print(content, file=text)
 
     #Initialization

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #coding: utf-8
-import requests, os.path, argparse
+import os.path, argparse
 from collections import defaultdict
 from model import Html
 from data import HeropediaData
