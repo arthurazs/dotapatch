@@ -2,3 +2,4 @@
 data/*
 changelogs/*
 __pycache__
+*.pyc
