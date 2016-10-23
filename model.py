@@ -47,73 +47,73 @@ class Html (object):
     def addGeneral(self, lines):
         if(lines):
             self._addContent(r'''
-            <div class="Container RepeatY BGStyle{}">
-                <div class="Inner">
-                    <h3>General</h3>'''.format(int(self._bgStyle)))
+        <div class="Container RepeatY BGStyle{}">
+            <div class="Inner">
+                <h3>General</h3>'''.format(int(self._bgStyle)))
 
             self._addContent(r'''
 
-                        <ul>''')
+                    <ul>''')
             for line in lines:
                 self._addContent(r'''
-                        <li>{}</li>'''.format(line))
+                    <li>{}</li>'''.format(line))
             self._addContent(r'''
-                        </ul>
-    ''')
+                    </ul>
+''')
 
             self._addContent(r'''
-                </div>
-            </div>''')
+            </div>
+        </div>''')
             self._bgStyle = not self._bgStyle
 
     #Add ITEMS Contents
     def addItems(self, dictionary):
         if(dictionary):
             self._addContent(r'''
-            <div class="Container RepeatY BGStyle{}" id="Items">
-                <div class="Inner">
-                    <h3>Item changes</h3>'''.format(int(self._bgStyle)))
+        <div class="Container RepeatY BGStyle{}" id="Items">
+            <div class="Inner">
+                <h3>Item changes</h3>'''.format(int(self._bgStyle)))
 
             for key, values in sorted(dictionary.items()):
                 self._addContent(r'''
 
-                        [[{}]]
-                        <ul>'''.format(key))
+                    [[{}]]
+                    <ul>'''.format(key))
                 for value in values:
                     self._addContent(r'''
-                            <li>{}</li>'''.format(value))
+                        <li>{}</li>'''.format(value))
                 self._addContent(r'''
-                        </ul>
-    ''')
+                    </ul>
+''')
 
             self._addContent(r'''
-                </div>
-            </div>''')
+            </div>
+        </div>''')
             self._bgStyle = not self._bgStyle
 
     #Add HERO Contents
     def addHeros(self, dictionary):
         if(dictionary):
             self._addContent(r'''
-            <div class="Container RepeatY BGStyle{}" id="Heroes">
-                 <div class="Inner">
-                    <h3>Heroes</h3>'''.format(int(self._bgStyle)))
+        <div class="Container RepeatY BGStyle{}" id="Heroes">
+             <div class="Inner">
+                <h3>Heroes</h3>'''.format(int(self._bgStyle)))
 
             for key, values in sorted(dictionary.items()):
                 self._addContent(r'''
 
-                        [[{}]]
-                        <ul>'''.format(key))
+                    [[{}]]
+                    <ul>'''.format(key))
                 for value in values:
                     self._addContent(r'''
-                            <li>{}</li>'''.format(value))
+                        <li>{}</li>'''.format(value))
                 self._addContent(r'''
-                        </ul>
-    ''')
+                    </ul>
+''')
 
             self._addContent(r'''
-                </div>
-            </div>''')
+            </div>
+        </div>''')
             self._bgStyle = not self._bgStyle
 
     #Closes the HTML
