@@ -66,8 +66,6 @@ def checkDname(name):
         return 'Drow Ranger'
     elif (name.split()[0].lower() == 'smokescreen'):
         return 'Smoke Screen'
-    if (name.split()[0].lower() == 'io'):
-        return 'wisp'
     return name
 
 def checkHurl(name):
