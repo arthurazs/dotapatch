@@ -1,6 +1,8 @@
 # Dota 2: Changelog formatted as it should.
 **dota2patches** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
+Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest parsed patch using **dota2patches**.
+
 ## TL;DR
 The changelog file **must** be saved inside `changelogs/` and **must** have the following format:
 
@@ -21,7 +23,7 @@ Run `$ python3 patch.py -f <filename>`. Replace `<filename>` with the **changelo
 ## Getting started
 You will need python3.
 
-    sudo apt-get install python3
+    $ sudo apt-get install python3
 
 ### How does it work
 There are 3 main files:
@@ -44,7 +46,6 @@ There are 2 important folders as well:
 1. [Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this repository.
 2. Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest patch.
 3. Copy and save it as a file inside `changelogs/`. The content you save **must** follow this format:
-
 ```
 6.88f:
 --
@@ -75,33 +76,31 @@ There are 2 important folders as well:
 * Flamebreak burn duration increased from 3/4/5/6 to 4/5/6/7 (total damage increased)
 * Fixed Return working on Centaur Illusions
 ```
-
 4. `$ cd dota2patches/`
 5. run `$ python3 patch.py -f <filename>`. Replace `<filename>` with the name of the file you saved at the **3rd step**. Example:
-
-    $ python3 patch.py -f 688f
-
+```
+$ python3 patch.py -f 688f
+```
 6. You will get some feedback after the code finishes running. You can check the generated file under `dota2patches/<filename>`. Bear in mind `<filename>` should be the name you used at the **5th step**.
 
 ## Built with
 dota2patches uses the following libraries:
-- ast
-- os.path
-- argparse
-- defaultdict
+- [ast](https://docs.python.org/3.4/library/ast.html)
+- [os.path](https://docs.python.org/3.4/library/os.path.html)
+- [argparse](https://docs.python.org/3.4/library/argparse.html)
+- [defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
 
 ## Authors
-- **Arthur Zopellaro**
-    - *Initial work*
-    - [arthurazs@github](https://github.com/arthurazs)
-    - [arthurazsoares@gmail.com](mailto:arthurazsoares@gmail.com?Subject=Github%20-%20dota2patches)
+- [**Arthur Zopellaro**](https://github.com/arthurazs)
+    - *Creator*
+    - Initial work
 
 ## Task list
 - [x] Fix name bug (like using io instead of wisp)
-- [] Ensure alphabetical order (See #1)
+- [ ] Ensure alphabetical order (See #1)
 
 ## Contributing
 I need your help improving [patch.py](patch.py). Please open [new issues](https://github.com/arthurazs/dota2patches/issues/new) if you have any feedback, questions or ideias. Also, feel free to open `pull requests` if you can think of any improvements in the code.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
