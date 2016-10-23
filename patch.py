@@ -99,41 +99,49 @@ def get_ability_hero(name):
 item = defaultdict(list)
 hero = defaultdict(list)
 ability = defaultdict(list)
-for line in lines:
+for line in lines[:]:
     names = line.split(' ')[:3]
     found_ability = get_ability_hero(names)
     if found_ability:
         ability[found_ability].append(line)
+        lines.remove(line)
 
-for line in lines:
+for line in lines[:]:
     names = line.split(' ')[:3]
     found_hero = get_hero_name(names)
     if found_hero:
-         hero[found_hero].append(line)
+        hero[found_hero].append(line)
+        lines.remove(line)
     else:
         found_item = get_item_name(names)
         if found_item:
             item[found_item].append(line)
+            lines.remove(line)
 
-base = hero.copy()
-base.update(ability)
+hero.update(ability)
 
 #Generate .html
 with open(simpleChangelogName + '.html', 'w') as text:
     model = Html(changelogName)
-    model.addHero(base)
+    model.addHero(hero)
     model.close()
     print(model.getContent(), file=text)
 
-status = len(lines) - sum(len(changes) for changes in base.values()) - sum(len(changes) for changes in item.values())
+status = len(lines)
 if (status == 0):
-    print ('Conversion went smoothly.')
+    print('SUCCESS!\nConversion went smoothly.')
 elif (status < 0):
-    print ('CRITICAL ERROR! Contact me at @arthurazs')
+    print('CRITICAL ERROR!\nContact me at @arthurazs')
 else:
+    print('WARNING!')
     if (status == 1):
-        print ('1 line requires manual input.')
+        print('1 line under GENERAL updates:')
+        print('* ' + ' '.join(lines))
+        print('\nThis line might be a hero/item update and you should manually place it at the proper location.')
     else:
-        print (str(status) + ' lines require manual input.')
+        print(str(status) + ' lines under GENERAL updates:')
+        for line in lines:
+            print('* ' + line)
+        print('\nSome of these lines might be hero/item updates and you should manually place them at the proper location.')
 #TODO Implement a secondary list to show which lines require manual input
 file.close()
