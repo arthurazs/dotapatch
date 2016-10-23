@@ -1,7 +1,7 @@
 # Dota 2: Changelog formatted as it should.
 **dota2patches** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
-Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest parsed patch using **dota2patches**.
+Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dota2patches**.
 
 ## TL;DR
 The changelog file **must** be saved inside `changelogs/` and **must** have the following format:
@@ -16,9 +16,9 @@ The changelog file **must** be saved inside `changelogs/` and **must** have the 
 * Atrophy Aura attack damage reduction changed from 18/26/34/42% to 10/20/30/40%
 * Fixed Return working on Centaur Illusions
 ```
-Run `$ python3 patch.py -f <filename>`. Replace `<filename>` with the **changelog filename**.
+Run `$ ./patch.py -f <filename>`. Replace `<filename>` with the **changelog filename**.
 
-    $ python3 patch.py -f 688f
+    $ ./patch.py -f 688f
 
 ## Getting started
 You will need python3.
@@ -40,7 +40,7 @@ There are 2 important folders as well:
 1. **changelogs**
     - This is where the new changelog file **must** be stored
 2. data
-    - This is where the data from HeroPediaData is stored
+    - This is where the data from HeropediaData is stored
 
 ### Running dota2patches
 1. [Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this repository.
@@ -78,10 +78,10 @@ There are 2 important folders as well:
     * Fixed Return working on Centaur Illusions
     ```
 4. `$ cd dota2patches/`
-5. run `$ python3 patch.py -f <filename>`. Replace `<filename>` with the name of the file you saved at the **3rd step**. Example:
+5. run `$ ./patch.py -f <filename>`. Replace `<filename>` with the name of the file you saved at the **3rd step**. Example:
 
     ```
-    $ python3 patch.py -f 688f
+    $ ./patch.py -f 688f
     ```
 6. You will get some feedback after the code finishes running. You can check the generated file under `dota2patches/<filename>`. Bear in mind `<filename>` should be the name you used at the **5th step**.
 
@@ -93,7 +93,7 @@ dota2patches uses the following libraries:
     - Makes sure all directories are created
     - Checks if HeropediaData was arealdy fetched, reducing internet usage (also makes the code to run faster)
 - [argparse](https://docs.python.org/3.4/library/argparse.html)
-    - Enables the use of arguments. Try `$ python3 patch.py -h`
+    - Enables the use of arguments. Try `$ ./patch.py -h`
 - [defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
     - defaultdict(list) permits each line of the changelog to be stored inside a list (inside a dictionary).
     - Each hero > `dictionary.keys()` stores a list with his changes > `dictionary.values()` (which returns a list).
