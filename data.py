@@ -71,6 +71,28 @@ class HeropediaData (object):
             return 'outworld_devourer'
         elif (name.lower() == 'shredder'):
             return 'timbersaw'
+        elif (name.lower() == 'nevermore'):
+            return 'shadow_fiend'
+        elif (name.lower() == 'windrunner'):
+            return 'windranger'
+        elif (name.lower() == 'zuus'):
+            return 'zeus'
+        elif (name.lower() == 'necrolyte'):
+            return 'necrophos'
+        elif (name.lower() == 'skeleton_king'):
+            return 'wraith_king'
+        elif (name.lower() == 'rattletrap'):
+            return 'clockwerk'
+        elif (name.lower() == 'furion'):
+            return 'natures_prophet'
+        elif (name.lower() == 'doom_bringer'):
+            return 'doom'
+        elif (name.lower() == 'treant'):
+            return 'treant_protector'
+        elif (name.lower() == 'centaur'):
+            return 'centaur_warrunner'
+        elif (name.lower() == 'magnataur'):
+            return 'magnus'
         return name
 
     #Handle name bugs
