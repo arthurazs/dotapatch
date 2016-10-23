@@ -65,8 +65,12 @@ class HeropediaData (object):
         name = dictionary[0]
         if (name.lower() == 'wisp'):
             return 'io'
-        if (name.lower() == 'abyssal_underlord'):
+        elif (name.lower() == 'abyssal_underlord'):
             return 'underlord'
+        elif (name.lower() == 'obsidian_destroyer'):
+            return 'outworld_devourer'
+        elif (name.lower() == 'shredder'):
+            return 'timbersaw'
         return name
 
     #Handle name bugs
