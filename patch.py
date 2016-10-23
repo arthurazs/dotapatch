@@ -76,8 +76,12 @@ if os.path.isfile(CHANGELOG+args.file):
     def checkDname(name):
         if (name.split()[0].lower() == 'drow'):
             return 'Drow Ranger'
+        if (name.split()[0].lower() == 'nyx\'s'):
+            return 'Nyx Assassin'
         elif (name.split()[0].lower() == 'smokescreen'):
             return 'Smoke Screen'
+        elif (name.split()[0].lower() == 'starfall'):
+            return 'Starstorm'
         return name
 
     def checkHurl(name):
