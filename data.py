@@ -1,3 +1,4 @@
+from __future__ import print_function
 import requests, ast, os.path
 class HeropediaData (object):
 

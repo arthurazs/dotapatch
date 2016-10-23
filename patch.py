@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #coding: utf-8
+from __future__ import print_function
 import os.path, argparse
 from collections import defaultdict
 from model import Html
