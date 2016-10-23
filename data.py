@@ -60,6 +60,15 @@ class HeropediaData (object):
         else:
             return None
 
+    @staticmethod
+    def sort(dictionary):
+        name = dictionary[0]
+        if (name.lower() == 'wisp'):
+            return 'io'
+        if (name.lower() == 'abyssal_underlord'):
+            return 'underlord'
+        return name
+
     #Handle name bugs
     def _checkDname(self, name):
         if (name.split()[0].lower() == 'drow'):

@@ -1,3 +1,5 @@
+from data import HeropediaData
+
 class Html (object):
 
     #Initialization
@@ -99,7 +101,7 @@ class Html (object):
              <div class="Inner">
                 <h3>Heroes</h3>'''.format(int(self._bgStyle)))
 
-            for key, values in sorted(dictionary.items()):
+            for key, values in sorted(dictionary.items(), key=HeropediaData.sort):
                 self._addContent(r'''
 
                     [[{}]]
