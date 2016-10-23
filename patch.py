@@ -123,7 +123,9 @@ with open('changelogs/'+changelogFile, 'r') as changelog:
     #Generate .html
     with open(simpleChangelogName + '.html', 'w') as text:
         model = Html(changelogName)
-        model.addHero(hero)
+        model.addGeneral(lines)
+        model.addItems(item)
+        model.addHeros(hero)
         model.close()
         print(model.getContent(), file=text)
 

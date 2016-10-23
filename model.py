@@ -1,4 +1,6 @@
 class Html (object):
+
+    #Initialization
     def __init__(self, title):
         self._title = title
         self._bgStyle = False
@@ -37,16 +39,42 @@ class Html (object):
         </div>
 '''.format(self._title)
 
+    #Default function for adding content
     def _addContent(self, text):
         self._content = self._content + text
 
-    def addHero(self, dictionary):
+    #Add GENERAL Contents
+    def addGeneral(self, lines):
         self._addContent(r'''
-        <div class="Container RepeatY BGStyle{}" id="Heroes">
-             <div class="Inner">
-                <h3>Heroes</h3>'''.format(str(int(self._bgStyle))))
+        <div class="Container RepeatY BGStyle{}">
+            <div class="Inner">
+                <h3>General</h3>'''.format(str(int(self._bgStyle))))
 
-        #Sorting hero updates
+        self._addContent(r'''
+
+                    <ul>''')
+        for line in lines:
+            self._addContent(r'''
+                    <li>{}</li>'''.format(line))
+        self._addContent(r'''
+                    </ul>
+''')
+
+        self._addContent(r'''
+            </div>
+        </div>''')
+        self._bgStyle = not self._bgStyle
+
+    #Add ITEMS Contents
+    def addItems(self, dictionary):
+        self._addContent(r'''
+        <div class="Container RepeatY BGStyle0" id="Items">
+            <div class="Inner">
+                <b>ITEM CHANGES</b>
+
+                    <br>
+                    <br>'''.format(str(int(self._bgStyle))))
+
         for key, values in sorted(dictionary.items()):
             self._addContent(r'''
 
@@ -64,6 +92,31 @@ class Html (object):
         </div>''')
         self._bgStyle = not self._bgStyle
 
+    #Add HERO Contents
+    def addHeros(self, dictionary):
+        self._addContent(r'''
+        <div class="Container RepeatY BGStyle{}" id="Heroes">
+             <div class="Inner">
+                <h3>Heroes</h3>'''.format(str(int(self._bgStyle))))
+
+        for key, values in sorted(dictionary.items()):
+            self._addContent(r'''
+
+                    [[{}]]
+                    <ul>'''.format(key))
+            for value in values:
+                self._addContent(r'''
+                        <li>{}</li>'''.format(value))
+            self._addContent(r'''
+                    </ul>
+''')
+
+        self._addContent(r'''
+            </div>
+        </div>''')
+        self._bgStyle = not self._bgStyle
+
+    #Closes the HTML
     def close(self):
         self._addContent(r'''
         <div class="Container" id="Footer">
@@ -72,5 +125,6 @@ class Html (object):
     </body>
 </html>''')
 
+    #Returns HTML Content
     def getContent(self):
         return self._content
