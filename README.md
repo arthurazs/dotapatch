@@ -1,10 +1,10 @@
 # Dota 2: Changelog formatted as it should.
-**dota2patches** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
+`dota2patches` is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
 Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dota2patches**.
 
 ## TL;DR
-The changelog file **must** be saved inside `changelogs/` and **must** have the following format:
+The changelog file **must** be saved inside the `changelogs` folder and **must** have the following format:
 
 ```
 6.88f:
@@ -47,7 +47,7 @@ There are 2 important folders as well:
 ### Running dota2patches
 1. [Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this repository.
 2. Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest patch.
-3. Copy and save it as a file inside `changelogs/`. The content you save **must** follow this format:
+3. Copy and save it as a file inside `changelogs`. The content you save **must** follow this format:
 
     ```
     6.88f:
@@ -79,7 +79,7 @@ There are 2 important folders as well:
     * Flamebreak burn duration increased from 3/4/5/6 to 4/5/6/7 (total damage increased)
     * Fixed Return working on Centaur Illusions
     ```
-4. `$ cd dota2patches/`
+4. `$ cd dota2patches` or wherever you have **dota2patches** downloaded.
 5. run `$ ./patch.py -f <filename>`. Replace `<filename>` with the name of the file you saved at the **3rd step**. Example:
 
     ```
@@ -88,7 +88,7 @@ There are 2 important folders as well:
 6. The first run may take a while as you need internet connection to download data from HeropediaData (which will be stored and reduce future runtime). You will get some feedback when the code finishes running.
 7. You can check the generated file under `dota2patches/<filename>`. Bear in mind `<filename>` should be the name you used at the **5th step**.
 
-P.S. If the HTML **page** shows **some** of the heroes as `[[invoker]]` instead of the hero's `picture`, delete the `data/` folder and run `$ ./patch.py -f <filename>` once again. This will ensure that the HeropediaData gets up-to-date.
+P.S. If the HTML **page** shows **some** of the heroes as `[[hero_name]]` instead of the hero's `picture`, delete the `data` folder and run `$ ./patch.py -f <filename>` once again. This will ensure that the HeropediaData gets up-to-date.
 
 ## Built with
 dota2patches uses the following libraries:
@@ -96,10 +96,10 @@ dota2patches uses the following libraries:
     - Transforms data from HeropediaData into dictionary
 - [os.path](https://docs.python.org/3.4/library/os.path.html)
     - Makes sure all directories are created
-    - Checks if HeropediaData was arealdy fetched, reducing internet usage (also makes the code to run faster)
+    - Checks if HeropediaData was arealdy fetched, reducing internet usage (also reduces runtime)
 - [argparse](https://docs.python.org/3.4/library/argparse.html)
     - Enables the use of arguments. Try `$ ./patch.py -h`
-- [defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
+- collections.[defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
     - defaultdict(list) permits each line of the changelog to be stored inside a list (inside a dictionary).
     - Each hero > `dictionary.keys()` stores a list with his changes > `dictionary.values()` (which returns a list).
 
