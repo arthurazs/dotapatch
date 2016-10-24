@@ -20,26 +20,28 @@ Run `$ ./patch.py -f <filename>`. Replace `<filename>` with the **changelog file
 
     $ ./patch.py -f 688f
 
+The first run may take a while as you need internet connection to download data from HeropediaData (which will be stored and reduce future runtime).
+
 ## Getting started
-You will need python3.
+You will need python 2.7 or higher.
 
     $ sudo apt-get install python3
 
 ### How does it work
 There are 3 main files:
 
-1. **patch.py**
+1. [**patch.py**](patch.py)
     - Reads the changelog and decides what each line represents (item, base hero or ability)
-2. data.py
+2. [data.py](data.py)
     - Handles the [HeropediaData](https://www.dota2.com/jsfeed/heropediadata?feeds=herodata,itemdata,abilitydata) **data fetching**
-3. model.py
+3. [model.py](model.py)
     - Formats the **simple text** into **html**
 
 There are 2 important folders as well:
 
-1. **changelogs**
+1. **[changelogs](/changelogs)**
     - This is where the new changelog file **must** be stored
-2. data
+2. [data](/data)
     - This is where the data from HeropediaData is stored
 
 ### Running dota2patches
@@ -83,7 +85,10 @@ There are 2 important folders as well:
     ```
     $ ./patch.py -f 688f
     ```
-6. You will get some feedback after the code finishes running. You can check the generated file under `dota2patches/<filename>`. Bear in mind `<filename>` should be the name you used at the **5th step**.
+6. The first run may take a while as you need internet connection to download data from HeropediaData (which will be stored and reduce future runtime). You will get some feedback when the code finishes running.
+7. You can check the generated file under `dota2patches/<filename>`. Bear in mind `<filename>` should be the name you used at the **5th step**.
+
+P.S. If the HTML **page** shows **some** of the heroes as `[[invoker]]` instead of the hero's `picture`, delete the `data/` folder and run `$ ./patch.py -f <filename>` once again. This will ensure that the HeropediaData gets up-to-date.
 
 ## Built with
 dota2patches uses the following libraries:
@@ -102,8 +107,12 @@ dota2patches uses the following libraries:
 - [**Arthur Zopellaro**](https://github.com/arthurazs)
     - *Creator*
 
+## Task list
+- [ ] Remove hero name from 'base changes' (See [#2](/../../issues/2))
+- [ ] Add 'parser' argument for generating standalone HTML code (See [#3](/../../issues/3))
+
 ## Contributing
-I need your help improving [patch.py](patch.py). Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open `pull requests` if you can think of any improvements in the code.
+I need your help improving `dota2patches`! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open `pull requests` if you can think of any improvements on the code.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
