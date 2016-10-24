@@ -1,5 +1,5 @@
 # Dota 2: Changelog formatted as it should.
-`dota2patches` is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
+**dota2patches** (v1.0) is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
 Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dota2patches**.
 
@@ -19,8 +19,6 @@ The changelog file **must** be saved inside the `changelogs` folder and **must**
 Run `$ ./patch.py -f <filename>`. Replace `<filename>` with the **changelog filename**.
 
     $ ./patch.py -f 688f
-
-The first run may take a while as you need internet connection to download data from HeropediaData (which will be stored and reduce future runtime).
 
 ## Getting started
 You will need python 2.7 or higher.
@@ -85,18 +83,17 @@ There are 2 important folders as well:
     ```
     $ ./patch.py -f 688f
     ```
-6. The first run may take a while as you need internet connection to download data from HeropediaData (which will be stored and reduce future runtime). You will get some feedback when the code finishes running.
-7. You can check the generated file under `dota2patches/<filename>`. Bear in mind `<filename>` should be the name you used at the **5th step**.
+6. You will get some feedback when the code finishes running. Check the generated file under `dota2patches/<filename>` (bear in mind `<filename>` should be the name you used at the **5th step**).
 
-P.S. If the HTML **page** shows **some** of the heroes as `[[hero_name]]` instead of the hero's `picture`, delete the `data` folder and run `$ ./patch.py -f <filename>` once again. This will ensure that the HeropediaData gets up-to-date.
+P.S. If the HTML **page** shows **some** of the heroes as `[[hero_name]]` instead of the hero's `picture`, delete the `data` folder and run `$ ./patch.py -f <filename>` once again. This will require internet connection and may take a while but will ensure that the HeropediaData gets up-to-date.
 
 ## Built with
-dota2patches uses the following libraries:
+**dota2patches** uses the following libraries:
 - [ast](https://docs.python.org/3.4/library/ast.html)
     - Transforms data from HeropediaData into dictionary
 - [os.path](https://docs.python.org/3.4/library/os.path.html)
     - Makes sure all directories are created
-    - Checks if HeropediaData was arealdy fetched, reducing internet usage (also reduces runtime)
+    - Checks if HeropediaData was arealdy fetched, reducing internet usage and code runtime
 - [argparse](https://docs.python.org/3.4/library/argparse.html)
     - Enables the use of arguments. Try `$ ./patch.py -h`
 - collections.[defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
@@ -112,7 +109,7 @@ dota2patches uses the following libraries:
 - [ ] Add 'parser' argument for generating standalone HTML code (See [#3](/../../issues/3))
 
 ## Contributing
-I need your help improving `dota2patches`! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open `pull requests` if you can think of any improvements on the code.
+I need your help improving **dota2patches**! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open [pull requests](/../../compare) if you want to help me improve some of the code.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
