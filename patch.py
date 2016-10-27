@@ -8,7 +8,7 @@ from data import HeropediaData
 
 parser = argparse.ArgumentParser(description="This software formats a Dota2' changelog text into HTML.")
 parser.add_argument('--file', '-f', action='store', help="changelog to be formated", required = True, dest = 'file')
-parser.add_argument('--version', '-v', action='version', version='%(prog)s: 0.0v')
+parser.add_argument('--version', '-v', action='version', version='%(prog)s: v1.0 (Yasha)')
 args = parser.parse_args()
 
 #CONSTANT
