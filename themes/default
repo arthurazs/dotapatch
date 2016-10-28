@@ -1,4 +1,4 @@
-_OPEN_HTML'''<!DOCTYPE html>
+{'OPEN_HTML' : '''<!DOCTYPE html>
 <html>
     <head>
         <title>dota2patches {title} by @arthurazs</title>
@@ -30,51 +30,65 @@ _OPEN_HTML'''<!DOCTYPE html>
                 <h1>Gameplay Update {title}</h1>
                 <h3><a href="index.html">Previous changelogs</a></h3>
             </div>
-        </div>
-'''_OPEN_GENERAL'''
+        </div>''',
+'OPEN_GENERAL' : '''
         <div class="Container RepeatY BGStyle{style}">
             <div class="Inner">
-                <h3>General</h3>
-'''_OPEN_GENERAL_UL'''
+                <h3>General</h3>''',
+'OPEN_GENERAL_UL' : '''
                     <ul>
-'''_GENERAL_LI'''                    <li>{line}</li>
-'''_CLOSE_GENERAL_UL'''                    </ul>
-'''_CLOSE_GENERAL'''
+''',
+'GENERAL_LI' : '''                    <li>{line}</li>
+''',
+'CLOSE_GENERAL_UL' : '''                    </ul>
+''',
+'CLOSE_GENERAL' : '''
             </div>
         </div>
-'''_OPEN_ITEMS'''
+''',
+'OPEN_ITEMS' : '''
         <div class="Container RepeatY BGStyle{style}" id="Items">
             <div class="Inner">
                 <h3>Item changes</h3>
-'''_OPEN_ITEMS_UL'''
+''',
+'OPEN_ITEMS_UL' : '''
 
                     [[{key}]]
                     <ul>
-'''_ITEMS_LI'''
+''',
+'ITEMS_LI' : '''
                         <li>{value}</li>
-'''_CLOSE_ITEMS_UL'''
+''',
+'CLOSE_ITEMS_UL' : '''
                     </ul>
-'''_CLOSE_ITEMS'''
+''',
+'CLOSE_ITEMS' : '''
             </div>
         </div>
-'''_OPEN_HEROES'''
+''',
+'OPEN_HEROES' : '''
         <div class="Container RepeatY BGStyle{style}" id="Heroes">
              <div class="Inner">
                 <h3>Heroes</h3>
-'''_OPEN_HEROES_UL'''
+''',
+'OPEN_HEROES_UL' : '''
 
                     [[{key}]]
                     <ul>
-'''_HEROES_LI'''
+''',
+'HEROES_LI' : '''
                         <li>{value}</li>
-'''_CLOSE_HEROES_UL'''
+''',
+'CLOSE_HEROES_UL' : '''
                     </ul>
-'''_CLOSE_HEROES'''
+''',
+'CLOSE_HEROES' : '''
             </div>
         </div>
-'''_CLOSE_HTML'''
+''',
+'CLOSE_HTML' : '''
         <div class="Container" id="Footer">
             <div class="Inner"></div>
         </div>
     </body>
-</html>'''
+</html>'''}
