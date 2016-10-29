@@ -35,7 +35,8 @@
 'OPEN_GENERAL' : '''
         <div class="Container RepeatY BGStyle{style}">
             <div class="Inner">
-                <h3>General</h3>''',
+                <h3>General</h3>
+''',
 'OPEN_GENERAL_UL' : '''
                     <ul>
 ''',
@@ -53,13 +54,10 @@
                 <h3>Item changes</h3>
 ''',
 'OPEN_ITEMS_UL' : '''
-
                     [[{key}]]
-                    <ul>
-''',
+                    <ul>''',
 'ITEMS_LI' : '''
-                        <li>{value}</li>
-''',
+                        <li>{value}</li>''',
 'CLOSE_ITEMS_UL' : '''
                     </ul>
 ''',
