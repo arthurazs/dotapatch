@@ -120,7 +120,7 @@ if os.path.isfile(CHANGELOG+args.file):
 
 else:
     # ERROR
-    print ('''ERROR!
+    print('''ERROR!
 '{0}' not found.
 Make sure {0} is inside the 'changelogs' folder.
 Also check if the filename you typed is correct.
