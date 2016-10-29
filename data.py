@@ -1,18 +1,24 @@
 from __future__ import print_function
-import requests, ast, os.path
+import requests
+import ast
+import os.path
+
+
 class HeropediaData (object):
 
-    #CONSTANTS
+    # CONSTANTS
     DATA = 'data/'
     ITEM_DATA = 'itemdata'
     HERO_DATA = 'herodata'
     ABILITY_DATA = 'abilitydata'
 
-    #Initialization Functions
+    # Initialization Functions
     def _loadFile(self, name):
         link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
         code = requests.get(link)
-        data = code.text.replace('{"' + name + '":', '').replace('}}', '}').replace(':false', ':False').replace(':null', ':None').replace(':true', ':True')
+        data = code.text.replace('{"' + name + '":', '') \
+            .replace('}}', '}').replace(':false', ':False') \
+            .replace(':null', ':None').replace(':true', ':True')
         dictionary = ast.literal_eval(data)
         return dictionary
 
@@ -26,13 +32,13 @@ class HeropediaData (object):
         with open(self.DATA + name, 'w') as text:
             print(content, file=text)
 
-    #Initialization
+    # Initialization
     def __init__(self):
-        #Check data folder
+        # Check data folder
         if not os.path.exists(self.DATA):
             os.makedirs(self.DATA)
 
-        #Data Initialization
+        # Data Initialization
         if(not os.path.isfile(self.DATA + self.ITEM_DATA)):
             self._item_dictionary = self._loadFile(self.ITEM_DATA)
             self._saveFile(self.ITEM_DATA, self._item_dictionary)
@@ -86,7 +92,7 @@ class HeropediaData (object):
             return 'magnus'
         return name
 
-    #Handle name bugs
+    # Handle name bugs
     def _checkDname(self, name):
         name[0] = name[0].lower().replace('\'s', '')
         if (name[0].lower() == 'drow'):
@@ -135,20 +141,25 @@ class HeropediaData (object):
                 return 'queen_of_pain'
         return None
 
-    #Default Function
+    # Default Function
     def _get_name(self, name, dictionary):
         for key, value in dictionary.items():
             length = len(value['dname'].split(' '))
             ability_hero = self._checkAbility(name)
             if (ability_hero and 'hurl' in value):
-                if value['hurl'].lower() == ability_hero and self._checkDname(name[:length]) == value['dname'].lower():
+                if (
+                  value['hurl'].lower() == ability_hero and
+                  self._checkDname(name[:length]) == value['dname']
+                  .lower()):
                     return (self._checkItem(key), value)
             else:
-                if (self._checkDname(name[:length]) == value['dname'].lower()):
+                if (
+                  self._checkDname(name[:length]) == value['dname']
+                  .lower()):
                     return (self._checkItem(key), value)
         return (None, None)
 
-    #Name Functions
+    # Name Functions
     def get_item_name(self, name):
         return self._get_name(name, self._item_dictionary)[0]
 
