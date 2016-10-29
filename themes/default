@@ -80,7 +80,8 @@
 ''',
 'CLOSE_HEROES' : '''
             </div>
-        </div>''',
+        </div>
+''',
 'CLOSE_HTML' : '''
         <div class="Container" id="Footer">
             <div class="Inner"></div>
