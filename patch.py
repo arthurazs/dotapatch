@@ -8,11 +8,21 @@ from data import HeropediaData
 
 parser = argparse.ArgumentParser(description="This software formats a Dota2' changelog text into HTML.")
 parser.add_argument('--file', '-f', action='store', help="changelog to be formated", required = True, dest = 'file')
+parser.add_argument('--theme', '-t', action='store', help="theme to be used", default = 'default', dest = 'theme')
 parser.add_argument('--version', '-v', action='version', version='%(prog)s: v1.0 (Yasha)')
 args = parser.parse_args()
 
 #CONSTANT
 CHANGELOG = 'changelogs/'
+
+#Checks if the line starts with fixed and removes it
+def getName(value):
+    names = value.split(' ')
+    if names[0].lower() == 'fixed':
+        name = names[1:]
+    else:
+        name = names[:]
+    return name
 
 #Check changelog folder
 if not os.path.exists(CHANGELOG):
@@ -37,14 +47,6 @@ if os.path.isfile(CHANGELOG+args.file):
     item = defaultdict(list)
     hero = defaultdict(list)
     ability = defaultdict(list)
-
-    def getName(value):
-        names = value.split(' ')
-        if names[0].lower() == 'fixed':
-            name = names[1:]
-        else:
-            name = names[:]
-        return name
 
     for line in lines[:]:
         name = getName(line)
@@ -74,7 +76,7 @@ if os.path.isfile(CHANGELOG+args.file):
 
     #Generate .html
     with open(simpleChangelogName + '.html', 'w') as text:
-        model = Html(changelogName)
+        model = Html(changelogName, args.theme)
         model.addGeneral(lines)
         model.addItems(item)
         model.addHeros(hero)
