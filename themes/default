@@ -30,7 +30,8 @@
                 <h1>Gameplay Update {title}</h1>
                 <h3><a href="index.html">Previous changelogs</a></h3>
             </div>
-        </div>''',
+        </div>
+''',
 'OPEN_GENERAL' : '''
         <div class="Container RepeatY BGStyle{style}">
             <div class="Inner">
@@ -72,20 +73,16 @@
                 <h3>Heroes</h3>
 ''',
 'OPEN_HEROES_UL' : '''
-
                     [[{key}]]
-                    <ul>
-''',
+                    <ul>''',
 'HEROES_LI' : '''
-                        <li>{value}</li>
-''',
+                        <li>{value}</li>''',
 'CLOSE_HEROES_UL' : '''
                     </ul>
 ''',
 'CLOSE_HEROES' : '''
             </div>
-        </div>
-''',
+        </div>''',
 'CLOSE_HTML' : '''
         <div class="Container" id="Footer">
             <div class="Inner"></div>

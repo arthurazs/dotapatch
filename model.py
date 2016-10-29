@@ -25,11 +25,11 @@ class Html (object):
     #Add GENERAL Contents
     def addGeneral(self, lines):
         if(lines):
-            self._addContent(self._theme_dictionary['OPEN_GENERAL'].format(int(self._bgStyle)))
+            self._addContent(self._theme_dictionary['OPEN_GENERAL'].format(style = int(self._bgStyle)))
             self._addContent(self._theme_dictionary['OPEN_GENERAL_UL'])
 
             for line in lines:
-                self._addContent(self._theme_dictionary['GENEREAL_LI'].format(line))
+                self._addContent(self._theme_dictionary['GENERAL_LI'].format(line = line))
 
             self._addContent(self._theme_dictionary['CLOSE_GENERAL_UL'])
             self._addContent(self._theme_dictionary['CLOSE_GENERAL'])
@@ -38,12 +38,12 @@ class Html (object):
     #Add ITEMS Contents
     def addItems(self, dictionary):
         if(dictionary):
-            self._addContent(self._theme_dictionary['OPEN_ITEMS'].format(int(self._bgStyle)))
+            self._addContent(self._theme_dictionary['OPEN_ITEMS'].format(style = int(self._bgStyle)))
 
             for key, values in sorted(dictionary.items()):
-                self._addContent(self._theme_dictionary['OPEN_ITEMS_UL'].format(key))
+                self._addContent(self._theme_dictionary['OPEN_ITEMS_UL'].format(key = key))
                 for value in values:
-                    self._addContent(self._theme_dictionary['ITEMS_LI'].format(value))
+                    self._addContent(self._theme_dictionary['ITEMS_LI'].format(value = value))
                 self._addContent(self._theme_dictionary['CLOSE_ITEMS_UL'])
 
             self._addContent(self._theme_dictionary['CLOSE_ITEMS'])
