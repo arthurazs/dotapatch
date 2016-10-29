@@ -6,16 +6,23 @@ from collections import defaultdict
 from model import Html
 from data import HeropediaData
 
-parser = argparse.ArgumentParser(description="This software formats a Dota2' changelog text into HTML.")
-parser.add_argument('--file', '-f', action='store', help="changelog to be formated", required = True, dest = 'file')
-parser.add_argument('--template', '-t', action='store', help="base template to generate HTML", default = 'default', dest = 'template')
-parser.add_argument('--version', '-v', action='version', version='%(prog)s: v1.0 (Yasha)')
+
+parser = argparse.ArgumentParser(
+description="This software formats a Dota2' changelog text into HTML.")
+parser.add_argument('--file', '-f', action='store',
+help="changelog to be formated", required=True, dest='file')
+parser.add_argument('--template', '-t', action='store',
+help="base template to generate HTML", default='default',
+dest='template')
+parser.add_argument('--version', '-v', action='version',
+version='%(prog)s: v1.0 (Yasha)')
 args = parser.parse_args()
 
-#CONSTANT
+# CONSTANT
 CHANGELOG = 'changelogs/'
 
-#Checks if the line starts with fixed and removes it
+
+# Checks if the line starts with fixed and removes it
 def getName(value):
     names = value.split(' ')
     if names[0].lower() == 'fixed':
@@ -24,15 +31,15 @@ def getName(value):
         name = names[:]
     return name
 
-#Check changelog folder
+# Check changelog folder
 if not os.path.exists(CHANGELOG):
     os.makedirs(CHANGELOG)
 
-#Open changelog
+# Open changelog
 if os.path.isfile(CHANGELOG+args.file):
     with open(CHANGELOG+args.file, 'r') as changelog:
 
-        #Read changelog
+        # Read changelog
         lines = []
         for line in changelog:
             lines.append(line.replace('* ', '').rstrip())
@@ -43,7 +50,7 @@ if os.path.isfile(CHANGELOG+args.file):
 
     data = HeropediaData()
 
-    #Organize changelog
+    # Organize changelog
     item = defaultdict(list)
     hero = defaultdict(list)
     ability = defaultdict(list)
@@ -67,14 +74,14 @@ if os.path.isfile(CHANGELOG+args.file):
                 item[found_item].append(line)
                 lines.remove(line)
 
-    #Merge ability into hero
+    # Merge ability into hero
     for key, value in ability.items():
         if(key in hero):
             hero[key].extend(ability[key])
         else:
             hero[key] = ability[key]
 
-    #Generate .html
+    # Generate .html
     with open(simpleChangelogName + '.html', 'w') as text:
         model = Html(changelogName, args.template)
         model.addGeneral(lines)
@@ -83,8 +90,9 @@ if os.path.isfile(CHANGELOG+args.file):
         model.close()
         print(model.getContent(), file=text)
 
-    #Feedback
-    currentLineCount = sum(len(changes) for changes in hero.values()) + sum(len(changes) for changes in item.values())
+    # Feedback
+    currentLineCount = sum(len(changes) for changes in hero.values()) \
+    + sum(len(changes) for changes in item.values())
     status = initialLineCount - currentLineCount
     if (status == 0):
         print('SUCCESS!\nConversion went smoothly.')
@@ -95,15 +103,18 @@ if os.path.isfile(CHANGELOG+args.file):
         if (status == 1):
             print('1 line under GENERAL updates:')
             print('* ' + ' '.join(lines))
-            print('\nThis line might be a hero/item update and you should manually place it at the proper location.')
+            print('\nThis line might be a hero/item update and you ' + \
+            'should manually place it at the proper location.')
         else:
             print(str(status) + ' lines under GENERAL updates:')
             for line in lines:
                 print('* ' + line)
-            print('\nSome of these lines might be hero/item updates and you should manually place them at the proper location.')
+            print('\nSome of these lines might be hero/item updates' + \
+            ' and you should manually place them at the proper ' + \
+            'location.')
 
 else:
-    #ERROR
+    # ERROR
     print ('''ERROR!
 '{0}' not found.
 Make sure {0} is inside the 'changelogs' folder.
