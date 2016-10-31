@@ -2,7 +2,6 @@
 # coding: utf-8
 from __future__ import print_function
 from version import __version__
-from version import __version_name__
 import os.path
 import argparse
 from collections import defaultdict
@@ -22,8 +21,8 @@ parser.add_argument(
     dest='template')
 parser.add_argument(
     '--version', '-V', action='version',
-    version='%(prog)s: v{} ({})'
-    .format(__version__, __version_name__))
+    version='%(prog)s: v{}'
+    .format(__version__))
 args = parser.parse_args()
 
 # CONSTANT
