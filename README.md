@@ -106,11 +106,12 @@ P.S. If the HTML **page** shows **some** of the heroes as `[[hero_name]]` instea
     - *Creator*
 
 ## Task list
-- [ ] Remove hero name from 'base changes' (See [#2](/../../issues/2))
-- [ ] Add 'parser' argument for generating standalone HTML code (See [#3](/../../issues/3))
+
+ - **TODO** see [projects](/../../projects).
+ - **Changelog** see [releases](/../../releases).
 
 ## Contributing
 I need your help improving **dota2patches**! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open [pull requests](/../../compare) if you want to help me improve some of the code.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).
