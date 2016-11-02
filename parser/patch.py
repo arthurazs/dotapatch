@@ -2,7 +2,7 @@
 # coding: utf-8
 from __future__ import print_function
 from version import __version__
-import os.path
+import os.path as path
 import argparse
 from collections import defaultdict
 from model import Html
@@ -26,25 +26,17 @@ parser.add_argument(
 args = parser.parse_args()
 
 # CONSTANT
-CHANGELOG = 'changelogs/'
+_CHANGELOG = path.abspath(
+    path.join(path.dirname(__file__), 'changelogs'))
 
-
-# Checks if the line starts with fixed and removes it
-def getName(value):
-    names = value.split(' ')
-    if names[0].lower() == 'fixed':
-        name = names[1:]
-    else:
-        name = names[:]
-    return name
 
 # Check changelog folder
-if not os.path.exists(CHANGELOG):
-    os.makedirs(CHANGELOG)
+if not path.exists(_CHANGELOG):
+    os.makedirs(_CHANGELOG)
 
 # Open changelog
-if os.path.isfile(CHANGELOG+args.file):
-    with open(CHANGELOG+args.file, 'r') as changelog:
+if path.isfile(path.join(_CHANGELOG, args.file)):
+    with open(path.join(_CHANGELOG, args.file), 'r') as changelog:
 
         # Read changelog
         lines = []
@@ -63,20 +55,18 @@ if os.path.isfile(CHANGELOG+args.file):
     ability = defaultdict(list)
 
     for line in lines[:]:
-        name = getName(line)
-        found_ability = data.get_ability_hero(name)
+        found_ability = data.get_ability_hero(line)
         if found_ability:
             ability[found_ability].append(line)
             lines.remove(line)
 
     for line in lines[:]:
-        name = getName(line)
-        found_hero = data.get_hero_name(name)
+        found_hero = data.get_hero_name(line)
         if found_hero:
             hero[found_hero].append(line)
             lines.remove(line)
         else:
-            found_item = data.get_item_name(name)
+            found_item = data.get_item_name(line)
             if found_item:
                 item[found_item].append(line)
                 lines.remove(line)

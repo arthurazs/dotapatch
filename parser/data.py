@@ -1,19 +1,19 @@
 from __future__ import print_function
 import requests
 import ast
-import os.path
+import os.path as path
 
 
 class HeropediaData (object):
 
     # CONSTANTS
-    DATA = 'data/'
+    _DATA_DIR = path.abspath(path.join(path.dirname(__file__), 'data'))
     ITEM_DATA = 'itemdata'
     HERO_DATA = 'herodata'
     ABILITY_DATA = 'abilitydata'
 
     # Initialization Functions
-    def _loadFile(self, name):
+    def _downloadFile(self, name):
         link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
         code = requests.get(link)
         data = code.text.replace('{"' + name + '":', '') \
@@ -23,36 +23,38 @@ class HeropediaData (object):
         return dictionary
 
     def _openFile(self, name):
-        with open(self.DATA + name, 'r') as text:
+        with open(path.join(self._DATA_DIR, name), 'r') as text:
             data = text.read()
             dictionary = ast.literal_eval(data)
             return dictionary
 
     def _saveFile(self, name, content):
-        with open(self.DATA + name, 'w') as text:
+        with open(path.join(self._DATA_DIR, name), 'w') as text:
             print(content, file=text)
 
     # Initialization
     def __init__(self):
         # Check data folder
-        if not os.path.exists(self.DATA):
-            os.makedirs(self.DATA)
+        if not path.exists(self._DATA_DIR):
+            os.makedirs(self._DATA_DIR)
 
         # Data Initialization
-        if(not os.path.isfile(self.DATA + self.ITEM_DATA)):
-            self._item_dictionary = self._loadFile(self.ITEM_DATA)
+        if not path.isfile(path.join(self._DATA_DIR, self.ITEM_DATA)):
+            self._item_dictionary = self._downloadFile(self.ITEM_DATA)
             self._saveFile(self.ITEM_DATA, self._item_dictionary)
         else:
             self._item_dictionary = self._openFile(self.ITEM_DATA)
 
-        if(not os.path.isfile(self.DATA + self.HERO_DATA)):
-            self._hero_dictionary = self._loadFile(self.HERO_DATA)
+        if not path.isfile(path.join(self._DATA_DIR, self.HERO_DATA)):
+            self._hero_dictionary = self._downloadFile(self.HERO_DATA)
             self._saveFile(self.HERO_DATA, self._hero_dictionary)
         else:
             self._hero_dictionary = self._openFile(self.HERO_DATA)
 
-        if(not os.path.isfile(self.DATA + self.ABILITY_DATA)):
-            self._ability_dictionary = self._loadFile(self.ABILITY_DATA)
+        if not path.isfile(
+          path.join(self._DATA_DIR, self.ABILITY_DATA)):
+            self._ability_dictionary = self._downloadFile(
+                self.ABILITY_DATA)
             self._saveFile(self.ABILITY_DATA, self._ability_dictionary)
         else:
             self._ability_dictionary = self._openFile(self.ABILITY_DATA)
@@ -159,14 +161,44 @@ class HeropediaData (object):
                     return (self._checkItem(key), value)
         return (None, None)
 
+    # Checks if the line starts with fixed and removes it
+    @classmethod
+    def _prepare_name(cls, value):
+        names = value.split(' ')
+        if names[0].lower() == 'fixed':
+            name = names[1:]
+        else:
+            name = names[:]
+        return name
+
     # Name Functions
-    def get_item_name(self, name):
+    def get_item_name(self, line):
+        '''
+        Return the item_id.
+
+        Search the line for an item name in item_dictionary and return
+        its id.
+
+        Parameters
+        ----------
+        line : str
+            The phrase to be checked.
+
+        Returns
+        -------
+        str
+            Item id name.
+
+        '''
+        name = self._prepare_name(line)
         return self._get_name(name, self._item_dictionary)[0]
 
-    def get_hero_name(self, name):
+    def get_hero_name(self, line):
+        name = self._prepare_name(line)
         return self._get_name(name, self._hero_dictionary)[0]
 
-    def get_ability_hero(self, name):
+    def get_ability_hero(self, line):
+        name = self._prepare_name(line)
         key, value = self._get_name(name, self._ability_dictionary)
         if key:
             return self._checkHurl(value['hurl'].lower())
