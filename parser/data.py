@@ -1,6 +1,7 @@
 from __future__ import print_function
 import requests
 import ast
+import os
 import os.path as path
 
 
@@ -173,8 +174,7 @@ class HeropediaData (object):
 
     # Name Functions
     def get_item_name(self, line):
-        '''
-        Return the item_id.
+        '''Return the item id.
 
         Search the line for an item name in item_dictionary and return
         its id.
