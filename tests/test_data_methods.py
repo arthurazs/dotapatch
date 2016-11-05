@@ -1,5 +1,5 @@
 import unittest
-from parser.data import HeropediaData
+from dotapatch.data import HeropediaData
 
 
 def setUpModule():
