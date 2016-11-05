@@ -14,7 +14,7 @@ setup(
     version=__version__,
     author="Arthur Zopellaro",
     author_email="arthurazsoares@gmail.com",
-    description=('Parse dota 2 text patches to html format.'),
+    description=('Parse Dota 2 text patches to html format.'),
     license="MIT",
     keywords="dota dota2 patch changelog html clean",
     url="https://github.com/arthurazs/dota2patches",
