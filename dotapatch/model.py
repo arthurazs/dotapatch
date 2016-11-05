@@ -1,17 +1,18 @@
 from __future__ import print_function
-from data import HeropediaData
+from __future__ import absolute_import
+from .data import HeropediaData
 import ast
 import os.path as path
 
 
 class Html (object):
 
-    _TEMPLATES_DIR = path.abspath(
+    TEMPLATES_DIR = path.abspath(
         path.join(path.dirname(__file__), 'templates'))
 
     def _read_template(self, template_name):
-        with open(path.join(self._TEMPLATES_DIR, template_name), 'r') \
-             as template_file:
+        with open(path.join(self.TEMPLATES_DIR, template_name), 'r') \
+                as template_file:
             template_dictionary = ast.literal_eval(template_file.read())
         return template_dictionary
 
