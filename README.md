@@ -1,10 +1,10 @@
 # Dota 2: Changelog formatted as it should.
-**dota2patches** (v1.0) is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
+**dotapatch** (v1.3) is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
-Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dota2patches**.
+Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dotapatch**.
 
 ## TL;DR
-The changelog file **must** be saved inside the `dota2patches/changelogs` folder and **must** have the following format:
+The changelog file **must** have the following format:
 
 ```
 6.88f:
@@ -16,36 +16,57 @@ The changelog file **must** be saved inside the `dota2patches/changelogs` folder
 * Atrophy Aura attack damage reduction changed from 18/26/34/42% to 10/20/30/40%
 * Fixed Return working on Centaur Illusions
 ```
-Run `$ ./patch.py -f <filename>`. Replace `<filename>` with the **changelog filename**.
+Run `$ dotapatch <filename>`. Replace `<filename>` with the **changelog filename**.
 
-    $ ./patch.py -f 688f
+    $ dotapatch 688f
+
+Make sure that `<filename>` is in your current directory. You can also provide the `path` to the changelog.
+
+    $ dotapatch /home/arthurazs/Desktop/changelogs/688f
+
+You can also download (or clone) this [repo](https://github.com/arthurazs/dota2patches) and run **dotapatch** without installing:
+
+    $ cd dota2patches
+    $ python -m dotapatch /home/arthurazs/Desktop/changelogs/688f
 
 ## Getting started
 You will need python 2.7 or higher.
 
-    $ sudo apt-get install python3
+    $ sudo apt-get install python
 
 ### How does it work
 There are 3 main files:
 
-1. [**patch.py**](patch.py)
+1. [**patch.py**](/dotapatch/patch.py)
     - Reads the changelog and decides what each line represents (item, base hero or ability)
-2. [data.py](data.py)
+2. [data.py](/dotapatch/data.py)
     - Handles the [HeropediaData](https://www.dota2.com/jsfeed/heropediadata?feeds=herodata,itemdata,abilitydata) **data fetching**
-3. [model.py](model.py)
+3. [model.py](/dotapatch/model.py)
     - Generates the formatted **html** file
 
 There are 2 important folders as well:
 
-1. **[changelogs](/changelogs)**
+1. [templates](/dotapatch/templates)
     - This is where the changelog file **must** be stored
-2. [data](/data)
+2. [data](/dotapatch/data)
     - This is where the data from HeropediaData is stored
 
-### Running dota2patches
-1. [Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this repository.
-2. Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest patch.
-3. Copy and save it as a file inside `dota2patches/changelogs`. The content you save **must** follow this format:
+## Using dotapatch
+
+### Setting environment up
+
+[Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this repository. Head over to **dotapatch** folder.
+
+    $ cd dota2patches
+    
+**OPTIONAL** Install **dotapatch**. You might need to use `sudo`.
+
+    $ python setup.py install
+
+### Gathering a new changelog
+
+1. Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest **patch**.
+2. Copy and save it as a file. The content you save **must** start with the patch name followed by colon (e.g. `6.88f:`). The second line won't be read, so you can leave it with anything other than a real changelog line (e.g. `--`). **All** the following lines **must** start with a star/asterisk (e.g. `* Anti-mage magic resistance reduced by a lot`).
 
     ```
     6.88f:
@@ -77,18 +98,23 @@ There are 2 important folders as well:
     * Flamebreak burn duration increased from 3/4/5/6 to 4/5/6/7 (total damage increased)
     * Fixed Return working on Centaur Illusions
     ```
-4. `$ cd dota2patches` or wherever you have **dota2patches** downloaded.
-5. run `$ ./patch.py -f <filename>`. Replace `<filename>` with the name of the file you saved at the **3rd step**. Example:
 
-    ```
-    $ ./patch.py -f 688f
-    ```
-6. You will get some feedback when the code finishes running. Check the generated file under `dota2patches/<filename>.html` (bear in mind `<filename>` should be the name you used at the **5th step**).
+### Running dotapatch
 
-P.S. If the HTML **page** shows **some** of the heroes as `[[hero_name]]` instead of the hero's `picture`, delete the `dota2patches/data` folder and run `$ ./patch.py -f <filename>` once again. This will require internet connection and may take a while but will ensure that the HeropediaData gets up-to-date.
+If you've installed **dotapatch**, head over to the folder where you saved the changelog file and run **dotapatch**.
+
+    $ cd Desktop/changelogs
+    $ dotapatch 688f
+
+If you haven't installed **dotapatch**, head over to the **dotapatch** folder and run **dotapatch** as a **module**.
+
+    $ cd Desktop/dota2patches
+    $ python -m dotapatch /home/arthurazs/Desktop/changelogs/688f
+
+Once the software finishes running, it will tell you where the generated HTML was saved.
 
 ## Built with
-**dota2patches** uses the following libraries:
+**dotapatch** uses the following libraries:
 - [ast](https://docs.python.org/3.4/library/ast.html)
     - Transforms data from HeropediaData into dictionary
 - [os.path](https://docs.python.org/3.4/library/os.path.html)
@@ -100,6 +126,16 @@ P.S. If the HTML **page** shows **some** of the heroes as `[[hero_name]]` instea
     - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
     - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
     - `dictionary.values()` returns a list with all changes
+- [requests](https://github.com/kennethreitz/requests)
+    - Fetches HeropediaData files
+- [logging](https://docs.python.org/3.4/library/logging.html)
+    - Manage *dotapatch* logs
+- [unittest](https://docs.python.org/3.4/library/unittest.html)
+    - Base for the tests
+    - [nose](http://nose.readthedocs.io/en/latest/) test suite (nosetests)
+        - [--rednose](https://github.com/JBKahn/rednose) plugging which improves readability
+- [setuptools](https://github.com/pypa/setuptools)
+    - Setup manager
 
 ## Authors
 - [**Arthur Zopellaro**](https://github.com/arthurazs)
@@ -111,7 +147,7 @@ P.S. If the HTML **page** shows **some** of the heroes as `[[hero_name]]` instea
  - **Changelog** see [releases](/../../releases).
 
 ## Contributing
-I need your help improving **dota2patches**! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open [pull requests](/../../compare) if you want to help me improve some of the code.
+I need your help improving **dotapatch**! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open [pull requests](/../../compare) if you want to help me improve some of the code.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
