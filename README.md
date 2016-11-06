@@ -1,5 +1,5 @@
 # Dota 2: Changelog formatted as it should.
-**dotapatch** (v1.3) is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
+**dotapatch** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
 Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dotapatch**.
 
