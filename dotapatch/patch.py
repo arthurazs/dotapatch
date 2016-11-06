@@ -90,6 +90,7 @@ Contact me at @arthurazs if the error persists.
                     hero[key] = ability[key]
 
             # Generate .html
+            # TODO use path.join here?
             with open(patch_name + '.html', 'w') as text:
                 model = Html(patch_version, self._template)
                 model.add_general(lines)
@@ -97,6 +98,9 @@ Contact me at @arthurazs if the error persists.
                 model.add_heroes(hero)
                 model.close()
                 print(model.get_content(), file=text)
+                self.logger.info(
+                    'HTML saved at {}.html'
+                    .format(path.abspath(patch_name)))
 
             # Feedback
             currentLineCount = sum(len(changes) for changes in hero.values()) \
