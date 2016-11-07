@@ -49,6 +49,6 @@ setup(
     entry_points={
         'console_scripts': ['dotapatch=dotapatch.__main__:main']
     },
-    tests_require=['nose', 'rednose'],
-    test_suite="nose.collector",
+    tests_require=['nose', 'rednose', 'tox'],
+    test_suite='nose.collector'
 )

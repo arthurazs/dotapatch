@@ -12,3 +12,7 @@ dist
 #dotapatch
 *.html
 *.log
+
+#tox
+*.eggs
+.tox/
