@@ -117,28 +117,30 @@ If you haven't installed **dotapatch**, head over to the **dotapatch** folder an
 Once the software finishes running, it will tell you where the generated HTML was saved.
 
 ## Built with
+
 **dotapatch** uses the following libraries:
-- [ast](https://docs.python.org/3.4/library/ast.html)
-    - Transforms data from HeropediaData into dictionary
-- [os.path](https://docs.python.org/3.4/library/os.path.html)
-    - Makes sure all directories are created
-    - Checks if HeropediaData was arealdy fetched, reducing internet usage and code runtime
-- [argparse](https://docs.python.org/3.4/library/argparse.html)
-    - Enables the use of arguments. Try `$ ./patch.py -h`
-- collections.[defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
-    - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
-    - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
-    - `dictionary.values()` returns a list with all changes
-- [requests](https://github.com/kennethreitz/requests)
-    - Fetches HeropediaData files
-- [logging](https://docs.python.org/3.4/library/logging.html)
-    - Manage *dotapatch* logs
-- [unittest](https://docs.python.org/3.4/library/unittest.html)
-    - Base for the tests
-    - [nose](http://nose.readthedocs.io/en/latest/) test suite (nosetests)
-        - [--rednose](https://github.com/JBKahn/rednose) plugging which improves readability
-- [setuptools](https://github.com/pypa/setuptools)
-    - Setup manager
+
+ - [ast](https://docs.python.org/3.4/library/ast.html)
+     - Transforms data from HeropediaData into dictionary
+ - [os.path](https://docs.python.org/3.4/library/os.path.html)
+     - Makes sure all directories are created
+     - Checks if HeropediaData was arealdy fetched, reducing internet usage and code runtime
+ - [argparse](https://docs.python.org/3.4/library/argparse.html)
+     - Enables the use of arguments. Try `$ ./patch.py -h`
+ - collections.[defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
+     - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
+     - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
+     - `dictionary.values()` returns a list with all changes
+ - [requests](https://github.com/kennethreitz/requests)
+     - Fetches HeropediaData files
+ - [logging](https://docs.python.org/3.4/library/logging.html)
+     - Manage *dotapatch* logs
+ - [unittest](https://docs.python.org/3.4/library/unittest.html)
+     - Base for the tests
+     - [nose](http://nose.readthedocs.io/en/latest/) test suite (nosetests)
+         - [--rednose](https://github.com/JBKahn/rednose) plugging which improves readability
+ - [setuptools](https://github.com/pypa/setuptools)
+     - Setup manager
 
 ## Authors
 - [**Arthur Zopellaro**](https://github.com/arthurazs)

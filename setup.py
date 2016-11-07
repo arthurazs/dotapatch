@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+# coding: utf-8
 from setuptools import setup
 import os.path as path
+
 
 try:
     with open(path.abspath(path.join('dotapatch',
@@ -9,21 +12,42 @@ except:
     print('ERROR version not found')
     __version__ = ''
 
+try:
+    with open('PyPIREADME.rst', 'r') as readme:
+        info_long_description = readme.read()
+except:
+    try:
+        print('PyPIREADME.rst not found, will use README.md instead')
+        print('WARNING README.md should not be uploaded to PyPI')
+        with open('README.md', 'r') as readme:
+            info_long_description = readme.read()
+    except:
+        print('ERROR README.md not found either')
+        info_long_description = ''
+
+
+info_name = 'dotapatch'
+info_url = 'https://github.com/arthurazs/{}/'.format(info_name)
+info_download = '{}archive/v{}.tar.gz'.format(info_url, __version__)
+
+
 setup(
-    name="dotapatch",
+    name=info_name,
     version=__version__,
-    author="Arthur Zopellaro",
-    author_email="arthurazsoares@gmail.com",
+    author='Arthur Zopellaro',
+    author_email='arthurazsoares@gmail.com',
     description=('Parse Dota 2 text patches to html format.'),
-    license="MIT",
-    keywords="dota dota2 patch changelog html clean",
-    url="https://github.com/arthurazs/dota2patches",
+    license='MIT',
+    keywords=(
+        'dota dota2 patch changelog html clean dotapatch convert'
+    ),
+    url=info_url,
+    download_url=info_download,
     packages=['dotapatch'],
     package_data={
         'dotapatch': [
-            'templates/default', 'templates/dota2',
-            'data/abilitydata', 'data/herodata', 'data/itemdata']},
-    long_description='',
+            'templates/*', 'data/*']},
+    long_description=info_long_description,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
@@ -44,10 +68,11 @@ setup(
         'Topic :: Text Processing :: Markup',
         'Topic :: Text Processing :: Markup :: HTML'
     ],
-    setup_requires=['setuptools', 'nose', 'rednose'],
+    setup_requires=['setuptools', 'pip', 'nose', 'rednose'],
     install_requires=['requests'],
     entry_points={
-        'console_scripts': ['dotapatch=dotapatch.__main__:main']
+        'console_scripts': [
+            '{}=dotapatch.__main__:main'.format(info_name)]
     },
     tests_require=['nose', 'rednose', 'tox'],
     test_suite='nose.collector'
