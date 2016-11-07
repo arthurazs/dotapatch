@@ -59,7 +59,7 @@ There are 2 important folders as well:
 
     $ cd dota2patches
     
-**OPTIONAL** Install **dotapatch**. You might need to use `sudo`.
+**OPTIONAL** Install **dotapatch**. You might need to use `sudo -H`.
 
     $ python setup.py install
 
