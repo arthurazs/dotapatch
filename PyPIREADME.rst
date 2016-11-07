@@ -42,7 +42,8 @@ provide the ``path`` to the changelog.
 
 You can also `clone (or
 download) <https://help.github.com/articles/cloning-a-repository/>`__
-this `repository </../../>`__ and run **dotapatch** without installing:
+the `repository <https://github.com/arthurazs/dotapatch>`__ and run
+**dotapatch** without installing:
 
 ::
 
@@ -63,28 +64,28 @@ How does it work
 
 There are 3 main files:
 
-1. `**patch.py** </dotapatch/patch.py>`__
+1. `**patch.py** <https://github.com/arthurazs/dotapatch/blob/master/dotapatch/patch.py>`__
 
    -  Reads the changelog and decides what each line represents (item,
       base hero or ability)
 
-2. `data.py </dotapatch/data.py>`__
+2. `data.py <https://github.com/arthurazs/dotapatch/blob/master/dotapatch/data.py>`__
 
    -  Handles the
       `HeropediaData <https://www.dota2.com/jsfeed/heropediadata?feeds=herodata,itemdata,abilitydata>`__
       **data fetching**
 
-3. `model.py </dotapatch/model.py>`__
+3. `model.py <https://github.com/arthurazs/dotapatch/blob/master/dotapatch/model.py>`__
 
    -  Generates the formatted **html** file
 
 There are 2 important folders as well:
 
-1. `templates </dotapatch/templates>`__
+1. `templates <https://github.com/arthurazs/dotapatch/blob/master/dotapatch/templates>`__
 
    -  This is where the changelog file **must** be stored
 
-2. `data </dotapatch/data>`__
+2. `data <https://github.com/arthurazs/dotapatch/blob/master/dotapatch/data>`__
 
    -  This is where the data from HeropediaData is stored
 
@@ -96,7 +97,8 @@ Setting environment up
 
 `Clone (or
 download) <https://help.github.com/articles/cloning-a-repository/>`__
-this `repository </../../>`__. Head over to **dotapatch** folder.
+the `repository <https://github.com/arthurazs/dotapatch>`__. Head over
+to **dotapatch** folder.
 
 ::
 
@@ -231,21 +233,25 @@ Authors
 Task list
 ---------
 
--  **TODO** see `projects </../../projects>`__.
--  **Changelog** see `releases </../../releases>`__.
+-  **TODO** see
+   `projects <https://github.com/arthurazs/dotapatch/projects>`__.
+-  **Changelog** see
+   `releases <https://github.com/arthurazs/dotapatch/releases>`__.
 
 Contributing
 ------------
 
 I need your help improving **dotapatch**! Please open `new
-issues </../../issues/new>`__ if you have any feedback, questions or
-ideias. Also, feel free to open `pull requests </../../compare>`__ if
-you want to help me improve some of the code.
+issues <https://github.com/arthurazs/dotapatch/issues/new>`__ if you
+have any feedback, questions or ideias. Also, feel free to open `pull
+requests <https://github.com/arthurazs/dotapatch/compare>`__ if you want
+to help me improve some of the code.
 
 License
 -------
 
-This project is licensed under the `MIT License <LICENSE>`__.
+This project is licensed under the `MIT
+License <https://github.com/arthurazs/dotapatch/blob/master/LICENSE>`__.
 
 .. |CircleCI| image:: https://circleci.com/gh/arthurazs/dotapatch.svg?style=shield
    :target: https://circleci.com/gh/arthurazs/dotapatch
