@@ -9,8 +9,8 @@ machine:
 
 dependencies:
   override:
-    - pip install .
-    - pyenv local 2.7 3.4
+    - pip install -U .
+    - pyenv local 2.7 3.4.3
 
 test:
   override:
