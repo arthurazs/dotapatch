@@ -1,10 +1,10 @@
 # Dota 2: Changelog formatted as it should.
 
-[![CircleCI](https://circleci.com/gh/arthurazs/dota2patches.svg?style=shield)](https://circleci.com/gh/arthurazs/dota2patches)
+[![CircleCI](https://circleci.com/gh/arthurazs/dotapatch.svg?style=shield)](https://circleci.com/gh/arthurazs/dotapatch)
 
 **dotapatch** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
-Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dotapatch**.
+Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dotapatch/688f.html). This is the latest patch parsed using **dotapatch**.
 
 ## TL;DR
 The changelog file **must** have the following format:
@@ -27,9 +27,9 @@ Make sure that `<filename>` is in your current directory. You can also provide t
 
     $ dotapatch /home/arthurazs/Desktop/changelogs/688f
 
-You can also download (or clone) this [repo](https://github.com/arthurazs/dota2patches) and run **dotapatch** without installing:
+You can also [clone (or download)](https://help.github.com/articles/cloning-a-repository/) this [repository](/../../) and run **dotapatch** without installing:
 
-    $ cd dota2patches
+    $ cd dotapatch
     $ python -m dotapatch /home/arthurazs/Desktop/changelogs/688f
 
 ## Getting started
@@ -58,9 +58,9 @@ There are 2 important folders as well:
 
 ### Setting environment up
 
-[Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this repository. Head over to **dotapatch** folder.
+[Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this [repository](/../../). Head over to **dotapatch** folder.
 
-    $ cd dota2patches
+    $ cd dotapatch
     
 **OPTIONAL** Install **dotapatch**. You might need to use `sudo -H`.
 
@@ -111,7 +111,7 @@ If you've installed **dotapatch**, head over to the folder where you saved the c
 
 If you haven't installed **dotapatch**, head over to the **dotapatch** folder and run **dotapatch** as a **module**.
 
-    $ cd Desktop/dota2patches
+    $ cd Desktop/dotapatch
     $ python -m dotapatch /home/arthurazs/Desktop/changelogs/688f
 
 Once the software finishes running, it will tell you where the generated HTML was saved.
