@@ -11,7 +11,7 @@ Contents
 
 # I can't install dotapatch
 
-`PermissionError` means `pip` don't have the necessary privileges to install python modules.
+`PermissionError` means `pip` doesn't have the necessary privileges to install python modules.
 
     $ pip install dotapatch
 
