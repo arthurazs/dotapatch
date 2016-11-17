@@ -27,7 +27,7 @@ latest patch parsed using **dotapatch**.
 
 -  `Using dotapatch <#using-dotapatch>`__
 
-   -  `Setting up the environment <#setting-up-the-environment>`__
+   -  `Installing dotapatch <#installing-dotapatch>`__
    -  `Gathering a new changelog <#gathering-a-new-changelog>`__
    -  `Running dotapatch <#running-dotapatch>`__
    -  `Testing dotapatch <#testing-dotapatch>`__
@@ -165,7 +165,7 @@ There are some optional arguments that you can use:
 Using dotapatch
 ---------------
 
-Setting up the environment
+Installing dotapatch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Install **dotapatch** using ``pip``:

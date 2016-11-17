@@ -16,7 +16,7 @@ Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dotapatch/688f.htm
 - [Getting started](#getting-started)
     - [How does it work](#how-does-it-work)
 - [Using dotapatch](#using-dotapatch)
-    - [Setting up the environment](#setting-up-the-environment)
+    - [Installing dotapatch](#installing-dotapatch)
     - [Gathering a new changelog](#gathering-a-new-changelog)
     - [Running dotapatch](#running-dotapatch)
     - [Testing dotapatch](#testing-dotapatch)
@@ -124,7 +124,7 @@ There are some optional arguments that you can use:
 
 ## Using dotapatch
 
-### Setting up the environment
+### Installing dotapatch
 
 Install **dotapatch** using `pip`:
 
