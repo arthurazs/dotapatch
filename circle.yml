@@ -3,6 +3,16 @@ general:
     ignore:
       - gh-pages
 
+machine:
+  python:
+    version: 2.7
+
 dependencies:
-  pre:
-    - pip install requests
+  override:
+    - pip install -U tox
+    - pip install -U .
+    - pyenv local 2.7 3.4.3
+
+test:
+  override:
+    - tox

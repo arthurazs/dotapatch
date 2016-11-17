@@ -1,72 +1,156 @@
 # Dota 2: Changelog formatted as it should.
+
+| Platform |                                                                                                                                                                                                                                                                                                                                       Status                                                                                                                                                                                                                                                                                                                                        |
+|:--------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  GitHub  | [![GitHub Release](https://img.shields.io/github/release/arthurazs/dotapatch.svg)](https://github.com/arthurazs/dotapatch/releases) [![GitHub Tag](https://img.shields.io/github/tag/arthurazs/dotapatch.svg)](https://github.com/arthurazs/dotapatch/tags) [![GitHub License](https://img.shields.io/github/license/arthurazs/dotapatch.svg)](https://github.com/arthurazs/dotapatch/blob/master/LICENSE) [![GitHub Issues](https://img.shields.io/github/issues/arthurazs/dotapatch.svg)](https://github.com/arthurazs/dotapatch/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/arthurazs/dotapatch.svg)](https://github.com/arthurazs/dotapatch/pulls) |
+|   PyPI   | [![PyPI Version](https://img.shields.io/pypi/v/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI License](https://img.shields.io/pypi/l/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![Python Version](https://img.shields.io/pypi/pyversions/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI Wheel](https://img.shields.io/pypi/wheel/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI Status](https://img.shields.io/pypi/status/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) |
+| CircleCI | [![CircleCI](https://img.shields.io/circleci/project/github/arthurazs/dotapatch.svg)](https://circleci.com/gh/arthurazs/dotapatch) |
+
 **dotapatch** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
-Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dota2patches/688f.html). This is the latest patch parsed using **dotapatch**.
+Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dotapatch/688f.html). This is the latest patch parsed using **dotapatch**.
+
+**Contents**
+
+- [Too long; didn't read](#tldr)
+- [Getting started](#getting-started)
+    - [How does it work](#how-does-it-work)
+- [Using dotapatch](#using-dotapatch)
+    - [Installing dotapatch](#installing-dotapatch)
+    - [Gathering a new changelog](#gathering-a-new-changelog)
+    - [Running dotapatch](#running-dotapatch)
+    - [Testing dotapatch](#testing-dotapatch)
+- [Built with](#built-with)
+- [Authors](#authors)
+- [Task list](#task-list)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## TL;DR
-The changelog file **must** have the following format:
 
-```
-6.88f:
---
-* Purifying Flames manacost increased from 50/60/70/80 to 80/85/90/95
-* Torrent cooldown increased from 10 to 16/14/12/10
-* Ghostship Rum damage reduction changed from 50% to 40/45/50%
-* Shadow Poison manacost increased from 40 to 55
-* Atrophy Aura attack damage reduction changed from 18/26/34/42% to 10/20/30/40%
-* Fixed Return working on Centaur Illusions
-```
-Run `$ dotapatch <filename>`. Replace `<filename>` with the **changelog filename**.
+    $ pip install dotapatch
 
+Save a changelog file in accordance with the following format:
+
+    6.88f:
+    --
+    * Purifying Flames manacost increased from 50/60/70/80 to 80/85/90/95
+    * Morphling base damage reduced by 4
+    * Nyx's Scepter Burrow cast time increased from 1 to 1.5
+    * Fixed Return working on Centaur Illusions
+
+Head over to the directory you saved the changelog and run **dotapatch**.
+
+    $ cd Desktop/changelogs
     $ dotapatch 688f
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    INFO Conversion went smoothly.
 
 Make sure that `<filename>` is in your current directory. You can also provide the `path` to the changelog.
 
     $ dotapatch /home/arthurazs/Desktop/changelogs/688f
-
-You can also download (or clone) this [repo](https://github.com/arthurazs/dota2patches) and run **dotapatch** without installing:
-
-    $ cd dota2patches
-    $ python -m dotapatch /home/arthurazs/Desktop/changelogs/688f
+    INFO HTML saved at /home/arthurazs/688f.html
+    INFO Conversion went smoothly.
 
 ## Getting started
-You will need python 2.7 or higher.
+You will need python.
 
     $ sudo apt-get install python
 
 ### How does it work
-There are 3 main files:
 
-1. [**patch.py**](/dotapatch/patch.py)
-    - Reads the changelog and decides what each line represents (item, base hero or ability)
-2. [data.py](/dotapatch/data.py)
-    - Handles the [HeropediaData](https://www.dota2.com/jsfeed/heropediadata?feeds=herodata,itemdata,abilitydata) **data fetching**
-3. [model.py](/dotapatch/model.py)
-    - Generates the formatted **html** file
+    $ dotapatch -h
+    usage: dotapatch [-h] [-t TEMPLATE] [-V] [-d] [-s] [-q] file
 
-There are 2 important folders as well:
+    Parse Dota 2 text patches to html format.
 
-1. [templates](/dotapatch/templates)
-    - This is where the changelog file **must** be stored
-2. [data](/dotapatch/data)
-    - This is where the data from HeropediaData is stored
+    positional arguments:
+      file                  changelog to be formated
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -t TEMPLATE, --template TEMPLATE
+                            base template to generate HTML
+      -V, --version         show program's version number and exit
+
+    logging arguments:
+      -d, --debug           set verbosity level to DEBUG
+      -s, --save-log        save log output
+      -q, --quiet           less verbose
+
+Run **dotapatch** stating the full path to the file:
+
+    $ dotapatch /home/arthurazs/Desktop/changelogs/688f
+    INFO HTML saved at /home/arthurazs/688f.html
+    INFO Conversion went smoothly.
+
+Or you can head over to the directory with the changelog and run **dotapatch** stating only the filename:
+
+    $ cd Desktop/changelogs
+    $ dotapatch 688f
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    INFO Conversion went smoothly.
+
+There are some optional arguments that you can use:
+
+    $ dotapatch --version
+    dotapatch: v2.0
+
+    $ dotapatch 688f
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    INFO Conversion went smoothly.
+
+    $ dotapatch 688f --quiet
+
+    $ dotapatch 688f --debug
+    DEBUG Reading changelog.
+    DEBUG Parsing changelog.
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    INFO Conversion went smoothly.
+
+    $ dotapatch dotapatch/changelogs/688f --save-log
+    INFO Recording log file at /home/arthurazs/git/dotapatch/dotapatch.log
+    INFO HTML saved at /home/arthurazs/git/dotapatch/688f.html
+    INFO Conversion went smoothly.
+
+    $ dotapatch dotapatch/changelogs/688f --template gh-pages
+    INFO Using 'gh-pages' template.
+    INFO HTML saved at /home/arthurazs/git/dotapatch/688f.html
+    INFO Conversion went smoothly.
+
+- `--template` indicates which template is going to be used to parse the changelog. The `default` template generates a standalone HTML that uses [dota2](http://dota2.com) css files.
+- `--debug` and `--quiet` increase and decrease **dotapatch**'s verbosity, respectively.
+- `--save-log` saves a log with maximum verbosity output.
 
 ## Using dotapatch
 
-### Setting environment up
+### Installing dotapatch
 
-[Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this repository. Head over to **dotapatch** folder.
+Install **dotapatch** using `pip`:
 
-    $ cd dota2patches
-    
-**OPTIONAL** Install **dotapatch**. You might need to use `sudo`.
+    $ pip install dotapatch
 
+You might get `PermissionError`. Refer to the [FAQ](FAQ.md#i-cant-install-dotapatch) on how to fix this issue.
+
+Or [clone (or download)](https://help.github.com/articles/cloning-a-repository/) this [repository](/../../), head over to the folder and install using the `setup.py`:
+
+    $ git clone https://github.com/arthurazs/dotapatch.git
+    $ cd dotapatch
     $ python setup.py install
+
+You might get the same `PermissionError`. Refer to the [FAQ](FAQ.md#i-cant-install-dotapatch) on how to fix this issue.
+
+**OPTIONALLY** You can use **dotapatch** without installing. Just [clone (or download)](https://help.github.com/articles/cloning-a-repository/) the [repository](/../../).
+
+    $ git clone https://github.com/arthurazs/dotapatch.git
 
 ### Gathering a new changelog
 
-1. Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest **patch**.
-2. Copy and save it as a file. The content you save **must** start with the patch name followed by colon (e.g. `6.88f:`). The second line won't be read, so you can leave it with anything other than a real changelog line (e.g. `--`). **All** the following lines **must** start with a star/asterisk (e.g. `* Anti-mage magic resistance reduced by a lot`).
+- Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest **patch**.
+- Copy and save it as a file.
+    - The content you save **must** start with the patch name followed by colon (e.g. `6.88f:`).
+    - The second line won't be read, so you can leave it with anything other than a real changelog line (e.g. `--`).
+    - **All** the following lines **must** start with a star/asterisk (e.g. `* Anti-mage magic resistance reduced by a lot`).
 
     ```
     6.88f:
@@ -105,37 +189,56 @@ If you've installed **dotapatch**, head over to the folder where you saved the c
 
     $ cd Desktop/changelogs
     $ dotapatch 688f
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    INFO Conversion went smoothly.
 
 If you haven't installed **dotapatch**, head over to the **dotapatch** folder and run **dotapatch** as a **module**.
 
-    $ cd Desktop/dota2patches
+    $ cd Desktop/dotapatch
     $ python -m dotapatch /home/arthurazs/Desktop/changelogs/688f
+    INFO HTML saved at /home/arthurazs/Desktop/dotapatch/688f.html
+    INFO Conversion went smoothly.
 
-Once the software finishes running, it will tell you where the generated HTML was saved.
+### Testing dotapatch
+
+You will need `tox`:
+
+    $ pip install tox
+
+[Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this [repository](/../../), head over to the folder and run `tox`:
+
+    $ git clone https://github.com/arthurazs/dotapatch.git
+    $ cd dotapatch
+    $ tox
 
 ## Built with
+
 **dotapatch** uses the following libraries:
-- [ast](https://docs.python.org/3.4/library/ast.html)
-    - Transforms data from HeropediaData into dictionary
-- [os.path](https://docs.python.org/3.4/library/os.path.html)
-    - Makes sure all directories are created
-    - Checks if HeropediaData was arealdy fetched, reducing internet usage and code runtime
-- [argparse](https://docs.python.org/3.4/library/argparse.html)
-    - Enables the use of arguments. Try `$ ./patch.py -h`
-- collections.[defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
-    - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
-    - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
-    - `dictionary.values()` returns a list with all changes
-- [requests](https://github.com/kennethreitz/requests)
-    - Fetches HeropediaData files
-- [logging](https://docs.python.org/3.4/library/logging.html)
-    - Manage *dotapatch* logs
-- [unittest](https://docs.python.org/3.4/library/unittest.html)
-    - Base for the tests
-    - [nose](http://nose.readthedocs.io/en/latest/) test suite (nosetests)
-        - [--rednose](https://github.com/JBKahn/rednose) plugging which improves readability
-- [setuptools](https://github.com/pypa/setuptools)
-    - Setup manager
+
+ - [ast](https://docs.python.org/3.4/library/ast.html)
+     - Transforms data from HeropediaData into dictionary
+ - [os.path](https://docs.python.org/3.4/library/os.path.html)
+     - Makes sure all directories are created and all data are downloaded
+ - [argparse](https://docs.python.org/3.4/library/argparse.html)
+     - Enables the use of arguments. Try `$ ./patch.py -h`
+ - collections.[defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
+     - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
+     - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
+     - `dictionary.values()` returns a list with all changes
+ - [requests](https://github.com/kennethreitz/requests)
+     - Fetches HeropediaData files
+ - [logging](https://docs.python.org/3.4/library/logging.html)
+     - Manage *dotapatch* logs
+ - [tox](https://tox.readthedocs.io)
+     - Run tests for Python 2.7 and Python 3.4
+         - [unittest](https://docs.python.org/3.4/library/unittest.html)
+             - Base for the tests
+             - [nose](http://nose.readthedocs.io/en/latest/) test suite (nosetests)
+                 - [--rednose](https://github.com/JBKahn/rednose) plugging which improves readability
+ - [pip](https://pypi.python.org/pypi)
+     - Installation manager
+     - [setuptools](https://github.com/pypa/setuptools)
+         - Setup manager
 
 ## Authors
 - [**Arthur Zopellaro**](https://github.com/arthurazs)
