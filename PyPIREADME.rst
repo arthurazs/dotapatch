@@ -6,7 +6,7 @@ Dota 2: Changelog formatted as it should.
 +============+=========================================================================================+
 | GitHub     | |GitHub Release| |GitHub Tag| |GitHub License| |GitHub Issues| |GitHub Pull Requests|   |
 +------------+-----------------------------------------------------------------------------------------+
-| PyPI       | |PyPI Version| |PyPI License| |Python Version| |PyPI Status|                            |
+| PyPI       | |PyPI Version| |PyPI License| |Python Version| |PyPI Wheel| |PyPI Status|               |
 +------------+-----------------------------------------------------------------------------------------+
 | CircleCI   | |CircleCI|                                                                              |
 +------------+-----------------------------------------------------------------------------------------+
@@ -381,6 +381,8 @@ This project is licensed under the `MIT License <https://github.com/arthurazs/do
 .. |PyPI License| image:: https://img.shields.io/pypi/l/dotapatch.svg
    :target: https://pypi.python.org/pypi/dotapatch
 .. |Python Version| image:: https://img.shields.io/pypi/pyversions/dotapatch.svg
+   :target: https://pypi.python.org/pypi/dotapatch
+.. |PyPI Wheel| image:: https://img.shields.io/pypi/wheel/dotapatch.svg
    :target: https://pypi.python.org/pypi/dotapatch
 .. |PyPI Status| image:: https://img.shields.io/pypi/status/dotapatch.svg
    :target: https://pypi.python.org/pypi/dotapatch
