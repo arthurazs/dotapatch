@@ -14,7 +14,7 @@ Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dotapatch/688f.htm
 
 - [Too long; didn't read](#tldr)
 - [Getting started](#getting-started)
-    - [#How does it work](#how-does-it-work)
+    - [How does it work](#how-does-it-work)
 - [Using dotapatch](#using-dotapatch)
     - [Setting up the environment](#setting-up-the-environment)
     - [Gathering a new changelog](#gathering-a-new-changelog)
