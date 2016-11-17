@@ -1,6 +1,6 @@
 # FAQ
 
-Contents
+**Contents**
 
 - [I can't install dotapatch](#i-cant-install-dotapatch)
     - [--user](#--user)
@@ -11,13 +11,12 @@ Contents
 
 # I can't install dotapatch
 
-`PermissionError` means `pip` doesn't have the necessary privileges to install python modules.
+`PermissionError` means `pip` (or `setup.py`) doesn't have the necessary privileges to install python modules.
 
     $ pip install dotapatch
-
     PermissionError: [Errno 13] Permission denied: '/usr/local/lib/pythonx.y/dist-packages/dotapatch-x.y.z.dist-info'
 
-You can solve that by either using the [--user](#--user) flag or giving [root access](#sudo) to `pip`.
+You can solve that by either using the [--user](#--user) flag or giving [root access](#sudo) to `pip` (or `setup.py`). Both methods work exactly the same for `pip` **and** `setup.py`.
 
 ## --user
 
