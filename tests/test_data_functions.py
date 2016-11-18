@@ -5,8 +5,9 @@ import os.path as path
 
 class TestDataFiles(unittest.TestCase):
 
-    def setUp(self):
-        self.DATA_DIR = HeropediaData.DATA_DIR
+    @classmethod
+    def setUpClass(cls):
+        cls.DATA_DIR = HeropediaData.DATA_DIR
 
     def test_data_dir_exist(self):
         '''file: assert 'data' folder exists'''
