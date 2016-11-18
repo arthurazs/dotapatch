@@ -1,12 +1,7 @@
 import unittest
 from dotapatch.model import Html
 import os.path as path
-
-
-def setUpModule():
-    # global model
-    # model = Html('688e', 'default')
-    pass
+import os
 
 
 class TestTemplateFile(unittest.TestCase):
@@ -14,6 +9,25 @@ class TestTemplateFile(unittest.TestCase):
     def test_template_dir_exist(self):
         '''tmpl: assert 'templates' folder exists'''
         self.assertTrue(path.exists(Html.TEMPLATES_DIR))
+
+    def test_nonexistent_template_use_default_template(self):
+        '''tmpl: try nonexistent template and use default instead'''
+        try:
+            Html('test', '?123asd,v03ekca0cd0')
+        except (
+                IOError, OSError, SyntaxError,
+                ValueError, SystemExit) as err:
+            self.fail('Raised {}.'.format(err.__class__.__name__))
+
+    def test_malformed_template(self):
+        '''tmpl: raise error for malformed template'''
+        file_path = path.join(Html.TEMPLATES_DIR, 'test_delete')
+        with self.assertRaises(SystemExit) as context:
+            with open(file_path, 'w') as test_delete:
+                test_delete.write('{1:2}')
+            Html('test', 'test_delete')
+        os.remove(file_path)
+        self.assertEqual(context.exception.code, -1)
 
 
 class TestHtmlDictionary(unittest.TestCase):
@@ -31,7 +45,7 @@ class TestHtmlDictionary(unittest.TestCase):
         TestHtmlDictionary.bg_style = self.bg_style
 
     def test_add_general(self):
-        '''tmpl: assert general content is added properly'''
+        '''html: assert general content is added properly'''
         lines = ['content one', 'content two']
         self.html.add_general(lines)
         self.desired_content += \
@@ -50,7 +64,7 @@ class TestHtmlDictionary(unittest.TestCase):
             self.desired_content, self.html.get_content())
 
     def test_add_items(self):
-        '''tmpl: assert item content is added properly'''
+        '''html: assert item content is added properly'''
         key = 'dname'
         values = ['Change one.', 'Change two.']
         items = {key: values}
@@ -73,7 +87,7 @@ class TestHtmlDictionary(unittest.TestCase):
             self.desired_content, self.html.get_content())
 
     def test_add_heroes(self):
-        '''tmpl: assert hero content is added properly'''
+        '''html: assert hero content is added properly'''
         key = 'dname'
         values = ['Change one.', 'Change two.']
         heroes = {key: values}
@@ -96,7 +110,7 @@ class TestHtmlDictionary(unittest.TestCase):
             self.desired_content, self.html.get_content())
 
     def test_close(self):
-        '''tmpl: assert content closes properly'''
+        '''html: assert content closes properly'''
         self.html.close()
 
         self.desired_content += \
