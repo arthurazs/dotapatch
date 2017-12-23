@@ -69,7 +69,11 @@ Contact me at @arthurazs if the error persists.
 
             for line in lines[:]:
                 found_hero = data.get_hero_name(line)
-                formatted_line = ' '.join(line.split(':')[1:])
+
+                # Remove hero/item name, capitalize the line
+                formatted_line = ' '.join(line.split(': ')[1:])
+                formatted_line = formatted_line.capitalize()
+
                 if found_hero:
                     hero[found_hero].append(formatted_line)
                     lines.remove(line)
