@@ -82,13 +82,13 @@ class HeropediaData (object):
         '''
         name = hero_tuple[0]    # gets hero name
         proper_name = {
-            'wisp': 'io', 'abyssal_underlord': 'underlord',
-            'obsidian_destroyer': 'outworld_devourer',
-            'shredder': 'timbersaw', 'nevermore': 'shadow_fiend',
+            'wisp': 'io', 'abyssal underlord': 'underlord',
+            'obsidian destroyer': 'outworld devourer',
+            'shredder': 'timbersaw', 'nevermore': 'shadow fiend',
             'windrunner': 'windranger', 'zuus': 'zeus',
-            'necrolyte': 'necrophos', 'skeleton_king': 'wraith_king',
-            'rattletrap': 'clockwerk', 'furion': 'natures_prophet',
-            'doom_bringer': 'doom', 'treant': 'treant_protector',
+            'necrolyte': 'necrophos', 'skeleton king': 'wraith king',
+            'rattletrap': 'clockwerk', 'furion': 'natures prophet',
+            'doom bringer': 'doom', 'treant': 'treant protector',
             'magnataur': 'magnus'
         }
 
@@ -119,67 +119,14 @@ class HeropediaData (object):
 
         return proper_name.get(name.lower(), name)
 
-    # Handle name bugs
-    @staticmethod
-    def _prepare_d_name(name):
-        '''Format name and return proper dname.
-
-        Formats name to proper dname.
-        e.g. "nyx" becomes "nyx assassin"
-        e.g. 'RiKi' becomes 'riki'
-        e.g. 'riki' remains 'riki'
-
-        Parameters
-        ----------
-        name : str
-            Hero or Item name.
-
-        Returns
-        -------
-        str.lower()
-            Formatted dname all lowercase.
-
-        '''
-        dname = name.lower()
-        proper_name = {
-            'drow': 'drow ranger', 'nyx': 'nyx assassin',
-            'smokescreen': 'smoke screen',
-            'nightstalker': 'night stalker'
-        }
-        return proper_name.get(dname, name.lower())
-
-    @staticmethod
-    def _prepare_item(key):
-        '''Format key if necessary.
-
-        e.g. 'dIfFuSaL_bLaDe_2' becomes 'diffusal_blade'
-        e.g. 'DrAgOn_LaNcE' becomes 'dragon_lance'
-
-        Parameters
-        ----------
-        key : string
-            item_dictionary.key.
-
-        Returns
-        -------
-        str.lower()
-            Formatted key all lowercase.
-
-        '''
-        proper_name = {
-            'diffusal_blade_2': 'diffusal_blade',
-            # 'aeon_disk': 'combo_breaker'
-        }
-        return proper_name.get(key.lower(), key.lower())
-
     # Default Function
-    def _get_name(self, line, dictionary):
+    def _get_name(self, line, dictionary, proper_name):
         name = line.split(':')[0]
-        for key, value in dictionary.items():
-            if (HeropediaData._prepare_d_name(name) ==
-                    value['dname'].lower()):
-                return HeropediaData._prepare_item(key)
-        return None
+        name = name.lower().replace(' ', '_')
+        found = dictionary.get(name, None)
+        if not found:
+            name = proper_name.get(name, None)
+        return name
 
     # Name Functions
     def get_item_name(self, line):
@@ -199,7 +146,12 @@ class HeropediaData (object):
             Item id name.
 
         '''
-        key = self._get_name(line, self._item_dictionary)
+        proper_name = {
+            "linken's_sphere": 'sphere',
+            'manta_style': 'manta',
+            # 'aeon_disk': 'combo_breaker'
+        }
+        key = self._get_name(line, self._item_dictionary, proper_name)
         return key
 
     def get_hero_name(self, line):
@@ -219,5 +171,8 @@ class HeropediaData (object):
             Hero id name.
 
         '''
-        key = self._get_name(line, self._hero_dictionary)
+        proper_name = {
+            'nightstalker': 'night_stalker',
+        }
+        key = self._get_name(line, self._hero_dictionary, proper_name)
         return key

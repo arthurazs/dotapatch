@@ -50,35 +50,6 @@ class TestStringManipulation(unittest.TestCase):
         dictionary = ('AsD', None)
         self.assertEqual('AsD', HeropediaData.sort_item(dictionary))
 
-    # prepare_d_name
-    def test_prepare_d_name_should_change(self):
-        '''str: prepare_d_name(nyx_line) returns nyx_dname'''
-        nyx_line = 'NyX'
-        nyx_dname = 'nyx assassin'
-        self.assertEqual(
-            nyx_dname, HeropediaData._prepare_d_name(nyx_line))
-
-    def test_prepare_d_name_should_not_change(self):
-        '''str: prepare_d_name(void_line) returns void_line.lower()'''
-        void_line = 'FaCeLeSs VoId'
-        self.assertEqual(
-            void_line.lower(), HeropediaData._prepare_d_name(void_line))
-
-    # prepare_item
-    def test_prepare_item_should_change(self):
-        '''
-        str: prepare_item('dIfFuSaL_bLaDe_2') returns 'diffusal_blade'
-        '''
-        self.assertEqual(
-            'diffusal_blade',
-            HeropediaData._prepare_item('dIfFuSaL_bLaDe_2'))
-
-    def test_prepare_item_should_not_change(self):
-        '''str: prepare_item("DrAgOn_LaNcE") returns "dragon_lance"'''
-        self.assertEqual(
-            'dragon_lance',
-            HeropediaData._prepare_item('DrAgOn_LaNcE'))
-
 
 if __name__ == '__main__':
     unittest.main()
