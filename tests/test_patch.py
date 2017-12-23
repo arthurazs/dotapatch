@@ -14,7 +14,7 @@ class Test(unittest.TestCase):
     def test_dont_raise_ioerror(self):
         '''ptc: parse file with no GENERAL section and return 0'''
         file_path = path.abspath(
-            path.join('dotapatch', 'changelogs', '000a'))
+            path.join('dotapatch', 'changelogs', '706f'))
         dotapatch = Dotapatch(file_path)
         self.assertEqual(Dotapatch.SUCCESS, dotapatch.parse())
 
