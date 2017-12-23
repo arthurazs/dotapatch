@@ -8,7 +8,7 @@
 
 **dotapatch** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
-Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dotapatch/688f.html). This is the latest patch parsed using **dotapatch**.
+Check the [Gameplay Update 7.07d](https://arthurazs.github.io/dotapatch/707d.html). This is the latest patch parsed using **dotapatch**.
 
 **Contents**
 
@@ -32,24 +32,22 @@ Check the [Gameplay Update 6.88f](https://arthurazs.github.io/dotapatch/688f.htm
 
 Save a changelog file in accordance with the following format:
 
-    6.88f:
-    --
-    * Purifying Flames manacost increased from 50/60/70/80 to 80/85/90/95
-    * Morphling base damage reduced by 4
-    * Nyx's Scepter Burrow cast time increased from 1 to 1.5
-    * Fixed Return working on Centaur Illusions
+    7.07d:
+    ==
+    * Nullifier: Manacost reduced from 100 to 75
+    * Alchemist: Unstable Concoction damage increased from 150/220/290/360 to 160/240/320/400
 
 Head over to the directory you saved the changelog and run **dotapatch**.
 
     $ cd Desktop/changelogs
-    $ dotapatch 688f
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    $ dotapatch 707d
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
     INFO Conversion went smoothly.
 
 Make sure that `<filename>` is in your current directory. You can also provide the `path` to the changelog.
 
-    $ dotapatch /home/arthurazs/Desktop/changelogs/688f
-    INFO HTML saved at /home/arthurazs/688f.html
+    $ dotapatch /home/arthurazs/Desktop/changelogs/707d
+    INFO HTML saved at /home/arthurazs/707d.html
     INFO Conversion went smoothly.
 
 ## Getting started
@@ -80,15 +78,15 @@ You will need python.
 
 Run **dotapatch** stating the full path to the file:
 
-    $ dotapatch /home/arthurazs/Desktop/changelogs/688f
-    INFO HTML saved at /home/arthurazs/688f.html
+    $ dotapatch /home/arthurazs/Desktop/changelogs/707d
+    INFO HTML saved at /home/arthurazs/707d.html
     INFO Conversion went smoothly.
 
 Or you can head over to the directory with the changelog and run **dotapatch** stating only the filename:
 
     $ cd Desktop/changelogs
-    $ dotapatch 688f
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    $ dotapatch 707d
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
     INFO Conversion went smoothly.
 
 There are some optional arguments that you can use:
@@ -96,26 +94,26 @@ There are some optional arguments that you can use:
     $ dotapatch --version
     dotapatch: v2.0
 
-    $ dotapatch 688f
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    $ dotapatch 707d
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
     INFO Conversion went smoothly.
 
-    $ dotapatch 688f --quiet
+    $ dotapatch 707d --quiet
 
-    $ dotapatch 688f --debug
+    $ dotapatch 707d --debug
     DEBUG Reading changelog.
     DEBUG Parsing changelog.
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
     INFO Conversion went smoothly.
 
-    $ dotapatch dotapatch/changelogs/688f --save-log
+    $ dotapatch dotapatch/changelogs/707d --save-log
     INFO Recording log file at /home/arthurazs/git/dotapatch/dotapatch.log
-    INFO HTML saved at /home/arthurazs/git/dotapatch/688f.html
+    INFO HTML saved at /home/arthurazs/git/dotapatch/707d.html
     INFO Conversion went smoothly.
 
-    $ dotapatch dotapatch/changelogs/688f --template gh-pages
+    $ dotapatch dotapatch/changelogs/707d --template gh-pages
     INFO Using 'gh-pages' template.
-    INFO HTML saved at /home/arthurazs/git/dotapatch/688f.html
+    INFO HTML saved at /home/arthurazs/git/dotapatch/707d.html
     INFO Conversion went smoothly.
 
 - `--template` indicates which template is going to be used to parse the changelog. The `default` template generates a standalone HTML that uses [dota2](http://dota2.com) css files.
@@ -148,39 +146,20 @@ You might get the same `PermissionError`. Refer to the [FAQ](FAQ.md#i-cant-insta
 
 - Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest **patch**.
 - Copy and save it as a file.
-    - The content you save **must** start with the patch name followed by colon (e.g. `6.88f:`).
+    - The content you save **must** start with the patch name followed by colon (e.g. `7.07d:`).
     - The second line won't be read, so you can leave it with anything other than a real changelog line (e.g. `--`).
     - **All** the following lines **must** start with a star/asterisk (e.g. `* Anti-mage magic resistance reduced by a lot`).
 
     ```
-    6.88f:
-    --
-    * Purifying Flames manacost increased from 50/60/70/80 to 80/85/90/95
-    * Torrent cooldown increased from 10 to 16/14/12/10
-    * Ghostship Rum damage reduction changed from 50% to 40/45/50%
-    * Shadow Poison manacost increased from 40 to 55
-    * Atrophy Aura attack damage reduction changed from 18/26/34/42% to 10/20/30/40%
-    * Morph Replicate cast time increased from 0.25 to 0.35
-    * Morphling base damage reduced by 4
-    * Drow Ranger strength gain reduced from 1.9 to 1.6
-    * Purification cast range reduced from 700 to 575
-    * Purification cast point reduced from 0.25 to 0.2
-    * Purification cooldown reduced from 10 to 9
-    * Repel duration rescaled from 4/6/8/10 to 5/6/7/8
-    * Repel cooldown reduced from 14 to 20/18/16/14
-    * Outworld Devourer base damage reduced by 6
-    * Starfall Scepter cooldown increased from 9 to 10
-    * Faceless Void base armor reduced by 1
-    * Stifling Dagger cast range reduced from 825/950/1075/1200 to 525/750/975/1200 
-    * Spark Wraith no longer dispels (still slows)
-    * Arc Warden movement speed reduced by 10
-    * Healing Ward manacost increased from 120/125/130/135 to 140
-    * Smoke Screen slow reduced from 19/21/23/25% to 13/17/21/25%
-    * Track movement speed bonus reduced from 20% to 16/18/20%
-    * Nyx's Scepter Burrow cast time increased from 1 to 1.5
-    * Flamebreak knockback no longer interrupts channeling spells (behaves like blinding light)
-    * Flamebreak burn duration increased from 3/4/5/6 to 4/5/6/7 (total damage increased)
-    * Fixed Return working on Centaur Illusions
+    7.07d:
+    ==
+    * Necronomicon: Mana Break damage from 60 to 50%
+    * Nullifier: Cooldown reduced from 14 to 13
+    * Nullifier: Manacost reduced from 100 to 75
+
+    * Alchemist: Unstable Concoction damage increased from 150/220/290/360 to 160/240/320/400
+    * Bane: Enfeeble duration reduced from 20 to 14/16/18/20
+    * Bane: Brain Sap damage rescaled from 90/160/230/300 to 75/150/225/300
     ```
 
 ### Running dotapatch
@@ -188,15 +167,15 @@ You might get the same `PermissionError`. Refer to the [FAQ](FAQ.md#i-cant-insta
 If you've installed **dotapatch**, head over to the folder where you saved the changelog file and run **dotapatch**.
 
     $ cd Desktop/changelogs
-    $ dotapatch 688f
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/688f.html
+    $ dotapatch 707d
+    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
     INFO Conversion went smoothly.
 
 If you haven't installed **dotapatch**, head over to the **dotapatch** folder and run **dotapatch** as a **module**.
 
     $ cd Desktop/dotapatch
-    $ python -m dotapatch /home/arthurazs/Desktop/changelogs/688f
-    INFO HTML saved at /home/arthurazs/Desktop/dotapatch/688f.html
+    $ python -m dotapatch /home/arthurazs/Desktop/changelogs/707d
+    INFO HTML saved at /home/arthurazs/Desktop/dotapatch/707d.html
     INFO Conversion went smoothly.
 
 ### Testing dotapatch
