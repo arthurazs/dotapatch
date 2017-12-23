@@ -15,4 +15,3 @@ dependencies:
 test:
   override:
     - tox
-    - python-codacy-coverage -r coverage.xml

@@ -68,7 +68,7 @@ setup(
         'Topic :: Text Processing :: Markup',
         'Topic :: Text Processing :: Markup :: HTML'
     ],
-    setup_requires=['setuptools', 'pip', 'nose', 'rednose'],
+    setup_requires=['setuptools', 'pip', 'nose', 'rednose', 'codacy-coverage'],
     install_requires=['requests'],
     entry_points={
         'console_scripts': [
