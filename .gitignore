@@ -16,3 +16,5 @@ dist
 #tox
 *.eggs
 .tox/
+.coverage
+coverage.xml
