@@ -17,5 +17,4 @@ test:
     - tox
     - tox -e codacy
   post:
-    - mkdir $CIRCLE_ARTIFACTS
     - cp coverage.xml $CIRCLE_ARTIFACTS
