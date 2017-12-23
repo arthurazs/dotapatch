@@ -1,5 +1,6 @@
 from __future__ import print_function
 import requests
+import json
 import ast
 import os
 import os.path as path
@@ -17,10 +18,7 @@ class HeropediaData(object):
     def _downloadFile(name):
         link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
         code = requests.get(link)
-        data = code.text.replace('{"' + name + '":', '') \
-            .replace('}}', '}').replace(':false', ':False') \
-            .replace(':null', ':None').replace(':true', ':True')
-        dictionary = ast.literal_eval(data)
+        dictionary = json.loads(code.text)[name]
         return dictionary
 
     @staticmethod
@@ -37,6 +35,7 @@ class HeropediaData(object):
 
     # Initialization
     def __init__(self):
+
         # Check data folder
         if not path.exists(HeropediaData.DATA_DIR):
             os.makedirs(HeropediaData.DATA_DIR)
