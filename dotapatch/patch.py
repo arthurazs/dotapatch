@@ -52,7 +52,10 @@ Contact me at @arthurazs if the error persists.
                 # read changelog
                 lines = []
                 for line in changelog:
-                    lines.append(line.replace('* ', '').rstrip())
+                    line = line.replace('* ', '').rstrip()
+                    if line:
+                        lines.append(line)
+
                 patch_version = lines[0][:-1]
                 patch_name = patch_version.replace('.', '')
                 lines = lines[2:]
