@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dota2patches 7.06f by @arthurazs</title>
+
+        <link rel="shortcut icon" href="http://www.dota2.com/favicon.ico" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+        <link href="http://www.dota2.com/public/css/global.css?v=b3660964" rel="stylesheet" type="text/css" >
+        <link href="http://www.dota2.com/public/css/global_english.css?v=BpCw4C6e29Gp" rel="stylesheet" type="text/css" >
+        <link href="http://www.dota2.com/public/css/publicheader.css?v=n3QrQzPd1_eP" rel="stylesheet" type="text/css" >
+        <link href="http://www.dota2.com/public/css/687.css?v=b3660964" rel="stylesheet" type="text/css" >
+        <link href="http://www.dota2.com/public/css/font_goudytrajan.css?v=.zvTaeKqDJjHz" rel="stylesheet" type="text/css" >
+
+        <script type="text/javascript" src="http://cdn.dota2.com/apps/dota2/javascript/static/jquery-1.7.1.min.js?v=3660964"></script>
+        <script type="text/javascript">$J = jQuery;</script>
+        <script type="text/javascript" src="http://steamcommunity-a.akamaihd.net/public/shared/javascript/shared_global.js?v=t0a8rf-ckasw&amp;l=english"></script>
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-33822635-2']);
+            _gaq.push(['_setSampleRate', '1']);
+            _gaq.push(['_setDomainName', 'dota2.com']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+        <script>
+            $( function () {
+                var URL = ( location.protocol == 'https:' ) ? 'https://www.dota2.com/' : 'http://www.dota2.com/';
+                URL = URL + 'jsfeed/heropediadata?feeds=herodata,itemdata';
+                $.ajax(
+                    {
+                        type:'GET',
+                        cache:true,
+                        url: URL,
+                        dataType:'jsonp',
+                        success: function( data )
+                        {
+                            g_HeroData = data['herodata'];
+                            g_ItemData = data['itemdata'];
+                            formatHeroAndItemNotes();
+                        }
+                    }
+                );
+            } );
+
+            var g_HeroData = false;
+            var g_ItemData = false;
+            function formatHeroAndItemNotes()
+            {
+                $.each( ['items','heroes'], function( i, type ) {
+                    var containers = ['#Heroes','#Items'];
+                    for ( i = 0; i < containers.length; i++ )
+                    {
+                        container = containers[i];
+                        var strContents = $(container).html();
+                        if ( strContents )
+                        {
+                            var foundTags = strContents.match( /\[\[\w+\]\]/g );
+                            if ( foundTags )
+                            {
+                                for ( x = 0; x < foundTags.length; x++ )
+                                {
+                                    tag = foundTags[x];
+                                    tag = tag.substring( 2, tag.length-2 );
+                                    bUnfound = false;
+                                    if ( g_ItemData[tag] )
+                                    {
+                                        path = 'items/'+tag+'_lg.png';
+                                        name = g_ItemData[tag].dname;
+                                        hw = 'width="48" height="36"';
+                                    }
+                                    else if ( g_HeroData[tag] )
+                                    {
+                                        path = 'heroes/'+tag+'_sb.png';
+                                        name = g_HeroData[tag].dname;
+                                        hw = '';
+                                    }
+                                    else
+                                    {
+                                        bUnfound = true;
+                                    }
+                                    if ( !bUnfound )
+                                    {
+                                        var strHTML = '<div class="ChangeNoteImage"><img src="http://cdn.dota2.com/apps/dota2/images/'+path+'" '+hw+' /></div><br style="clear: left;"/>';
+                                        strHTML += '<b>' + name + '</b>';
+                                        strContents = strContents.replace( foundTags[x], strHTML );
+                                    }
+                                }
+                                $(container).html( strContents );
+                            }
+                        }
+                    }
+                });
+
+                var eCount = 0;
+                $( '.ChangeDetailsExtended' ).each( function() {
+                    var $extended = $( this );
+                    $extended.attr( 'id', 'extended'+eCount );
+                    $extended.before( '<a href="#" class="ChangeDetailsEToggle" id="eToggle'+eCount+'" onclick="$(\'#extended'+eCount+'\').show();$(this).hide();return false;">+ Show Details</a>' );
+                    $extended.html( '<a href="#" id="eToggleHide'+eCount+'" class="ChangeDetailsEToggle HideButton" onclick="$(\'#extended'+eCount+'\').hide();$(\'#eToggle'+eCount+'\').show();return false;">- Hide Details</a>' + $extended.html() );
+                    eCount++;
+                } );
+                $( '.ChangeDetailsPopup' ).each( function() {
+                    var $popup = $( this );
+                    var $popupHoverButton = $( '<a href="#">[?]</a>' );
+                    $popup.before( $popupHoverButton );
+                    $popupHoverButton.hover( function() {
+                        $popup.css( "display", "block" );
+                    }, function() {
+                        $popup.css( "display", "none" );
+                    });
+                    $popupHoverButton.click( function() {
+                        // Suppress the click event
+                        return false;
+                    });
+                } );
+            }
+        </script>
+
+        <style>
+            #Items b:nth-of-type(even), #Items b:nth-of-type(odd) {
+                font-size: 18px;
+                padding-top: 0px;
+                padding-bottom: 4px;
+                font-family: 'Radiance-SemiBold';
+                font-weight: normal;
+                color: #AAAAAA;
+                text-shadow: 1px 1px 1px #000000;
+                text-transform: capitalize;
+                letter-spacing: 0px;
+            }
+
+            div.Container.BGStyle0
+            {
+                border-top: 2px solid #232323;
+            }
+
+            div.Container.BGStyle0, div.Container.BGStyle0 .Inner
+            {
+                background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/featured.jpg' );
+                background-color: #151618;
+            }
+
+            .BGStyle0 .Inner
+            {
+                padding-top: 80px;
+                padding-bottom: 40px;
+                padding-right: 0px;
+            }
+
+            div.Container.BGStyle1 {
+                 border-top: 0px;
+            }
+
+            div.Container.BGStyle1, div.Container.BGStyle1 .Inner
+            {
+                background-position: center 0px, center 0px;
+                background-image: url( 'http://cdn.dota2.com/apps/dota2/images/687/list_top.jpg' ), url( 'http://cdn.dota2.com/apps/dota2/images/687/list.jpg' );
+                background-color: #0D0E0F;
+                background-repeat: no-repeat, repeat-y;
+            }
+
+            .BGStyle1 .Inner
+            {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="Container" id="KeyArt">
+            <div class="Inner">
+                <a href="http://www.dota2.com/"><img src="http://cdn.dota2.com/apps/dota2/images/springcleaning2016/logo.png" /></a>
+            </div>
+        </div>
+
+        <a class="HiddenAnchor" name="GameplayHeader"> </a>
+        <div class="Container" id="Header">
+            <div class="Inner" style="text-align:center">
+                <h1 style="font-size: 71px">Gameplay Update 7.06f</h1>
+                <h3><a href="index.html">Previous changelogs</a></h3>
+            </div>
+        </div>
+
+        <div class="Container RepeatY BGStyle0" id="Items">
+            <div class="Inner">
+                <h3>Item changes</h3>
+
+                    [[diffusal_blade]]
+                    <ul>
+                        <li>Agility reduced from 25/35 to 20/30</li>
+                    </ul>
+
+                    [[force_staff]]
+                    <ul>
+                        <li>Cast range reduced from 800 to 750</li>
+                    </ul>
+
+                    [[helm_of_the_dominator]]
+                    <ul>
+                        <li>Attack speed aura increased from 10 to 15</li>
+                    </ul>
+
+                    [[mask_of_madness]]
+                    <ul>
+                        <li>Armor reduction increased from -5 to -6</li>
+                        <li>Cooldown increased from 20 to 22</li>
+                    </ul>
+
+            </div>
+        </div>
+
+        <div class="Container RepeatY BGStyle1" id="Heroes">
+             <div class="Inner">
+                <h3>Heroes</h3>
+
+                    [[ancient_apparition]]
+                    <ul>
+                        <li>Ice blast manacost increased from 100/125/150 to 150</li>
+                    </ul>
+
+                    [[bane]]
+                    <ul>
+                        <li>Base strength, agility and intelligence increased by 1</li>
+                        <li>Nightmare cast point reduced from 0.5 to 0.4</li>
+                    </ul>
+
+                    [[batrider]]
+                    <ul>
+                        <li>Firefly manacost increased from 100 to 125</li>
+                    </ul>
+
+                    [[bloodseeker]]
+                    <ul>
+                        <li>Rupture manacost increased from 150/200/250 to 200/225/250</li>
+                    </ul>
+
+                    [[chen]]
+                    <ul>
+                        <li>Hand of god heal increased from 225/350/475 to 250/375/500</li>
+                    </ul>
+
+                    [[earthshaker]]
+                    <ul>
+                        <li>Fissure cooldown increased from 15 to 18/17/16/15</li>
+                        <li>Enchant totem manacost increased from 20/30/40/50 to 35/40/45/50</li>
+                    </ul>
+
+                    [[lich]]
+                    <ul>
+                        <li>Chain frost no longer applies a ministun</li>
+                        <li>Ice armor slow from 30% to 24/26/28/30%</li>
+                    </ul>
+
+                    [[lion]]
+                    <ul>
+                        <li>Earth spike stun duration increased from 1.1/1.6/2.1/2.6 to 1.4/1.8/2.2/2.6</li>
+                        <li>Level 20 talent changed from +8% spell amplification to +300 finger of death damage</li>
+                    </ul>
+
+                    [[lycan]]
+                    <ul>
+                        <li>Howl no longer provides a net heal on buff application/loss (always maintains the same hp percentage now)</li>
+                    </ul>
+
+                    [[furion]]
+                    <ul>
+                        <li>Base movement speed reduced from 295 to 290</li>
+                        <li>Sprout flying vision reduced from 750 to 500</li>
+                    </ul>
+
+                    [[necrolyte]]
+                    <ul>
+                        <li>Reaper's scythe cooldown increased from 90/80/70 to 100</li>
+                        <li>Ghost shroud magic resistance penalty increased from -20% to -25%</li>
+                    </ul>
+
+                    [[night_stalker]]
+                    <ul>
+                        <li>Darkness duration reduced from 50 to 40</li>
+                    </ul>
+
+                    [[nyx_assassin]]
+                    <ul>
+                        <li>Base damage reduced by 3</li>
+                    </ul>
+
+                    [[puck]]
+                    <ul>
+                        <li>Illusory orb flying vision reduced from 550 to 450</li>
+                    </ul>
+
+                    [[shadow_demon]]
+                    <ul>
+                        <li>Level 15 talent from +8% spell amplification to +10%</li>
+                        <li>Level 15 talent from +75 cast range to +100</li>
+                    </ul>
+
+                    [[skywrath_mage]]
+                    <ul>
+                        <li>Mystic flare manacost reduced from 350/575/800 to 300/550/800</li>
+                        <li>Level 15 talent increased from +10% spell lifesteal to +15%</li>
+                    </ul>
+
+                    [[spectre]]
+                    <ul>
+                        <li>Haunt illusion damage increased from 30% to 40%</li>
+                    </ul>
+
+                    [[spirit_breaker]]
+                    <ul>
+                        <li>Base movement speed reduced from 290 to 285</li>
+                    </ul>
+
+                    [[sven]]
+                    <ul>
+                        <li>Stormbolt stun duration reduced from 2 to 1.7/1.8/1.9/2.0</li>
+                        <li>Warcry cooldown increased from 34/28/22/16 to 35/30/25/20</li>
+                    </ul>
+
+                    [[tiny]]
+                    <ul>
+                        <li>Toss manacost reduced from 120 to 90/100/110/120</li>
+                        <li>Grow scepter attack range bonus increased from 85 to 150</li>
+                    </ul>
+
+                    [[undying]]
+                    <ul>
+                        <li>Tombstone attacks required increased from 3/4/5/7 to 4/5/6/8</li>
+                    </ul>
+
+                    [[venomancer]]
+                    <ul>
+                        <li>Plague wards vision reduced from 1200/800 to 800/800</li>
+                    </ul>
+
+                    [[windrunner]]
+                    <ul>
+                        <li>Shackles duration increased from 1.5/2.25/3/3.75 to 2.0/2.6/3.2/3.8</li>
+                        <li>Shackles cooldown increased from 12 to 18/16/14/12</li>
+                    </ul>
+
+                    [[winter_wyvern]]
+                    <ul>
+                        <li>Level 15 talent increased from +20 movement speed to +35</li>
+                        <li>Level 15 talent increased from +50 damage to +75</li>
+                    </ul>
+
+                    [[skeleton_king]]
+                    <ul>
+                        <li>Reincarnation cooldown reduced from 240/140/40 to 200/120/40</li>
+                        <li>Level 15 talent increased from +15 movement speed to +30</li>
+                    </ul>
+
+            </div>
+        </div>
+
+        <div class="Container" id="Footer">
+            <div class="Inner"></div>
+        </div>
+    </body>
+</html>
