@@ -1,1 +1,17 @@
+# python
 *~
+__pycache__
+*.pyc
+
+# setup.py
+build
+dist
+*.egg-info
+*.egg
+
+#dotapatch
+*.log
+
+#tox
+*.eggs
+.tox/
