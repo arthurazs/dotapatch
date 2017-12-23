@@ -82,13 +82,13 @@ class HeropediaData(object):
         '''
         name = hero_tuple[0]    # gets hero name
         proper_name = {
-            'wisp': 'io', 'abyssal underlord': 'underlord',
-            'obsidian destroyer': 'outworld devourer',
+            'wisp': 'io', 'abyssal_underlord': 'underlord',
+            'obsidian_destroyer': 'outworld devourer',
             'shredder': 'timbersaw', 'nevermore': 'shadow fiend',
             'windrunner': 'windranger', 'zuus': 'zeus',
-            'necrolyte': 'necrophos', 'skeleton king': 'wraith king',
+            'necrolyte': 'necrophos', 'skeleton_king': 'wraith king',
             'rattletrap': 'clockwerk', 'furion': 'natures prophet',
-            'doom bringer': 'doom', 'treant': 'treant protector',
+            'doom_bringer': 'doom', 'treant': 'treant protector',
             'magnataur': 'magnus'
         }
 
@@ -148,7 +148,7 @@ class HeropediaData(object):
 
         '''
         proper_name = {
-            "linken's_sphere": 'sphere',
+            "linken's_sphere": 'sphere', 'battle_fury': 'bfury',
             'manta_style': 'manta',
             # 'aeon_disk': 'combo_breaker'
         }
@@ -176,7 +176,12 @@ class HeropediaData(object):
 
         '''
         proper_name = {
-            'nightstalker': 'night_stalker',
+            'nightstalker': 'night_stalker', 'anti-mage': 'antimage',
+            'underlord': 'abyssal_underlord', 'clockwerk': 'rattletrap',
+            'windranger': 'windrunner', 'shadow_fiend': 'nevermore',
+            'vengeful_spirit': 'vengefulspirit', 'drow': 'drow_ranger',
+            "nature's_prophet": 'furion', 'necrophos': 'necrolyte',
+            'wraith_king': 'skeleton_king'
         }
         name = HeropediaData._get_name(
             line,
