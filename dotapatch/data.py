@@ -119,8 +119,8 @@ class HeropediaData(object):
         return proper_name.get(name.lower(), name)
 
     # Default Function
-    @classmethod
-    def _get_name(cls, line, dictionary, proper_name):
+    @staticmethod
+    def _get_name(line, dictionary, proper_name):
         name = line.split(':')[0]
         name = name.lower().replace(' ', '_')
         found = dictionary.get(name, None)
