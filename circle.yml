@@ -9,11 +9,10 @@ machine:
 
 dependencies:
   override:
-    - pip install codecov
-    - pip install -U tox
     - pip install -U .
     - pyenv local 2.7 3.4.3
 
 test:
   override:
     - tox
+    - python-codacy-coverage -r coverage.xml

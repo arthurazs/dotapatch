@@ -74,6 +74,6 @@ setup(
         'console_scripts': [
             '{}=dotapatch.__main__:main'.format(info_name)]
     },
-    tests_require=['nose', 'rednose', 'tox', 'coverage'],
+    tests_require=['nose', 'rednose', 'tox', 'coverage', 'codacy-coverage'],
     test_suite='nose.collector'
 )
