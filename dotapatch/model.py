@@ -6,7 +6,7 @@ import os.path as path
 import logging
 
 
-class Html (object):
+class Html(object):
 
     TEMPLATES_DIR = path.abspath(
         path.join(path.dirname(__file__), 'templates'))
@@ -28,7 +28,8 @@ class Html (object):
                 template_content = self._load_template('default')
         return template_content
 
-    def _check_template_missing_keys(self, dic):
+    @classmethod
+    def _check_template_missing_keys(cls, dic):
         necessary_keys = [
             'OPEN_HTML', 'OPEN_GENERAL', 'OPEN_GENERAL_UL',
             'GENERAL_LI', 'CLOSE_GENERAL_UL', 'CLOSE_GENERAL',
@@ -46,7 +47,7 @@ class Html (object):
         try:
             template_dictionary = ast.literal_eval(template_content)
             if isinstance(template_dictionary, dict):
-                missing_keys = self._check_template_missing_keys(
+                missing_keys = Html._check_template_missing_keys(
                     template_dictionary)
                 if missing_keys:
                     raise SyntaxError(

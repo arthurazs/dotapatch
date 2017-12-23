@@ -5,7 +5,7 @@ import os
 import os.path as path
 
 
-class HeropediaData (object):
+class HeropediaData(object):
 
     # CONSTANTS
     DATA_DIR = path.abspath(path.join(path.dirname(__file__), 'data'))
@@ -120,7 +120,8 @@ class HeropediaData (object):
         return proper_name.get(name.lower(), name)
 
     # Default Function
-    def _get_name(self, line, dictionary, proper_name):
+    @classmethod
+    def _get_name(cls, line, dictionary, proper_name):
         name = line.split(':')[0]
         name = name.lower().replace(' ', '_')
         found = dictionary.get(name, None)
@@ -151,8 +152,11 @@ class HeropediaData (object):
             'manta_style': 'manta',
             # 'aeon_disk': 'combo_breaker'
         }
-        key = self._get_name(line, self._item_dictionary, proper_name)
-        return key
+        name = HeropediaData._get_name(
+            line,
+            self._item_dictionary,
+            proper_name)
+        return name
 
     def get_hero_name(self, line):
         '''Return the hero name id.
@@ -174,5 +178,8 @@ class HeropediaData (object):
         proper_name = {
             'nightstalker': 'night_stalker',
         }
-        key = self._get_name(line, self._hero_dictionary, proper_name)
-        return key
+        name = HeropediaData._get_name(
+            line,
+            self._hero_dictionary,
+            proper_name)
+        return name
