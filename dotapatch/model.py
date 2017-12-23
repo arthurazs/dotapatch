@@ -148,7 +148,8 @@ class Html (object):
                 self._template_dictionary['OPEN_ITEMS']
                 .format(style=int(self._bg_style)))
 
-            for key, values in sorted(item_dictionary.items()):
+            for key, values in sorted(item_dictionary.items(),
+                                      key=HeropediaData.sort_item):
                 self._add_content(
                     self._template_dictionary['OPEN_ITEMS_UL']
                     .format(key=key))
@@ -178,7 +179,7 @@ class Html (object):
                 .format(style=int(self._bg_style)))
 
             for key, values in sorted(hero_dictionary.items(),
-                                      key=HeropediaData.sort):
+                                      key=HeropediaData.sort_hero):
                 self._add_content(
                     self._template_dictionary['OPEN_HEROES_UL']
                     .format(key=key))

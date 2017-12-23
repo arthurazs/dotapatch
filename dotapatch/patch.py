@@ -66,31 +66,18 @@ Contact me at @arthurazs if the error persists.
             # Organize changelog
             item = defaultdict(list)
             hero = defaultdict(list)
-            ability = defaultdict(list)
-
-            for line in lines[:]:
-                found_ability = data.get_ability_hero(line)
-                if found_ability:
-                    ability[found_ability].append(line)
-                    lines.remove(line)
 
             for line in lines[:]:
                 found_hero = data.get_hero_name(line)
+                formatted_line = ' '.join(line.split(':')[1:])
                 if found_hero:
-                    hero[found_hero].append(line)
+                    hero[found_hero].append(formatted_line)
                     lines.remove(line)
                 else:
                     found_item = data.get_item_name(line)
                     if found_item:
-                        item[found_item].append(line)
+                        item[found_item].append(formatted_line)
                         lines.remove(line)
-
-            # Merge ability into hero
-            for key, value in ability.items():
-                if(key in hero):
-                    hero[key].extend(ability[key])
-                else:
-                    hero[key] = ability[key]
 
             # Generate .html
             # TODO use path.join here?
