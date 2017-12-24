@@ -21,45 +21,37 @@ class HeropediaData(object):
         dictionary = json.loads(code.text)[name]
         return dictionary
 
-    @staticmethod
-    def _openFile(name):
-        with open(path.join(HeropediaData.DATA_DIR, name), 'r') as text:
+    @classmethod
+    def _openFile(cls, name):
+        with open(path.join(cls.DATA_DIR, name), 'r') as text:
             data = text.read()
             dictionary = ast.literal_eval(data)
             return dictionary
 
-    @staticmethod
-    def _saveFile(name, content):
-        with open(path.join(HeropediaData.DATA_DIR, name), 'w') as text:
+    @classmethod
+    def _saveFile(cls, name, content):
+        with open(path.join(cls.DATA_DIR, name), 'w') as text:
             print(content, file=text)
 
     # Initialization
     def __init__(self):
 
         # Check data folder
-        if not path.exists(HeropediaData.DATA_DIR):
-            os.makedirs(HeropediaData.DATA_DIR)
+        if not path.exists(self.DATA_DIR):
+            os.makedirs(self.DATA_DIR)
 
         # Data Initialization
-        if not path.isfile(path.join(
-                HeropediaData.DATA_DIR, HeropediaData.ITEM_DATA)):
-            self._item_dictionary = HeropediaData._downloadFile(
-                HeropediaData.ITEM_DATA)
-            HeropediaData._saveFile(
-                HeropediaData.ITEM_DATA, self._item_dictionary)
+        if not path.isfile(path.join(self.DATA_DIR, self.ITEM_DATA)):
+            self._item_dictionary = self._downloadFile(self.ITEM_DATA)
+            self._saveFile(self.ITEM_DATA, self._item_dictionary)
         else:
-            self._item_dictionary = HeropediaData._openFile(
-                HeropediaData.ITEM_DATA)
+            self._item_dictionary = self._openFile(self.ITEM_DATA)
 
-        if not path.isfile(path.join(
-                HeropediaData.DATA_DIR, HeropediaData.HERO_DATA)):
-            self._hero_dictionary = HeropediaData._downloadFile(
-                HeropediaData.HERO_DATA)
-            HeropediaData._saveFile(
-                HeropediaData.HERO_DATA, self._hero_dictionary)
+        if not path.isfile(path.join(self.DATA_DIR, self.HERO_DATA)):
+            self._hero_dictionary = self._downloadFile(self.HERO_DATA)
+            self._saveFile(self.HERO_DATA, self._hero_dictionary)
         else:
-            self._hero_dictionary = HeropediaData._openFile(
-                HeropediaData.HERO_DATA)
+            self._hero_dictionary = self._openFile(self.HERO_DATA)
 
     @staticmethod
     def sort_hero(hero_tuple):
@@ -151,7 +143,7 @@ class HeropediaData(object):
             'manta_style': 'manta',
             # 'aeon_disk': 'combo_breaker'
         }
-        name = HeropediaData._get_name(
+        name = self._get_name(
             line,
             self._item_dictionary,
             proper_name)
@@ -182,7 +174,7 @@ class HeropediaData(object):
             "nature's_prophet": 'furion', 'necrophos': 'necrolyte',
             'wraith_king': 'skeleton_king'
         }
-        name = HeropediaData._get_name(
+        name = self._get_name(
             line,
             self._hero_dictionary,
             proper_name)
