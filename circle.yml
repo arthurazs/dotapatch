@@ -19,3 +19,6 @@ test:
     - tox -e coverage
     - tox -e codacy
     - tox -e codecov
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/nosetests
+    - cp nosetests.*.xml $CIRCLE_TEST_REPORTS/nosetests/

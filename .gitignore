@@ -18,3 +18,4 @@ dist
 .tox/
 .coverage*
 coverage.xml
+nosetests.*xml
