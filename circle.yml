@@ -10,11 +10,13 @@ machine:
 dependencies:
   override:
     - pip install -U .
-    - pyenv local 2.7 3.4.3
+    - pyenv local 2.6 2.7 3.1 3.2 3.3 3.4 3.5 3.6
 
 test:
   override:
     - tox
+    - tox -e coverage
     - tox -e codacy
+    - tox -e codecov
   post:
     - cp coverage.xml $CIRCLE_ARTIFACTS
