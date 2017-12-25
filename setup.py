@@ -52,7 +52,7 @@ setup(
         'PyPIREADME.rst', 'FAQ.md', 'requirements.txt', 'LICENSE', 'tox.ini'
     ])],
     long_description=info_long_description,
-    python_requires='>=2.6, <4',
+    python_requires='>=2.7, <4',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
@@ -63,7 +63,6 @@ setup(
         'Operating System :: Unix',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.1',
