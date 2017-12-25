@@ -2,7 +2,7 @@ from __future__ import print_function
 import requests
 import json
 import ast
-import os
+from os import makedirs
 import os.path as path
 
 
@@ -38,7 +38,7 @@ class HeropediaData(object):
 
         # Check data folder
         if not path.exists(self.DATA_DIR):
-            os.makedirs(self.DATA_DIR)
+            makedirs(self.DATA_DIR)
 
         # Data Initialization
         if not path.isfile(path.join(self.DATA_DIR, self.ITEM_DATA)):

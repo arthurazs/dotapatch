@@ -1,7 +1,7 @@
 import unittest
 from dotapatch.model import Html
 import os.path as path
-import os
+from os import remove
 
 
 class TestTemplateFile(unittest.TestCase):
@@ -26,7 +26,7 @@ class TestTemplateFile(unittest.TestCase):
             with open(file_path, 'w') as test_delete:
                 test_delete.write('{1:2}')
             Html('test', 'test_delete')
-        os.remove(file_path)
+        remove(file_path)
         self.assertEqual(context.exception.code, -1)
 
 
