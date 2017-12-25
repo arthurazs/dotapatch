@@ -6,6 +6,7 @@
 |   PyPI   | [![PyPI Version](https://img.shields.io/pypi/v/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI License](https://img.shields.io/pypi/l/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![Python Version](https://img.shields.io/pypi/pyversions/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI Wheel](https://img.shields.io/pypi/wheel/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI Status](https://img.shields.io/pypi/status/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) |
 |  Codacy  | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f92dab093ac0404fa76deb1b1ce23ea2)](https://www.codacy.com/app/arthurazsoares/dota2patches?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=arthurazs/dota2patches&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/f92dab093ac0404fa76deb1b1ce23ea2)](https://www.codacy.com/app/arthurazsoares/dota2patches?utm_source=github.com&utm_medium=referral&utm_content=arthurazs/dota2patches&utm_campaign=Badge_Coverage) |
 | CircleCI | [![CircleCI](https://img.shields.io/circleci/project/github/arthurazs/dotapatch.svg)](https://circleci.com/gh/arthurazs/dotapatch) |
+| Codecov  | [![codecov](https://codecov.io/gh/arthurazs/dotapatch/branch/master/graph/badge.svg)](https://codecov.io/gh/arthurazs/dotapatch) |
 
 **dotapatch** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
 
