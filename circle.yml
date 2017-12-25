@@ -19,5 +19,3 @@ test:
     - tox -e coverage
     - tox -e codacy
     - tox -e codecov
-  post:
-    - cp coverage.xml $CIRCLE_ARTIFACTS
