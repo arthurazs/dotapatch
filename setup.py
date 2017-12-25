@@ -49,8 +49,7 @@ setup(
     package_data={info_name: [
         'templates/*', 'data/*', 'changelogs/706f', 'changelogs/707d']},
     data_files=[(info_name, [
-        'PyPIREADME.rst', 'FAQ.md', 'requirements.txt', 'LICENSE', 'tox.ini'
-    ])],
+        'PyPIREADME.rst', 'requirements.txt', 'LICENSE', 'tox.ini'])],
     long_description=info_long_description,
     python_requires='>=2.7, <4',
     classifiers=[

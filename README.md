@@ -128,15 +128,11 @@ Install **dotapatch** using `pip`:
 
     $ pip install dotapatch
 
-You might get `PermissionError`. Refer to the [FAQ](FAQ.md#i-cant-install-dotapatch) on how to fix this issue.
-
 Or [clone (or download)](https://help.github.com/articles/cloning-a-repository/) this [repository](/../../), head over to the folder and install using the `setup.py`:
 
     $ git clone https://github.com/arthurazs/dotapatch.git
     $ cd dotapatch
     $ python setup.py install
-
-You might get the same `PermissionError`. Refer to the [FAQ](FAQ.md#i-cant-install-dotapatch) on how to fix this issue.
 
 **OPTIONALLY** You can use **dotapatch** without installing. Just [clone (or download)](https://help.github.com/articles/cloning-a-repository/) the [repository](/../../).
 
