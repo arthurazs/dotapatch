@@ -24,6 +24,7 @@ Check the [Gameplay Update 7.07d](https://arthurazs.github.io/dotapatch/707d.htm
 - [Authors](#authors)
 - [Task list](#task-list)
 - [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
 - [License](#license)
 
 ## TL;DR
@@ -227,5 +228,15 @@ You will need `tox`:
 ## Contributing
 I need your help improving **dotapatch**! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open [pull requests](/../../compare) if you want to help me improve some of the code.
 
+## Code of Conduct
+The [Code of Conduct] for this project is based on
+[Contributor Covenant][conduct]. Any unacceptable behavior may be reported by
+contacting the project team at [arthurazsoares@gmail.com][email].
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
+
+[conduct]:          https://www.contributor-covenant.org
+
+[email]:            mailto:arthurazsoares@gmail.com
+[Code of Conduct]:  https://github.com/arthurazs/dotapatch/blob/master/CODE_OF_CONDUCT.md
