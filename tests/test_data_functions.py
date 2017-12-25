@@ -16,39 +16,38 @@ class TestDataFiles(unittest.TestCase):
     def test_item_data_exist(self):
         '''file: assert 'itemdata' file exists'''
         ITEM_DATA = HeropediaData.ITEM_DATA
-        self.assertTrue(path.isfile(path.join(
-            self.DATA_DIR, ITEM_DATA)))
+        self.assertTrue(path.isfile(path.join(self.DATA_DIR, ITEM_DATA)))
 
     def test_hero_data_exist(self):
         '''file: assert 'herodata' file exists'''
         HERO_DATA = HeropediaData.HERO_DATA
-        self.assertTrue(path.isfile(path.join(
-            self.DATA_DIR, HERO_DATA)))
+        self.assertTrue(path.isfile(path.join(self.DATA_DIR, HERO_DATA)))
 
 
 class TestStringManipulation(unittest.TestCase):
 
     # sort
     def test_sort_hero_name_should_change(self):
-        '''str: sort_hero("sHrEdDeR") returns "timbersaw"'''
-        dictionary = ('sHrEdDeR', None)
-        self.assertEqual('timbersaw', HeropediaData.sort_hero(dictionary))
+        '''str: sort_hero("wisp") returns "io"'''
+        dictionary = ('wisp', None)
+        self.assertEqual('io', HeropediaData.sort_hero(dictionary))
 
     def test_sort_item_name_should_change(self):
-        '''str: sort_item("sHrEdDeR") returns "timbersaw"'''
-        dictionary = ('spHerE', None)
+        '''str: sort_item("sphere") returns "linken s sphere"'''
+        dictionary = ('sphere', None)
         self.assertEqual(
             "linken s sphere", HeropediaData.sort_item(dictionary))
 
     def test_sort_hero_name_should_not_change(self):
         '''str: sort("io") returns "io"'''
-        dictionary = ('AsD', None)
-        self.assertEqual('AsD', HeropediaData.sort_hero(dictionary))
+        dictionary = ('io', None)
+        self.assertEqual('io', HeropediaData.sort_hero(dictionary))
 
     def test_sort_item_name_should_not_change(self):
-        '''str: sort("io") returns "io"'''
-        dictionary = ('AsD', None)
-        self.assertEqual('AsD', HeropediaData.sort_item(dictionary))
+        '''str: sort("linken s sphere") returns "linken s sphere"'''
+        dictionary = ('linken s sphere', None)
+        self.assertEqual(
+            'linken s sphere', HeropediaData.sort_item(dictionary))
 
 
 if __name__ == '__main__':

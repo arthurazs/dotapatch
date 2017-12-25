@@ -22,7 +22,7 @@ class TestTemplateFile(unittest.TestCase):
     def test_malformed_template(self):
         '''tmpl: raise error for malformed template'''
         file_path = path.join(Html.TEMPLATES_DIR, 'test_delete')
-        with self.assertRaises(SystemExit) as context:
+        with self.assertRaises(SystemExit) as context:  # TODO Is this correct?
             with open(file_path, 'w') as test_delete:
                 test_delete.write('{1:2}')
             Html('test', 'test_delete')

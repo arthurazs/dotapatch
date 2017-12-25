@@ -7,6 +7,11 @@ def setUpModule():
     data = HeropediaData()
 
 
+def tearDownModule():
+    global data
+    del data
+
+
 class TestHeroDictionary(unittest.TestCase):
 
     @classmethod
@@ -24,19 +29,12 @@ class TestHeroDictionary(unittest.TestCase):
         name = data.get_hero_name(self.hero)
         self.assertEqual(hero_id, name)
 
-    def test_get_hero_name_hero_new_structure(self):
-        '''hero: get_hero_name("Nightstalker") returns "night_stalker"'''
-        hero_id = 'night_stalker'
-        name = data.get_hero_name('Nightstalker')
-        self.assertEqual(hero_id, name)
-
 
 class TestGeneralDictionary(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.general = 'Illusions attack damage reduction against '
-        'buildings increased from 25% to 30%'
+        cls.general = 'Illusions attack damage reduction against buildings'
 
     def test_get_item_name_general(self):
         '''general: get_item_name(general) returns None'''
