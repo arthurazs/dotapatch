@@ -226,9 +226,15 @@ You will need `tox`:
  - **Changelog** see [releases](/../../releases).
 
 ## Contributing
-I need your help improving **dotapatch**! Please open [new issues](/../../issues/new) if you have any feedback, questions or ideias. Also, feel free to open [pull requests](/../../compare) if you want to help me improve some of the code.
+
+Do you have any feedback, questions or ideias? Do you want to report a bug?
+Even better, would you like to fix a bug or implement a feature?
+
+First of all, thank you! Make sure to read the
+[Contributing Guidelines][contributing] for details.
 
 ## Code of Conduct
+
 The [Code of Conduct] for this project is based on
 [Contributor Covenant][conduct]. Any unacceptable behavior may be reported by
 contacting the project team at [arthurazsoares@gmail.com][email].
@@ -240,3 +246,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 [email]:            mailto:arthurazsoares@gmail.com
 [Code of Conduct]:  https://github.com/arthurazs/dotapatch/blob/master/CODE_OF_CONDUCT.md
+[contributing]:     https://github.com/arthurazs/dotapatch/blob/master/CONTRIBUTING.md
