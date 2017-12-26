@@ -1,10 +1,10 @@
-import unittest
+from unittest import TestCase, main as unit_main
 from dotapatch.model import Html
 import os.path as path
 from os import remove
 
 
-class TestTemplateFile(unittest.TestCase):
+class TestTemplateFile(TestCase):
 
     def test_template_dir_exist(self):
         '''tmpl: assert 'templates' folder exists'''
@@ -30,7 +30,7 @@ class TestTemplateFile(unittest.TestCase):
         self.assertEqual(context.exception.code, -1)
 
 
-class TestHtmlDictionary(unittest.TestCase):
+class TestHtmlDictionary(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -121,4 +121,4 @@ class TestHtmlDictionary(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unit_main()

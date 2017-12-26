@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 # coding: utf-8
-from __future__ import print_function
-from __future__ import absolute_import
+from __future__ import print_function, absolute_import
 import os.path as path
 from collections import defaultdict
-from .model import Html
-from .data import HeropediaData
 from logging import getLogger as get_logger
+from dotapatch.model import Html
+from dotapatch.data import HeropediaData
 
 
 class Dotapatch (object):

@@ -1,9 +1,8 @@
-from __future__ import print_function
-from __future__ import absolute_import
-from .data import HeropediaData
-from ast import literal_eval
+from __future__ import print_function, absolute_import
 import os.path as path
+from ast import literal_eval
 from logging import getLogger as get_logger
+from dotapatch.data import HeropediaData
 
 
 class Html(object):

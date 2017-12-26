@@ -1,10 +1,10 @@
-import unittest
+from unittest import TestCase, main as unit_main
 from dotapatch.patch import Dotapatch
 import os.path as path
 from os import remove
 
 
-class Test(unittest.TestCase):
+class Test(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -38,4 +38,4 @@ class Test(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unit_main()

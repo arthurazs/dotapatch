@@ -1,4 +1,4 @@
-import unittest
+from unittest import TestCase, main as unit_main
 from dotapatch.data import HeropediaData
 
 
@@ -12,7 +12,7 @@ def tearDownModule():
     del data
 
 
-class TestHeroDictionary(unittest.TestCase):
+class TestHeroDictionary(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -30,7 +30,7 @@ class TestHeroDictionary(unittest.TestCase):
         self.assertEqual(hero_id, name)
 
 
-class TestGeneralDictionary(unittest.TestCase):
+class TestGeneralDictionary(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -47,7 +47,7 @@ class TestGeneralDictionary(unittest.TestCase):
         self.assertIsNone(name)
 
 
-class TestItemDictionary(unittest.TestCase):
+class TestItemDictionary(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -66,4 +66,4 @@ class TestItemDictionary(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unit_main()

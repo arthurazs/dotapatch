@@ -1,9 +1,9 @@
-import unittest
+from unittest import TestCase, main as unit_main
 from dotapatch.data import HeropediaData
 import os.path as path
 
 
-class TestDataFiles(unittest.TestCase):
+class TestDataFiles(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -24,7 +24,7 @@ class TestDataFiles(unittest.TestCase):
         self.assertTrue(path.isfile(path.join(self.DATA_DIR, HERO_DATA)))
 
 
-class TestStringManipulation(unittest.TestCase):
+class TestStringManipulation(TestCase):
 
     # sort
     def test_sort_hero_name_should_change(self):
@@ -51,4 +51,4 @@ class TestStringManipulation(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unit_main()

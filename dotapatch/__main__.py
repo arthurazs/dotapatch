@@ -1,15 +1,11 @@
 from __future__ import absolute_import
-from sys import exit
-from argparse import ArgumentParser
-from .version import __version__
-from .patch import Dotapatch
-from logging import DEBUG
-from logging import StreamHandler
-from logging import Formatter
-from logging import FileHandler
-from logging import getLogger as get_logger
-from logging import getLevelName as get_level
+from sys import exit as sys_exit
 import os.path as path
+from argparse import ArgumentParser
+from logging import DEBUG, StreamHandler, Formatter, FileHandler
+from logging import getLogger as get_logger, getLevelName as get_level
+from dotapatch.version import __version__
+from dotapatch.patch import Dotapatch
 
 parser = ArgumentParser(
     prog='dotapatch', description='Parse Dota 2 text patches to html'
@@ -61,4 +57,4 @@ if args.save_log:
 
 dotapatch = Dotapatch(args.file, args.template)
 
-exit(dotapatch.parse())
+sys_exit(dotapatch.parse())
