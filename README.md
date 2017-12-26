@@ -204,49 +204,39 @@ this [repository], head over to the folder and run `tox`:
 
 **dotapatch** uses the following libraries:
 
- - [__future__]
-     - Ensures backwards compatibility
- - [os]
-     - Portable way of using operating system dependent functionalities
+ - [\_\_future\_\_][future] Ensures backwards compatibility
+ - [os] Portable way of using operating system dependent functionalities
      - [os.path] Makes sure all directories are created and all data are downloaded
      - [os.makedirs] Creates HeropediaData directory
- - [sys.exit]
-     - Exits from Python
- - [json.loads]
-     - Parses json from HeropediaData to a Python dictionary
- - [ast.literal_eval]
-     - Parses data from file to a Python dictionary
- - [argparse.ArgumentParser][argparse]
-     - Enables the use of arguments. Try `$ dotapatch -h`
+ - [sys.exit] Exits from Python
+ - [json.loads] Parses json from HeropediaData to a Python dictionary
+ - [ast.literal_eval][ast] Parses data from file to a Python dictionary
+ - [argparse.ArgumentParser][argparse] Enables the use of arguments. Try `$ dotapatch -h`
  - [collections.defaultdict][defaultdict]
      - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
      - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
      - `dictionary.values()` returns a list with all changes
- - urllib.urlopen
-     - Fetches HeropediaData files
+ - [urllib.urlopen][urllib] Fetches HeropediaData files
      - [urllib2.urlopen][urllib2] for Python 2
      - [urllib.request.urlopen][urllib] for Python 3
- - [logging]
-     - Manages *dotapatch* logs
+ - [logging] Manages *dotapatch* logs
      - [DEBUG] The numeric value of logging level for debugging
      - [StreamHandler] Manages the logging output
      - [Formatter] Formats the logging output
      - [FileHandler] Saves the logging output into a file
      - [getLogger] Keeps logger consistent between classes
      - [getLevelName] Returns the numeric value of a string logging level
- - [tox]
-     - Run tests for Python (2.7, 3.3, 3.4, 3.5, 3.6)
-         - [unittest] Base for the tests
-             - [nose] test suite (nosetests)
-                 - [rednose] plugging which improves readability
-                 - [coverage] tool for measuring code coverage
- - [pip]
-     - Installation manager
+ - [tox] Run tests for Python (2.7, 3.3, 3.4, 3.5, 3.6)
+     - [unittest] Base for the tests
+         - [nose] test suite (nosetests)
+             - [rednose] plugging which improves readability
+             - [coverage] tool for measuring code coverage
+ - [pip] Installation manager
      - [setuptools] Setup manager
 
 ## Authors
 - [Arthur Zopellaro]
-    - *Creator*/Maintainer
+    - Maintainer
 
 ## Task list
 
@@ -261,15 +251,16 @@ Even better, would you like to fix a bug or implement a feature?
 First of all, thank you! Please, read the
 [Contributing Guidelines][contributing] for details.
 
-Open an [issue] if you have any feedback, questions, ideias or to report a bug.
-
-Open a [pull request] after you implement a feature or fix a bug.
+- Open an [issue] if you have any feedback, questions, ideias or to report a bug.
+- Open a [pull request] after you implement a feature or fix a bug.
 
 ## Code of Conduct
 
 The [Code of Conduct] for this project is based on
-[Contributor Covenant][conduct]. Any unacceptable behavior may be reported by
-contacting the project team at [arthurazsoares@gmail.com][email].
+[Contributor Covenant][conduct].
+
+Any unacceptable behavior may be reported by contacting the project team at
+[arthurazsoares@gmail.com][email].
 
 ## License
 This project is licensed under the [MIT License].
@@ -291,7 +282,7 @@ This project is licensed under the [MIT License].
 [argparse]:         https://docs.python.org/3/library/argparse.html#argumentparser-objects
 [cloning]:          https://help.github.com/articles/cloning-a-repository
 [defaultdict]:      https://docs.python.org/3/library/collections.html#collections.defaultdict
-[__future__]:       https://docs.python.org/3/reference/simple_stmts.html#future-statements
+[future]:           https://docs.python.org/3/reference/simple_stmts.html#future-statements
 [sys.exit]:         https://docs.python.org/3/library/sys.html#sys.exit
 [json.loads]:       https://docs.python.org/3/library/json.html#json.loads
 [logging]:          https://docs.python.org/3/library/logging.html
