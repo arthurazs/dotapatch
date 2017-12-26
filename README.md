@@ -6,9 +6,12 @@
 |   PyPI   | [![PyPI Version](https://img.shields.io/pypi/v/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI License](https://img.shields.io/pypi/l/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![Python Version](https://img.shields.io/pypi/pyversions/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI Wheel](https://img.shields.io/pypi/wheel/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) [![PyPI Status](https://img.shields.io/pypi/status/dotapatch.svg)](https://pypi.python.org/pypi/dotapatch) |
 |  Status  | [![CircleCI](https://img.shields.io/circleci/project/github/arthurazs/dotapatch.svg)](https://circleci.com/gh/arthurazs/dotapatch) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f92dab093ac0404fa76deb1b1ce23ea2)](https://www.codacy.com/app/arthurazsoares/dota2patches?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=arthurazs/dota2patches&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/f92dab093ac0404fa76deb1b1ce23ea2)](https://www.codacy.com/app/arthurazsoares/dota2patches?utm_source=github.com&utm_medium=referral&utm_content=arthurazs/dota2patches&utm_campaign=Badge_Coverage) [![codecov](https://codecov.io/gh/arthurazs/dotapatch/branch/master/graph/badge.svg)](https://codecov.io/gh/arthurazs/dotapatch) |
 
-**dotapatch** is a software which aims the automation of formatting `simple text changelog` into `clear html changelog`.
+**dotapatch** is a software which aims the automation of formatting
+`simple text changelog` into `clear html changelog`.
 
-Check the [Gameplay Update 7.07d](https://arthurazs.github.io/dotapatch/707d.html). This is the latest patch parsed using **dotapatch**.
+Check the
+[Gameplay Update 7.07d][html].
+This is the latest patch parsed using **dotapatch**.
 
 **Contents**
 
@@ -45,7 +48,8 @@ Head over to the directory you saved the changelog and run **dotapatch**.
     INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
     INFO Conversion went smoothly.
 
-Make sure that `<filename>` is in your current directory. You can also provide the `path` to the changelog.
+Make sure that `<filename>` is in your current directory. You can also provide
+  the `path` to the changelog.
 
     $ dotapatch /home/arthurazs/Desktop/changelogs/707d
     INFO HTML saved at /home/arthurazs/707d.html
@@ -83,7 +87,8 @@ Run **dotapatch** stating the full path to the file:
     INFO HTML saved at /home/arthurazs/707d.html
     INFO Conversion went smoothly.
 
-Or you can head over to the directory with the changelog and run **dotapatch** stating only the filename:
+Or you can head over to the directory with the changelog and run **dotapatch**
+stating only the filename:
 
     $ cd Desktop/changelogs
     $ dotapatch 707d
@@ -117,7 +122,7 @@ There are some optional arguments that you can use:
     INFO HTML saved at /home/arthurazs/git/dotapatch/707d.html
     INFO Conversion went smoothly.
 
-- `--template` indicates which template is going to be used to parse the changelog. The `default` template generates a standalone HTML that uses [dota2](http://dota2.com) css files.
+- `--template` indicates which template is going to be used to parse the changelog. The `default` template generates a standalone HTML that uses [dota2] css files.
 - `--debug` and `--quiet` increase and decrease **dotapatch**'s verbosity, respectively.
 - `--save-log` saves a log with maximum verbosity output.
 
@@ -129,19 +134,24 @@ Install **dotapatch** using `pip`:
 
     $ pip install dotapatch
 
-Or [clone (or download)](https://help.github.com/articles/cloning-a-repository/) this [repository](/../../), head over to the folder and install using the `setup.py`:
+Or
+[clone (or download)][cloning]
+this [repository], head over to the folder and install using the
+`setup.py`:
 
     $ git clone https://github.com/arthurazs/dotapatch.git
     $ cd dotapatch
     $ python setup.py install
 
-**OPTIONALLY** You can use **dotapatch** without installing. Just [clone (or download)](https://help.github.com/articles/cloning-a-repository/) the [repository](/../../).
+**OPTIONALLY** You can use **dotapatch** without installing. Just
+[clone (or download)][cloning]
+the [repository].
 
     $ git clone https://github.com/arthurazs/dotapatch.git
 
 ### Gathering a new changelog
 
-- Go to [dota2 news](https://www.dota2.com/news/updates/) page and locate the latest **patch**.
+- Go to [dota2 news] page and locate the latest **patch**.
 - Copy and save it as a file.
     - The content you save **must** start with the patch name followed by colon (e.g. `7.07d:`).
     - The second line won't be read, so you can leave it with anything other than a real changelog line (e.g. `--`).
@@ -161,14 +171,16 @@ Or [clone (or download)](https://help.github.com/articles/cloning-a-repository/)
 
 ### Running dotapatch
 
-If you've installed **dotapatch**, head over to the folder where you saved the changelog file and run **dotapatch**.
+If you've installed **dotapatch**, head over to the folder where you saved the
+changelog file and run **dotapatch**.
 
     $ cd Desktop/changelogs
     $ dotapatch 707d
     INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
     INFO Conversion went smoothly.
 
-If you haven't installed **dotapatch**, head over to the **dotapatch** folder and run **dotapatch** as a **module**.
+If you haven't installed **dotapatch**, head over to the **dotapatch** folder
+and run **dotapatch** as a **module**.
 
     $ cd Desktop/dotapatch
     $ python -m dotapatch /home/arthurazs/Desktop/changelogs/707d
@@ -181,7 +193,8 @@ You will need `tox`:
 
     $ pip install tox
 
-[Clone (or download)](https://help.github.com/articles/cloning-a-repository/) this [repository](/../../), head over to the folder and run `tox`:
+[Clone (or download)][cloning]
+this [repository], head over to the folder and run `tox`:
 
     $ git clone https://github.com/arthurazs/dotapatch.git
     $ cd dotapatch
@@ -232,20 +245,20 @@ You will need `tox`:
      - [setuptools] Setup manager
 
 ## Authors
-- [**Arthur Zopellaro**](https://github.com/arthurazs)
-    - *Creator*
+- [Arthur Zopellaro]
+    - *Creator*/Maintainer
 
 ## Task list
 
- - **TODO** see [projects](/../../projects).
- - **Changelog** see [releases](/../../releases).
+ - **TODO** see [projects].
+ - **Changelog** see [releases].
 
 ## Contributing
 
 Do you have any feedback, questions or ideias? Do you want to report a bug?
 Even better, would you like to fix a bug or implement a feature?
 
-First of all, thank you! Make sure to read the
+First of all, thank you! Please, read the
 [Contributing Guidelines][contributing] for details.
 
 ## Code of Conduct
@@ -255,7 +268,7 @@ The [Code of Conduct] for this project is based on
 contacting the project team at [arthurazsoares@gmail.com][email].
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License].
 
 [tox]:              https://tox.readthedocs.io
 [pip]:              https://pypi.python.org/pypi
@@ -272,6 +285,7 @@ This project is licensed under the [MIT License](LICENSE).
 [os.makedirs]:      https://docs.python.org/3/library/os.html#os.makedirs
 [unittest]:         https://docs.python.org/3/library/unittest.html
 [argparse]:         https://docs.python.org/3/library/argparse.html#argumentparser-objects
+[cloning]:          https://help.github.com/articles/cloning-a-repository
 [defaultdict]:      https://docs.python.org/3/library/collections.html#collections.defaultdict
 [__future__]:       https://docs.python.org/3/reference/simple_stmts.html#future-statements
 [sys.exit]:         https://docs.python.org/3/library/sys.html#sys.exit
@@ -284,6 +298,15 @@ This project is licensed under the [MIT License](LICENSE).
 [StreamHandler]:    https://docs.python.org/3/library/logging.handlers.html#streamhandler
 [FileHandler]:      https://docs.python.org/3/library/logging.handlers.html#filehandler
 
+[dota2]:            http://dota2.com
+[dota2 news]:       https://www.dota2.com/news/updates
+
 [email]:            mailto:arthurazsoares@gmail.com
+[html]:             https://arthurazs.github.io/dotapatch/707d.html
+[Arthur Zopellaro]: https://github.com/arthurazs
+[repository]:       https://github.com/arthurazs/dotapatch
+[projects]:         https://github.com/arthurazs/dotapatch/projects
+[releases]:         https://github.com/arthurazs/dotapatch/releases
+[MIT License]:      https://github.com/arthurazs/dotapatch/blob/master/LICENSE
 [Code of Conduct]:  https://github.com/arthurazs/dotapatch/blob/master/CODE_OF_CONDUCT.md
 [contributing]:     https://github.com/arthurazs/dotapatch/blob/master/CONTRIBUTING.md
