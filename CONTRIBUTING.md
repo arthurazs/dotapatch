@@ -46,11 +46,11 @@ Finally, fix the bug/implement the feature. Make sure the test passes now:
     24 tests run in 0.208 seconds (24 tests passed)
 
 Open a [pull request] explaining your code. Feel free to add your name as a
-contributor under *Authors* in the [README] file.
+contributor under **Authors** in the [README] file.
 
 [new issue]:        https://github.com/arthurazs/dotapatch/issues/new
 [pull request]:     https://github.com/arthurazs/dotapatch/compare
 [fork]:             https://help.github.com/articles/fork-a-repo
 [test]:             https://docs.python.org/3/library/unittest.html
-[README]:           https://github.com/arthurazs/dotapatch/blob/master/README.md
+[README]:           https://github.com/arthurazs/dotapatch/blob/master/README.md#authors
 [Code of Conduct]:  https://github.com/arthurazs/dotapatch/blob/master/CODE_OF_CONDUCT.md
