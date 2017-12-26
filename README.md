@@ -270,7 +270,7 @@ This project is licensed under the [MIT License].
 [rednose]:          https://github.com/JBKahn/rednose
 [setuptools]:       https://github.com/pypa/setuptools
 [nose]:             http://nose.readthedocs.io/en/latest
-[coverage]:         https://github.com/nedbat/coveragepy
+[coverage]:         http://coverage.readthedocs.io/en/coverage-4.4.2/
 [conduct]:          https://www.contributor-covenant.org
 [urllib2]:          https://docs.python.org/2/library/urllib2.html#urllib2.urlopen
 [urllib]:           https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen
