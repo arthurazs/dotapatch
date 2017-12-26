@@ -261,6 +261,10 @@ Even better, would you like to fix a bug or implement a feature?
 First of all, thank you! Please, read the
 [Contributing Guidelines][contributing] for details.
 
+Open an [issue] if you have any feedback, questions, ideias or to report a bug.
+
+Open a [pull request] after you implement a feature or fix a bug.
+
 ## Code of Conduct
 
 The [Code of Conduct] for this project is based on
@@ -305,8 +309,10 @@ This project is licensed under the [MIT License].
 [html]:             https://arthurazs.github.io/dotapatch/707d.html
 [Arthur Zopellaro]: https://github.com/arthurazs
 [repository]:       https://github.com/arthurazs/dotapatch
+[pull request]:     https://github.com/arthurazs/dotapatch/compare
 [projects]:         https://github.com/arthurazs/dotapatch/projects
 [releases]:         https://github.com/arthurazs/dotapatch/releases
+[issue]:            https://github.com/arthurazs/dotapatch/issues/new
 [MIT License]:      https://github.com/arthurazs/dotapatch/blob/master/LICENSE
 [Code of Conduct]:  https://github.com/arthurazs/dotapatch/blob/master/CODE_OF_CONDUCT.md
 [contributing]:     https://github.com/arthurazs/dotapatch/blob/master/CONTRIBUTING.md
