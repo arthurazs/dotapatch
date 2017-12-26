@@ -7,6 +7,7 @@ except ImportError:
 from ast import literal_eval
 from os import makedirs
 import os.path as path
+from logging import getLogger as get_logger
 
 
 class HeropediaData(object):
@@ -17,11 +18,16 @@ class HeropediaData(object):
     HERO_DATA = 'herodata'
 
     # Initialization Functions
-    @staticmethod
-    def _downloadFile(name):
+    def _download_file(self, name):
         link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
-        response = urlopen(link)
-        content = response.read()
+        try:
+            if 'file:///' in link:
+                raise ValueError('urlopen trying to leak information')
+        except ValueError as err:
+            self.logger.critical('{}: {}'.format(err.__class__.__name__, err))
+            raise SystemExit(-1)
+        with urlopen(link) as response:
+            content = response.read()
         json_data = content.decode('utf-8')
         dictionary = loads(json_data)
         return dictionary[name]
@@ -41,19 +47,21 @@ class HeropediaData(object):
     # Initialization
     def __init__(self):
 
+        self.logger = get_logger('dotapatch.data')
+
         # Check data folder
         if not path.exists(self.DATA_DIR):
             makedirs(self.DATA_DIR)
 
         # Data Initialization
         if not path.isfile(path.join(self.DATA_DIR, self.ITEM_DATA)):
-            self._item_dictionary = self._downloadFile(self.ITEM_DATA)
+            self._item_dictionary = self._download_file(self.ITEM_DATA)
             self._saveFile(self.ITEM_DATA, self._item_dictionary)
         else:
             self._item_dictionary = self._openFile(self.ITEM_DATA)
 
         if not path.isfile(path.join(self.DATA_DIR, self.HERO_DATA)):
-            self._hero_dictionary = self._downloadFile(self.HERO_DATA)
+            self._hero_dictionary = self._download_file(self.HERO_DATA)
             self._saveFile(self.HERO_DATA, self._hero_dictionary)
         else:
             self._hero_dictionary = self._openFile(self.HERO_DATA)
