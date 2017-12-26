@@ -1,6 +1,9 @@
 from __future__ import print_function
-import requests
 from json import loads
+try:
+    from urllib.request import urlopen
+except ImportError:
+    from urllib2 import urlopen
 from ast import literal_eval
 from os import makedirs
 import os.path as path
@@ -17,9 +20,11 @@ class HeropediaData(object):
     @staticmethod
     def _downloadFile(name):
         link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
-        code = requests.get(link)
-        dictionary = json.loads(code.text)[name]
-        return dictionary
+        response = urlopen(link)
+        content = response.read()
+        json_data = content.decode('utf-8')
+        dictionary = loads(json_data)
+        return dictionary[name]
 
     @classmethod
     def _openFile(cls, name):

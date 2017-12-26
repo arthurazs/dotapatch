@@ -76,7 +76,6 @@ setup(
         'Topic :: Text Processing :: Markup :: HTML'
     ],
     setup_requires=['nose>=1.3.7', 'rednose>=1.2.3'],
-    install_requires=['requests>=2.18.4'],
     entry_points={
         'console_scripts': [
             '{0} = {0}.__main__:main'.format(info_name)]

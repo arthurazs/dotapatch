@@ -209,8 +209,10 @@ You will need `tox`:
      - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
      - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
      - `dictionary.values()` returns a list with all changes
- - [requests](https://github.com/kennethreitz/requests)
+ - urllib.urlopen
      - Fetches HeropediaData files
+     - [urllib2.urlopen][urllib2] for Python 2
+     - [urllib.request.urlopen][urllib] for Python 3
  - [logging]
      - Manages *dotapatch* logs
      - [DEBUG] The numeric value of logging level for debugging
@@ -262,6 +264,8 @@ This project is licensed under the [MIT License](LICENSE).
 [nose]:             http://nose.readthedocs.io/en/latest
 [coverage]:         https://github.com/nedbat/coveragepy
 [conduct]:          https://www.contributor-covenant.org
+[urllib2]:          https://docs.python.org/2/library/urllib2.html#urllib2.urlopen
+[urllib]:           https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen
 [ast]:              https://docs.python.org/3/library/ast.html#ast.literal_eval
 [os]:               https://docs.python.org/3/library/os.html
 [os.path]:          https://docs.python.org/3/library/os.path.html
