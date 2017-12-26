@@ -1,9 +1,9 @@
 from __future__ import print_function
 from __future__ import absolute_import
 from .data import HeropediaData
-import ast
+from ast import literal_eval
 import os.path as path
-import logging
+from logging import getLogger as get_logger
 
 
 class Html(object):
@@ -45,7 +45,7 @@ class Html(object):
 
     def _eval_template(self, template_content):
         try:
-            template_dictionary = ast.literal_eval(template_content)
+            template_dictionary = literal_eval(template_content)
             if isinstance(template_dictionary, dict):
                 missing_keys = Html._check_template_missing_keys(
                     template_dictionary)
@@ -88,7 +88,7 @@ class Html(object):
 
     # Initialization
     def __init__(self, title, template='default'):
-        self.logger = logging.getLogger('dotapatch.model')
+        self.logger = get_logger('dotapatch.model')
         self._title = title
 
         if template != 'default':

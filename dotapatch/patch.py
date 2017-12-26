@@ -6,7 +6,7 @@ import os.path as path
 from collections import defaultdict
 from .model import Html
 from .data import HeropediaData
-import logging
+from logging import getLogger as get_logger
 
 
 class Dotapatch (object):
@@ -16,7 +16,7 @@ class Dotapatch (object):
     WARNING = 1
 
     def __init__(self, filename, template='default'):
-        self.logger = logging.getLogger('dotapatch.patch')
+        self.logger = get_logger('dotapatch.patch')
         self._file_path = path.abspath(filename)
         self._template = template
 

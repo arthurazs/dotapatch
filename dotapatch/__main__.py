@@ -1,13 +1,17 @@
 from __future__ import absolute_import
-import sys
-import argparse
+from sys import exit
+from argparse import ArgumentParser
 from .version import __version__
 from .patch import Dotapatch
-import logging
+from logging import DEBUG
+from logging import StreamHandler
+from logging import Formatter
+from logging import FileHandler
+from logging import getLogger as get_logger
 from logging import getLevelName as get_level
 import os.path as path
 
-parser = argparse.ArgumentParser(
+parser = ArgumentParser(
     prog='dotapatch', description='Parse Dota 2 text patches to html'
     ' format.')
 parser.add_argument(
@@ -35,19 +39,19 @@ log_group.add_argument(
 args = parser.parse_args()
 
 
-logger = logging.getLogger('dotapatch')
-logger.setLevel(logging.DEBUG)
+logger = get_logger('dotapatch')
+logger.setLevel(DEBUG)
 
-stream_handler = logging.StreamHandler()
+stream_handler = StreamHandler()
 stream_handler.setLevel(get_level(args.log_level))
-stream_formatter = logging.Formatter('%(levelname)s %(message)s')
+stream_formatter = Formatter('%(levelname)s %(message)s')
 stream_handler.setFormatter(stream_formatter)
 logger.addHandler(stream_handler)
 
 if args.save_log:
-    file_handler = logging.FileHandler('dotapatch.log', 'w')
-    file_handler.setLevel(logging.DEBUG)
-    file_formatter = logging.Formatter('''
+    file_handler = FileHandler('dotapatch.log', 'w')
+    file_handler.setLevel(DEBUG)
+    file_formatter = Formatter('''
 %(asctime)s (%(name)s, line %(lineno)d)
 %(levelname)s %(message)s''')
     file_handler.setFormatter(file_formatter)
@@ -57,4 +61,4 @@ if args.save_log:
 
 dotapatch = Dotapatch(args.file, args.template)
 
-sys.exit(dotapatch.parse())
+exit(dotapatch.parse())

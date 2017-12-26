@@ -1,7 +1,7 @@
 from __future__ import print_function
 import requests
-import json
-import ast
+from json import loads
+from ast import literal_eval
 from os import makedirs
 import os.path as path
 
@@ -25,7 +25,7 @@ class HeropediaData(object):
     def _openFile(cls, name):
         with open(path.join(cls.DATA_DIR, name), 'r') as text:
             data = text.read()
-            dictionary = ast.literal_eval(data)
+            dictionary = literal_eval(data)
             return dictionary
 
     @classmethod

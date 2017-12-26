@@ -191,30 +191,43 @@ You will need `tox`:
 
 **dotapatch** uses the following libraries:
 
- - [ast](https://docs.python.org/3.4/library/ast.html)
-     - Transforms data from HeropediaData into dictionary
- - [os.path](https://docs.python.org/3.4/library/os.path.html)
-     - Makes sure all directories are created and all data are downloaded
- - [argparse](https://docs.python.org/3.4/library/argparse.html)
-     - Enables the use of arguments. Try `$ ./patch.py -h`
- - collections.[defaultdict](https://docs.python.org/3.4/library/collections.html#collections.defaultdict)
+ - [__future__]
+     - Ensures backwards compatibility
+ - [os]
+     - Portable way of using operating system dependent functionalities
+     - [os.path] Makes sure all directories are created and all data are downloaded
+     - [os.makedirs] Creates HeropediaData directory
+ - [sys.exit]
+     - Exits from Python
+ - [json.loads]
+     - Parses json from HeropediaData to a Python dictionary
+ - [ast.literal_eval]
+     - Parses data from file to a Python dictionary
+ - [argparse.ArgumentParser][argparse]
+     - Enables the use of arguments. Try `$ dotapatch -h`
+ - [collections.defaultdict][defaultdict]
      - defaultdict(list) stores each line of the changelog inside a list (inside a dictionary)
      - Each `dictionary.keys()` (hero) stores `dictionary.values()` (hero changes)
      - `dictionary.values()` returns a list with all changes
  - [requests](https://github.com/kennethreitz/requests)
      - Fetches HeropediaData files
- - [logging](https://docs.python.org/3.4/library/logging.html)
-     - Manage *dotapatch* logs
- - [tox](https://tox.readthedocs.io)
-     - Run tests for Python 2.7 and Python 3.4
-         - [unittest](https://docs.python.org/3.4/library/unittest.html)
-             - Base for the tests
-             - [nose](http://nose.readthedocs.io/en/latest/) test suite (nosetests)
-                 - [--rednose](https://github.com/JBKahn/rednose) plugging which improves readability
- - [pip](https://pypi.python.org/pypi)
+ - [logging]
+     - Manages *dotapatch* logs
+     - [DEBUG] The numeric value of logging level for debugging
+     - [StreamHandler] Manages the logging output
+     - [Formatter] Formats the logging output
+     - [FileHandler] Saves the logging output into a file
+     - [getLogger] Keeps logger consistent between classes
+     - [getLevelName] Returns the numeric value of a string logging level
+ - [tox]
+     - Run tests for Python (2.7, 3.3, 3.4, 3.5, 3.6)
+         - [unittest] Base for the tests
+             - [nose] test suite (nosetests)
+                 - [rednose] plugging which improves readability
+                 - [coverage] tool for measuring code coverage
+ - [pip]
      - Installation manager
-     - [setuptools](https://github.com/pypa/setuptools)
-         - Setup manager
+     - [setuptools] Setup manager
 
 ## Authors
 - [**Arthur Zopellaro**](https://github.com/arthurazs)
@@ -242,7 +255,30 @@ contacting the project team at [arthurazsoares@gmail.com][email].
 ## License
 This project is licensed under the [MIT License](LICENSE).
 
+[tox]:              https://tox.readthedocs.io
+[pip]:              https://pypi.python.org/pypi
+[rednose]:          https://github.com/JBKahn/rednose
+[setuptools]:       https://github.com/pypa/setuptools
+[nose]:             http://nose.readthedocs.io/en/latest
+[coverage]:         https://github.com/nedbat/coveragepy
 [conduct]:          https://www.contributor-covenant.org
+[ast]:              https://docs.python.org/3/library/ast.html#ast.literal_eval
+[os]:               https://docs.python.org/3/library/os.html
+[os.path]:          https://docs.python.org/3/library/os.path.html
+[os.makedirs]:      https://docs.python.org/3/library/os.html#os.makedirs
+[unittest]:         https://docs.python.org/3/library/unittest.html
+[argparse]:         https://docs.python.org/3/library/argparse.html#argumentparser-objects
+[defaultdict]:      https://docs.python.org/3/library/collections.html#collections.defaultdict
+[__future__]:       https://docs.python.org/3/reference/simple_stmts.html#future-statements
+[sys.exit]:         https://docs.python.org/3/library/sys.html#sys.exit
+[json.loads]:       https://docs.python.org/3/library/json.html#json.loads
+[logging]:          https://docs.python.org/3/library/logging.html
+[getLogger]:        https://docs.python.org/3/library/logging.html#logging.getLogger
+[DEBUG]:            https://docs.python.org/3/library/logging.html#logging-levels
+[Formatter]:        https://docs.python.org/3/library/logging.html#logging.Formatter
+[getLevelName]:     https://docs.python.org/3/library/logging.html#logging.getLevelName
+[StreamHandler]:    https://docs.python.org/3/library/logging.handlers.html#streamhandler
+[FileHandler]:      https://docs.python.org/3/library/logging.handlers.html#filehandler
 
 [email]:            mailto:arthurazsoares@gmail.com
 [Code of Conduct]:  https://github.com/arthurazs/dotapatch/blob/master/CODE_OF_CONDUCT.md
