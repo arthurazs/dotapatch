@@ -1,5 +1,5 @@
 # coding: utf-8
-'''This module contains the main class for dotapatch.'''
+'''This module contains the core class for dotapatch.'''
 from __future__ import print_function, absolute_import
 import os.path as path
 from collections import defaultdict
