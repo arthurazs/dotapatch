@@ -8,7 +8,7 @@ from dotapatch.model import Html
 from dotapatch.data import HeropediaData
 
 
-class Dotapatch (object):
+class Dotapatch(object):
     '''This is the main class for dotapatch.'''
 
     ERROR = -1
@@ -89,7 +89,7 @@ Contact me at @arthurazs if the error persists.
                 patch_version = lines[0][:-1]
                 patch_name = patch_version.replace('.', '')
                 lines = lines[2:]
-                initialLineCount = len(lines)
+                initial_line_count = len(lines)
 
             data = HeropediaData()
 
@@ -127,15 +127,16 @@ Contact me at @arthurazs if the error persists.
                     .format(path.abspath(patch_name)))
 
             # Feedback
-            currentLineCount = sum(len(changes) for changes in hero.values()) \
+            current_line_count = \
+                sum(len(changes) for changes in hero.values()) \
                 + sum(len(changes) for changes in item.values())
-            status = initialLineCount - currentLineCount
-            if (status == 0):
+            status = initial_line_count - current_line_count
+            if status == 0:
                 self.logger.info('Conversion went smoothly.')
-            elif (status < 0):
+            elif status < 0:
                 self.logger.critical('Contact me at @arthurazs')
             else:
-                if (status == 1):
+                if status == 1:
                     message = '''1 line under GENERAL updates:
 * {}
 

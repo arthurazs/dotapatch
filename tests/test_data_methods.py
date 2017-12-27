@@ -3,16 +3,7 @@ from unittest import TestCase, main as unit_main
 from dotapatch.data import HeropediaData
 
 
-def setUpModule():
-    '''Sets up HeropediaData object'''
-    global data
-    data = HeropediaData()
-
-
-def tearDownModule():
-    '''Tears down HeropediaData object'''
-    global data
-    del data
+data = HeropediaData()
 
 
 class TestHeroDictionary(TestCase):

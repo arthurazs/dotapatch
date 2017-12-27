@@ -12,7 +12,7 @@ class TestTemplateFile(TestCase):
         '''tmpl: assert 'templates' folder exists'''
         self.assertTrue(path.exists(Html.TEMPLATES_DIR))
 
-    def test_nonexistent_template_use_default_template(self):
+    def test_use_default_template(self):
         '''tmpl: try nonexistent template and use default instead'''
         try:
             Html('test', '?123asd,v03ekca0cd0')

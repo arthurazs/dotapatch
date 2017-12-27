@@ -33,19 +33,19 @@ log_group.add_argument(
     action='store_const', dest='log_level',
     const='ERROR')
 
-args = parser.parse_args()
+ARGS = parser.parse_args()
 
 
 logger = get_logger('dotapatch')
 logger.setLevel(DEBUG)
 
 stream_handler = StreamHandler()
-stream_handler.setLevel(get_level(args.log_level))
+stream_handler.setLevel(get_level(ARGS.log_level))
 stream_formatter = Formatter('%(levelname)s %(message)s')
 stream_handler.setFormatter(stream_formatter)
 logger.addHandler(stream_handler)
 
-if args.save_log:
+if ARGS.save_log:
     file_handler = FileHandler('dotapatch.log', 'w')
     file_handler.setLevel(DEBUG)
     file_formatter = Formatter('''
@@ -56,6 +56,6 @@ if args.save_log:
     logger.info('Recording log file at {}'.format(
         path.abspath('dotapatch.log')))
 
-dotapatch = Dotapatch(args.file, args.template)
+dotapatch = Dotapatch(ARGS.file, ARGS.template)
 
 sys_exit(dotapatch.parse())

@@ -30,23 +30,23 @@ class TestDataFiles(TestCase):
 class TestStringManipulation(TestCase):
     '''Tests string manipulation'''
 
-    def test_sort_hero_name_should_change(self):
+    def test_sort_hero_name_change(self):
         '''str: sort_hero("wisp") returns "io"'''
         dictionary = ('wisp', None)
         self.assertEqual('io', HeropediaData.sort_hero(dictionary))
 
-    def test_sort_item_name_should_change(self):
+    def test_sort_item_name_change(self):
         '''str: sort_item("sphere") returns "linken s sphere"'''
         dictionary = ('sphere', None)
         self.assertEqual(
             "linken s sphere", HeropediaData.sort_item(dictionary))
 
-    def test_sort_hero_name_should_not_change(self):
+    def test_sort_hero_name_not_change(self):
         '''str: sort("io") returns "io"'''
         dictionary = ('io', None)
         self.assertEqual('io', HeropediaData.sort_hero(dictionary))
 
-    def test_sort_item_name_should_not_change(self):
+    def test_sort_item_name_not_change(self):
         '''str: sort("linken s sphere") returns "linken s sphere"'''
         dictionary = ('linken s sphere', None)
         self.assertEqual(

@@ -47,7 +47,7 @@ class HeropediaData(object):
         return dictionary[name]
 
     @classmethod
-    def _openFile(cls, name):
+    def _open_file(cls, name):
         '''Open dotapatch's heropediadata file.
 
         Parameters
@@ -66,7 +66,7 @@ class HeropediaData(object):
             return dictionary
 
     @classmethod
-    def _saveFile(cls, name, content):
+    def _save_file(cls, name, content):
         '''Stores heropediadata file.
 
         Parameters
@@ -97,15 +97,15 @@ class HeropediaData(object):
         # Data Initialization
         if not path.isfile(path.join(self.DATA_DIR, self.ITEM_DATA)):
             self._item_dictionary = self._download_file(self.ITEM_DATA)
-            self._saveFile(self.ITEM_DATA, self._item_dictionary)
+            self._save_file(self.ITEM_DATA, self._item_dictionary)
         else:
-            self._item_dictionary = self._openFile(self.ITEM_DATA)
+            self._item_dictionary = self._open_file(self.ITEM_DATA)
 
         if not path.isfile(path.join(self.DATA_DIR, self.HERO_DATA)):
             self._hero_dictionary = self._download_file(self.HERO_DATA)
-            self._saveFile(self.HERO_DATA, self._hero_dictionary)
+            self._save_file(self.HERO_DATA, self._hero_dictionary)
         else:
-            self._hero_dictionary = self._openFile(self.HERO_DATA)
+            self._hero_dictionary = self._open_file(self.HERO_DATA)
 
     @staticmethod
     def sort_hero(hero_tuple):
