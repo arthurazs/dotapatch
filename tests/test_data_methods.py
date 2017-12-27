@@ -1,21 +1,26 @@
+'''Tests for HeropediaData methods'''
 from unittest import TestCase, main as unit_main
 from dotapatch.data import HeropediaData
 
 
 def setUpModule():
+    '''Sets up HeropediaData object'''
     global data
     data = HeropediaData()
 
 
 def tearDownModule():
+    '''Tears down HeropediaData object'''
     global data
     del data
 
 
 class TestHeroDictionary(TestCase):
+    '''Tests hero dictionary'''
 
     @classmethod
     def setUpClass(cls):
+        '''Sets up hero changelog line'''
         cls.hero = 'Juggernaut: base damage reduced by 2'
 
     def test_get_item_name_hero(self):
@@ -31,9 +36,11 @@ class TestHeroDictionary(TestCase):
 
 
 class TestGeneralDictionary(TestCase):
+    '''Tests general change (no item/hero change)'''
 
     @classmethod
     def setUpClass(cls):
+        '''Sets up general changelog line'''
         cls.general = 'Illusions attack damage reduction against buildings'
 
     def test_get_item_name_general(self):
@@ -48,9 +55,11 @@ class TestGeneralDictionary(TestCase):
 
 
 class TestItemDictionary(TestCase):
+    '''Tests item dictionary'''
 
     @classmethod
     def setUpClass(cls):
+        '''Sets up item changelog line'''
         cls.item = 'Dragon Lance: strength reduced from 14 to 13'
 
     def test_get_item_name_item(self):
@@ -66,6 +75,7 @@ class TestItemDictionary(TestCase):
 
 
 class TestDictionaryManipulation(TestCase):
+    '''Tests dictionary manipulation'''
 
     def test_download_file_fail(self):
         '''dwnl: assert 'file:///' can't be used '''
@@ -75,4 +85,5 @@ class TestDictionaryManipulation(TestCase):
 
 
 if __name__ == '__main__':
+    '''Run tests'''
     unit_main()

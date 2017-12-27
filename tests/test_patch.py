@@ -1,3 +1,4 @@
+'''Tests for Dotapatch functions'''
 from unittest import TestCase, main as unit_main
 from dotapatch.patch import Dotapatch
 import os.path as path
@@ -5,9 +6,11 @@ from os import remove
 
 
 class Test(TestCase):
+    '''Tests changelog parsing'''
 
     @classmethod
     def setUpClass(cls):
+        '''Sets up changelog path'''
         cls.file_path = path.abspath(path.join('dotapatch', 'changelogs'))
 
     def test_raises_ioerror(self):
@@ -38,4 +41,5 @@ class Test(TestCase):
 
 
 if __name__ == '__main__':
+    '''Run tests'''
     unit_main()

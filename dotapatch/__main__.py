@@ -1,3 +1,4 @@
+'''dotapatch's entry point'''
 from __future__ import absolute_import
 from sys import exit as sys_exit
 import os.path as path

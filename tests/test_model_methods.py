@@ -1,3 +1,4 @@
+'''Tests for Html functions'''
 from unittest import TestCase, main as unit_main
 from dotapatch.model import Html
 import os.path as path
@@ -5,6 +6,7 @@ from os import remove
 
 
 class TestTemplateFile(TestCase):
+    '''Tests template file'''
 
     def test_template_dir_exist(self):
         '''tmpl: assert 'templates' folder exists'''
@@ -31,9 +33,11 @@ class TestTemplateFile(TestCase):
 
 
 class TestHtmlDictionary(TestCase):
+    '''Tests Html dictionary'''
 
     @classmethod
     def setUpClass(cls):
+        '''Sets up Html base'''
         cls.html = Html('test')
         cls.desired_content = \
             cls.html.get_dictionary_value('OPEN_HTML') \
@@ -41,6 +45,7 @@ class TestHtmlDictionary(TestCase):
         cls.bg_style = False
 
     def tearDown(self):
+        '''Resets content and style'''
         TestHtmlDictionary.desired_content = self.desired_content
         TestHtmlDictionary.bg_style = self.bg_style
 
@@ -121,4 +126,5 @@ class TestHtmlDictionary(TestCase):
 
 
 if __name__ == '__main__':
+    '''Run tests'''
     unit_main()

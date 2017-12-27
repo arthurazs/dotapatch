@@ -1,3 +1,4 @@
+'''Module for the heropediadata api.'''
 from __future__ import print_function
 from json import loads
 try:
@@ -11,6 +12,7 @@ from logging import getLogger as get_logger
 
 
 class HeropediaData(object):
+    '''Uses dota2's heropediadata api to find the correct hero/item name.'''
 
     # CONSTANTS
     DATA_DIR = path.abspath(path.join(path.dirname(__file__), 'data'))
@@ -19,6 +21,18 @@ class HeropediaData(object):
 
     # Initialization Functions
     def _download_file(self, name):
+        '''Parses dota2's heropediadata file into dict.
+
+        Parameters
+        ----------
+        name : str
+            heropediadata feed to be downloaded.
+
+        Returns
+        -------
+        dictionary : dict
+            Returns heropediadata as dict.
+        '''
         link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
         try:
             if 'file:///' in link:
@@ -34,6 +48,18 @@ class HeropediaData(object):
 
     @classmethod
     def _openFile(cls, name):
+        '''Open dotapatch's heropediadata file.
+
+        Parameters
+        ----------
+        name : str
+            heropediadata file to be opened.
+
+        Returns
+        -------
+        dictionary : dict
+            Returns heropediadata as dict.
+        '''
         with open(path.join(cls.DATA_DIR, name), 'r') as text:
             data = text.read()
             dictionary = literal_eval(data)
@@ -41,11 +67,26 @@ class HeropediaData(object):
 
     @classmethod
     def _saveFile(cls, name, content):
+        '''Stores heropediadata file.
+
+        Parameters
+        ----------
+        name : str
+            heropediadata file name to be stored.
+
+        content : str
+            heropediadata content to be stored.
+        '''
         with open(path.join(cls.DATA_DIR, name), 'w') as text:
             print(content, file=text)
 
     # Initialization
     def __init__(self):
+        '''Initializes HeropediaData.
+
+        Check if heropediadata files exist.
+        If a file is not found, it's downloaded from dota2 heropediadata feed.
+        '''
 
         self.logger = get_logger('dotapatch.data')
 
@@ -126,6 +167,28 @@ class HeropediaData(object):
     # Default Function
     @staticmethod
     def _get_name(line, dictionary, proper_name):
+        '''Default function for finding object name.
+
+        Splits the line by ':' and checks if it exists in the object's
+        dictionary (heropediadata).
+
+        Parameters
+        ----------
+        line : str
+            The phrase to be checked.
+            e.g. "Illusions attack damage reduced against buildings"
+
+        dictionary : dict
+            Object's main dictionary (heropediadata).
+
+        proper_name : dict
+            Object's secondary dictionary.
+
+        Returns
+        -------
+        name : str
+            Proper object name or None if not found.
+        '''
         name = line.split(':')[0]
         name = name.lower().replace(' ', '_')
         found = dictionary.get(name, None)
@@ -135,21 +198,20 @@ class HeropediaData(object):
 
     # Name Functions
     def get_item_name(self, line):
-        '''Return the item id.
+        '''Returns the item name.
 
-        Search the line for an item name in item_dictionary and return
-        its id.
+        Searches the line for an item name and returns its proper name.
 
         Parameters
         ----------
         line : str
             The phrase to be checked.
+            e.g. "Dragon Lance: strength reduced from 14 to 13"
 
         Returns
         -------
-        str
-            Item id name.
-
+        name : str
+            Proper item name or None if not found.
         '''
         proper_name = {
             "linken's_sphere": 'sphere', 'battle_fury': 'bfury',
@@ -163,21 +225,20 @@ class HeropediaData(object):
         return name
 
     def get_hero_name(self, line):
-        '''Return the hero name id.
+        '''Returns the hero name.
 
-        Search the line for an hero name in hero_dictionary and return
-        its id.
+        Searches the line for a hero name and returns its proper name.
 
         Parameters
         ----------
         line : str
             The phrase to be checked.
+            e.g. "Juggernaut: base damage reduced by 2"
 
         Returns
         -------
-        str
-            Hero id name.
-
+        name : str
+            Proper hero name or None if not found.
         '''
         proper_name = {
             'nightstalker': 'night_stalker', 'anti-mage': 'antimage',

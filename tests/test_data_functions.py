@@ -1,12 +1,15 @@
+'''Tests for HeropediaData functions'''
 from unittest import TestCase, main as unit_main
 from dotapatch.data import HeropediaData
 import os.path as path
 
 
 class TestDataFiles(TestCase):
+    '''Test if files/folders exists'''
 
     @classmethod
     def setUpClass(cls):
+        '''Sets up directory to check'''
         cls.DATA_DIR = HeropediaData.DATA_DIR
 
     def test_data_dir_exist(self):
@@ -25,8 +28,8 @@ class TestDataFiles(TestCase):
 
 
 class TestStringManipulation(TestCase):
+    '''Tests string manipulation'''
 
-    # sort
     def test_sort_hero_name_should_change(self):
         '''str: sort_hero("wisp") returns "io"'''
         dictionary = ('wisp', None)
@@ -51,4 +54,5 @@ class TestStringManipulation(TestCase):
 
 
 if __name__ == '__main__':
+    '''Run tests'''
     unit_main()

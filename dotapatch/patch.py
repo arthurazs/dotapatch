@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
 # coding: utf-8
+'''This module contains the main class for dotapatch.'''
 from __future__ import print_function, absolute_import
 import os.path as path
 from collections import defaultdict
@@ -9,21 +9,42 @@ from dotapatch.data import HeropediaData
 
 
 class Dotapatch (object):
+    '''This is the main class for dotapatch.'''
 
     ERROR = -1
     SUCCESS = 0
     WARNING = 1
 
     def __init__(self, filename, template='default'):
+        '''Initializes Dotapatch.
+
+        Checks if filename exists.
+
+        Parameters
+        ----------
+        filename : str
+            Changelog to be parsed.
+            It can be either the filename or the absolute_filepath/filename.
+
+        template : str (optional, 'default')
+            Template to be used as base to parse the changelog.
+            It can be either the name or the absolute_path/name.
+
+        Returns
+        -------
+        Dotapatch : object
+            Object with a parse() method.
+        '''
         self.logger = get_logger('dotapatch.patch')
         self._file_path = path.abspath(filename)
         self._template = template
 
         if not path.isfile(self._file_path):
             error_title = '{} not found'.format(self._file_path)
-            error_body = '''
-In case {name} is in a directory other than
-{path} try:
+            error_body = '''In case {name} is in a directory other than:
+{path}
+
+Try:
 
  1) 'cd' over to the correct directory
  2) run dotapatch again
@@ -45,6 +66,16 @@ Contact me at @arthurazs if the error persists.
             self.logger.warning(error_body)
 
     def parse(self):
+        '''Parses changelog.
+
+        Returns
+        -------
+        status : int
+            Returns parsing status.
+            status == 0 : Conversion went smoothly
+            status  < 0 : Critical error
+            status >= 1 : Some lines under GENERAL section should be reviewed
+        '''
         status = Dotapatch.ERROR
         if path.isfile(self._file_path):
             with open(self._file_path, 'r') as changelog:
