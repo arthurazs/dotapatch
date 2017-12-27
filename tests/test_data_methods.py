@@ -3,7 +3,7 @@ from unittest import TestCase, main as unit_main
 from dotapatch.data import HeropediaData
 
 
-data = HeropediaData()
+DATA = HeropediaData()
 
 
 class TestHeroDictionary(TestCase):
@@ -16,13 +16,13 @@ class TestHeroDictionary(TestCase):
 
     def test_get_item_name_hero(self):
         '''hero: get_item_name(hero) returns None'''
-        name = data.get_item_name(self.hero)
+        name = DATA.get_item_name(self.hero)
         self.assertIsNone(name)
 
     def test_get_hero_name_hero(self):
         '''hero: get_hero_name(hero) returns hero_id'''
         hero_id = 'juggernaut'
-        name = data.get_hero_name(self.hero)
+        name = DATA.get_hero_name(self.hero)
         self.assertEqual(hero_id, name)
 
 
@@ -36,12 +36,12 @@ class TestGeneralDictionary(TestCase):
 
     def test_get_item_name_general(self):
         '''general: get_item_name(general) returns None'''
-        name = data.get_item_name(self.general)
+        name = DATA.get_item_name(self.general)
         self.assertIsNone(name)
 
     def test_get_hero_name_general(self):
         '''general: get_hero_name(general) returns None'''
-        name = data.get_hero_name(self.general)
+        name = DATA.get_hero_name(self.general)
         self.assertIsNone(name)
 
 
@@ -56,12 +56,12 @@ class TestItemDictionary(TestCase):
     def test_get_item_name_item(self):
         '''item: get_item_name(item) returns item_id'''
         item_id = 'dragon_lance'
-        name = data.get_item_name(self.item)
+        name = DATA.get_item_name(self.item)
         self.assertEqual(item_id, name)
 
     def test_get_hero_name_item(self):
         '''item: get_hero_name(item) returns None'''
-        name = data.get_hero_name(self.item)
+        name = DATA.get_hero_name(self.item)
         self.assertIsNone(name)
 
 
@@ -71,7 +71,7 @@ class TestDictionaryManipulation(TestCase):
     def test_download_file_fail(self):
         '''dwnl: assert 'file:///' can't be used '''
         with self.assertRaises(SystemExit) as context:  # TODO Is this correct?
-            data._download_file('file:///')
+            DATA._download_file('file:///')
         self.assertEqual(context.exception.code, -1)
 
 

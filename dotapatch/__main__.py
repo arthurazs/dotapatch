@@ -56,6 +56,4 @@ if ARGS.save_log:
     logger.info('Recording log file at {}'.format(
         path.abspath('dotapatch.log')))
 
-dotapatch = Dotapatch(ARGS.file, ARGS.template)
-
-sys_exit(dotapatch.parse())
+sys_exit(Dotapatch(ARGS.file, ARGS.template).parse())
