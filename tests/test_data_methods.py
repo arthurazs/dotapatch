@@ -85,5 +85,4 @@ class TestDictionaryManipulation(TestCase):
 
 
 if __name__ == '__main__':
-    '''Run tests'''
     unit_main()
