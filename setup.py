@@ -1,12 +1,13 @@
 # coding: utf-8
+'''Setup for dotapatch.'''
 from setuptools import setup
 import os.path as path
 
 
-info_name = 'dotapatch'
+APP_NAME = 'dotapatch'
 
 try:
-    with open(path.abspath(path.join(info_name, 'version.py'))) as version:
+    with open(path.abspath(path.join(APP_NAME, 'version.py'))) as version:
         exec(version.read())
 except IOError as err:
     print(err)
@@ -14,27 +15,27 @@ except IOError as err:
 
 try:
     with open('PyPIREADME.rst', 'r') as readme:
-        info_long_description = readme.read()
+        APP_LONG_DESCRIPTION = readme.read()
 except IOError as err1:
     try:
         print('PyPIREADME.rst not found, will use README.md instead')
         print('WARNING README.md should not be uploaded to PyPI')
         with open('README.md', 'r') as readme:
-            info_long_description = readme.read()
+            APP_LONG_DESCRIPTION = readme.read()
     except IOError as err2:
         print('ERROR README.md not found either')
         print()
         print(err1)
         print(err2)
         print()
-        info_long_description = ''
+        APP_LONG_DESCRIPTION = ''
 
-info_url = 'https://github.com/arthurazs/{}/'.format(info_name)
-info_download = '{}archive/v{}.tar.gz'.format(info_url, __version__)
+APP_URL = 'https://github.com/arthurazs/{}/'.format(APP_NAME)
+APP_DOWNLOAD_URL = '{}archive/v{}.tar.gz'.format(APP_URL, __version__)
 
 
 setup(
-    name=info_name,
+    name=APP_NAME,
     version=__version__,
     author='Arthur Zopellaro',
     author_email='arthurazsoares@gmail.com',
@@ -43,15 +44,15 @@ setup(
     keywords=(
         'dota dota2 patch changelog html clean dotapatch convert'
     ),
-    url=info_url,
-    download_url=info_download,
-    packages=[info_name, 'tests'],
-    package_data={info_name: [
+    url=APP_URL,
+    download_url=APP_DOWNLOAD_URL,
+    packages=[APP_NAME, 'tests'],
+    package_data={APP_NAME: [
         'templates/*', 'data/*', 'changelogs/706f', 'changelogs/707d']},
-    data_files=[(info_name, [
+    data_files=[(APP_NAME, [
         'PyPIREADME.rst', 'requirements.txt', 'LICENSE', 'tox.ini',
         'CODE_OF_CONDUCT.md', 'CONTRIBUTING.md'])],
-    long_description=info_long_description,
+    long_description=APP_LONG_DESCRIPTION,
     python_requires='>=2.7, <4',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -79,7 +80,7 @@ setup(
     setup_requires=['nose>=1.3.7', 'rednose>=1.2.3'],
     entry_points={
         'console_scripts': [
-            '{0} = {0}.__main__:main'.format(info_name)]
+            '{0} = {0}.__main__:main'.format(APP_NAME)]
     },
     tests_require=['coverage>=4.4.2'],
     test_suite='nose.collector'
