@@ -9,24 +9,13 @@ from dotapatch.version import __version__
 from dotapatch.patch import Dotapatch
 
 
-DONT_PARSE = 13
-SUCCESS = 0
-
-
-def get_args():
+def get_parser():
     '''Creates dotapatch's arguments.
 
     Returns
     -------
-    changelog : str
-        Changelog file to be parsed.
-    template : str (optional, 'default')
-        Template file to be used.
-    log_level : str (optional, 'INFO')
-        Logging level.
-        Either 'INFO', 'DEBUG' or 'ERROR'.
-    save_log : bool  (optional, False)
-        Whether the log should be saved or not.
+    parser : ArgumentParser
+        Parser with all arguments.
     '''
     parser = ArgumentParser(
         prog='dotapatch', description='Parses Dota 2 text patches to html'
@@ -55,46 +44,70 @@ def get_args():
         action='store_const', dest='log_level',
         const='ERROR')
 
-    args = parser.parse_args()
-
-    return args.changelog, args.template, args.log_level, args.save_log
+    return parser
 
 
-def main(call_parse=True):
+def main(changelog, template='default', log_level='INFO', save_log=False):
     '''dotapatch's entry point.
 
     Get the arguments, initializes logging, parses the changelog.
+
+    Parameters
+    ----------
+    changelog : str
+        Changelog to be parsed.
+        It can be either the filename or the absolute_filepath/filename.
+
+    template : str (optional, 'default')
+        Template to be loaded.
+        It can be either the template name or the absolute_path/template.
+
+    log_level : str (optional, 'INFO')
+        Log level to be outputed.
+        Every level equal or higher will be printed.
+
+    save_log : bool (optional, False)
+        Whether the log should be saved into a file or not.
+
+    Returns
+    -------
+    status : int
+        Parsing status.
     '''
-    changelog, template, log_level, save_log = get_args()
 
-    if not call_parse:
-        raise SystemExit(DONT_PARSE)
+    if log_level:
+        logger = get_logger('dotapatch')
+        logger.setLevel(DEBUG)
 
-    logger = get_logger('dotapatch')
-    logger.setLevel(DEBUG)
+        stream_handler = StreamHandler()
+        stream_handler.setLevel(get_level(log_level))
+        stream_formatter = Formatter('%(levelname)s %(message)s')
+        stream_handler.setFormatter(stream_formatter)
+        logger.addHandler(stream_handler)
 
-    stream_handler = StreamHandler()
-    stream_handler.setLevel(get_level(log_level))
-    stream_formatter = Formatter('%(levelname)s %(message)s')
-    stream_handler.setFormatter(stream_formatter)
-    logger.addHandler(stream_handler)
+        if save_log:
+            file_handler = FileHandler('dotapatch.log', 'w')
+            file_handler.setLevel(DEBUG)
+            file_formatter = Formatter('''
+        %(asctime)s (%(name)s, line %(lineno)d)
+        %(levelname)s %(message)s''')
+            file_handler.setFormatter(file_formatter)
+            logger.addHandler(file_handler)
+            logger.info('Recording log file at {}'.format(
+                path.abspath('dotapatch.log')))
 
-    if save_log:
-        file_handler = FileHandler('dotapatch.log', 'w')
-        file_handler.setLevel(DEBUG)
-        file_formatter = Formatter('''
-    %(asctime)s (%(name)s, line %(lineno)d)
-    %(levelname)s %(message)s''')
-        file_handler.setFormatter(file_formatter)
-        logger.addHandler(file_handler)
-        logger.info('Recording log file at {}'.format(
-            path.abspath('dotapatch.log')))
-
-    if changelog:
-        return Dotapatch(changelog, template).parse()
-
-    raise SystemExit(SUCCESS)
+    return Dotapatch(changelog, template).parse()
 
 
 if __name__ == '__main__':
-    sys_exit(main())
+    parser = get_parser()
+    args = parser.parse_args()
+    changelog = args.changelog
+    template = args.template
+    log_level = args.log_level
+    save_log = args.save_log
+    if changelog:
+        status = main(changelog, template, log_level, save_log)
+        sys_exit(status)
+    else:
+        parser.print_help()
