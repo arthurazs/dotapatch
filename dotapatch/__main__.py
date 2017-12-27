@@ -22,7 +22,7 @@ def get_parser():
         ' format.')
     parser.add_argument(
         'changelog', action='store', help='changelog to be formated',
-        metavar='changelog_file', nargs='?', default=None)
+        metavar='changelog_file', nargs='+', default=None)
     parser.add_argument(
         '-t', '--template', action='store', dest='template',
         default='default', help='base template to generate HTML',
@@ -47,14 +47,14 @@ def get_parser():
     return parser
 
 
-def main(changelog, template='default', log_level='INFO', save_log=False):
+def main(changelogs, template='default', log_level='INFO', save_log=False):
     '''dotapatch's entry point.
 
-    Get the arguments, initializes logging, parses the changelog.
+    Get the arguments, initializes logging, parses the changelogs.
 
     Parameters
     ----------
-    changelog : str
+    changelogs : list
         Changelog to be parsed.
         It can be either the filename or the absolute_filepath/filename.
 
@@ -96,7 +96,10 @@ def main(changelog, template='default', log_level='INFO', save_log=False):
             logger.info('Recording log file at {}'.format(
                 path.abspath('dotapatch.log')))
 
-    return Dotapatch(changelog, template).parse()
+    status = 0
+    for filename in changelogs:
+        status += Dotapatch(filename, template).parse()
+    return status
 
 
 if __name__ == '__main__':

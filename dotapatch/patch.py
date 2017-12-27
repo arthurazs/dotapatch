@@ -91,6 +91,8 @@ Contact me at @arthurazs if the error persists.
                 lines = lines[2:]
                 initial_line_count = len(lines)
 
+            self.logger.info('Parsing {}'.format(patch_version))
+
             data = HeropediaData()
 
             # Organize changelog
@@ -132,20 +134,21 @@ Contact me at @arthurazs if the error persists.
                 + sum(len(changes) for changes in item.values())
             status = initial_line_count - current_line_count
             if status == 0:
-                self.logger.info('Conversion went smoothly.')
+                self.logger.info(
+                    '{} conversion went smoothly.'.format(patch_version))
             elif status < 0:
                 self.logger.critical('Contact me at @arthurazs')
             else:
                 if status == 1:
-                    message = '''1 line under GENERAL updates:
+                    message = '''{} had 1 line under GENERAL updates:
 * {}
 
 This line might be a hero/item update and you should manually place it
-at the proper location.'''.format(''.join(lines))
+at the proper location.'''.format(patch_version, ''.join(lines))
                     self.logger.warning(message)
                 else:
-                    message = '{} lines under GENERAL updates:' \
-                        .format(str(status))
+                    message = '{} had {} lines under GENERAL updates:' \
+                        .format(patch_version, str(status))
                     for line in lines:
                         message = ('{}\n* {}'.format(message, line))
                     message = '''{}

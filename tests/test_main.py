@@ -29,7 +29,7 @@ class TestMain(TestCase):
         file_name = '706f'
         changelog = path.abspath(
             path.join('dotapatch', 'changelogs', file_name))
-        status = main(changelog, 'default', None)
+        status = main([changelog], 'default', None)
         remove(file_name + '.html')
         self.assertEqual(Dotapatch.SUCCESS, status)
 
