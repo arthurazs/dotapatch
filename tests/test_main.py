@@ -1,5 +1,6 @@
 '''Tests for __main__ methods'''
 from unittest import TestCase, main as unit_main
+from mock import patch
 import os.path as path
 from os import remove
 from dotapatch.__main__ import get_parser, main
@@ -11,14 +12,18 @@ class TestMain(TestCase):
 
     def test_get_parser(self):
         '''main: assert get_parser() returns default values'''
-        parser = get_parser()
-        args = parser.parse_args()
 
+        parser = get_parser()
+        with patch('sys.argv', ['dotapatch', '706e', '707d']):
+            args = parser.parse_args()
+
+        changelog_list = args.changelog
         template = args.template
         log_level = args.log_level
         save_log = args.save_log
 
-        result = template == 'default'
+        result = changelog_list == ['706e', '707d']
+        result &= template == 'default'
         result &= log_level == 'INFO'
         result &= save_log is False
 

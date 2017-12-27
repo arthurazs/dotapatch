@@ -208,7 +208,7 @@ this [repository], head over to the folder and run `tox`:
  - [os] Portable way of using operating system dependent functionalities
      - [os.path] Makes sure all directories are created and all data are downloaded
      - [os.makedirs] Creates HeropediaData directory
- - [sys.exit] Exits from Python
+     - [os.remove] Clean data generated during the tests
  - [json.loads] Parses json from HeropediaData to a Python dictionary
  - [ast.literal_eval][ast] Parses data from file to a Python dictionary
  - [argparse.ArgumentParser][argparse] Enables the use of arguments. Try `$ dotapatch -h`
@@ -228,6 +228,7 @@ this [repository], head over to the folder and run `tox`:
      - [getLevelName] Returns the numeric value of a string logging level
  - [tox] Run tests for Python (2.7, 3.3, 3.4, 3.5, 3.6)
      - [unittest] Base for the tests
+         - [mock.patch] replaces system argv with mock args
          - [nose] test suite (nosetests)
              - [rednose] plugging which improves readability
              - [coverage] tool for measuring code coverage
@@ -265,25 +266,26 @@ Any unacceptable behavior may be reported by contacting the project team at
 ## License
 This project is licensed under the [MIT License].
 
-[tox]:              https://tox.readthedocs.io
-[pip]:              https://pypi.python.org/pypi
-[rednose]:          https://github.com/JBKahn/rednose
-[setuptools]:       https://github.com/pypa/setuptools
-[nose]:             http://nose.readthedocs.io/en/latest
-[coverage]:         http://coverage.readthedocs.io/en/coverage-4.4.2/
 [conduct]:          https://www.contributor-covenant.org
+[pip]:              https://pypi.python.org/pypi
+[setuptools]:       https://github.com/pypa/setuptools
+[tox]:              https://tox.readthedocs.io
+[nose]:             http://nose.readthedocs.io/en/latest
+[rednose]:          https://github.com/JBKahn/rednose
+[coverage]:         http://coverage.readthedocs.io/en/coverage-4.4.2/
+[cloning]:          https://help.github.com/articles/cloning-a-repository
 [urllib2]:          https://docs.python.org/2/library/urllib2.html#urllib2.urlopen
 [urllib]:           https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen
+[mock]:             https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch
 [ast]:              https://docs.python.org/3/library/ast.html#ast.literal_eval
 [os]:               https://docs.python.org/3/library/os.html
 [os.path]:          https://docs.python.org/3/library/os.path.html
 [os.makedirs]:      https://docs.python.org/3/library/os.html#os.makedirs
+[os.remove]:        https://docs.python.org/3/library/os.html#os.remove
 [unittest]:         https://docs.python.org/3/library/unittest.html
 [argparse]:         https://docs.python.org/3/library/argparse.html#argumentparser-objects
-[cloning]:          https://help.github.com/articles/cloning-a-repository
 [defaultdict]:      https://docs.python.org/3/library/collections.html#collections.defaultdict
 [future]:           https://docs.python.org/3/reference/simple_stmts.html#future-statements
-[sys.exit]:         https://docs.python.org/3/library/sys.html#sys.exit
 [json.loads]:       https://docs.python.org/3/library/json.html#json.loads
 [logging]:          https://docs.python.org/3/library/logging.html
 [getLogger]:        https://docs.python.org/3/library/logging.html#logging.getLogger

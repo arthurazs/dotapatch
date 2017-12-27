@@ -1,6 +1,5 @@
 '''dotapatch's entry point'''
 from __future__ import absolute_import
-from sys import exit as sys_exit
 import os.path as path
 from argparse import ArgumentParser
 from logging import DEBUG, StreamHandler, Formatter, FileHandler
@@ -22,7 +21,7 @@ def get_parser():
         ' format.')
     parser.add_argument(
         'changelog', action='store', help='changelog to be formated',
-        metavar='changelog_file', nargs='+', default=None)
+        metavar='changelog_file', nargs='*', default=None)
     parser.add_argument(
         '-t', '--template', action='store', dest='template',
         default='default', help='base template to generate HTML',
@@ -111,6 +110,6 @@ if __name__ == '__main__':
     save_log = args.save_log
     if changelog:
         status = main(changelog, template, log_level, save_log)
-        sys_exit(status)
+        raise SystemExit(status)
     else:
         parser.print_help()

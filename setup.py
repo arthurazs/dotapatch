@@ -82,6 +82,6 @@ setup(
         'console_scripts': [
             '{0} = {0}.__main__:main'.format(APP_NAME)]
     },
-    tests_require=['coverage>=4.4.2'],
+    tests_require=['coverage>=4.4.2', 'mock>=2.0.0'],
     test_suite='nose.collector'
 )
