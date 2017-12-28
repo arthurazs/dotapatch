@@ -102,13 +102,16 @@ def dotapatch(
     return status
 
 
-def main():
+def main(testing=False):
     PARSER = get_parser()
 
     ARGS = PARSER.parse_args()
     CHANGELOGS = ARGS.changelogs
     TEMPLATE = ARGS.template
-    LOG_LEVEL = ARGS.log_level
+    if testing:
+        LOG_LEVEL = None
+    else:
+        LOG_LEVEL = ARGS.log_level
     SAVE_LOG = ARGS.save_log
 
     if CHANGELOGS:
@@ -116,7 +119,8 @@ def main():
         raise SystemExit(STATUS)
     else:
         PARSER.print_usage()
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

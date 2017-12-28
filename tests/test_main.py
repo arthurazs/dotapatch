@@ -3,7 +3,7 @@ from unittest import TestCase, main as unit_main
 from mock import patch
 import os.path as path
 from os import remove
-from dotapatch.__main__ import get_parser, dotapatch
+from dotapatch.__main__ import get_parser, dotapatch, main
 from dotapatch.patch import Dotapatch
 
 
@@ -36,6 +36,23 @@ class TestMain(TestCase):
             path.join('dotapatch', 'changelogs', file_name))
         status = dotapatch([changelog], 'default', None)
         remove(file_name + '.html')
+        self.assertEqual(Dotapatch.SUCCESS, status)
+
+    def test_main_changelog(self):
+        '''main: assert main(changelog) exits with SUCCESS'''
+        file_name = '706f'
+        changelog = path.abspath(
+            path.join('dotapatch', 'changelogs', file_name))
+        with patch('sys.argv', ['dotapatch', changelog]):
+            with self.assertRaises(SystemExit) as context:
+                main(True)
+        remove(file_name + '.html')
+        self.assertEqual(Dotapatch.SUCCESS, context.exception.code)
+
+    def test_main_no_changelog(self):
+        '''main: assert main() returns SUCCESS'''
+        with patch('sys.argv', ['dotapatch']):
+            status = main()
         self.assertEqual(Dotapatch.SUCCESS, status)
 
 

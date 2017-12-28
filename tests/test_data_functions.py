@@ -18,13 +18,13 @@ class TestDataFiles(TestCase):
 
     def test_item_data_exist(self):
         '''file: assert 'itemdata' file exists'''
-        ITEM_DATA = HeropediaData.ITEM_DATA
-        self.assertTrue(path.isfile(path.join(self.DATA_DIR, ITEM_DATA)))
+        item_data = HeropediaData.ITEM_DATA
+        self.assertTrue(path.isfile(path.join(self.DATA_DIR, item_data)))
 
     def test_hero_data_exist(self):
         '''file: assert 'herodata' file exists'''
-        HERO_DATA = HeropediaData.HERO_DATA
-        self.assertTrue(path.isfile(path.join(self.DATA_DIR, HERO_DATA)))
+        hero_data = HeropediaData.HERO_DATA
+        self.assertTrue(path.isfile(path.join(self.DATA_DIR, hero_data)))
 
 
 class TestStringManipulation(TestCase):
