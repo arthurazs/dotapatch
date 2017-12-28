@@ -282,7 +282,7 @@ run `tox`:
     SKIPPED:  py36: InterpreterNotFound: python3.6
       congratulations :)
 
-#### nosetets
+#### nosetests
 
 You will need `nosetests` but the setup.py will handle it.
 
