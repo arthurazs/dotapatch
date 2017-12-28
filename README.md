@@ -23,6 +23,8 @@ This is the latest patch parsed using **dotapatch**.
     - [Gathering a new changelog](#gathering-a-new-changelog)
     - [Running dotapatch](#running-dotapatch)
     - [Testing dotapatch](#testing-dotapatch)
+        - [tox](#tox)
+        - [nosetests](#nosetests)
 - [Built with](#built-with)
 - [Authors](#authors)
 - [Task list](#task-list)
@@ -43,17 +45,28 @@ Save a changelog file in accordance with the following format:
 
 Head over to the directory you saved the changelog and run **dotapatch**.
 
-    $ cd Desktop/changelogs
-    $ dotapatch 707d
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
-    INFO Conversion went smoothly.
+    $ cd changelogs
+    $ dotapatch 706f 707d
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/changelogs/706f.html
+    INFO 7.06f conversion went smoothly.
+    INFO Parsing 7.07d
+    INFO HTML saved at /home/arthurazs/changelogs/707d.html
+    WARNING 7.07d had 3 lines under GENERAL updates:
+    * Added the following abilities to Ability Draft: Fire Remnant, Psionic Trap, Chakram
+    * Neutral Ancients gold bounties reduced by 10%
+    * Arcane Rune: Manacost Reduction reduced from 40% to 30% (same as the cooldown reduction)
+
+    Some of these lines might be hero/item updates and you should manually
+    place them at the proper location.
 
 Make sure that `<filename>` is in your current directory. You can also provide
   the `path` to the changelog.
 
-    $ dotapatch /home/arthurazs/Desktop/changelogs/707d
-    INFO HTML saved at /home/arthurazs/707d.html
-    INFO Conversion went smoothly.
+    $ dotapatch /home/arthurazs/changelogs/706f
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/706f.html
+    INFO 7.06f conversion went smoothly.
 
 ## Getting started
 You will need python.
@@ -63,16 +76,17 @@ You will need python.
 ### How does it work
 
     $ dotapatch -h
-    usage: dotapatch [-h] [-t TEMPLATE] [-V] [-d] [-s] [-q] file
+    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+                     [changelog_file [changelog_file ...]]
 
-    Parse Dota 2 text patches to html format.
+    Parses Dota 2 text patches to html format.
 
     positional arguments:
-      file                  changelog to be formated
+      changelog_file        changelog to be formated
 
     optional arguments:
       -h, --help            show this help message and exit
-      -t TEMPLATE, --template TEMPLATE
+      -t template_file, --template template_file
                             base template to generate HTML
       -V, --version         show program's version number and exit
 
@@ -81,46 +95,73 @@ You will need python.
       -s, --save-log        save log output
       -q, --quiet           less verbose
 
+
 Run **dotapatch** stating the full path to the file:
 
-    $ dotapatch /home/arthurazs/Desktop/changelogs/707d
-    INFO HTML saved at /home/arthurazs/707d.html
-    INFO Conversion went smoothly.
+    $ dotapatch /home/arthurazs/changelogs/706f
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/706f.html
+    INFO 7.06f conversion went smoothly.
 
 Or you can head over to the directory with the changelog and run **dotapatch**
 stating only the filename:
 
-    $ cd Desktop/changelogs
-    $ dotapatch 707d
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
-    INFO Conversion went smoothly.
+    $ cd changelogs
+    $ dotapatch 706f
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/changelogs/706f.html
+    INFO 7.06f conversion went smoothly.
+
+It's possible to parse many changelogs at once, enter as many files as you
+want:
+
+    $ cd changelogs
+    $ dotapatch 706f 707b 707d
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/changelogs/706f.html
+    INFO 7.06f conversion went smoothly.
+    INFO Parsing 7.07b
+    INFO HTML saved at /home/arthurazs/git/dotapatch/707b.html
+    WARNING 7.07b had 1 line under GENERAL updates:
+    * Backdoor Protection damage reduction increased from 25% to 40%
+
+    This line might be a hero/item update and you should manually place it
+    at the proper location.
+    INFO Parsing 7.07d
+    INFO HTML saved at /home/arthurazs/changelogs/707d.html
+    WARNING 7.07d had 3 lines under GENERAL updates:
+    * Added the following abilities to Ability Draft: Fire Remnant, Psionic Trap, Chakram
+    * Neutral Ancients gold bounties reduced by 10%
+    * Arcane Rune: Manacost Reduction reduced from 40% to 30% (same as the cooldown reduction)
+
+    Some of these lines might be hero/item updates and you should manually
+    place them at the proper location.
 
 There are some optional arguments that you can use:
 
     $ dotapatch --version
-    dotapatch: v2.0
+    dotapatch: v2.3.2
 
-    $ dotapatch 707d
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
-    INFO Conversion went smoothly.
+    $ dotapatch 706f --quiet
 
-    $ dotapatch 707d --quiet
-
-    $ dotapatch 707d --debug
+    $ dotapatch 706f --debug
     DEBUG Reading changelog.
     DEBUG Parsing changelog.
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
-    INFO Conversion went smoothly.
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/changelogs/706f.html
+    INFO 7.06f conversion went smoothly.
 
-    $ dotapatch dotapatch/changelogs/707d --save-log
-    INFO Recording log file at /home/arthurazs/git/dotapatch/dotapatch.log
-    INFO HTML saved at /home/arthurazs/git/dotapatch/707d.html
-    INFO Conversion went smoothly.
+    $ dotapatch dotapatch/changelogs/706f --save-log
+    INFO Recording log file at /home/arthurazs/dotapatch.log
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/706f.html
+    INFO 7.06f conversion went smoothly.
 
-    $ dotapatch dotapatch/changelogs/707d --template gh-pages
-    INFO Using 'gh-pages' template.
-    INFO HTML saved at /home/arthurazs/git/dotapatch/707d.html
-    INFO Conversion went smoothly.
+    $ dotapatch dotapatch/changelogs/706f --template gh-pages
+    INFO 7.06f using 'gh-pages' template.
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/706f.html
+    INFO 7.06f conversion went smoothly.
 
 - `--template` indicates which template is going to be used to parse the changelog. The `default` template generates a standalone HTML that uses [dota2] css files.
 - `--debug` and `--quiet` increase and decrease **dotapatch**'s verbosity, respectively.
@@ -133,6 +174,10 @@ There are some optional arguments that you can use:
 Install **dotapatch** using `pip`:
 
     $ pip install dotapatch
+    $ dotapatch
+    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+                     [changelog_file [changelog_file ...]]
+
 
 Or
 [clone (or download)][cloning]
@@ -142,12 +187,19 @@ this [repository], head over to the folder and install using the
     $ git clone https://github.com/arthurazs/dotapatch.git
     $ cd dotapatch
     $ python setup.py install
+    $ dotapatch
+    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+                     [changelog_file [changelog_file ...]]
 
 **OPTIONALLY** You can use **dotapatch** without installing. Just
 [clone (or download)][cloning]
 the [repository].
 
     $ git clone https://github.com/arthurazs/dotapatch.git
+    $ cd dotapatch
+    $ python -m dotapatch
+    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+                     [changelog_file [changelog_file ...]]
 
 ### Gathering a new changelog
 
@@ -174,31 +226,83 @@ the [repository].
 If you've installed **dotapatch**, head over to the folder where you saved the
 changelog file and run **dotapatch**.
 
-    $ cd Desktop/changelogs
-    $ dotapatch 707d
-    INFO HTML saved at /home/arthurazs/Desktop/changelogs/707d.html
-    INFO Conversion went smoothly.
+    $ cd changelogs
+    $ dotapatch 706f
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/changelogs/706f.html
+    INFO 7.06f conversion went smoothly.
 
 If you haven't installed **dotapatch**, head over to the **dotapatch** folder
 and run **dotapatch** as a **module**.
 
-    $ cd Desktop/dotapatch
-    $ python -m dotapatch /home/arthurazs/Desktop/changelogs/707d
-    INFO HTML saved at /home/arthurazs/Desktop/dotapatch/707d.html
-    INFO Conversion went smoothly.
+    $ cd dotapatch
+    $ python -m dotapatch /home/arthurazs/changelogs/706f
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/dotapatch/706f.html
+    INFO 7.06f conversion went smoothly.
 
 ### Testing dotapatch
+
+You can test either using [tox](#tox) or [nosetests](#nosetests).
+
+It's recomended to use **tox** in order to test the code under several Python
+versions at once. Tox will automatically skip versions that are not installed,
+no worries!
+
+#### tox
 
 You will need `tox`:
 
     $ pip install tox
 
-[Clone (or download)][cloning]
-this [repository], head over to the folder and run `tox`:
+[Clone (or download)][cloning] this [repository], head over to the folder and
+run `tox`:
 
     $ git clone https://github.com/arthurazs/dotapatch.git
     $ cd dotapatch
     $ tox
+    GLOB sdist-make: /home/arthurazs/git/dotapatch/setup.py
+    py27 inst-nodeps: /home/arthurazs/git/dotapatch/.tox/dist/dotapatch-2.3.2.zip
+    [...]
+    26 tests run in 0.166 seconds (26 tests passed)
+    py33 create: /home/arthurazs/git/dotapatch/.tox/py33
+    ERROR: InterpreterNotFound: python3.3
+    py34 create: /home/arthurazs/git/dotapatch/.tox/py34
+    ERROR: InterpreterNotFound: python3.4
+    py35 inst-nodeps: /home/arthurazs/git/dotapatch/.tox/dist/dotapatch-2.3.2.zip
+    [...]
+    26 tests run in 0.172 seconds (26 tests passed)
+    py36 create: /home/arthurazs/git/dotapatch/.tox/py36
+    ERROR: InterpreterNotFound: python3.6
+    _________________________________ summary ___________________________________
+      py27: commands succeeded
+    SKIPPED:  py33: InterpreterNotFound: python3.3
+    SKIPPED:  py34: InterpreterNotFound: python3.4
+      py35: commands succeeded
+    SKIPPED:  py36: InterpreterNotFound: python3.6
+      congratulations :)
+
+#### nosetets
+
+You will need `nosetests` but the setup.py will handle it.
+
+[Clone (or download)][cloning] this [repository], head over to the folder and
+run the test:
+
+    $ python setup.py test
+    running nosetests
+    [...]
+    file: assert 'itemdata' file exists ... passed
+    str: sort_item("sphere") returns "linken s sphere" ... passed
+    hero: get_hero_name(hero) returns hero_id ... passed
+    item: get_hero_name(item) returns None ... passed
+    main: assert get_parser() returns default values ... passed
+    html: assert item content is added properly ... passed
+    tmpl: raise error for malformed template ... passed
+    ptc: parse file with GENERAL section and return 1 (or greater) ... passed
+    [...]
+    -------------------------------------------------------------------------
+    26 tests run in 0.174 seconds (26 tests passed)
 
 ## Built with
 

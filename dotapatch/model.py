@@ -188,7 +188,7 @@ class Html(object):
         self._title = title
 
         if template != 'default':
-            self.logger.info("Using '{}' template.".format(template))
+            self.logger.info("{} using '{}' template.".format(title, template))
 
         self._template_dictionary = self._read_template(template)
 
