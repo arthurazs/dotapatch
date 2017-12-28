@@ -9,7 +9,7 @@ from dotapatch.patch import Dotapatch
 
 
 def get_parser():
-    '''Creates dotapatch's arguments.
+    '''Creates app's arguments.
 
     Returns
     -------
@@ -20,7 +20,7 @@ def get_parser():
         prog='dotapatch', description='Parses Dota 2 text patches to html'
         ' format.')
     parser.add_argument(
-        'changelog', action='store', help='changelog to be formated',
+        'changelogs', action='store', help='changelog to be formated',
         metavar='changelog_file', nargs='*', default=None)
     parser.add_argument(
         '-t', '--template', action='store', dest='template',
@@ -46,8 +46,9 @@ def get_parser():
     return parser
 
 
-def main(changelogs, template='default', log_level='INFO', save_log=False):
-    '''dotapatch's entry point.
+def dotapatch(
+        changelogs, template='default', log_level='INFO', save_log=False):
+    '''Dotapatch's entry point.
 
     Get the arguments, initializes logging, parses the changelogs.
 
@@ -101,15 +102,21 @@ def main(changelogs, template='default', log_level='INFO', save_log=False):
     return status
 
 
-if __name__ == '__main__':
-    parser = get_parser()
-    args = parser.parse_args()
-    changelog = args.changelog
-    template = args.template
-    log_level = args.log_level
-    save_log = args.save_log
-    if changelog:
-        status = main(changelog, template, log_level, save_log)
-        raise SystemExit(status)
+def main():
+    PARSER = get_parser()
+
+    ARGS = PARSER.parse_args()
+    CHANGELOGS = ARGS.changelogs
+    TEMPLATE = ARGS.template
+    LOG_LEVEL = ARGS.log_level
+    SAVE_LOG = ARGS.save_log
+
+    if CHANGELOGS:
+        STATUS = dotapatch(CHANGELOGS, TEMPLATE, LOG_LEVEL, SAVE_LOG)
+        raise SystemExit(STATUS)
     else:
-        parser.print_help()
+        PARSER.print_usage()
+
+
+if __name__ == '__main__':
+    main()
