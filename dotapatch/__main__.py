@@ -48,7 +48,7 @@ def get_parser():
 
 def dotapatch(
         changelogs, template='default', log_level='INFO', save_log=False):
-    '''Dotapatch's entry point.
+    '''Dotapatch's core.
 
     Get the arguments, initializes logging, parses the changelogs.
 
@@ -103,22 +103,37 @@ def dotapatch(
 
 
 def main(testing=False):
-    PARSER = get_parser()
+    '''main method.
 
-    ARGS = PARSER.parse_args()
-    CHANGELOGS = ARGS.changelogs
-    TEMPLATE = ARGS.template
+    Calls get_parser(). If 'changelogs' is empty, prints app usage. Otherwise
+    calls dotapatch().
+
+    Parameters
+    ----------
+    testing : bool (optional, False)
+        Whether main is being called for testing or not.
+
+    Returns
+    -------
+    status : int
+        Parsing status.
+    '''
+    parser = get_parser()
+
+    args = parser.parse_args()
+    changelogs = args.changelogs
+    template = args.template
     if testing:
-        LOG_LEVEL = None
+        log_level = None
     else:
-        LOG_LEVEL = ARGS.log_level
-    SAVE_LOG = ARGS.save_log
+        log_level = args.log_level
+    save_log = args.save_log
 
-    if CHANGELOGS:
-        STATUS = dotapatch(CHANGELOGS, TEMPLATE, LOG_LEVEL, SAVE_LOG)
-        raise SystemExit(STATUS)
+    if changelogs:
+        status = dotapatch(changelogs, template, log_level, save_log)
+        return status
     else:
-        PARSER.print_usage()
+        parser.print_usage()
     return 0
 
 

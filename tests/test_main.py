@@ -44,10 +44,9 @@ class TestMain(TestCase):
         changelog = path.abspath(
             path.join('dotapatch', 'changelogs', file_name))
         with patch('sys.argv', ['dotapatch', changelog]):
-            with self.assertRaises(SystemExit) as context:
-                main(True)
+            status = main(True)
         remove(file_name + '.html')
-        self.assertEqual(Dotapatch.SUCCESS, context.exception.code)
+        self.assertEqual(Dotapatch.SUCCESS, status)
 
     def test_main_no_changelog(self):
         '''main: assert main() returns SUCCESS'''
