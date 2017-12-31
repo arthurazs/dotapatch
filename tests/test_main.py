@@ -35,9 +35,14 @@ class TestMain(TestCase):
         file_name = '706f'
         changelog = path.abspath(
             path.join('dotapatch', 'changelogs', file_name))
-        status = dotapatch([changelog], 'default', None)
+        status = dotapatch([changelog])
         remove(file_name + '.html')
         self.assertEqual(SUCCESS, status)
+
+    def test_dotapatch_raises_oserror(self):
+        '''main: assert dotapatch('non existent file') returns error'''
+        status = dotapatch(['?'])
+        self.assertEqual(-13, status)
 
     def test_main_changelog(self):
         '''main: assert main(changelog) exits with SUCCESS'''

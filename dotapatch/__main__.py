@@ -111,6 +111,7 @@ Contact me at @arthurazs if the error persists.'''.format(
                     path=path.dirname(filename),
                     name=path.basename(filename))
                 logger.warning(error_body)
+                status = -13
 
     return status
 
