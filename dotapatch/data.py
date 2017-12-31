@@ -5,6 +5,7 @@ try:
     from urllib.request import urlopen
 except ImportError:
     from urllib2 import urlopen
+from contextlib import closing
 from ast import literal_eval
 from os import makedirs
 import os.path as path
@@ -40,7 +41,7 @@ class HeropediaData(object):
         except ValueError as err:
             self.logger.critical('{}: {}'.format(err.__class__.__name__, err))
             raise SystemExit(-1)
-        with urlopen(link) as response:
+        with closing(urlopen(link)) as response:
             content = response.read()
         json_data = content.decode('utf-8')
         dictionary = loads(json_data)
