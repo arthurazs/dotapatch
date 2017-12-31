@@ -3,8 +3,9 @@ from unittest import TestCase, main as unit_main
 from mock import patch
 import os.path as path
 from os import remove, rename
+from dotapatch.patch import SUCCESS
+from dotapatch.data import HeropediaData as data
 from dotapatch.__main__ import get_parser, dotapatch, main
-from dotapatch.patch import Dotapatch, HeropediaData
 
 
 class TestMain(TestCase):
@@ -36,7 +37,7 @@ class TestMain(TestCase):
             path.join('dotapatch', 'changelogs', file_name))
         status = dotapatch([changelog], 'default', None)
         remove(file_name + '.html')
-        self.assertEqual(Dotapatch.SUCCESS, status)
+        self.assertEqual(SUCCESS, status)
 
     def test_main_changelog(self):
         '''main: assert main(changelog) exits with SUCCESS'''
@@ -46,29 +47,29 @@ class TestMain(TestCase):
         with patch('sys.argv', ['dotapatch', changelog]):
             status = main(True)
         remove(file_name + '.html')
-        self.assertEqual(Dotapatch.SUCCESS, status)
+        self.assertEqual(SUCCESS, status)
 
     def test_main_no_changelog(self):
         '''main: assert main() returns SUCCESS'''
         with patch('sys.argv', ['dotapatch']):
             status = main(True)
-        self.assertEqual(Dotapatch.SUCCESS, status)
+        self.assertEqual(SUCCESS, status)
 
     def test_update_data(self):
         '''main: assert dotapatch -u updates heropediadata'''
 
-        hero_data = path.join(HeropediaData.DATA_DIR, HeropediaData.HERO_DATA)
+        hero_data = path.join(data.DATA_DIR, data.HERO_DATA)
         hero_backup = hero_data + '.backup'
         rename(hero_data, hero_backup)
 
-        item_data = path.join(HeropediaData.DATA_DIR, HeropediaData.ITEM_DATA)
+        item_data = path.join(data.DATA_DIR, data.ITEM_DATA)
         item_backup = item_data + '.backup'
         rename(item_data, item_backup)
 
         with patch('sys.argv', ['dotapatch', '-u']):
             status = main(True)
 
-        result = Dotapatch.SUCCESS == status
+        result = SUCCESS == status
         result &= path.isfile(hero_data)
         result &= path.isfile(item_data)
 

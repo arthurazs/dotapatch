@@ -1,8 +1,8 @@
 '''Tests for Dotapatch functions'''
 from unittest import TestCase, main as unit_main
-from dotapatch.patch import Dotapatch
 import os.path as path
 from os import remove
+from dotapatch.patch import parse, SUCCESS, WARNING
 
 
 class Test(TestCase):
@@ -16,17 +16,17 @@ class Test(TestCase):
     def test_raises_ioerror(self):
         '''ptc: parse invalid file and return -1 (or less)'''
         file_path = path.abspath('?')
-        dotapatch = Dotapatch(file_path)
-        self.assertGreaterEqual(Dotapatch.ERROR, dotapatch.parse())
+        # dotapatch = (file_path)
+        self.assertRaises(OSError, parse, file_path)
+        # self.assertGreaterEqual(Dotapatch.ERROR, dotapatch.parse())
 
     def test_dont_raise_ioerror(self):
         '''ptc: parse file with no GENERAL section and return 0'''
         file_name = '706f'
 
-        dotapatch = Dotapatch(path.join(self.file_path, file_name))
-        result = dotapatch.parse()
+        result = parse(path.join(self.file_path, file_name))
         remove(file_name + '.html')
-        self.assertEqual(Dotapatch.SUCCESS, result)
+        self.assertEqual(SUCCESS, result)
 
     def test_parse(self):
         '''
@@ -34,10 +34,9 @@ class Test(TestCase):
         '''
         file_name = '707d'
 
-        dotapatch = Dotapatch(path.join(self.file_path, file_name))
-        result = dotapatch.parse()
+        result = parse(path.join(self.file_path, file_name))
         remove(file_name + '.html')
-        self.assertLessEqual(Dotapatch.WARNING, result)
+        self.assertLessEqual(WARNING, result)
 
 
 if __name__ == '__main__':

@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 from logging import DEBUG, StreamHandler, Formatter, FileHandler
 from logging import getLogger as get_logger, getLevelName as get_level
 from dotapatch.version import __version__
-from dotapatch.patch import Dotapatch
+from dotapatch.patch import parse
 from dotapatch.data import HeropediaData
 
 
@@ -83,7 +83,34 @@ def dotapatch(
 
     if changelogs:
         for filename in changelogs:
-            status += Dotapatch(filename, template).parse()
+            try:
+                status += parse(filename, template)
+            except OSError as err:
+                filename = path.abspath(filename)
+                logger = get_logger('dotapatch')
+                logger.error('{}: {}'.format(err.__class__.__name__, err))
+
+                error_body = '''In case {name} is in a directory other than:
+{path}
+
+Try:
+
+ 1) 'cd' over to the correct directory
+ 2) run dotapatch again
+ e.g.
+     $ cd /whole/path/to/file/
+     $ dotapatch {name}
+
+ or
+
+ 1) run dotapatch specifying the /whole/path/to/file/{name}
+ e.g.
+     $ dotapatch /whole/path/to/file/{name}
+
+Contact me at @arthurazs if the error persists.'''.format(
+                    path=path.dirname(filename),
+                    name=path.basename(filename))
+                logger.warning(error_body)
 
     return status
 
