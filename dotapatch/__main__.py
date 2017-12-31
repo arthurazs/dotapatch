@@ -6,6 +6,7 @@ from logging import DEBUG, StreamHandler, Formatter, FileHandler
 from logging import getLogger as get_logger, getLevelName as get_level
 from dotapatch.version import __version__
 from dotapatch.patch import Dotapatch
+from dotapatch.data import HeropediaData
 
 
 def get_parser():
@@ -27,6 +28,9 @@ def get_parser():
         default='default', help='base template to generate HTML',
         metavar='template_file')
     parser.add_argument(
+        '-u', '--update-data', action='store_true', dest='update',
+        help='force heropediadata update')
+    parser.add_argument(
         '-V', '--version', action='version',
         version='%(prog)s: v{}'
         .format(__version__))
@@ -47,7 +51,7 @@ def get_parser():
 
 
 def dotapatch(
-        changelogs, template='default', log_level='INFO', save_log=False):
+        changelogs, template='default', update=False):
     '''Dotapatch's core.
 
     Get the arguments, initializes logging, parses the changelogs.
@@ -62,12 +66,8 @@ def dotapatch(
         Template to be loaded.
         It can be either the template name or the absolute_path/template.
 
-    log_level : str (optional, 'INFO')
-        Log level to be outputed.
-        Every level equal or higher will be printed.
-
-    save_log : bool (optional, False)
-        Whether the log should be saved into a file or not.
+    update : bool (optional, False)
+        Whether heropedia's data should be updated or not.
 
     Returns
     -------
@@ -75,38 +75,24 @@ def dotapatch(
         Parsing status.
     '''
 
-    if log_level:
-        logger = get_logger('dotapatch')
-        logger.setLevel(DEBUG)
-
-        stream_handler = StreamHandler()
-        stream_handler.setLevel(get_level(log_level))
-        stream_formatter = Formatter('%(levelname)s %(message)s')
-        stream_handler.setFormatter(stream_formatter)
-        logger.addHandler(stream_handler)
-
-        if save_log:
-            file_handler = FileHandler('dotapatch.log', 'w')
-            file_handler.setLevel(DEBUG)
-            file_formatter = Formatter('''
-        %(asctime)s (%(name)s, line %(lineno)d)
-        %(levelname)s %(message)s''')
-            file_handler.setFormatter(file_formatter)
-            logger.addHandler(file_handler)
-            logger.info('Recording log file at {}'.format(
-                path.abspath('dotapatch.log')))
+    if update:
+        HeropediaData.download_file(HeropediaData.ITEM_DATA)
+        HeropediaData.download_file(HeropediaData.HERO_DATA)
 
     status = 0
-    for filename in changelogs:
-        status += Dotapatch(filename, template).parse()
+
+    if changelogs:
+        for filename in changelogs:
+            status += Dotapatch(filename, template).parse()
+
     return status
 
 
 def main(testing=False):
     '''main method.
 
-    Calls get_parser(). If 'changelogs' is empty, prints app usage. Otherwise
-    calls dotapatch().
+    Calls get_parser(). If 'changelogs' is empty and 'update' is False,
+    prints app usage. Otherwise calls dotapatch().
 
     Parameters
     ----------
@@ -128,9 +114,31 @@ def main(testing=False):
     else:
         log_level = args.log_level
     save_log = args.save_log
+    update = args.update
 
-    if changelogs:
-        status = dotapatch(changelogs, template, log_level, save_log)
+    if log_level:
+        logger = get_logger('dotapatch')
+        logger.setLevel(DEBUG)
+
+        stream_handler = StreamHandler()
+        stream_handler.setLevel(get_level(log_level))
+        stream_formatter = Formatter('%(levelname)s %(message)s')
+        stream_handler.setFormatter(stream_formatter)
+        logger.addHandler(stream_handler)
+
+        if save_log:
+            file_handler = FileHandler('dotapatch.log', 'w')
+            file_handler.setLevel(DEBUG)
+            file_formatter = Formatter(
+                '%(asctime)s (%(name)s, line %(lineno)d)\n'
+                '%(levelname)s %(message)s\n')
+            file_handler.setFormatter(file_formatter)
+            logger.addHandler(file_handler)
+            logger.info('Recording log file at {}'.format(
+                path.abspath('dotapatch.log')))
+
+    if changelogs or update:
+        status = dotapatch(changelogs, template, update)
         return status
     else:
         parser.print_usage()

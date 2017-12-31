@@ -20,8 +20,11 @@ class HeropediaData(object):
     ITEM_DATA = 'itemdata'
     HERO_DATA = 'herodata'
 
+    _logger = get_logger('dotapatch.data')
+
     # Initialization Functions
-    def _download_file(self, name):
+    @classmethod
+    def download_file(cls, name):
         '''Parses dota2's heropediadata file into dict.
 
         Parameters
@@ -34,17 +37,21 @@ class HeropediaData(object):
         dictionary : dict
             Returns heropediadata as dict.
         '''
+        cls._logger.info(
+            "Downloading {} from dota2's heropediadata".format(name))
         link = 'http://www.dota2.com/jsfeed/heropediadata?feeds=' + name
         try:
             if 'file:///' in link:
                 raise ValueError('urlopen trying to leak information')
         except ValueError as err:
-            self.logger.critical('{}: {}'.format(err.__class__.__name__, err))
+            cls._logger.critical('{}: {}'.format(err.__class__.__name__, err))
             raise SystemExit(-1)
         with closing(urlopen(link)) as response:
             content = response.read()
         json_data = content.decode('utf-8')
         dictionary = loads(json_data)
+        cls._save_file(name, dictionary[name])
+        cls._logger.info("Updated {} saved successfully".format(name))
         return dictionary[name]
 
     @classmethod
@@ -89,22 +96,18 @@ class HeropediaData(object):
         If a file is not found, it's downloaded from dota2 heropediadata feed.
         '''
 
-        self.logger = get_logger('dotapatch.data')
-
         # Check data folder
         if not path.exists(self.DATA_DIR):
             makedirs(self.DATA_DIR)
 
         # Data Initialization
         if not path.isfile(path.join(self.DATA_DIR, self.ITEM_DATA)):
-            self._item_dictionary = self._download_file(self.ITEM_DATA)
-            self._save_file(self.ITEM_DATA, self._item_dictionary)
+            self._item_dictionary = self.download_file(self.ITEM_DATA)
         else:
             self._item_dictionary = self._open_file(self.ITEM_DATA)
 
         if not path.isfile(path.join(self.DATA_DIR, self.HERO_DATA)):
-            self._hero_dictionary = self._download_file(self.HERO_DATA)
-            self._save_file(self.HERO_DATA, self._hero_dictionary)
+            self._hero_dictionary = self.download_file(self.HERO_DATA)
         else:
             self._hero_dictionary = self._open_file(self.HERO_DATA)
 

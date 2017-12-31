@@ -2,9 +2,9 @@
 from unittest import TestCase, main as unit_main
 from mock import patch
 import os.path as path
-from os import remove
+from os import remove, rename
 from dotapatch.__main__ import get_parser, dotapatch, main
-from dotapatch.patch import Dotapatch
+from dotapatch.patch import Dotapatch, HeropediaData
 
 
 class TestMain(TestCase):
@@ -51,8 +51,31 @@ class TestMain(TestCase):
     def test_main_no_changelog(self):
         '''main: assert main() returns SUCCESS'''
         with patch('sys.argv', ['dotapatch']):
-            status = main()
+            status = main(True)
         self.assertEqual(Dotapatch.SUCCESS, status)
+
+    def test_update_data(self):
+        '''main: assert dotapatch -u updates heropediadata'''
+
+        hero_data = path.join(HeropediaData.DATA_DIR, HeropediaData.HERO_DATA)
+        hero_backup = hero_data + '.backup'
+        rename(hero_data, hero_backup)
+
+        item_data = path.join(HeropediaData.DATA_DIR, HeropediaData.ITEM_DATA)
+        item_backup = item_data + '.backup'
+        rename(item_data, item_backup)
+
+        with patch('sys.argv', ['dotapatch', '-u']):
+            status = main(True)
+
+        result = Dotapatch.SUCCESS == status
+        result &= path.isfile(hero_data)
+        result &= path.isfile(item_data)
+
+        rename(hero_backup, hero_data)
+        rename(item_backup, item_data)
+
+        self.assertTrue(result)
 
 
 if __name__ == '__main__':

@@ -68,6 +68,19 @@ Make sure that `<filename>` is in your current directory. You can also provide
     INFO HTML saved at /home/arthurazs/706f.html
     INFO 7.06f conversion went smoothly.
 
+**P.S.** If the HTML page shows some of the heroes/items as `[[hero_name]]`
+instead of the hero/item's `picture`, run the following:
+
+
+    $ dotapatch --update-data
+    INFO Downloading itemdata from dota2's heropediadata
+    INFO Updated itemdata saved successfully
+    INFO Downloading herodata from dota2's heropediadata
+    INFO Updated herodata saved successfully
+
+This will require internet connection and may take a while but it will ensure
+that the HeropediaData gets up-to-date.
+
 ## Getting started
 You will need python.
 
@@ -76,7 +89,7 @@ You will need python.
 ### How does it work
 
     $ dotapatch -h
-    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+    usage: dotapatch [-h] [-t template_file] [-u] [-V] [-d] [-s] [-q]
                      [changelog_file [changelog_file ...]]
 
     Parses Dota 2 text patches to html format.
@@ -88,6 +101,7 @@ You will need python.
       -h, --help            show this help message and exit
       -t template_file, --template template_file
                             base template to generate HTML
+      -u, --update-data     force heropediadata update
       -V, --version         show program's version number and exit
 
     logging arguments:
@@ -142,6 +156,21 @@ There are some optional arguments that you can use:
     $ dotapatch --version
     dotapatch: v2.3.2
 
+    $ dotapatch --update-data
+    INFO Downloading itemdata from dota2's heropediadata
+    INFO Updated itemdata saved successfully
+    INFO Downloading herodata from dota2's heropediadata
+    INFO Updated herodata saved successfully
+
+    $ dotapatch 706f --update-data
+    INFO Downloading itemdata from dota2's heropediadata
+    INFO Updated itemdata saved successfully
+    INFO Downloading herodata from dota2's heropediadata
+    INFO Updated herodata saved successfully
+    INFO Parsing 7.06f
+    INFO HTML saved at /home/arthurazs/changelogs/706f.html
+    INFO 7.06f conversion went smoothly.
+
     $ dotapatch 706f --quiet
 
     $ dotapatch 706f --debug
@@ -163,9 +192,14 @@ There are some optional arguments that you can use:
     INFO HTML saved at /home/arthurazs/706f.html
     INFO 7.06f conversion went smoothly.
 
-- `--template` indicates which template is going to be used to parse the changelog. The `default` template generates a standalone HTML that uses [dota2] css files.
-- `--debug` and `--quiet` increase and decrease **dotapatch**'s verbosity, respectively.
+- `--template` indicates which template is going to be used to parse the
+changelog. The `default` template generates a standalone HTML that uses
+[dota2] css files.
+- `--debug` and `--quiet` increase and decrease **dotapatch**'s verbosity,
+respectively.
 - `--save-log` saves a log with maximum verbosity output.
+- `--update-data` requires internet connection. It will ensure that the
+HeropediaData gets up-to-date.
 
 ## Using dotapatch
 
@@ -175,7 +209,7 @@ Install **dotapatch** using `pip`:
 
     $ pip install dotapatch
     $ dotapatch
-    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+    usage: dotapatch [-h] [-t template_file] [-u] [-V] [-d] [-s] [-q]
                      [changelog_file [changelog_file ...]]
 
 
@@ -188,7 +222,7 @@ this [repository], head over to the folder and install using the
     $ cd dotapatch
     $ python setup.py install
     $ dotapatch
-    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+    usage: dotapatch [-h] [-t template_file] [-u] [-V] [-d] [-s] [-q]
                      [changelog_file [changelog_file ...]]
 
 **OPTIONALLY** You can use **dotapatch** without installing. Just
@@ -198,7 +232,7 @@ the [repository].
     $ git clone https://github.com/arthurazs/dotapatch.git
     $ cd dotapatch
     $ python -m dotapatch
-    usage: dotapatch [-h] [-t template_file] [-V] [-d] [-s] [-q]
+    usage: dotapatch [-h] [-t template_file] [-u] [-V] [-d] [-s] [-q]
                      [changelog_file [changelog_file ...]]
 
 ### Gathering a new changelog
@@ -313,6 +347,7 @@ run the test:
      - [os.path] Makes sure all directories are created and all data are downloaded
      - [os.makedirs] Creates HeropediaData directory
      - [os.remove] Clean data generated during the tests
+     - [os.rename] Persists original data after testing
  - [json.loads] Parses json from HeropediaData to a Python dictionary
  - [ast.literal_eval][ast] Parses data from file to a Python dictionary
  - [argparse.ArgumentParser][argparse] Enables the use of arguments. Try `$ dotapatch -h`
@@ -380,12 +415,14 @@ This project is licensed under the [MIT License].
 [cloning]:          https://help.github.com/articles/cloning-a-repository
 [urllib2]:          https://docs.python.org/2/library/urllib2.html#urllib2.urlopen
 [urllib]:           https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen
-[mock]:             https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch
+[mock]:             https://docs.python.org/3/library/unittest.mock.html
+[mock.patch]:       https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch
 [ast]:              https://docs.python.org/3/library/ast.html#ast.literal_eval
 [os]:               https://docs.python.org/3/library/os.html
 [os.path]:          https://docs.python.org/3/library/os.path.html
 [os.makedirs]:      https://docs.python.org/3/library/os.html#os.makedirs
 [os.remove]:        https://docs.python.org/3/library/os.html#os.remove
+[os.remove]:        https://docs.python.org/3/library/os.html#os.rename
 [unittest]:         https://docs.python.org/3/library/unittest.html
 [argparse]:         https://docs.python.org/3/library/argparse.html#argumentparser-objects
 [defaultdict]:      https://docs.python.org/3/library/collections.html#collections.defaultdict
