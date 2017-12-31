@@ -422,7 +422,7 @@ This project is licensed under the [MIT License].
 [os.path]:          https://docs.python.org/3/library/os.path.html
 [os.makedirs]:      https://docs.python.org/3/library/os.html#os.makedirs
 [os.remove]:        https://docs.python.org/3/library/os.html#os.remove
-[os.remove]:        https://docs.python.org/3/library/os.html#os.rename
+[os.rename]:        https://docs.python.org/3/library/os.html#os.rename
 [unittest]:         https://docs.python.org/3/library/unittest.html
 [argparse]:         https://docs.python.org/3/library/argparse.html#argumentparser-objects
 [defaultdict]:      https://docs.python.org/3/library/collections.html#collections.defaultdict
