@@ -1,35 +1,15 @@
 Dota 2: Changelog formatted as it should.
 =========================================
 
-+---+------------------------------------------------------------------------+
-| P | Status                                                                 |
-| l |                                                                        |
-| a |                                                                        |
-| t |                                                                        |
-| f |                                                                        |
-| o |                                                                        |
-| r |                                                                        |
-| m |                                                                        |
-+===+========================================================================+
-| G | |GitHub Release| |GitHub Tag| |GitHub License| |GitHub Issues| |GitHub |
-| i | Pull Requests|                                                         |
-| t |                                                                        |
-| H |                                                                        |
-| u |                                                                        |
-| b |                                                                        |
-+---+------------------------------------------------------------------------+
-| P | |PyPI Version| |PyPI License| |Python Version| |PyPI Wheel| |PyPI      |
-| y | Status|                                                                |
-| P |                                                                        |
-| I |                                                                        |
-+---+------------------------------------------------------------------------+
-| H | |CircleCI| |Codacy Badge| |Codacy Badge| |codecov|                     |
-| e |                                                                        |
-| a |                                                                        |
-| l |                                                                        |
-| t |                                                                        |
-| h |                                                                        |
-+---+------------------------------------------------------------------------+
++----------+----------------------------------------------------------------------------------------+
+| Platform | Status                                                                                 |
++==========+========================================================================================+
+| GitHub   | |GitHub Release| |GitHub Tag| |GitHub License| |GitHub Issues| |GitHub Pull Requests|  |
++----------+----------------------------------------------------------------------------------------+
+| PyPI     | |PyPI Version| |PyPI License| |Python Version| |PyPI Wheel| |PyPI Status|              |
++----------+----------------------------------------------------------------------------------------+
+| Health   | |CircleCI| |Codacy Issues| |Codacy Coverage| |codecov|                                 |
++----------+----------------------------------------------------------------------------------------+
 
 **dotapatch** is a software which aims the automation of formatting
 ``simple text changelog`` into ``clear html changelog``.
@@ -572,9 +552,9 @@ License <https://github.com/arthurazs/dotapatch/blob/master/LICENSE>`__.
    :target: https://pypi.python.org/pypi/dotapatch
 .. |CircleCI| image:: https://img.shields.io/circleci/project/github/arthurazs/dotapatch.svg
    :target: https://circleci.com/gh/arthurazs/dotapatch
-.. |Codacy Badge| image:: https://api.codacy.com/project/badge/Grade/f92dab093ac0404fa76deb1b1ce23ea2
+.. |Codacy Issues| image:: https://api.codacy.com/project/badge/Grade/f92dab093ac0404fa76deb1b1ce23ea2
    :target: https://www.codacy.com/app/arthurazsoares/dota2patches?utm_source=github.com&utm_medium=referral&utm_content=arthurazs/dota2patches&utm_campaign=Badge_Grade
-.. |Codacy Badge| image:: https://api.codacy.com/project/badge/Coverage/f92dab093ac0404fa76deb1b1ce23ea2
+.. |Codacy Coverage| image:: https://api.codacy.com/project/badge/Coverage/f92dab093ac0404fa76deb1b1ce23ea2
    :target: https://www.codacy.com/app/arthurazsoares/dota2patches?utm_source=github.com&utm_medium=referral&utm_content=arthurazs/dota2patches&utm_campaign=Badge_Coverage
 .. |codecov| image:: https://codecov.io/gh/arthurazs/dotapatch/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/arthurazs/dotapatch
