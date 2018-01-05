@@ -27,7 +27,7 @@ def _read_file(file_path):
             if line:
                 lines.append(line)
 
-    patch_version = lines[0][:-1]
+    patch_version = lines[0].split(':')[0]
     lines = lines[2:]
     line_count = len(lines)
 
