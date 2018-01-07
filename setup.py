@@ -14,21 +14,12 @@ except IOError as err:
     __version__ = ''
 
 try:
-    with open('PyPIREADME.rst', 'r') as readme:
+    with open('README.rst', 'r') as readme:
         APP_LONG_DESCRIPTION = readme.read()
-except IOError as err1:
-    try:
-        print('PyPIREADME.rst not found, will use README.md instead')
-        print('WARNING README.md should not be uploaded to PyPI')
-        with open('README.md', 'r') as readme:
-            APP_LONG_DESCRIPTION = readme.read()
-    except IOError as err2:
-        print('ERROR README.md not found either')
-        print()
-        print(err1)
-        print(err2)
-        print()
-        APP_LONG_DESCRIPTION = ''
+except IOError as err:
+    print('ERROR README.rst not found')
+    print(err)
+    APP_LONG_DESCRIPTION = ''
 
 APP_URL = 'https://github.com/arthurazs/{}/'.format(APP_NAME)
 APP_DOWNLOAD_URL = '{}archive/v{}.tar.gz'.format(APP_URL, __version__)
@@ -50,8 +41,8 @@ setup(
     package_data={APP_NAME: [
         'templates/*', 'data/*', 'changelogs/706f', 'changelogs/707d']},
     data_files=[(APP_NAME, [
-        'PyPIREADME.rst', 'requirements.txt', 'LICENSE', 'tox.ini',
-        'CODE_OF_CONDUCT.md', 'CONTRIBUTING.md'])],
+        'requirements.txt', 'LICENSE', 'tox.ini', 'CODE_OF_CONDUCT.rst',
+        'CONTRIBUTING.rst', 'AUTHORS.rst'])],
     long_description=APP_LONG_DESCRIPTION,
     python_requires='>=2.7, <4',
     classifiers=[

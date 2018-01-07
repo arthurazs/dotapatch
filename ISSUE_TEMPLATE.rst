@@ -1,21 +1,26 @@
 This is [a feedback|a question|an ideia|a bug report].
 
-## Description
+Description
+===========
 
 Describe your [feedback|question|ideia] here.
 
 In case of a bug report, use the following section.
 
-## Bug
+Bug
+===
 
-### Steps to reproduce:
-
-Here.
-
-### Observed Results:
+Steps to reproduce
+------------------
 
 Here.
 
-### Expected Results:
+Observed Results
+----------------
+
+Here.
+
+Expected Results
+----------------
 
 Here.

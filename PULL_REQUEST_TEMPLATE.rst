@@ -1,6 +1,7 @@
 This is a [bug fix|feature implementation].
 
-## Description
+Description
+===========
 
 Describe your work here.
 
