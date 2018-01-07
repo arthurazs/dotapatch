@@ -16,9 +16,7 @@ class Test(TestCase):
     def test_raises_ioerror(self):
         '''ptc: parse invalid file and return -1 (or less)'''
         file_path = path.abspath('?')
-        # dotapatch = (file_path)
         self.assertRaises(OSError, parse, file_path)
-        # self.assertGreaterEqual(Dotapatch.ERROR, dotapatch.parse())
 
     def test_dont_raise_ioerror(self):
         '''ptc: parse file with no GENERAL section and return 0'''

@@ -16,9 +16,7 @@ class TestTemplateFile(TestCase):
         '''tmpl: try nonexistent template and use default instead'''
         try:
             Html('test', '?123asd,v03ekca0cd0')
-        except (
-                IOError, OSError, SyntaxError,
-                ValueError, SystemExit) as err:
+        except (IOError, OSError, SyntaxError, ValueError, SystemExit) as err:
             self.fail('Raised {}.'.format(err.__class__.__name__))
 
     def test_malformed_template(self):
