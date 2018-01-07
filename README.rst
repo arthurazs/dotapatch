@@ -102,7 +102,7 @@ Gathering a new changelog
 
 .. _dota2 news:     https://www.dota2.com/news/updates
 
-.. code-block:: none
+::
 
     7.07d:
     ==
