@@ -15,25 +15,27 @@ class Html(object):
     def _load_template(self, template_name='default'):
         '''Loads given template.
 
-        If template is not found, loads default template instead.
+        Note
+        ----
+        If ``template`` is not found, loads ``default`` template instead
 
         Parameters
         ----------
-        template_name : str (optional, 'default')
-            Template to be loaded.
-            It can be either the template name or the absolute_path/template.
+        template_name : str
+            Template to be loaded, it can either be the ``name`` or
+            ``absolute_path/template``
 
         Returns
         -------
         template_content : str
-            Template content.
+            Template content
 
         Raises
         ------
-        IOError
-            If the default template was not found.
-        OSError
-            If the default template was not found.
+        exceptions.OSError
+            Default template not found (py3)
+        exceptions.IOError
+            Default template not found (py2)
         '''
         try:
             with open(path.join(
@@ -58,12 +60,12 @@ class Html(object):
         Parameters
         ----------
         dictionary : dict
-            Template's dictionary to be evaluated.
+            Template's dictionary to be evaluated
 
         Returns
         -------
-        missing_keys : list
-            List of missing_keys.
+        missing_keys : list[str]
+            List of missing keys
         '''
         necessary_keys = [
             'OPEN_HTML', 'OPEN_GENERAL', 'OPEN_GENERAL_UL',
@@ -84,17 +86,17 @@ class Html(object):
         Parameters
         ----------
         template_content : str
-            Template's content to be parsed.
+            Template's content to be parsed
 
         Returns
         -------
         template_dictionary : dict
-            Parsed template.
+            Parsed template
 
         Raises
         ------
-        SyntaxError
-            If the are any missing keys or if the template isn't a dict.
+        exceptions.SyntaxError
+            If the are any missing keys or if the template isn't a dict
         '''
         try:
             template_dictionary = literal_eval(template_content)
@@ -121,20 +123,22 @@ class Html(object):
 
         Prints a critical message and exits.
 
+        Warning
+        -------
         TODO Remove SystemExit(-1)
 
         Parameters
         ----------
         msg : str
-            Error description.
+            Error description
 
         err : exceptions
-            Raised exception.
+            Raised exception
 
         Raises
         ------
-        SystemExit
-            Exits the application.
+        exceptions.SystemExit
+            Exits the application with ``-1``
         '''
         self.logger.error(
             msg)
@@ -145,18 +149,20 @@ class Html(object):
     def _read_template(self, template_name='default'):
         '''Loads given template and parses its content into dict.
 
-        If template is not found, loads default template instead.
+        Note
+        ----
+        If ``template`` is not found, loads ``default`` template instead
 
         Parameters
         ----------
-        template_name : str (optional, 'default')
-            Template to be loaded.
-            It can be either the template name or the absolute_path/template.
+        template_name : str
+            Template to be loaded, it can either be the ``name`` or
+            ``absolute_path/template``
 
         Returns
         -------
         template_dictionary : dict
-            Parsed template.
+            Parsed template
         '''
         template_dictionary = ''
         try:
@@ -179,10 +185,10 @@ class Html(object):
         Parameters
         ----------
         title : str
-            HTML Title.
-        template : str (optional, 'default')
-            Template to be loaded.
-            It can be either the template name or the absolute_path/template.
+            HTML Title
+        template : str
+            Template to be loaded, it can either be the ``name`` or
+            ``absolute_path/template``
         '''
         self.logger = get_logger('dotapatch.model')
         self._title = title
@@ -197,12 +203,12 @@ class Html(object):
             .format(title=self._title)
 
     def _add_content(self, text):
-        '''Append content to self._content
+        '''Append content to the HTML.
 
         Parameters
         ----------
         text : str
-            Text to be appended.
+            Text to be appended
         '''
         self._content = self._content + text
 
@@ -211,8 +217,9 @@ class Html(object):
 
         Parameters
         ----------
-        lines : list
-            List of changelog lines to be added into the general section.
+        lines : list[str]
+            List of general changelog lines to be added into the general
+            section
         '''
         if lines:
             self._add_content(
@@ -234,11 +241,14 @@ class Html(object):
     def add_items(self, item_dictionary):
         '''Add item_dictionary to items section.
 
+        Note
+        ----
+        ``{'dname': ['Change one.', 'Change two.']}``
+
         Parameters
         ----------
         item_dictionary : dict
-            {'dname': ['Change one.', 'Change two.']}
-            Dictionary of items to be added into the items section.
+            Dictionary of items to be added into the items section
         '''
         if item_dictionary:
             self._add_content(
@@ -264,11 +274,14 @@ class Html(object):
     def add_heroes(self, hero_dictionary):
         '''Add hero_dictionary to heroes section.
 
+        Note
+        ----
+        ``{'dname': ['Change one.', 'Change two.']}``
+
         Parameters
         ----------
         hero_dictionary : dict
-            {'dname': ['Change one.', 'Change two.']}
-            Dictionary of heroes to be added into the heroes section.
+            Dictionary of heroes to be added into the heroes section
         '''
         if hero_dictionary:
             self._add_content(
@@ -292,14 +305,33 @@ class Html(object):
 
     # Closes the HTML
     def close(self):
-        '''Closes the HTML tags.'''
+        '''Closes the HTML tags.
+
+        .. warning::
+            Must be called once!'''
         self._add_content(self._template_dictionary['CLOSE_HTML'])
 
     # Returns HTML Content
     def get_content(self):
-        '''Returns the current HTML content (str).'''
+        '''Returns the whole HTML content.
+
+        Returns
+        -------
+        content : str
+            Whole HTML content'''
         return self._content
 
-    def get_dictionary_value(self, key):
-        '''Returns the value (str) for the given template_dictionary key.'''
-        return self._template_dictionary[key]
+    def get_dictionary_value(self, section):
+        '''Returns the content for the given section.
+
+        Parameters
+        ----------
+        section : str
+            The content section to be accessed, e.g. ``OPEN_GENERAL``
+
+        Returns
+        -------
+        content : str
+            Section content'''
+        content = self._template_dictionary[section]
+        return content

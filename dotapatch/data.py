@@ -30,12 +30,12 @@ class HeropediaData(object):
         Parameters
         ----------
         name : str
-            heropediadata feed to be downloaded.
+            heropediadata feed to be downloaded
 
         Returns
         -------
         dictionary : dict
-            Returns heropediadata as dict.
+            heropediadata
         '''
         cls._logger.info(
             "Downloading {} from dota2's heropediadata".format(name))
@@ -61,12 +61,12 @@ class HeropediaData(object):
         Parameters
         ----------
         name : str
-            heropediadata file to be opened.
+            heropediadata file to be opened
 
         Returns
         -------
         dictionary : dict
-            Returns heropediadata as dict.
+            heropediadata
         '''
         with open(path.join(cls.DATA_DIR, name), 'r') as text:
             data = text.read()
@@ -80,10 +80,10 @@ class HeropediaData(object):
         Parameters
         ----------
         name : str
-            heropediadata file name to be stored.
+            heropediadata file name to be created
 
         content : str
-            heropediadata content to be stored.
+            heropediadata content to be stored
         '''
         with open(path.join(cls.DATA_DIR, name), 'w') as text:
             print(content, file=text)
@@ -113,20 +113,21 @@ class HeropediaData(object):
 
     @staticmethod
     def sort_hero(hero_tuple):
-        '''Return proper hero name.
+        '''Formats hero_id to proper hero name.
 
-        Formats hero_id to proper hero name.
-        e.g. 'shredder' becomes 'timbersaw'
+        Note
+        ----
+        ``shredder`` returns ``timbersaw``
 
         Parameters
         ----------
         hero_tuple : tuple
-            (name, _).
+            (name, _)
 
         Returns
         -------
-        str
-            Proper hero name.
+        name : str
+            Proper hero name
 
         '''
         name = hero_tuple[0]    # gets hero name
@@ -145,20 +146,21 @@ class HeropediaData(object):
 
     @staticmethod
     def sort_item(item_tuple):
-        '''Return proper item name.
+        '''Formats item_id to proper item name.
 
-        Formats item_id to proper item name.
-        e.g. 'sphere' becomes 'linkens sphere'
+        Note
+        ----
+        ``sphere`` returns ``linkens sphere``
 
         Parameters
         ----------
         item_tuple : tuple
-            (name, _).
+            (name, _)
 
         Returns
         -------
-        str
-            Proper item name.
+        name : str
+            Proper item name
 
         '''
         name = item_tuple[0]    # gets item name
@@ -176,22 +178,25 @@ class HeropediaData(object):
         Splits the line by ':' and checks if it exists in the object's
         dictionary (heropediadata).
 
+        Note
+        ----
+        ``Illusions attack damage reduced against buildings`` returns ``None``
+
         Parameters
         ----------
         line : str
-            The phrase to be checked.
-            e.g. "Illusions attack damage reduced against buildings"
+            The phrase to be checked
 
         dictionary : dict
-            Object's main dictionary (heropediadata).
+            Object's main dictionary (heropediadata)
 
         proper_name : dict
-            Object's secondary dictionary.
+            Object's secondary dictionary
 
         Returns
         -------
-        name : str
-            Proper object name or None if not found.
+        name : str or None
+            Proper object name
         '''
         name = line.split(':')[0]
         name = name.lower().replace(' ', '_')
@@ -202,20 +207,22 @@ class HeropediaData(object):
 
     # Name Functions
     def get_item_name(self, line):
-        '''Returns the item name.
+        '''Searches the line for an item name and returns its proper name.
 
-        Searches the line for an item name and returns its proper name.
+        Note
+        ----
+        ``Dragon Lance: strength reduced from 14 to 13`` returns
+        ``dragon_lance``
 
         Parameters
         ----------
         line : str
-            The phrase to be checked.
-            e.g. "Dragon Lance: strength reduced from 14 to 13"
+            The phrase to be checked
 
         Returns
         -------
-        name : str
-            Proper item name or None if not found.
+        name : str or None
+            Proper item name
         '''
         proper_name = {
             "linken's_sphere": 'sphere', 'battle_fury': 'bfury',
@@ -229,20 +236,21 @@ class HeropediaData(object):
         return name
 
     def get_hero_name(self, line):
-        '''Returns the hero name.
+        '''Searches the line for a hero name and returns its proper name.
 
-        Searches the line for a hero name and returns its proper name.
+        Note
+        ----
+        ``Juggernaut: base damage reduced by 2`` returns ``juggernaut``
 
         Parameters
         ----------
         line : str
-            The phrase to be checked.
-            e.g. "Juggernaut: base damage reduced by 2"
+            The phrase to be checked
 
         Returns
         -------
-        name : str
-            Proper hero name or None if not found.
+        name : str or None
+            Proper hero name
         '''
         proper_name = {
             'nightstalker': 'night_stalker', 'anti-mage': 'antimage',
