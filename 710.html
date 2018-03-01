@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dota2patches 7.10 by @arthurazs</title>
+
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+        <link href="css/global.css" rel="stylesheet" type="text/css" >
+        <link href="css/global_english.css" rel="stylesheet" type="text/css" >
+        <link href="css/changelog.css" rel="stylesheet" type="text/css" >
+
+        <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript">$J = jQuery;</script>
+        <script src="javascript/fetch_heropediadata.js"></script>
+    </head>
+
+    <body>
+        <div class="Container" id="KeyArt">
+            <div class="Inner">
+                <a href="http://www.dota2.com/"><img src="css/images/logo.png" /></a>
+            </div>
+        </div>
+
+        <a class="HiddenAnchor" name="GameplayHeader"> </a>
+        <div class="Container" id="Header">
+            <div class="Inner" style="text-align:center">
+                <h1>Gameplay Update 7.10</h1>
+                <h3><a href="index.html">Previous changelogs</a></h3>
+            </div>
+        </div>
+
+        <div class="Container RepeatY BGStyle0">
+            <div class="Inner">
+                <h3>General</h3>
+
+                    <ul>
+                    <li>Bounty Rune base gold bounty increased from 50 to 60 (affects runes after the first one)</li>
+                    <li>Bounty Rune no longer gives XP. Previously gave 0 at the start and increased by 7 per minute.</li>
+                    <li>Melee Creeps gold bounty reduced by 1 (reduced from 41 to 40)</li>
+                    <li>Randoming now gives a Faerie Fire instead of a branch</li>
+                    <li>Bonus hero count increased from 10 to 12</li>
+                    </ul>
+
+            </div>
+        </div>
+
+        <div class="Container RepeatY BGStyle1" id="Items">
+            <div class="Inner">
+                <h3>Item changes</h3>
+
+                    [[aeon_disk]]
+                    <ul>
+                        <li>Cooldown reduced from 100 to 90</li>
+                    </ul>
+
+                    [[courier]]
+                    <ul>
+                        <li>Flying courier movement speed increased from 450 to 460</li>
+                    </ul>
+
+                    [[boots]]
+                    <ul>
+                        <li>Cost increased from 400 to 500</li>
+                        <li>Movement bonus increased from 40 to 50</li>
+                    </ul>
+
+                    [[monkey_king_bar]]
+                    <ul>
+                        <li>Added a sound effect for successful procs</li>
+                    </ul>
+
+                    [[phase_boots]]
+                    <ul>
+                        <li>Movement bonus increased from 45 to 50</li>
+                    </ul>
+
+                    [[power_treads]]
+                    <ul>
+                        <li>Movement bonus increased from 45 to 50</li>
+                    </ul>
+
+                    [[soul_ring]]
+                    <ul>
+                        <li>Health cost increased from 150 to 170</li>
+                    </ul>
+
+                    [[tome_of_knowledge]]
+                    <ul>
+                        <li>Xp bonus increased from 500 to 700</li>
+                    </ul>
+
+            </div>
+        </div>
+
+        <div class="Container RepeatY BGStyle0" id="Heroes">
+             <div class="Inner">
+                <h3>Heroes</h3>
+
+                    [[abaddon]]
+                    <ul>
+                        <li>Level 15 talent increased from +50 mist coil heal/damage to +60</li>
+                        <li>Level 20 talent increased from +15% cooldown reduction to +20%</li>
+                        <li>Level 25 talent reduced from +250 aphotic shield health to +225</li>
+                    </ul>
+
+                    [[alchemist]]
+                    <ul>
+                        <li>Level 20 talent increased from +25% cleave to +30%</li>
+                    </ul>
+
+                    [[ancient_apparition]]
+                    <ul>
+                        <li>Level 15 talent increased from -1.5s ice vortex cooldown to -2.5s</li>
+                        <li>Level 25 talent changed from 4 charges of cold feet to 900 aoe cold feet</li>
+                    </ul>
+
+                    [[antimage]]
+                    <ul>
+                        <li>Level 10 talent changed from +175 health to +10 strength</li>
+                        <li>Level 15 talent changed from -2s blink cooldown to +400 blink cast range</li>
+                        <li>Level 20 talent increased from +300 blink cast range to -2.5s blink cooldown</li>
+                    </ul>
+
+                    [[arc_warden]]
+                    <ul>
+                        <li>Level 10 talent changed from +5 armor to 8% cooldown reduction</li>
+                        <li>Level 15 talent increased from +2s flux duration to +3s</li>
+                        <li>Level 20 talent increased from +100 attack range to +125</li>
+                        <li>Level 20 talent changed from +10% cooldown reduction to -1.5s spark wraith cooldown</li>
+                    </ul>
+
+                    [[axe]]
+                    <ul>
+                        <li>Level 15 talent increased from +30 movement speed to +40</li>
+                    </ul>
+
+                    [[bloodseeker]]
+                    <ul>
+                        <li>Bloodrage now heals you for 50% of its value if you do not get the last hit but are within 300 aoe of a dying hero.</li>
+                    </ul>
+
+                    [[centaur]]
+                    <ul>
+                        <li>Level 20 talent increased from +250 double edge damage to +300</li>
+                    </ul>
+
+                    [[clinkz]]
+                    <ul>
+                        <li>Strafe projectile dodge count increased from 3 to 4</li>
+                        <li>Level 15 talent increased from +15% evasion to +20%</li>
+                    </ul>
+
+                    [[crystal_maiden]]
+                    <ul>
+                        <li>Level 10 talent increased from +200 health to +250</li>
+                        <li>Level 15 talent increased from +90 gold/min to +120</li>
+                    </ul>
+
+                    [[dark_seer]]
+                    <ul>
+                        <li>Level 20 talent increased from +300 aoe surge to +400</li>
+                    </ul>
+
+                    [[dark_willow]]
+                    <ul>
+                        <li>Enabled in captain's mode</li>
+                    </ul>
+
+                    [[dazzle]]
+                    <ul>
+                        <li>Base movement speed increased from 305 to 310</li>
+                        <li>Level 20 talent increased from +30 poison touch dps to +45</li>
+                    </ul>
+
+                    [[doom_bringer]]
+                    <ul>
+                        <li>Base intelligence increased by 2</li>
+                        <li>Level 10 talent changed from +25 movement speed to +16% scorched earth movement speed</li>
+                    </ul>
+
+                    [[dragon_knight]]
+                    <ul>
+                        <li>Agility gain reduced from 2.2 to 2.0</li>
+                        <li>Level 10 talent changed from +30 attack speed to -20% breathe fire damage reduction</li>
+                    </ul>
+
+                    [[drow_ranger]]
+                    <ul>
+                        <li>Level 15 talent increased from +400 gust distance/knockback to +550</li>
+                        <li>Level 20 talent increased from +2s gust duration to +3s</li>
+                    </ul>
+
+                    [[ember_spirit]]
+                    <ul>
+                        <li>Sleight of fist bonus hero damage increased from 25/50/75/100 to 30/60/90/120</li>
+                    </ul>
+
+                    [[enchantress]]
+                    <ul>
+                        <li>Nature's attendants manacost increased from 125 to 140</li>
+                    </ul>
+
+                    [[gyrocopter]]
+                    <ul>
+                        <li>Improved visual effect for flak cannon projectiles</li>
+                        <li>Homing missile bounty increased from 25 to 50</li>
+                        <li>Homing missile cooldown increased from 20/17/14/11 to 26/21/16/11</li>
+                    </ul>
+
+                    [[invoker]]
+                    <ul>
+                        <li>Level 10 talent from +0.3s tornado lift time to +0.5s</li>
+                        <li>Level 15 talent from +1.5s cold snap duration to +2.5s</li>
+                        <li>Cataclysm sunstrikes spawn distance is now slightly closer to each target (from 175-250 distance away to 160-220)</li>
+                    </ul>
+
+                    [[wisp]]
+                    <ul>
+                        <li>Tether duration increased from 12 to 14</li>
+                    </ul>
+
+                    [[jakiro]]
+                    <ul>
+                        <li>Level 10 talent increased from +25% xp to +30%</li>
+                        <li>Level 15 talent increased from +250 attack range to +300</li>
+                    </ul>
+
+                    [[kunkka]]
+                    <ul>
+                        <li>Tidebringer damage increased from 25/45/65/85 to 25/50/75/100</li>
+                    </ul>
+
+                    [[leshrac]]
+                    <ul>
+                        <li>Lightning storm manacost rescaled from 90/100/110/120 to 75/90/105/120</li>
+                    </ul>
+
+                    [[lich]]
+                    <ul>
+                        <li>Level 25 talent from attacks apply 30% ms and as slow to 40%</li>
+                    </ul>
+
+                    [[lina]]
+                    <ul>
+                        <li>Level 10 talent increased from +100 cast range to +125</li>
+                        <li>Level 10 talent increased from +25 damage to +30</li>
+                        <li>Level 15 talent increased from +300 health to +350</li>
+                        <li>Level 20 talent increased from +10% spell amplification to +12%</li>
+                    </ul>
+
+                    [[lion]]
+                    <ul>
+                        <li>Mana drain slow increased from 14/16/18/20 to 16/19/22/25%</li>
+                        <li>Level 10 talent increased from +75 damage to +90</li>
+                        <li>Level 15 talent increased from +90 gold/min to +120</li>
+                    </ul>
+
+                    [[lone_druid]]
+                    <ul>
+                        <li>Spirit bear health regeneration increased from 4/5/6/7 to 5/6/7/8</li>
+                        <li>Level 15 talent increased from -8s savage roar cooldown to -12s</li>
+                    </ul>
+
+                    [[luna]]
+                    <ul>
+                        <li>Level 15 talent from -3s lucent beam cooldown to -4s</li>
+                    </ul>
+
+                    [[lycan]]
+                    <ul>
+                        <li>Base damage reduced by 3</li>
+                    </ul>
+
+                    [[magnataur]]
+                    <ul>
+                        <li>Base strength increased by 1</li>
+                        <li>Level 25 talent increased from +0.75s reverse polarity to +1s</li>
+                    </ul>
+
+                    [[mirana]]
+                    <ul>
+                        <li>Starfall manacost from 100/120/140/160 to 80/105/130/155</li>
+                        <li>Level 25 talent increased from -70 moonlight shadow cooldown to -80</li>
+                    </ul>
+
+                    [[monkey_king]]
+                    <ul>
+                        <li>Base damage increased by 2</li>
+                        <li>Fixed mischief not showing the right particles for the first bounty rune</li>
+                        <li>Level 10 talent increased from +150 tree dance vision aoe to +300</li>
+                        <li>Level 15 talent increased from +300 tree dance cast range to +600</li>
+                        <li>Level 20 talent increased from +300 primal spring damage to +400</li>
+                    </ul>
+
+                    [[morphling]]
+                    <ul>
+                        <li>Morph can now be toggled to go back and forth from the original target until the duration runs out. has a 1 second toggle cooldown.</li>
+                    </ul>
+
+                    [[naga_siren]]
+                    <ul>
+                        <li>Sleep buff linger time reduced from 0.5 to 0.4</li>
+                        <li>Song of the siren manacost increased from 100 to 100/150/200</li>
+                    </ul>
+
+                    [[furion]]
+                    <ul>
+                        <li>Wraith of nature cooldown reduced from 70/65/60 to 60</li>
+                        <li>Level 10 talent increased from +30 movement speed to +40</li>
+                        <li>Level 15 talent increased from +8 armor to +10</li>
+                    </ul>
+
+                    [[necrolyte]]
+                    <ul>
+                        <li>Level 15 talent changed from +30 movement speed to +16% ghost shroud slow</li>
+                        <li>Level 15 talent changed from +300 health to +40 death pulse heal</li>
+                    </ul>
+
+                    [[ogre_magi]]
+                    <ul>
+                        <li>Level 20 talent increased from +30 strength to +40</li>
+                    </ul>
+
+                    [[omniknight]]
+                    <ul>
+                        <li>Purification cooldown increased from 11/10/9/8 to 11</li>
+                    </ul>
+
+                    [[oracle]]
+                    <ul>
+                        <li>Turn rate improved from 0.5 to 0.7</li>
+                        <li>Intelligence growth increased from 2.9 to 3.2</li>
+                    </ul>
+
+                    [[obsidian_destroyer]]
+                    <ul>
+                        <li>Astral imprisonment manacost increased from 120/140/160/180 to 140/160/180/200</li>
+                        <li>Level 10 talent increased from +200 health to +250</li>
+                    </ul>
+
+                    [[phantom_assassin]]
+                    <ul>
+                        <li>Stifiling dagger talent now has a 300 cast range buffer for the secondary target</li>
+                    </ul>
+
+                    [[phantom_lancer]]
+                    <ul>
+                        <li>Level 25 talent increased from -5s doppelganger cooldown to -7s</li>
+                    </ul>
+
+                    [[phoenix]]
+                    <ul>
+                        <li>Level 15 talent changed from +40% xp gain to +500 health</li>
+                        <li>Level 20 talent increased from +1s supernova stun duration to +1.25s</li>
+                    </ul>
+
+                    [[pudge]]
+                    <ul>
+                        <li>Rot slow reduced from 20/24/28/32% to 17/22/27/32%</li>
+                    </ul>
+
+                    [[razor]]
+                    <ul>
+                        <li>Static link manacost increased from 50 to 65</li>
+                    </ul>
+
+                    [[riki]]
+                    <ul>
+                        <li>Level 15 talent increased from -5s smokescreen cooldown to -7s</li>
+                    </ul>
+
+                    [[rubick]]
+                    <ul>
+                        <li>Level 15 talent increased from -35 fade bolt hero attack to -45</li>
+                    </ul>
+
+                    [[nevermore]]
+                    <ul>
+                        <li>Shadow raze damage increase per stack reduced from 80 to 50/60/70/80</li>
+                    </ul>
+
+                    [[shadow_demon]]
+                    <ul>
+                        <li>Level 10 talent increased from +25% xp gain to 30%</li>
+                        <li>Level 25 talent changed from +5s disruption banish duration to 2 charges of disruption</li>
+                    </ul>
+
+                    [[skywrath_mage]]
+                    <ul>
+                        <li>Level 15 talent increased from -6s ancient seal cooldown to -8s</li>
+                    </ul>
+
+                    [[slardar]]
+                    <ul>
+                        <li>Level 10 talent increased from +20 to +25 damage</li>
+                    </ul>
+
+                    [[slark]]
+                    <ul>
+                        <li>Level 10 talent increased from +8 strength to +10</li>
+                    </ul>
+
+                    [[spectre]]
+                    <ul>
+                        <li>Level 25 talent increased from +20% haunt illusion damage to +40%</li>
+                    </ul>
+
+                    [[sven]]
+                    <ul>
+                        <li>Level 15 talent changed from +30 damage to storm hammer dispels enemies</li>
+                        <li>Level 20 talent changed from storm hammer dispels enemies to -5s storm hammer cooldown</li>
+                        <li>Level 25 talent changed from -9s storm hammer cooldown to +0.75s storm hammer stun duration</li>
+                    </ul>
+
+                    [[terrorblade]]
+                    <ul>
+                        <li>Base hp regen reduced from 3.25 to 3.0</li>
+                        <li>Reflection no longer reduces attack speed</li>
+                    </ul>
+
+                    [[tinker]]
+                    <ul>
+                        <li>Laser scepter bounce radius reduced from 650 to 400</li>
+                        <li>Laser manacost increased from 95/120/145/170 to 110/130/150/170</li>
+                        <li>Level 20 talent from +100 damage to +10 armor</li>
+                    </ul>
+
+                    [[tiny]]
+                    <ul>
+                        <li>Tree grab cooldown increased from 18/16/14/12 to 24/20/16/12</li>
+                    </ul>
+
+                    [[treant]]
+                    <ul>
+                        <li>Level 10 talent changed from +35% xp gain to +2 living armor block instances</li>
+                        <li>Level 15 talent improved from 3s tree respawn time to 2s</li>
+                        <li>Level 25 talent changed from +6 living armor block instances to 700 aoe living armor (heroes and buildings)</li>
+                    </ul>
+
+                    [[troll_warlord]]
+                    <ul>
+                        <li>Level 10 talent increased from +200 health to +250</li>
+                        <li>Level 15 talent increased from +50 whirling axes damage to +75</li>
+                    </ul>
+
+                    [[undying]]
+                    <ul>
+                        <li>Level 10 talent increased from +100 cast range to +150</li>
+                        <li>Level 15 talent increased from +20 decay duration to +30</li>
+                        <li>Level 20 talent increased from +3 tombstone attacks to +4</li>
+                    </ul>
+
+                    [[ursa]]
+                    <ul>
+                        <li>Fury swipes roshan duration increased from 6 to 10</li>
+                    </ul>
+
+                    [[venomancer]]
+                    <ul>
+                        <li>Level 15 talent increased from +150 cast range to +200</li>
+                        <li>Level 20 talent increased from +6s poison nova duration to +7s</li>
+                        <li>Level 25 talent increased from +600 poison nova aoe to +800</li>
+                    </ul>
+
+                    [[visage]]
+                    <ul>
+                        <li>Soul assumption talent now has a 300 cast range buffer for the secondary targets</li>
+                        <li>Added secondary ability on visage to make the nearest familiar land each time it is clicked.</li>
+                    </ul>
+
+                    [[warlock]]
+                    <ul>
+                        <li>Level 10 talent increased from +125 cast range to +150</li>
+                        <li>Level 15 talent increased from +40% xp gain to +60%</li>
+                        <li>Level 20 talent increased from +250 shadow word aoe to +300</li>
+                    </ul>
+
+                    [[weaver]]
+                    <ul>
+                        <li>Level 10 talent increased from +25% xp gain to +35%</li>
+                    </ul>
+
+                    [[windrunner]]
+                    <ul>
+                        <li>Shackleshot manacost reduced from 90/100/110/120 to 70/85/100/115</li>
+                        <li>Level 20 talent increased from +0.5s shackleshot duration to +1s</li>
+                    </ul>
+
+                    [[winter_wyvern]]
+                    <ul>
+                        <li>Arctic burn manacost reduced from 120/110/100/90 to 90</li>
+                        <li>Level 10 talent increased from +50 damage to +60</li>
+                    </ul>
+
+                    [[skeleton_king]]
+                    <ul>
+                        <li>Level 15 talent changed from +5 max skeletons to +25 skeletons attack damage</li>
+                        <li>Level 20 talent changed from +30 skeletons attack damage to 2x skeletons spawned</li>
+                    </ul>
+
+                    [[zuus]]
+                    <ul>
+                        <li>Level 25 talent increased from +200 cast range to +275</li>
+                    </ul>
+
+            </div>
+        </div>
+
+        <div class="Container" id="Footer">
+            <div class="Inner"></div>
+        </div>
+    </body>
+</html>
