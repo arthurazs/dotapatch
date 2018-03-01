@@ -166,6 +166,7 @@ class HeropediaData(object):
         name = item_tuple[0]    # gets item name
         proper_name = {
             'sphere': "linken s sphere",
+            'courier': 'animal courier',
         }
 
         return proper_name.get(name.lower(), name)
@@ -226,7 +227,8 @@ class HeropediaData(object):
         '''
         proper_name = {
             "linken's_sphere": 'sphere', 'battle_fury': 'bfury',
-            'manta_style': 'manta',
+            'manta_style': 'manta', 'animal_courier': 'courier',
+            'boots_of_speed': 'boots'
             # 'aeon_disk': 'combo_breaker'
         }
         name = self._get_name(
@@ -258,7 +260,10 @@ class HeropediaData(object):
             'windranger': 'windrunner', 'shadow_fiend': 'nevermore',
             'vengeful_spirit': 'vengefulspirit', 'drow': 'drow_ranger',
             "nature's_prophet": 'furion', 'necrophos': 'necrolyte',
-            'wraith_king': 'skeleton_king'
+            'wraith_king': 'skeleton_king', 'zeus': 'zuus',
+            'doom': 'doom_bringer', 'magnus': 'magnataur', 'io': 'wisp',
+            'centaur_warrunner': 'centaur', 'treant_protector': 'treant',
+            'outworld_devourer': 'obsidian_destroyer'
         }
         name = self._get_name(
             line,
