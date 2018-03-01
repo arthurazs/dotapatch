@@ -62,7 +62,7 @@ Health   |CI| |docs| |CIssues| |Coverage| |codecov|
 Check the `Gameplay Update 7.07d`_. This is the latest patch parsed using
 **dotapatch**.
 
-.. _Gameplay Update 7.07d: https://arthurazs.github.io/dotapatch/707d.html
+.. _Gameplay Update 7.10: https://arthurazs.github.io/dotapatch/710.html
 
 Read the documentation at `Read the Docs`_.
 
