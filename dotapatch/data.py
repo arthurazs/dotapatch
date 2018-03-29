@@ -130,7 +130,7 @@ class HeropediaData(object):
             Proper hero name
 
         '''
-        name = hero_tuple[0]    # gets hero name
+        name, _ = hero_tuple
         proper_name = {
             'wisp': 'io', 'abyssal_underlord': 'underlord',
             'obsidian_destroyer': 'outworld devourer',
@@ -163,7 +163,7 @@ class HeropediaData(object):
             Proper item name
 
         '''
-        name = item_tuple[0]    # gets item name
+        name, _ = item_tuple
         proper_name = {
             'sphere': "linken s sphere",
             'courier': 'animal courier',
@@ -228,7 +228,8 @@ class HeropediaData(object):
         proper_name = {
             "linken's_sphere": 'sphere', 'battle_fury': 'bfury',
             'manta_style': 'manta', 'animal_courier': 'courier',
-            'boots_of_speed': 'boots'
+            'boots_of_speed': 'boots', 'skull_basher': 'basher',
+            'refresher_orb': 'refresher', 'heart_of_tarrasque': 'heart'
             # 'aeon_disk': 'combo_breaker'
         }
         name = self._get_name(
@@ -263,7 +264,8 @@ class HeropediaData(object):
             'wraith_king': 'skeleton_king', 'zeus': 'zuus',
             'doom': 'doom_bringer', 'magnus': 'magnataur', 'io': 'wisp',
             'centaur_warrunner': 'centaur', 'treant_protector': 'treant',
-            'outworld_devourer': 'obsidian_destroyer'
+            'outworld_devourer': 'obsidian_destroyer', 'timbersaw': 'shredder',
+            'lifestealer': 'life_stealer'
         }
         name = self._get_name(
             line,
