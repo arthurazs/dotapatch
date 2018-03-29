@@ -139,7 +139,7 @@ class HeropediaData(object):
             'necrolyte': 'necrophos', 'skeleton_king': 'wraith king',
             'rattletrap': 'clockwerk', 'furion': 'natures prophet',
             'doom_bringer': 'doom', 'treant': 'treant protector',
-            'magnataur': 'magnus'
+            'magnataur': 'magnus', 'shredder': 'timbersaw',
         }
 
         return proper_name.get(name.lower(), name)
@@ -167,6 +167,7 @@ class HeropediaData(object):
         proper_name = {
             'sphere': "linken s sphere",
             'courier': 'animal courier',
+            'basher': 'skull_basher',
         }
 
         return proper_name.get(name.lower(), name)
