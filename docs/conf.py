@@ -29,7 +29,7 @@ copyright = '2016, Arthur Zopellaro'
 author = 'Arthur Zopellaro'
 
 version = '2.4'
-release = '2.4.1'
+release = '2.4.2'
 
 pygments_style = 'sphinx'
 
