@@ -2,9 +2,9 @@
 from unittest import TestCase, main as unit_main
 from mock import patch
 import os.path as path
-from os import remove, rename
+from os import remove  # , rename
 from dotapatch.patch import SUCCESS
-from dotapatch.data import HeropediaData as data
+# from dotapatch.data import HeropediaData as data
 from dotapatch.__main__ import get_parser, dotapatch, main
 
 
@@ -60,28 +60,28 @@ class TestMain(TestCase):
             status = main(True)
         self.assertEqual(SUCCESS, status)
 
-    def test_update_data(self):
-        '''main: assert dotapatch -u updates heropediadata'''
+    # def test_update_data(self):
+    #     '''main: assert dotapatch -u updates heropediadata'''
 
-        hero_data = path.join(data.DATA_DIR, data.HERO_DATA)
-        hero_backup = hero_data + '.backup'
-        rename(hero_data, hero_backup)
+    #     hero_data = path.join(data.DATA_DIR, data.HERO_DATA)
+    #     hero_backup = hero_data + '.backup'
+    #     rename(hero_data, hero_backup)
 
-        item_data = path.join(data.DATA_DIR, data.ITEM_DATA)
-        item_backup = item_data + '.backup'
-        rename(item_data, item_backup)
+    #     item_data = path.join(data.DATA_DIR, data.ITEM_DATA)
+    #     item_backup = item_data + '.backup'
+    #     rename(item_data, item_backup)
 
-        with patch('sys.argv', ['dotapatch', '-u']):
-            status = main(True)
+    #     with patch('sys.argv', ['dotapatch', '-u']):
+    #         status = main(True)
 
-        result = SUCCESS == status
-        result &= path.isfile(hero_data)
-        result &= path.isfile(item_data)
+    #     result = SUCCESS == status
+    #     result &= path.isfile(hero_data)
+    #     result &= path.isfile(item_data)
 
-        rename(hero_backup, hero_data)
-        rename(item_backup, item_data)
+    #     rename(hero_backup, hero_data)
+    #     rename(item_backup, item_data)
 
-        self.assertTrue(result)
+    #     self.assertTrue(result)
 
 
 if __name__ == '__main__':
