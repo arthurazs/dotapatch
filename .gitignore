@@ -15,5 +15,6 @@ dist
 #tox
 *.eggs
 .tox/
-.coverage
+.coverage*
 coverage.xml
+nosetests.*xml
