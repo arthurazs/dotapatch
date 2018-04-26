@@ -168,6 +168,8 @@ class HeropediaData(object):
             'sphere': "linken s sphere",
             'courier': 'animal courier',
             'basher': 'skull_basher',
+            'blink': 'blink_dagger', 'travel_boots': 'boots_of_travel',
+            'ward_observer': 'observer_ward',
         }
 
         return proper_name.get(name.lower(), name)
@@ -230,7 +232,10 @@ class HeropediaData(object):
             "linken's_sphere": 'sphere', 'battle_fury': 'bfury',
             'manta_style': 'manta', 'animal_courier': 'courier',
             'boots_of_speed': 'boots', 'skull_basher': 'basher',
-            'refresher_orb': 'refresher', 'heart_of_tarrasque': 'heart'
+            'refresher_orb': 'refresher', 'heart_of_tarrasque': 'heart',
+            'blink_dagger': 'blink', 'boots_of_travel': 'travel_boots',
+            'observer_ward': 'ward_observer',
+            "heaven's_halberd": 'heavens_halberd',
             # 'aeon_disk': 'combo_breaker'
         }
         name = self._get_name(
@@ -266,7 +271,7 @@ class HeropediaData(object):
             'doom': 'doom_bringer', 'magnus': 'magnataur', 'io': 'wisp',
             'centaur_warrunner': 'centaur', 'treant_protector': 'treant',
             'outworld_devourer': 'obsidian_destroyer', 'timbersaw': 'shredder',
-            'lifestealer': 'life_stealer'
+            'lifestealer': 'life_stealer', 'queen_of_pain': 'queenofpain'
         }
         name = self._get_name(
             line,
