@@ -169,7 +169,7 @@ class HeropediaData(object):
             'courier': 'animal courier',
             'basher': 'skull_basher',
             'blink': 'blink_dagger', 'travel_boots': 'boots_of_travel',
-            'ward_observer': 'observer_ward',
+            'ward_sentry': 'sentry_ward', 'ward_observer': 'observer_ward',
         }
 
         return proper_name.get(name.lower(), name)
@@ -234,10 +234,12 @@ class HeropediaData(object):
             'boots_of_speed': 'boots', 'skull_basher': 'basher',
             'refresher_orb': 'refresher', 'heart_of_tarrasque': 'heart',
             'blink_dagger': 'blink', 'boots_of_travel': 'travel_boots',
-            'observer_ward': 'ward_observer',
+            'observer_ward': 'ward_observer', "vladmir's_offering": 'vladmir',
             "heaven's_halberd": 'heavens_halberd',
+            'sentry_ward': 'ward_sentry',
             # 'aeon_disk': 'combo_breaker'
         }
+
         name = self._get_name(
             line,
             self._item_dictionary,

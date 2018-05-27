@@ -1,0 +1,248 @@
+7.16:
+===
+
+The upcoming patches will be mostly focused on balance tweaks in preparation for The International. There are a few more biweekly patches planned, with the primary ones scheduled around the final Major and the TI Qualifiers. After TI, we expect the first half of the new season to have longer periods between gameplay updates.
+
+* Bounty Runes team gold reduced from 40 + 3/min to 40 + 2/min
+
+* Bane: Reduced Movement Speed Talents Level 20: 75->65
+* Beastmaster: Reduced Movement Speed Talents Level 10: 30 -> 25
+* Bounty: Reduced Movement Speed Talents Hunter Level 10: 30 -> 25
+* Clockwerk: Reduced Movement Speed Talents Level 10: 25 -> 20
+* Dark Willow: Reduced Movement Speed Talents Level 15: 40 -> 35
+* Gyrocopter: Reduced Movement Speed Talents Level 20: 50->45
+* Legion Commander: Reduced Movement Speed Talents Level 20: 60->50
+* Leshrac: Reduced Movement Speed Talents Level 15: 40->30
+* Lifestealer: Reduced Movement Speed Talents Level 15: 35 -> 30
+* Nature's Prophet: Reduced Movement Speed Talents Level 10: 40 -> 35
+* Nightstalker: Reduced Movement Speed Talents Level 20: 50 -> 45
+* Oracle: Reduced Movement Speed Talents Level 20: 75 -> 65
+* Outworld Devourer: Reduced Movement Speed Talents Level 15: 40 -> 35
+* Sand King: Reduced Movement Speed Talents Level 10: 30 -> 25
+* Shadow Demon: Reduced Movement Speed Talents Level 15: 40 -> 35
+* Shadow Fiend: Reduced Movement Speed Talents Level 15: 35->30
+* Techies: Reduced Movement Speed Talents Level 20: 75 -> 60
+* Zeus: Reduced Movement Speed Talents Level 15: 40 -> 30
+
+* Anti-Mage: Increased Base HP regen to 1.75
+* Arc Warden: Increased Base HP regen to 1.75
+* Clinkz: Increased Base HP regen to 1.75
+* Drow Ranger: Increased Base HP regen to 1.75
+* Meepo: Increased Base HP regen to 1.75
+* Pangolier: Increased Base HP regen to 1.75
+* Phantom Assassin: Increased Base HP regen to 1.75
+* Templar Assassin: Increased Base HP regen to 1.75
+* Troll Warlord: Increased Base HP regen to 1.75
+* Vengeful Spirit: Increased Base HP regen to 1.75
+
+* Melee Barracks health increased from 1800 to 2000
+
+* Roshan attack damage upgrade over time increased from 2.5/min to 4/min
+
+
+* Blades of Attack: Cost increased from 420 to 430
+
+* Bottle: Fixed Bounty Runes not being storable when the Bottle is full
+
+* Enchanted Mango: HP regen reduced from 0.6 to 0.5
+
+* Hand of Midas: Cooldown reduced from 100 to 95
+
+* Moon Shard: Attack Speed increased from 130 to 140
+
+* Nullifier: Projectile speed reduced from 900 to 750
+
+* Rod of Atos: Recipe cost reduced from 1100 to 1000
+
+* Sentry Ward: Duration increased from 4 to 6 minutes
+
+* Shadow Amulet: Cost increased from 1300 to 1400
+
+* Silver Edge: Recipe cost reduced from 700 to 600
+
+* Skull Basher: Recipe cost reduced from 1150 to 1000
+
+* Vladmir's Offering: Mana regeneration increased from 0.65 to 1.0
+
+
+
+* Alchemist: Greevil's Greed bounty rune multiplier increased from 3 to 3.5
+
+* Anti-Mage: Base attack rate improved from 1.45 to 1.4
+
+* Arc Warden: Base damage increased by 2
+* Arc Warden: Magnetic Field manacost reduced from 80/90/100/110 to 50/70/90/110
+
+* Bane: Enfeeble duration reduced from 14/16/18/20 to 8/12/16/20
+
+* Bloodseeker: Level 10 Talent increased from +4 Armor to +8 Armor
+* Bloodseeker: Level 20 Talent increased from +14% Rupture Damage to +18%
+
+* Bristleback: Level 25 Talent increased from +20 Warpath Damage Per Stack to +30
+
+* Broodmother: Spiderlings health increased from 250 to 280
+
+* Centaur Warrunner: Base damage increased by 4
+* Centaur: Hoof Stomp manacost reduced from 130 to 115/120/125/130
+
+* Chaos Knight: Base intelligence increased by 2
+
+* Clinkz: Intelligence increased from 16 + 1.55 to 18 + 1.7
+* Clinkz: Strafe dodge no longer has a count limit
+
+* Clockwerk: Power Cogs manacost increased from 50/60/70/80 to 80
+
+* Crystal Maiden: Arcane Aura self mana regeneration increased from 1.3/2.2/3.1/4.0 to 1.6/2.4/3.2/4.0
+* Crystal Maiden: Base Damage increased by 2
+
+* Dark Willow: Bedlam cooldown reduced from 40/35/30 to 30
+* Dark Willow: Bedlam duration increased from 4 to 5
+
+* Dazzle: Strength gain increased from 2.15 to 2.3
+* Dazzle: Poison Touch count rescaled from 4/5/6/7 to 2/4/6/8
+* Dazzle: Poison Touch cooldown reduced from 35/30/25/20 to 27/24/21/18
+
+* Death Prophet: Base movement speed reduced from 310 to 305
+* Death Prophet: Spirit Siphon manacost increased from 70/65/60/55 to 70
+* Death Prophet: Level 10 Talent reduced from +50 Damage to 40
+
+* Disruptor: Thunder Strike cooldown increased from 12/11/10/9 to 15/13/11/9
+
+* Doom: Infernal Blade base damage reduced from 25/30/35/40 to 25
+* Doom: Scorched Earth movement speed reduced from 14% to 11/12/13/14%
+
+* Dragon Knight: Base movemend speed reduced from 285 to 280
+* Dragon Knight: Elder Dragon Form bonus movement speed increased from 25 to 30
+* Drow Ranger: Base Damage increased by 4
+
+* Earthshaker: Base armor increased by 1
+
+* Enchantress: Base strength increased by 1
+* Enchantress: Nature's Attendants manacost reduced from 140 to 110/120/130/140
+
+* Enigma: Demonic Conversion Eidolon bounty reduced from 29 to 23
+
+* Gyrocopter: C all Down Missile One damage reduced from 200/275/350 to 150/250/350
+* Gyrocopter: Level 10 Talent reduced from +25 Damage to +20
+
+* Huskar: Life Break increased from 34/38/42% to 34/39/44%
+* Huskar: Inner Vitality manacost reduced from 170 to 140/150/160/170
+* Huskar: Inner Vitality base regen increased from 10 to 12
+
+* Invoker: Invoke manacost removed
+
+* Io: Base movement speed reduced from 290 to 280
+* Io: Level 15 Talent reduced from +90 Spirits Damage to +75
+* Io: Level 20 Talent changed from Attacks Tether Ally's Target to +20 Health Regen
+* Io: Level 25 Talent changed from +50 Health Regen to Attacks Tether Ally's Target
+
+* Kunkka: Level 25 Talent changed from +50% Tidebringer Cleave to -1.5s Tidebringer Cooldown
+
+* Leshrac: Base Intelligence reduced by 2 (base damage unchanged)
+* Leshrac: Lightning Storm cast range reduced from 800 to 650/700/750/800
+
+* Lich: Chain Frost damage increased from 280/370/460 to 300/400/500 (Scepter from 370/460/550 to 400/500/600)
+
+* Lycan: Intelligence gain reduced from 1.55 to 1.4
+* Lycan: Shapeshift critical strike reduced from 160/180/200% to 150/175/200%
+
+* Magnus: Empower cleave distance increased from 460 to 625 (matching Battle Fury)
+* Magnus: Empower cleave end radius increased from 240 to 330 (matching Battle Fury)
+
+* Meepo: Earthbind projectile speed increased from 857 to 900
+* Meepo: Earthbind now fully affects invisible units
+
+* Mirana: Leap attack speed increased from 40/60/80/100 to 60/80/100/120
+* Mirana: Moonlight Shadow duration increased from 15 to 18 seconds
+
+* Monkey King: Wukong's Command armor increased from 8/14/20 to 12/18/24
+
+* Morphling: Morph now only dispels on initial cast, rather than on all toggles
+
+* Necrophos: Attack Point improved from 0.53 to 0.4
+* Necrophos: Base damage increased by 2
+* Necrophos: Death Pulse Mana Regen per stack from 2/2.25/2.5/2.75 to 2.25/2.5/2.75/3
+
+* Night Stalker: Void no longer applies a ministun during the day
+* Night Stalker: Darkness no longer sets enemy vision to a fixed amount
+* Night Stalker: Darkness now reduces enemy unit and ward vision by 25% (doesn't affect buildings)
+
+* Ogre Magi: Multicast 2x chance from 40/50/60 to 60/60/60%
+* Ogre Magi: Multicast 3x chance from 0/20/25% to 0/30/30%
+* Ogre Magi: Multicast 4x chance from 0/0/12.5% to 0/0/15%
+* Ogre Magi: Level 10 Talent increased from +60 Gold/Min to +90
+
+* Pangolier: Level 15 Talent changed from +30 Attack Speed to +2s Rolling Thunder Duration
+* Pangolier: Level 20 Talent improved from +30 Swashbuckle Damage to +40
+* Pangolier: Level 25 Talent improved from -16s Rolling Thunder Cooldown to -35
+
+* Phantom Assassin: Blur now only triggers on real heroes
+* Phantom Assassin: Blur now always triggers on Invisible and Spell Immune enemies
+
+* Phantom Lancer: Doppelganger can no longer be cast while rooted
+
+* Phoenix: Fire Spirits damage increased from 10/30/50/70 to 20/40/60/80
+
+* Pudge: Meat Hook cooldown increased from 14/13/12/11 to 17/15/13/11
+* Pudge: Meat Hook damage increased from 90/180/270/360 to 150/220/290/360
+
+* Pugna: Nether Ward damage per mana increased from 1/1.25/1.5/1.75 to 1.25/1.5/1.75/2.0
+
+* Queen of Pain: Level 25 Talent improved from 20s Spell Block to 15s
+
+* Riki: Base HP regen increased from 1.5 to 3.0
+* Riki: Blink Strike can now be cast on Spell Immune enemies
+* Riki: Tricks of the Trade cooldown increased from 40/35/30 to 50/45/40
+* Riki: Cloak and Dagger fade delay increased from 6/5/4/3 to 7.5/6/4.5/3
+
+* Sand King: Caustic Finale slow reduced from 30% to 21/24/27/30%
+
+* Shadow Fiend: Level 20 Talent changed from +20% Evasion to +2 Damage Per Soul
+* Shadow Fiend: Level 25 Talent changed from +3 Damage Per Soul to -5 Presence Aura
+
+* Silencer: Last Word cooldown reduced from 30/24/18/12 to 28/22/16/10
+* Silencer: Arcane Curse damage increased from 14/22/30/38 to 16/24/32/40
+
+* Slardar: Bash of the Deep damage increased from 60/80/100/120 to 80/100/120/140
+
+* Slark: Pounce damage reduced from 40/80/120/160 to 30/60/90/120
+
+* Sniper: Nigh t vision increased from 1100 to 1400
+
+* Spirit Breaker: Base HP regen increased from 1 to 1.5
+
+* Sven: Level 20 Talent increased from -5s Storm Hammer Cooldown to -6s
+* Sven: Level 25 Talent increased from +0.75s Storm Hammer Stun Duration to +1.25s
+
+* Tiny: Tree Grab building bonus damage increased from 60/80/100/120% to 90/120/150/180%
+* Tiny: Tree Throw splash damage increased from 100 to 130%
+
+* Tusk: Ice Shards cooldown increased from 21/18/15/12 to 23/20/17/14
+
+* Treant Protector: Living Armor regen increased from 4/7/10/13 to 4/8/12/16
+
+* Undying: Soul Rip manacost reduced from 100/110/120/130 to 80/95/110/125
+
+* Ursa: Level 15 Talent changed from -1s Earthshock Cooldown to +25s Fury Swipes Reset Time
+* Ursa: Level 20 Talent changed from +25s Fury Swipes Reset Time to +12 Fury Swipes Damage
+* Ursa: Level 25 Talent changed from +14 Fury Swipes Damage to Enrage gains 80% Status Resistance
+
+* Vengeful Spirit: Magic Missile cooldown reduced from 13/12/11/10 to 10
+* Vengeful Spirit: Wave of Terror manacost reduced from 40 to 25/30/35/40
+
+* Weaver: Shukuchi damage increased from 75/100/125/150 to 80/110/140/170
+
+* Winter Wyvern: Splinter Blast slow increased from 25% to 30%
+* Winter Wyvern: Splinter Blast manacost reduced from 120/130/140/150 to 90/110/130/150
+
+* Wraith King: Mortal Strike no longer has a chance to kill creeps
+* Wraith King: Mortal Strike now gains skeleton charges for every 2 enemy units you kill
+* Wraith King: Mortal Strike skeleton count rescaled from 4/5/6/7 to 2/4/6/8
+* Wraith King: Mortal Strike skeletons bounty reduced from 15/15 XP/Gold to 5/5
+* Wraith King: Mortal Strike manacost reduced from 75 to 30/45/60/75
+
+* Zeus: Base damage increased by 5
+* Zeus: Strength gain reduced from 2.6 to 2.3
+* Zeus: Arc Lightning damage rescaled from 85/100/115/145 to 70/95/120/145
+* Zeus: Lightning Bolt cast range increased from 700 to 700/750/800/850
+* Zeus: Lightning Bolt damage increased from 100/175/275/350 to 125/200/275/350
