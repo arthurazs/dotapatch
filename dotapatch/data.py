@@ -20,6 +20,29 @@ class HeropediaData(object):
     ITEM_DATA = 'itemdata'
     HERO_DATA = 'herodata'
 
+    HERO_NAME = {
+        'night_stalker': 'nightstalker', 'antimage': 'anti-mage',
+        'abyssal_underlord': 'underlord', 'rattletrap': 'clockwerk',
+        'windrunner': 'windranger', 'nevermore': 'shadow_fiend',
+        'vengefulspirit': 'vengeful_spirit', 'drow_ranger': 'drow',
+        'furion': "nature's_prophet", 'necrolyte': 'necrophos',
+        'skeleton_king': 'wraith_king', 'zuus': 'zeus', 'doom_bringer': 'doom',
+        'magnataur': 'magnus', 'wisp': 'io', 'centaur': 'centaur_warrunner',
+        'treant': 'treant_protector', 'shredder': 'timbersaw',
+        'obsidian_destroyer': 'outworld_devourer',
+        'life_stealer': 'lifestealer', 'queenofpain': 'queen_of_pain',
+    }
+    ITEM_NAME = {
+        'sphere': "linken's_sphere", 'bfury': 'battle_fury',
+        'manta': 'manta_style', 'courier': 'animal_courier',
+        'boots': 'boots_of_speed', 'basher': 'skull_basher',
+        'refresher': 'refresher_orb', 'heart': 'heart_of_tarrasque',
+        'blink': 'blink_dagger', 'travel_boots': 'boots_of_travel',
+        'ward_observer': 'observer_ward', 'vladmir': "vladmir's_offering",
+        'heavens_halberd': "heaven's_halberd", 'ward_sentry': 'sentry_ward',
+        # 'combo_breaker': 'aeon_disk'
+    }
+
     _logger = get_logger('dotapatch.data')
 
     # Initialization Functions
@@ -88,6 +111,25 @@ class HeropediaData(object):
         with open(path.join(cls.DATA_DIR, name), 'w') as text:
             print(content, file=text)
 
+    @staticmethod
+    def _key_to_value(dic):
+        '''Maps key to value from a dictionary.
+
+        e.g. {1: 'asd'} to {'asd': 1}
+
+        Parameters
+        ----------
+        dic : dict
+            Dictionary to be mapped
+
+        Returns
+        -------
+        dict
+            Mapped dictionary
+
+        '''
+        return {value: key for key, value in dic.items()}
+
     # Initialization
     def __init__(self):
         '''Initializes HeropediaData.
@@ -111,8 +153,12 @@ class HeropediaData(object):
         else:
             self._hero_dictionary = self._open_file(self.HERO_DATA)
 
-    @staticmethod
-    def sort_hero(hero_tuple):
+        # Proper Name Initialization
+        self._proper_hero_name = self._key_to_value(self.HERO_NAME)
+        self._proper_item_name = self._key_to_value(self.ITEM_NAME)
+
+    @classmethod
+    def sort_hero(cls, hero_tuple):
         '''Formats hero_id to proper hero name.
 
         Note
@@ -131,21 +177,10 @@ class HeropediaData(object):
 
         '''
         name, _ = hero_tuple
-        proper_name = {
-            'wisp': 'io', 'abyssal_underlord': 'underlord',
-            'obsidian_destroyer': 'outworld devourer',
-            'shredder': 'timbersaw', 'nevermore': 'shadow fiend',
-            'windrunner': 'windranger', 'zuus': 'zeus',
-            'necrolyte': 'necrophos', 'skeleton_king': 'wraith king',
-            'rattletrap': 'clockwerk', 'furion': 'natures prophet',
-            'doom_bringer': 'doom', 'treant': 'treant protector',
-            'magnataur': 'magnus', 'shredder': 'timbersaw',
-        }
+        return cls.HERO_NAME.get(name.lower(), name)
 
-        return proper_name.get(name.lower(), name)
-
-    @staticmethod
-    def sort_item(item_tuple):
+    @classmethod
+    def sort_item(cls, item_tuple):
         '''Formats item_id to proper item name.
 
         Note
@@ -164,15 +199,7 @@ class HeropediaData(object):
 
         '''
         name, _ = item_tuple
-        proper_name = {
-            'sphere': "linken s sphere",
-            'courier': 'animal courier',
-            'basher': 'skull_basher',
-            'blink': 'blink_dagger', 'travel_boots': 'boots_of_travel',
-            'ward_sentry': 'sentry_ward', 'ward_observer': 'observer_ward',
-        }
-
-        return proper_name.get(name.lower(), name)
+        return cls.ITEM_NAME.get(name.lower(), name)
 
     # Default Function
     @staticmethod
@@ -228,22 +255,10 @@ class HeropediaData(object):
         name : str or None
             Proper item name
         '''
-        proper_name = {
-            "linken's_sphere": 'sphere', 'battle_fury': 'bfury',
-            'manta_style': 'manta', 'animal_courier': 'courier',
-            'boots_of_speed': 'boots', 'skull_basher': 'basher',
-            'refresher_orb': 'refresher', 'heart_of_tarrasque': 'heart',
-            'blink_dagger': 'blink', 'boots_of_travel': 'travel_boots',
-            'observer_ward': 'ward_observer', "vladmir's_offering": 'vladmir',
-            "heaven's_halberd": 'heavens_halberd',
-            'sentry_ward': 'ward_sentry',
-            # 'aeon_disk': 'combo_breaker'
-        }
-
         name = self._get_name(
             line,
             self._item_dictionary,
-            proper_name)
+            self._proper_item_name)
         return name
 
     def get_hero_name(self, line):
@@ -263,20 +278,8 @@ class HeropediaData(object):
         name : str or None
             Proper hero name
         '''
-        proper_name = {
-            'nightstalker': 'night_stalker', 'anti-mage': 'antimage',
-            'underlord': 'abyssal_underlord', 'clockwerk': 'rattletrap',
-            'windranger': 'windrunner', 'shadow_fiend': 'nevermore',
-            'vengeful_spirit': 'vengefulspirit', 'drow': 'drow_ranger',
-            "nature's_prophet": 'furion', 'necrophos': 'necrolyte',
-            'wraith_king': 'skeleton_king', 'zeus': 'zuus',
-            'doom': 'doom_bringer', 'magnus': 'magnataur', 'io': 'wisp',
-            'centaur_warrunner': 'centaur', 'treant_protector': 'treant',
-            'outworld_devourer': 'obsidian_destroyer', 'timbersaw': 'shredder',
-            'lifestealer': 'life_stealer', 'queen_of_pain': 'queenofpain'
-        }
         name = self._get_name(
             line,
             self._hero_dictionary,
-            proper_name)
+            self._proper_hero_name)
         return name

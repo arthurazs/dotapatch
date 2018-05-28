@@ -39,7 +39,7 @@ class TestStringManipulation(TestCase):
         '''str: sort_item("sphere") returns "linken s sphere"'''
         dictionary = ('sphere', None)
         self.assertEqual(
-            "linken s sphere", HeropediaData.sort_item(dictionary))
+            "linken's_sphere", HeropediaData.sort_item(dictionary))
 
     def test_sort_hero_name_not_change(self):
         '''str: sort("io") returns "io"'''
