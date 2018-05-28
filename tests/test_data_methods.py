@@ -71,7 +71,7 @@ class TestDictionaryManipulation(TestCase):
     def test_download_file_fail(self):
         '''dwnl: assert 'file:///' can't be used '''
         with self.assertRaises(SystemExit) as context:  # TODO Is this correct?
-            DATA.download_file('file:///')
+            DATA._download_file('file:///')
         self.assertEqual(context.exception.code, -1)
 
 

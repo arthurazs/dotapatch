@@ -24,7 +24,7 @@ class HeropediaData(object):
 
     # Initialization Functions
     @classmethod
-    def download_file(cls, name):
+    def _download_file(cls, name):
         '''Parses dota2's heropediadata file into dict.
 
         Parameters
