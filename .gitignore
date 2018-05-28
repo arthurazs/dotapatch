@@ -19,3 +19,4 @@ dist
 .coverage*
 coverage.xml
 nosetests.*xml
+htmlcov
