@@ -28,7 +28,7 @@ Built with
     - :py:func:`logging.getLogger` Keeps logger consistent between classes
     - :py:func:`logging.getLevelName` Returns the numeric value of a string
       logging level
-- tox_ Run tests for Python (2.7, 3.3, 3.4, 3.5, 3.6)
+- tox_ Run tests for Python (2.7, 3.4, 3.5, 3.6)
     - :py:mod:`unittest` Base for the tests
         - :py:func:`unittest.mock.patch` replaces system argv with mock args
         - nose_ test suite (nosetests)
