@@ -2,7 +2,7 @@
 from unittest import TestCase, main as unit_main
 import os.path as path
 from os import remove
-from dotapatch.patch import parse, SUCCESS, WARNING
+from dotapatch.patch import parse, _organize_heropedia, SUCCESS, WARNING
 
 
 class Test(TestCase):
@@ -35,6 +35,16 @@ class Test(TestCase):
         result = parse(path.join(self.file_path, file_name))
         remove(file_name + '.html')
         self.assertLessEqual(WARNING, result)
+
+    def test_organize(self):
+        '''
+        ptc: _organize_heropedia return correct string
+        '''
+        expected = 'Wave of Terror damage rescaled'
+        general = ['Vengeful Spirit: ' + expected]
+
+        _, heroes = _organize_heropedia(general)
+        self.assertEqual(expected, heroes['vengefulspirit'][0])
 
 
 if __name__ == '__main__':
