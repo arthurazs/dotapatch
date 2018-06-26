@@ -1,0 +1,173 @@
+7.18:
+==
+* Aeon Disk: Cooldown increased from 90 to 115
+* Echo Sabre: Strength bonus increased from 10 to 12
+* Echo Sabre: Damage bonus reduced from 15 to 12
+* Echo Sabre: Slow duration increased from 0.7 to 0.8
+* Hand of Midas: Cooldown reduced from 95 to 90
+* Orb of Venom: Damage per second reduced from 5 to 3 on ranged heroes
+* Maelstrom: Chain Lightning damage reduced from 170 to 160
+
+* Abaddon: Base movement speed increased from 305 to 310
+
+* Alchemist: Greevil's Greed Gold Bonus Cap increased from 16/20/24/28 to 20/24/28/32
+* Alchemist: Greevil's Greed Stack Duration increased from 30 to 40
+
+* Ancient Apparition: Ice Blast duration increased from 8/9/10 to 9/10/11
+
+* Bane: Fiend's Grip cooldown increased from 100 to 120/110/100
+
+* Beastmaster: Wild Axes manacost increased from 80 to 80/85/90/95
+* Beastmaster: Primal Roar cooldown increased from 80/75/70 to 90/80/70
+* Beastmaster: Level 10 Talent reduced from +25 Movement Speed to +20
+* Beastmaster: Level 15 Talent reduced from +7 Armor to +6
+* Beastmaster: Level 20 Talent reduced from +100 Wild Axes Damage to +80
+
+* Bloodseeker: Level 10 Talent reduced from +8 Armor to +6
+* Bloodseeker: Level 15 Talent reduced from +300 Health to +275
+
+* Centaur Warrunner: Base strength increased by 2
+
+* Chen: Holy Persuasion cast range reduced from 900 to 600
+* Chen: Holy Persuasion send back delay rescaled from 6/5/4/3 to 6
+* Chen: Holy Persuasion cooldown increased from 10 to 32/24/18/10
+
+* Clinkz: Strafe cooldown reduced from 45/35/25/15 to 30/25/20/15
+* Clinkz: Strafe manacost reduced from 90 to 75/80/85/90
+
+* Clockwerk: Power Cogs burn/damage reduced from 80/120/160/200 to 50/100/150/200
+
+* Crystal Maiden: Crystal Nova damage increased from 100/150/200/250 to 130/170/210/260
+* Crystal Maiden: Arcane Aura self mana regen increased from 1.6/2.4/3.2/4 to 1.8/2.6/3.4/4.2
+
+* Dark Willow: Bramble Maze total damage increased from 100/150/200/250 to 140/180/220/260
+* Dark Willow: Cursed Crown manacost reduced from 100/120/140/160 to 80/100/120/140
+
+* Dazzle: Base damage spread reduced from 41-59 to 47-53
+* Dazzle: Poison Touch damage rescaled from 10/24/38/52 to 16/28/40/52
+
+* Death Prophet: Base armor reduced by 1
+
+* Doom: Base movement speed reduced from 285 to 280
+
+* Dragon Knight: Level 15 Talent reduced from +35 Damage to +30
+
+* Earthshaker: Base HP regen increased from 2 to 2.5
+* Earthshaker: Base movement speed increased from 305 to 310
+* Earthshaker: Enchant Totem Scepter cast range increased from 900 to 1100
+* Earthshaker: Echo Slam Echo damage increased from 60/85/110 to 70/90/110
+* Earthshaker: Echo Slam waves are no longer disjointable
+
+* Earth Spirit: Strength gain increased from 3.2 to 3.5
+
+* Ember Spirit: Fire Remnant charge restore time increased from 35 to 38
+
+* Enchantress: Attack range increased from 550 to 575
+* Enchantress: Untouchable attack slow increased from -20/60/100/140 to -20/70/120/170
+* Enchantress: Impetus damage increased from 14/18/22% to 16/20/24%
+
+* Enigma: Midnight Pulse damage increased from 3/3.75/4.5/5.25% to 3.75/4. 25/4.75/5.2 5%
+* Enigma: Midnight Pulse duration rescaled from 11 to 9/10/11/12
+* Enigma: Midnight Pulse cooldown rescaled from 35 to 50/45/40/35 
+* Enigma: Midnight Pulse manacost rescaled from 95/110/125/140 to 75/95/115/135
+* Enigma: Level 15 Talent increased from +120 Gold/Min to +150 
+* Enigma: Level 20 Talent increased from +400 Health to +500 Health
+* Enigma: Level 25 Talent increased from +4 Malefice Instance to +5 
+
+* Invoker: Level 10 Talent increased from +0.5s Tornado Lift Time to +1.25s
+* Invoker: Level 15 Talent changed from +2.5s Cold Snap Duration to -12s Cold Snap Cooldown
+
+* Io: Relocate now has channel time instead of a cast delay
+
+* Legion Commander: Duel bonus damage increased from 10/14/18 to 10/18/26
+
+* Leshrac: Split Earth cast range reduced from 750 to 650
+
+* Lich: Sacrifice 25 manacost removed
+* Lich: Ice Armor increased from 3/5/7/9 to 4/6/8/10
+* Lich: Chain Frost cast point reduced from 0.4 to 0.3
+
+* Lycan: Base armor reduced by 2
+* Lycan: Base damage reduced by 3
+
+* Meepo: Base armor increased by 2 
+
+* Mirana: Level 10 Talent reduced from +20 Damage to +15
+* Mirana: Level 25 Talent reduced from -75s Moonlight Shadow Cooldown to -70s
+
+* Morphling: Waveform cooldown increased from 11 to 14/13/12/11
+
+* Naga Siren: Rip Tide damage reduced from 120/160/200/240 to 80/130/180/230
+* Naga Siren: Ensnare cooldown increased from 12 to 14
+
+* Nature's Prophet: Agility gain increased from 1.9 to 2.4
+
+* Necrophos: Death Pulse damage increased from 80/120/160/200 to 100/140/180/220
+* Necrophos: Death Pulse unit kill regen duration increased from 6 to 7
+
+* Night Stalker: Void now deals half damage during day
+* Night Stalker: Base movement speed reduced from 290 to 285
+
+* Nyx Assassin: Vendetta manacost decreased from 160/210/260 to 140/200/260
+
+* Oracle: Intelligence growth increased from 3.2 to 3.5
+
+* Phantom Lancer: Base strength reduced by 3
+
+* Pudge: Meat Hook cast range increased from 1000/1100/1200/1300 to 1300
+* Pudge: Flesh Heap magic resistance increased from 6/8/10/12% to 8/10/12/14%
+
+* Riki: Base damage increased by 3
+* Riki: Blink Strike damage rescaled from 55/70/85/100 to 100
+* Riki: Blink Strike cast range rescaled from 800 to 500/600/700/800
+* Riki: Smoke Screen AoE increased from 250/275/300/325 to 325
+* Riki: Smoke Screen cooldown increased from 11 to 17/15/13/11
+
+* Sand King: Burrowstrike cooldown increased from 11 to 14/13/12/11 
+
+* Shadow Shaman: Mass Serpent Ward damage increased from 40/70/100 to 50/75/100
+
+* Skywrath Mage: Arcane Bolt manacost increased from 70 to 90
+
+* Slark: Level 10 Talent reduced from +10 Agility to +8
+
+* Sniper: Headshot physical damage no longer ignores Spell Immmune units
+* Sniper: Headshot damage increased from 15/40/65/90 to 20/50/80/110
+
+* Sven: Great Cleave damage increased from 30/42/54/66 to 40/50/60/70
+
+* Templar Assassin: Psionic Traps bounty increased from 1 to 25
+
+* Terrorblade: Agility gain increased from 3.7 to 4.2
+
+* Tidehunter: Gush armor reduction increased from 3/4/5/6 to 4/5/6/7
+* Tidehunter: Ravage duration increased from 2/2.4/2.8 to 2.4/2.6/2.8
+* Tidehunter: Level 20 Talent increased from -4 Gush Armor to -5
+* Tidehunter: Level 20 Talent increased from +24 Kraken Shell Damage Block to +30
+
+* Timbersaw: Whirling Death stat loss percentage increased from 13% to 15%
+
+* Tiny: Strength growth increased from 3.3 to 3.6
+* Tiny: Tree Grab unit attack damage bonus increased from 10/20/30/40% to 25/30/35/40%
+* Tiny: Tree Grab building attack damage rescaled from 90/120/150/180% to 80/120/160/200%
+* Tiny: Toss damage increased from 75/150/225/300 to 90/160/230/300
+
+* Ursa: Overpower attack count increased from 3/4/5/6 to 4/5/6/7
+* Ursa: Level 20 Talent increased from +12 Fury Swipes Damage to +16
+
+* Vengeful Spirit: Wave of Terror damage rescaled from 45/70/95/120 to 60/80/100/120
+* Vengeful Spirit: Magic Missile stun duration rescaled from 1.2/1.4/1.6/1.8 to 1.5/1.6/1.7/1.8
+
+* Warlock: Shadow Word manacost increased from 90/110/130/150 to 120/130/140/150
+* Warlock: Shadow Word cast range reduced from 525/600/675/750 to 450/550/650/750 
+
+* Weaver: Agility gain increased from 2.8 to 3.1
+* Weaver: Shukuchi damage increased from 80/110/140/170 to 100/125/150/175
+
+* Windranger: Intelligence reduced by 2
+* Windranger: Powershot reduced from 180/270/360/450 to 150/250/350/450
+
+* Witch Doctor: Voodoo Restoration activation cost increased from 20/30/40/50 to 35/40/45/50
+
+* Wraith King: Mortal Strike skeletons magic resistance increased from 30% to 50%
+* Wraith King: Vampiric Aura increased from 15/20/25/30% to 18/22/26/30%	
