@@ -40,7 +40,7 @@ class Test(TestCase):
         '''
         ptc: _organize_heropedia return correct string
         '''
-        expected = 'Wave of Terror damage rescaled'
+        expected = 'Wave of Terror damage Q rescaled'
         general = ['Vengeful Spirit: ' + expected]
 
         _, heroes = _organize_heropedia(general)

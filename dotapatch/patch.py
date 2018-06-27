@@ -93,7 +93,8 @@ def _organize_heropedia(general):
 
         # Remove hero/item name, capitalize the line
         formatted_line = ' '.join(line.split(': ', 1)[1:])
-        formatted_line = formatted_line.capitalize()
+        if formatted_line:
+            formatted_line = formatted_line[0].upper() + formatted_line[1:]
 
         if found_hero:
             heroes[found_hero].append(formatted_line)
