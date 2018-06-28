@@ -11,7 +11,8 @@ Authors
 -------
 
 .. include:: ../AUTHORS.rst
-    :start-after: master/CONTRIBUTING.rst
+    :start-after: `Contributing Guidelines`_!
+    :end-before: .. _Contributing Guidelines
 
 .. include:: ../README.rst
    :start-after:  .. _releases:   https://github.com/arthurazs/dotapatch/releases

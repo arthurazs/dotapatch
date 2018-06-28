@@ -174,8 +174,8 @@ details.
 This project is licensed under the `MIT License`_.
 
 .. _Contributing Guidelines:    https://github.com/arthurazs/dotapatch/blob/
-                                master/CONTRIBUTING.rst
+                                master/.github/CONTRIBUTING.rst
 .. _Code of Conduct:            https://github.com/arthurazs/dotapatch/blob/
-                                master/CODE_OF_CONDUCT.rst
+                                master/.github/CODE_OF_CONDUCT.rst
 .. _MIT License:                https://github.com/arthurazs/dotapatch/blob/
                                 master/LICENSE

@@ -10,8 +10,8 @@ Testing dotapatch
                :target: https://www.codacy.com/app/arthurazsoares/dota2patches?
                         utm_source=github.com&utm_medium=referral&utm_content=
                         arthurazs/dota2patches&utm_campaign=Badge_Coverage
-.. |codecov|    image:: https://codecov.io/gh/arthurazs/dotapatch/branch/master/graph/
-                        badge.svg
+.. |codecov|    image:: https://codecov.io/gh/arthurazs/dotapatch/branch/master
+                        /graph/badge.svg
                :target: https://codecov.io/gh/arthurazs/dotapatch
 
 

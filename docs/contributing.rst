@@ -9,5 +9,5 @@ violate any of the rules.
 
 .. contents::
 
-.. include:: ../CONTRIBUTING.rst
+.. include:: ../.github/CONTRIBUTING.rst
   :start-after: .. contents::

@@ -4,9 +4,6 @@ Authors
 Would you also like to help improving this project? Check the
 `Contributing Guidelines`_!
 
-.. _Contributing Guidelines:    https://github.com/arthurazs/dotapatch/blob/
-                                master/CONTRIBUTING.rst
-
 Maintainers
 ~~~~~~~~~~~
 
@@ -18,3 +15,6 @@ Contributors
 - No one yet
 
 .. _Arthur Zopellaro: https://github.com/arthurazs
+
+.. _Contributing Guidelines:    https://github.com/arthurazs/dotapatch/blob/
+                                master/.github/CONTRIBUTING.rst
