@@ -41,8 +41,8 @@ setup(
     package_data={APP_NAME: [
         'templates/*', 'data/*', 'changelogs/706f', 'changelogs/707d']},
     data_files=[(APP_NAME, [
-        'requirements.txt', 'LICENSE', 'tox.ini', 'CODE_OF_CONDUCT.rst',
-        'CONTRIBUTING.rst', 'AUTHORS.rst'])],
+        'requirements.txt', 'LICENSE', 'tox.ini', 'AUTHORS.rst',
+        '.github/CODE_OF_CONDUCT.rst', '.github/CONTRIBUTING.rst'])],
     long_description=APP_LONG_DESCRIPTION,
     python_requires='>=2.7, <4',
     classifiers=[
