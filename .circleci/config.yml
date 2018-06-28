@@ -1,0 +1,70 @@
+version: 2
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - build-3.6
+      - flake-8:
+        requires:
+          - build-3.6
+      - test-3.6:
+        requires:
+          - build-3.6
+      # - test-3.6
+      # - test-3.5
+      # - test-2.7
+jobs:
+  build-3.6: &template
+    docker:
+      - image: circleci/python:3.6
+    # working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "setup.py" }}
+          - v1-dependencies-
+      - run:
+          name: Install tox
+          command: |
+            python -m venv venv || virtualenv venv
+            . venv/bin/activate
+            pip install tox
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "setup.py" }}
+      # - run:
+      #     name: Run tests
+      #     command: |
+      #       . venv/bin/activate
+      #       tox
+  flake-8:
+    steps:
+      - run:
+        name: Flake 8
+        command:
+          tox -e flake8
+  test-3.6:
+    steps:
+      - run:
+        name: Test 3.6
+        command:
+          tox -e py36
+  coverage:
+    steps:
+      - run:
+        name: Coverage
+        command:
+          tox -e coverage
+          tox -e codacy
+          tox -e codecov
+
+  # test-3.5:
+  #   <<: *test-template
+  #   docker:
+  #     - image: circleci/python:3.5-jessie
+  # test-2.7:
+  #   <<: *test-template
+  #   docker:
+  #     - image: circleci/python:2.7-jessie
