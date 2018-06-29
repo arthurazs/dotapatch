@@ -20,3 +20,4 @@ dist
 coverage.xml
 nosetests.*xml
 htmlcov
+flake8.txt
