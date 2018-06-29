@@ -1,57 +1,322 @@
-version: 2.0
+dota27: &dota27
+  working_directory: ~/dotapatch
+  docker:
+    - image: circleci/python:2.7
+
+dota34: &dota34
+  working_directory: ~/dotapatch
+  docker:
+    - image: circleci/python:3.4
+
+dota35: &dota35
+  working_directory: ~/dotapatch
+  docker:
+    - image: circleci/python:3.5
+
+dota36: &dota36
+  working_directory: ~/dotapatch
+  docker:
+    - image: circleci/python:3.6
+
+version: 2
 
 jobs:
-  install:
-    docker:
-      - image: circleci/python:3.6
+
+  code:
+    <<: *dota36
     steps:
       - checkout
+      - save_cache:
+          key: code-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/dotapatch
+
+  venv27_tox:
+    <<: *dota27
+    steps:
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "setup.py" }}
-          - v1-dependencies-
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv27-caches
       - run:
-          name: Install tox
+          name: Set up environment
           command: |
-            python -m venv venv || virtualenv venv
-            . venv/bin/activate
+            virtualenv venv27
+            . venv27/bin/activate
             pip install tox
       - save_cache:
+          key: venv27-caches
           paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "setup.py" }}
+            - ~/dotapatch/venv27
+
+  venv34_tox:
+    <<: *dota34
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv34-caches
+      - run:
+          name: Set up environment
+          command: |
+            virtualenv venv34
+            . venv34/bin/activate
+            pip install tox
+      - save_cache:
+          key: venv34-caches
+          paths:
+            - ~/dotapatch/venv34
+
+  venv35_tox:
+    <<: *dota35
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv35-caches
+      - run:
+          name: Set up environment
+          command: |
+            virtualenv venv35
+            . venv35/bin/activate
+            pip install tox
+      - save_cache:
+          key: venv35-caches
+          paths:
+            - ~/dotapatch/venv35
+
+  venv36_tox:
+    <<: *dota36
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv36-caches
+      - run:
+          name: Set up environment
+          command: |
+            virtualenv venv36
+            . venv36/bin/activate
+            pip install tox
+      - save_cache:
+          key: venv36-caches
+          paths:
+            - ~/dotapatch/venv36
 
   flake:
+    <<: *dota36
     steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv36-caches
       - run:
-        name: Flake 8
-        command:
-          tox -e flake8
+          name: Flake 8
+          command: |
+            . venv36/bin/activate
+            tox -e flake8
+      - store_artifacts:
+          path: flake8.txt
+      - persist_to_workspace:
+          root: ~/dotapatch
+          paths:
+            - flake8.txt
 
-  nose:
+  test27:
+    <<: *dota27
     steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv27-caches
       - run:
-        name: Test 3.6
-        command:
-          tox -e py36
+          name: Test 27
+          command: |
+            . venv27/bin/activate
+            tox -e py27
+      - save_cache:
+          key: venv27-caches
+          paths:
+            - ~/circleci-test/venv27
+      - run: mkdir -p nosetests
+      - run: mv nosetests.py27.xml nosetests/nosetests.py27.xml
+      - store_test_results:
+          path: nosetests
+      - persist_to_workspace:
+          root: ~/dotapatch
+          paths:
+            - .coverage.py27
+            - nosetests
 
-  coverage:
+  test34:
+    <<: *dota34
     steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv34-caches
       - run:
-        name: Coverage
-        command:
-          tox -e coverage
-          tox -e codacy
-          tox -e codecov
+          name: Test 34
+          command: |
+            . venv34/bin/activate
+            tox -e py34
+      - save_cache:
+          key: venv34-caches
+          paths:
+            - ~/circleci-test/venv34
+      - run: mkdir -p nosetests
+      - run: mv nosetests.py34.xml nosetests/nosetests.py34.xml
+      - store_test_results:
+          path: nosetests
+      - persist_to_workspace:
+          root: ~/dotapatch
+          paths:
+            - .coverage.py34
+            - nosetests
+
+  test35:
+    <<: *dota35
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv35-caches
+      - run:
+          name: Test 35
+          command: |
+            . venv35/bin/activate
+            tox -e py35
+      - save_cache:
+          key: venv35-caches
+          paths:
+            - ~/circleci-test/venv35
+      - run: mkdir -p nosetests
+      - run: mv nosetests.py35.xml nosetests/nosetests.py35.xml
+      - store_test_results:
+          path: nosetests
+      - persist_to_workspace:
+          root: ~/dotapatch
+          paths:
+            - .coverage.py35
+            - nosetests
+
+  test36:
+    <<: *dota36
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv36-caches
+      - run:
+          name: Test 36
+          command: |
+            . venv36/bin/activate
+            tox -e py36
+      - save_cache:
+          key: venv36-caches
+          paths:
+            - ~/circleci-test/venv36
+      - run: mkdir -p nosetests
+      - run: mv nosetests.py36.xml nosetests/nosetests.py36.xml
+      - store_test_results:
+          path: nosetests
+      - persist_to_workspace:
+          root: ~/dotapatch
+          paths:
+            - .coverage.py36
+            - nosetests
+
+  report:
+    <<: *dota36
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv36-caches
+      - attach_workspace:
+          at: ~/dotapatch
+      - run:
+          name: Combine
+          command: |
+            . venv36/bin/activate
+            tox -e coverage
+      - store_artifacts:
+          path: coverage.xml
+      - store_artifacts:
+          path: flake8.txt
+      - store_test_results:
+          path: nosetests
+      - run:
+          name: Report
+          command: |
+            . venv36/bin/activate
+            tox -e report
+      - run:
+          name: Upload to Codacy
+          command: |
+            . venv36/bin/activate
+            tox -e codacy
+      - run:
+          name: Upload to Codecov
+          command: |
+            . venv36/bin/activate
+            tox -e codecov
 
 workflows:
   version: 2
-  build:
+  build_test:
     jobs:
-      - install
+      - code
+      - venv27_tox:
+          requires:
+            - code
+      - venv34_tox:
+          requires:
+            - code
+      - venv35_tox:
+          requires:
+            - code
+      - venv36_tox:
+          requires:
+            - code
+      - test27:
+          requires:
+            - venv27_tox
+      - test34:
+          requires:
+            - venv34_tox
+      - test35:
+          requires:
+            - venv35_tox
+      - test36:
+          requires:
+            - venv36_tox
       - flake:
-        requires:
-          - install
-      - nose:
-        requires:
-          - install
+          requires:
+            - venv36_tox
+      - report:
+          requires:
+            - test27
+            - test34
+            - test35
+            - test36
