@@ -18,3 +18,4 @@ dist
 .coverage*
 coverage.xml
 nosetests.*xml
+flake8.txt
