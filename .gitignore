@@ -9,11 +9,11 @@ dist
 *.egg-info
 *.egg
 
-#dotapatch
+# dotapatch
 *.html
 *.log
 
-#tox
+# tox
 *.eggs
 .tox/
 .coverage*
@@ -21,3 +21,6 @@ coverage.xml
 nosetests.*xml
 htmlcov
 flake8.txt
+
+# vscode
+.vscode
