@@ -1,0 +1,52 @@
+ 7.19b:
+==
+
+* Buyback respawn time penalty changed from +25% of remaining time to +25s always
+
+* Level 2 XP requirement changed from 200 to 230 (in a scenario where Team A gets 2 melee denies per wave, and team B gets 1 melee deny per wave: Team A wave requirement for level 2 increases from 2 waves to 3 waves. Team B wave requirement remains at 3 waves. Total XP needed for other levels unchanged. )
+
+* Glyph is now on cooldown until the 3 minute timer in-game
+
+* Stout Shield: Damage block for melee heroes increased from 18 to 20
+* Ring of Aquila: Bonus damage reduced from 10 to 7
+* Mekansm: Heal increased from 250 to 275
+* Guardian Greaves: Heal increased from 250 to 275
+* Urn of Shadows: Heal rate reduced from 35 to 30
+* Spirit Vessel: Heal rate reduced from 35 to 30
+* Spirit Vessel: Movement speed bonus reduced from 30 to 20
+* Scythe of Vyse: Manacost increased from 100 to 250
+* Phase Boots: Speed bonus on ranged heroes reduced from 16% to 13%
+* Phase Boots: Instant turn ra te is now a melee only feature
+
+* Alchemist: Greevil's Greed bounty rune multiplier rescaled from 3.5x to 2/2.5/3/3.5x
+* Bloodseeker: Bloodrage heal rate reduced from 19/21/23/25% to 16/19/22/25%
+* Broodmother: Base agility reduced by 3
+* Chen: Penitence duration reduced from 8 to 5/6/7/8
+* Clinkz: Base strength reduced by 2
+* Crystal Maiden: Crystal Nova manacost increased from 130/140/150/160 to 130/145/160/175
+* Dark Willow: Shadow Realm damage reduced from 120/200/280/360 to 90/180/270/360
+* Dark Willow: Cursed Crown cast point increased from 0.1 to 0.2
+* Drow Ranger: Base agility reduced from 26 to 19 (base damage unchanged)
+* Drow Ranger: Agility gain increased from 1.9 to 2.2
+* Drow Ranger: Base attack animation time improved from 0.7 to 0.65
+* Enchantress: Base movement speed reduced by 15
+* Gyrocopter: Base agility reduced by 5 (base damage and armor unchanged)
+* Huskar: Base damage reduced from 42-51 to 40-45
+* Huskar: Level 10 Talent increased from +175 Health to +225
+* Io: Spirits cooldown from 20/18/16/14 to 26/22/18/14
+* Io: Level 10 Talent reduced from +25% XP to +20%
+* Mirana: Level 15 Talent reduced from +100 Leap Attack Speed to +80
+* Nature's Prophet: Base damage reduced by 3
+* Necrophos: Agility rescaled from 15 + 1.2 to 12 + 1.3
+* Necrophos: Base movement speed reduced by 5
+* Phantom Lancer: Level 25 Talent reduced from -7s Doppelganger CD to -6s
+* Silencer: Arcane Curse manacost increased from 75/95/115/135 to 105/115/125/135
+* Spectre: Spectral Dagger linger duration reduced from 2 to 1
+* Spectre: Dispersion max reflection range reduced from 1000 to 700
+* Spectre: Desolate single hero range check increased from 325 to 375
+* Tiny: Tree Grab manacost increased from 20/30/40/50 to 50
+* Tiny: Avalanche cooldown increased from 20/19/18/17 to 23/21/19/17
+* Ursa: Overpower manacost increased from 45/55/65/75 to 75
+* Vengeful Spirit: Wave of Terror cooldown increased from 10 to 16/14/12/10
+* Weaver: The Swarm manacost increased from 70/80/90/100 to 110
+* Wraith King: Wraithfire Blast cooldown increased from 11/10/9/8 to 14/12/10/8
