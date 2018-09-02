@@ -18,6 +18,11 @@ dota36: &dota36
   docker:
     - image: circleci/python:3.6
 
+dota37: &dota37
+  working_directory: ~/dotapatch
+  docker:
+    - image: circleci/python:3.7
+
 version: 2
 
 jobs:
@@ -111,19 +116,39 @@ jobs:
           paths:
             - ~/dotapatch/venv36
 
-  flake:
-    <<: *dota36
+  venv37_tox:
+    <<: *dota37
     steps:
       - restore_cache:
           keys:
             - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           keys:
-            - venv36-caches
+            - venv37-caches
+      - run:
+          name: Set up environment
+          command: |
+            virtualenv venv37
+            . venv37/bin/activate
+            pip install tox
+      - save_cache:
+          key: venv37-caches
+          paths:
+            - ~/dotapatch/venv37
+
+  flake:
+    <<: *dota37
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv37-caches
       - run:
           name: Flake 8
           command: |
-            . venv36/bin/activate
+            . venv37/bin/activate
             tox -e flake8
       - store_artifacts:
           path: flake8.txt
@@ -244,21 +269,49 @@ jobs:
             - .coverage.py36
             - nosetests
 
-  report:
-    <<: *dota36
+  test37:
+    <<: *dota37
     steps:
       - restore_cache:
           keys:
             - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           keys:
-            - venv36-caches
+            - venv37-caches
+      - run:
+          name: Test 37
+          command: |
+            . venv37/bin/activate
+            tox -e py37
+      - save_cache:
+          key: venv37-caches
+          paths:
+            - ~/circleci-test/venv37
+      - run: mkdir -p nosetests
+      - run: mv nosetests.py37.xml nosetests/nosetests.py37.xml
+      - store_test_results:
+          path: nosetests
+      - persist_to_workspace:
+          root: ~/dotapatch
+          paths:
+            - .coverage.py37
+            - nosetests
+
+  report:
+    <<: *dota37
+    steps:
+      - restore_cache:
+          keys:
+            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - venv37-caches
       - attach_workspace:
           at: ~/dotapatch
       - run:
           name: Combine
           command: |
-            . venv36/bin/activate
+            . venv37/bin/activate
             tox -e coverage
       - store_artifacts:
           path: coverage.xml
@@ -269,17 +322,17 @@ jobs:
       - run:
           name: Report
           command: |
-            . venv36/bin/activate
+            . venv37/bin/activate
             tox -e report
       - run:
           name: Upload to Codacy
           command: |
-            . venv36/bin/activate
+            . venv37/bin/activate
             tox -e codacy
       - run:
           name: Upload to Codecov
           command: |
-            . venv36/bin/activate
+            . venv37/bin/activate
             tox -e codecov
 
 workflows:
@@ -299,6 +352,9 @@ workflows:
       - venv36_tox:
           requires:
             - code
+      - venv37_tox:
+          requires:
+            - code
       - test27:
           requires:
             - venv27_tox
@@ -311,12 +367,17 @@ workflows:
       - test36:
           requires:
             - venv36_tox
+      - test37:
+          requires:
+            - venv37_tox
       - flake:
           requires:
-            - venv36_tox
+            - venv37_tox
       - report:
           requires:
             - test27
             - test34
             - test35
             - test36
+            - test37
+            - flake
