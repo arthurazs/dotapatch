@@ -52,7 +52,7 @@ def _read_file(file_path):
             if line:
                 general.append(line)
 
-    patch_version = general[0].split(':')[0]
+    patch_version = general[0].split(':')[0].strip()
     general = general[2:]
     line_count = len(general)
 
