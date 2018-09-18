@@ -76,8 +76,8 @@ def dotapatch(
     '''
 
     if update:
-        HeropediaData.download_file(HeropediaData.ITEM_DATA)
-        HeropediaData.download_file(HeropediaData.HERO_DATA)
+        HeropediaData._download_file(HeropediaData.ITEM_DATA)
+        HeropediaData._download_file(HeropediaData.HERO_DATA)
 
     status = 0
 
