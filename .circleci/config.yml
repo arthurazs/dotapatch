@@ -28,7 +28,7 @@ version: 2
 jobs:
 
   code:
-    <<: *dota36
+    <<: *dota37
     steps:
       - checkout
       - save_cache:
