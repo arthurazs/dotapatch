@@ -1,0 +1,87 @@
+7.20c:
+==
+* Wraith Band: Attack speed bonus reduced from 7 to 6
+* Wraith Band: Recipe cost increased from 210 to 220
+* Bracer: Recipe cost increased from 210 to 220
+* Null Talisman: Recipe cost increased from 210 to 220
+* Sange: Recipe cost reduced from 650 to 600
+* Yasha: Recipe cost reduced from 650 to 600
+* Kaya: Recipe cost reduced from 650 to 600
+* Bloodstone: Charges increased from 12 to 14
+* Bloodstone: HP/MP regen per charge increased from 0.25 to 0.3
+
+* Bounty Hunter: Agility gain reduced from 3.0 to 2.7
+* Bounty Hunter: Track cast range reduced from 1200 to 1000
+* Brewmaster: Cinder Brew activation mechanic has been reworked. It now ignites anytime a target is dealt 80 spell damage or more, dealing 20/25/30/35 DPS for 3 seconds. (If you activate it while the debuff is already going, it will extend the ignite debuff duration. If activated after the ignite debuff wears out, a new ignite debuff will be added)
+* Brewmaster: Cinder Brew primary buff duration is no longer extended when activated (they are seperate debuffs now).
+* Brewmaster: Level 25 Talent reduced from +200% Drunken Brawler Critical Strike to +175%
+* Centaur: Stampede slow duration increased from 1.8 to 2.3 seconds
+* Chaos Knight: Chaos Strike lifesteal increased from 35/40/45/50% to 35/45/55/65%
+* Clinkz: Attack range increased from 640 to 650
+* Clinkz: Burning Army base attack time improved from 1.65/1.5/1.35 to 1.5/1.35/1.2
+* Clinkz: Level 20 Talent increased from +100 to +125 Attack Range
+* Dazzle: Shadow Wave cooldown increased from 13/11/9/7 to 14/12/10/8
+* Death Prophet: Base movement speed increased from 310 to 315
+* Death Prophet: Level 10 Talent increased from +12% Magic Resistance to +15%
+* Death Prophet: Level 20 Talent increased from -2s Crypt Swarm Cooldown to -3s
+* Doom: Devour hp regen reduced from 5/10/15/20 to 4/8/13/18
+* Drow Ranger: Marksmanship now deals bonus 120 physical proc damage against heroes
+* Elder Titan: Astral Spirit attack damage per hero reduced from 20/40/60/80 to 15/30/60/80
+* Elder Titan: Astral Spirit cooldown increased from 16 to 17
+* Ember Spirit: Sleight of Fist bonus damage increased from 35/70/105/140 to 40/80/120/160
+* Ember Spirit: Level 10 Talent increased from +200 Flame Guard Absorption to +250
+* Ember Spirit: Level 15 Talent increased from +50 Flameguard DPS to +60
+* Enchantress: Base armor increased by 2
+* Faceless Void: Time Lock damage reduced from 30/40/50/60 to 25/30/35/40
+* Gyrocopter: Strength gain increased from 2.1 to 2.3
+* Kunkka: Tidebringer cleave damage increased from 150% to 165%
+* Lina: Base armor increased by 1
+* Lone Druid: Base armor reduced by 2
+* Lone Druid: Agility reduced from 24 + 2.7 to 20 + 2.4
+* Lone Druid: Spirit Link cooldown rescaled from 44/36/28/20 to 43/36/29/22
+* Lone Druid: Level 10 Talent reduced from +175 Attack Range to +150
+* Lone Druid: Level 20 Talent changed from +40 Spirit Link Attack Speed to -0.2 Spirit Bear Base Attack Time
+* Luna: Agility gain reduced from 3.3 to 3.1
+* Luna: Level 10 Talent reduced from +20 Attack Speed to +15
+* Luna: Level 20 Talent reduced from +10 All Stats to +8
+* Luna: Lunar Blessing night vision reduced from 250/500/750/1000 to 200/400/600/800
+* Lycan: Howl attack speed reduced from 21/34/47/60 to 20/30/40/50
+* Meepo: Divided We Stand XP gain reduced from 50% to 40%
+* Meepo: Level 15 Talent reduced from +40 Poof Damage to +30
+* Nature's Prophet: Base armor increased by 1
+* Nature's Prophet: Agility gain increased from 2.4 to 2.8
+* Naga Siren: Level 15 Talent reduced from +15 Agility to +12
+* Outworld Devourer: Intelligence gain increased from 2.7 to 3.0
+* Outworld Devourer: Base armor increased by 1
+* Outworld Devourer: Equilibrium slow from 12/20/28/36% to 12/22/32/42%
+* Outworld Devourer: Arcane Orb no longer ignores Ancients
+* Phantom Assassin: Level 15 Talent reduced from -4 Armor to -3
+* Phantom Assassin: Blur manacost increased from 20 to 30
+* Puck: Intelligence gain increased from 2.4 to 2.7
+* Sand King: Base damage reduced by 2
+* Sand King: Strength gain reduced from 2.9 to 2.8
+* Sand King: Agility gain reduced from 2.1 to 1.8
+* Spectre: Haunt damage increased from 40/50/60% to 40/55/70%
+* Spirit Breaker: Greater Bash damage reduced from 16/24/32/40% to 12/20/28/36%
+* Storm Spirit: Intelligence gain increased from 3 to 3.2
+* Storm Spirit: Static Remnant damage increased from 120/160/200/240 to 120/170/220/270
+* Slardar: Level 20 Talent changed from +50 Attack Speed to +30% Lifesteal
+* Slark: Pounce duration reduced from 2.75/3/3.25/3.5 to 2.5/2.75/3/3.25
+* Slark: Dark Pact manacost from 55/50/45/40 to 60
+* Slark: Shadow Dance duration from 4/4.5/5 to 4/4.25/4.5
+* Slark: Agility steal now also occurs when an enemy dies within 300 units from you with the debuff, rather than only when you get the killing blow
+* Slark: Level 10 Talent reduced from +8 Agility to +6 Agility
+* Slark: Level 20 Talent reduced from +2s Pounce Leash to +1.5s
+* Slark: Level 25 Talent reduced from +120s Essence Shift Duration to +100s
+* Timbersaw: Strength gain increased from 2.1 to 2.4
+* Timbersaw: Whirling Death tree bonus damage increased from 10/14/18/22 to 10/15/20/25
+* Tusk: Strength gain increased from 3 to 3.4
+* Undying: Level 20 Talent reduced from +6 Tombstone Attacks To Destroy to +5
+* Undying: Level 25 Talent increased from Gains Reincarnation 200 CD to 250 CD
+* Ursa: Fury Swipes damage reduced from 12/18/24/30 to 10/16/22/28
+* Ursa: Level 15 Talent reduced from +16 Agility to +14
+* Venomancer: Base agility increased by 4
+* Venomancer: Level 15 Talent increased from +6% Poison Sting Slow to +8%
+* Visage: Strength gain reduced from 3.2 to 3.0
+* Visage: Grave Chill cast range reduced from 650 to 625
+* Visage: Level 20 Talent reduced from +80 Familiars Movement Speed to +60

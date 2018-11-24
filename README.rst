@@ -59,10 +59,10 @@ Health   |CI| |docs| |CIssues| |Coverage| |codecov|
 **dotapatch** is a software which aims the automation of formatting
 ``simple text changelog`` into ``clear html changelog``.
 
-Check the `Gameplay Update 7.19d`_. This is the latest patch parsed using
+Check the `Gameplay Update 7.20c`_. This is the latest patch parsed using
 **dotapatch**.
 
-.. _Gameplay Update 7.19d: https://arthurazs.github.io/dotapatch/719d.html
+.. _Gameplay Update 7.20c: https://arthurazs.github.io/dotapatch/720c.html
 
 Read the documentation at `Read the Docs`_.
 
