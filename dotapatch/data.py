@@ -41,7 +41,7 @@ class HeropediaData(object):
         'ward_observer': 'observer_ward', 'vladmir': "vladmir's_offering",
         'heavens_halberd': "heaven's_halberd", 'ward_sentry': 'sentry_ward',
         'cyclone': "eul's_scepter_of_divinity", 'tpscroll': 'tp_scroll',
-        'sheepstick': 'scythe_of_vyse'
+        'sheepstick': 'scythe_of_vyse', 'branches': 'iron_branch'
         # 'combo_breaker': 'aeon_disk'
     }
 
