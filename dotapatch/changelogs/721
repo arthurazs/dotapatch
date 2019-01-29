@@ -13,21 +13,10 @@
 
 * XP required to reach level 7->12 changed from 640/660/680/800/820/840 to 720/750/780/810/840/870 (the difference is +80/90/100/10/20/30 XP)
 
-* Naga Siren: +5 movement speed
-* Underlord: +5 movement speed
-* Monkey King: +5 movement speed
-* Nyx Assassin: +5 movement speed
-* Bloodseeker: +5 movement speed
-* Riki: +5 movement speed
-* Alchemist: +10 movement speed
-* Dragon Knight: +10 movement speed
-* Meepo: +10 movement speed
-* Legion Commander: +15 movement speed
-* Lifestealer: +15 movement speed
-* Lycan: +15 movement speed
-* Sven: +15 movement speed
-* Ursa: +15 movement speed
-* Wraith King: +15 movement speed
+
+* The following melee heroes now have +5 movement speed: Naga Siren, Underlord, Monkey King, Nyx Assassin, Bloodseeker, Riki
+* The following melee heroes now have +10 movement speed: Alchemist, Dragon Knight, Meepo
+* The following melee heroes now have +15 movement speed: Legion Commander, Lifestealer, Lycan, Sven, Ursa, Wraith King
 * Ranged heroes with 295 movement speed and above now have 5 less movement speed
 
 * Tier 2 tower armor increased from 14 to 15
