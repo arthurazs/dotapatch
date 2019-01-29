@@ -1,0 +1,40 @@
+7.21:
+===
+
+
+GENERAL
+
+
+* Melee creeps average gold bounty reduced by 3
+* Range creeps upgrade cycle gold bounty increased from +3 to +6
+
+* Replaced the primary jungles' ancient camps with big camps
+
+* Heroes no longer gain 25% more benefit from their primary attributes (affects attributes from both items and the hero)
+* All heroes' primary attribute growth values increased by 15%
+* Health per strength increased from 18 to 20
+
+* XP required to reach level 7->12 changed from 640/660/680/800/820/840 to 720/750/780/810/840/870 (the difference is +80/90/100/10/20/30 XP)
+
+* Naga Siren: +5 movement speed
+* Underlord: +5 movement speed
+* Monkey King: +5 movement speed
+* Nyx Assassin: +5 movement speed
+* Bloodseeker: +5 movement speed
+* Riki: +5 movement speed
+* Alchemist: +10 movement speed
+* Dragon Knight: +10 movement speed
+* Meepo: +10 movement speed
+* Legion Commander: +15 movement speed
+* Lifestealer: +15 movement speed
+* Lycan: +15 movement speed
+* Sven: +15 movement speed
+* Ursa: +15 movement speed
+* Wraith King: +15 movement speed
+* Ranged heroes with 295 movement speed and above now have 5 less movement speed
+
+* Tier 2 tower armor increased from 14 to 15
+* Tier 3 tower armor increased from 14 to 16
+* Melee Barracks armor increased from 13 to 15
+
+* Tower Protection armor bonus for Tier 2/3/4 increased from 3 to 4
