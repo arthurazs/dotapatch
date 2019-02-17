@@ -1,6 +1,13 @@
 About dotapatch
 ===============
 
+IMPORTANT!
+----------
+
+This project was archived on **17 Feb. 2019** as the oficial Dota 2 page now releases patches in `Clean HTML`_.
+
+.. _Clean HTML: http://www.dota2.com/patches/7.21b
+
 ======== ======
 Platform Status
 ======== ======
